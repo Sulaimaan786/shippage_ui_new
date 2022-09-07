@@ -1,0 +1,364 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <h6 class="headingValue"> Return Item Details - {{this.docForm.value.return}} </h6>
+        <div style="border-top: 1px solid purple"></div>
+
+      </div>
+      <div class="row clearfix ">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="box-shadow">
+          <div>
+            <div class="body">
+              <form class="m-4" [formGroup]="docForm">
+                
+                <div class="row" style="margin-top: 1%;">
+                  <div  class="col-md-2">
+                    <mat-label class="lable">NDC/UPC <span class="errorColor">*</span> </mat-label>
+                    </div>
+                    <div *ngIf="defaultNDCUPC" class="col-md-4">
+
+                      <input type="text" class="form-control" formControlName="ndcupcCode" ng-keypress="$event.keyCode == 13 ? startSearch($event) : null" (keypress)="keyPressNdcupcCode($event)" (blur)="ndcupcCodeValidation($event.target.value)" maxlength="13">
+                     <mat-error *ngIf="submitted && docForm.get('ndcupcCode').hasError('required')">
+                      NDC/UPC is required
+                      </mat-error>  
+                      
+                      <mat-error *ngIf="docForm.controls['ndcupcCode'].hasError('ndcUpcCodeValid') ">
+                        NDC/UPC code is not exists
+                      </mat-error>
+
+                  </div>
+                  <div *ngIf="greenNDCUPC" class="col-md-4">
+
+                    <input style="background-color: green;color:whitesmoke;" type="text" class="form-control" formControlName="ndcupcCode" ng-keypress="$event.keyCode == 13 ? startSearch($event) : null" (keypress)="keyPressNdcupcCode($event)" (blur)="ndcupcCodeValidation($event.target.value)" maxlength="13">
+                   <mat-error *ngIf="submitted && docForm.get('ndcupcCode').hasError('required')">
+                    NDC/UPC is required
+                    </mat-error>  
+                    <mat-error *ngIf="docForm.controls['ndcupcCode'].hasError('ndcUpcCodeValid') ">
+                      NDC/UPC code is not exists
+                    </mat-error>
+                    
+                </div>  
+                  <div *ngIf="redNDCUPC" class="col-md-4">
+
+                      <input style="background-color: red;color:whitesmoke;" type="text" class="form-control" formControlName="ndcupcCode" ng-keypress="$event.keyCode == 13 ? startSearch($event) : null" (keypress)="keyPressNdcupcCode($event)" (blur)="ndcupcCodeValidation($event.target.value)" maxlength="13">
+                     <mat-error *ngIf="submitted && docForm.get('ndcupcCode').hasError('required')">
+                      NDC/UPC is required
+                      </mat-error>  
+                      <mat-error *ngIf="docForm.controls['ndcupcCode'].hasError('ndcUpcCodeValid') ">
+                        NDC/UPC code is not exists
+                      </mat-error>
+                  </div>
+                  <div  class="col-md-2">
+                  <button color="primary" type="button" class="btn-space" mat-raised-button (click)="findAllDetailsByndcupcCode()">Find</button>
+                  </div>
+                  <div *ngIf="defaultNDCUPC" class="col-md-4">
+                    <input type="text" class="form-control" formControlName="description" readonly  >
+                </div>
+                <div *ngIf="greenNDCUPC" class="col-md-4">
+                  <input type="text" style="background-color: green;color:whitesmoke" class="form-control" formControlName="description" readonly  >
+              </div>
+                  <div *ngIf="redNDCUPC" class="col-md-4">
+                      <input type="text" style="background-color: red;color:whitesmoke" class="form-control" formControlName="description" readonly  >
+                  </div>
+                  </div>
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2" >
+                      <mat-label class="lable"  style="white-space: nowrap ;">Unit/Package </mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="unitPackage"  readonly >
+                    </div>
+                    <div  class="col-md-1" style="width: 12%">
+                      <mat-label class="lable"  style="white-space: nowrap ;">Control No </mat-label>
+                      </div>
+                    <div class="col-md-2"  style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="controlNo"  readonly >
+                    </div>
+                    <div  class="col-md-1" style="width: 12%">
+                      <mat-label class="lable"  style="white-space: nowrap ;">Available Via</mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="availableVia"  readonly >
+                    </div>
+
+                  </div>
+               
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable"  style="white-space: nowrap ;">Package Size </mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="packageSize"  readonly >
+                    </div>
+                    <div  class="col-md-1" style="width: 12%">
+                      <mat-label class="lable">Dosage </mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                         <input type="text" class="form-control" formControlName="dosage"  readonly> 
+                        <!-- <select disabled tabindex="9" class="form-control" formControlName="dosage">
+                          <option value="" selected disabled >---Select---</option>
+                          <option *ngFor="let title of dosageList" [value]="title.id">
+                              {{title.text}}</option>
+                      </select> -->
+                      </div>
+                    <div  class="col-md-1" style="width: 12%">
+                      <mat-label class="lable">Strength </mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="strength" readonly>
+                    </div>
+
+                  </div>
+                  
+                  
+                  
+                  
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Price <span class="errorColor">*</span> </mat-label>
+                      
+                    </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="price" (keypress)="keyPressNumberDouble($event)"  maxlength="10">
+                        <mat-error *ngIf="submitted && docForm.get('price').hasError('required')">
+                          price is required
+                      </mat-error>  
+                      </div>
+               
+                    <div  class="col-md-1" style="width: 12%">
+                      <mat-label class="lable">Quantity <span class="errorColor">*</span> </mat-label>
+                      </div>
+                    <div class="col-md-2" style="width: 19.5%">
+                        <input type="text" class="form-control" formControlName="quantity" (keypress)="keyPressNumberInt($event)" maxlength="10">
+                        <mat-error *ngIf="submitted && docForm.get('quantity').hasError('required')">
+                          quantity is required
+                      </mat-error> 
+                      </div>
+                      <div  class="col-md-1" style="width: 12%">
+                        <mat-label class="lable">Estimated Value </mat-label>
+                        </div>
+                      <div class="col-md-2" style="width: 19.5%">
+                          <input type="text" class="form-control" formControlName="estimatedValue" readonly>
+                      </div>
+                  </div>
+
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Manufacturer </mat-label>
+                      </div>
+                    <div class="col-md-4">
+                     
+                        <select disabled tabindex="9" class="form-control" formControlName="manufacturerBy">
+                            <option value="" selected disabled >---Select---</option>
+                            <option *ngFor="let title of manufacturerList" [value]="title.id">
+                                {{title.text}}</option>
+                        </select>
+                    
+                    </div>
+
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Return To</mat-label>
+                      </div>
+                    <div class="col-md-4">
+                      <select tabindex="9" class="form-control" formControlName="returnTo">
+                          <option value="" selected disabled >---Select---</option>
+                          <option *ngFor="let title of manufacturerList" [value]="title.id">
+                              {{title.text}}</option>
+                      </select>
+                  
+                  </div>
+
+                  </div>
+
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Item No </mat-label>
+                      </div>
+
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" formControlName="itemNo" (keypress)="keyPressLotNo($event)" maxlength="20">
+                      <mat-error *ngIf="submitted && docForm.get('itemNo').hasError('required')" style="margin-bottom: 12px;">
+                        Item No is required
+                    </mat-error> 
+                 
+                    </div>
+
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Exp Date <span class="errorColor">*</span> </mat-label>
+                     
+                    </div>
+                    <div class="col-md-4">
+                      <mat-form-field >
+                        <input matInput [matDatepicker]="dp" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp
+                                        startView="multi-year"
+                                        (yearSelected)="chosenYearHandler($event)"
+                                        (monthSelected)="chosenMonthHandler($event, dp)"
+                                        panelClass="example-month-picker">
+                        </mat-datepicker>
+                      </mat-form-field>
+                      <mat-error *ngIf="submitted && docForm.get('expDate').hasError('required')" >
+                        Exp Date is required
+                    </mat-error> 
+                    </div>
+
+                    <!-- <div class="col-md-4">
+                        
+                        
+                        <select tabindex="9" class="formControlSplitedIntoTwo"  formControlName="expDateMonths" placeholder="Select">
+                          <option value="" disabled selected style="color:orange">Select</option>
+                          <option value="JAN">January</option>
+                          <option value="FEB">February</option>
+                          <option value="MAR">March</option>
+                          <option value="APR">April</option>
+                          <option value="MAY">May</option>
+                          <option value="JUN">June</option>
+                          <option value="JUL">July</option>
+                          <option value="AUG">August</option>
+                          <option value="SEP">September</option>
+                          <option value="OCT">October</option>
+                          <option value="NOV">November</option>
+                          <option value="DEC">December</option>
+                      </select>
+                      <mat-error *ngIf="submitted && docForm.get('expDateMonths').hasError('required')">
+                        Exp Date Months is required
+                    </mat-error>  
+                      &nbsp;&nbsp; <select tabindex="9" class="formControlSplitedIntoTwo" formControlName="expDateYear" placeholder="Select">
+                        <option value="" disabled selected style="color:orange">Select</option>
+                          <option value="12">2012</option>
+                          <option value="13">2013</option>
+                          <option value="14">2014</option>
+                          <option value="15">2015</option>
+                          <option value="16">2016</option>
+                          <option value="17">2017</option>
+                          <option value="18">2018</option>
+                          <option value="19">2019</option>
+                          <option value="20">2020</option>
+                          <option value="21">2021</option>
+                          <option value="22">2022</option>
+                          <option value="23">2023</option>
+                          <option value="24">2024</option>
+                          <option value="25">2025</option>
+                          <option value="26">2026</option>
+                          <option value="27">2027</option>
+                       </select>
+
+                        
+                      <mat-error *ngIf="submitted && docForm.get('expDateYear').hasError('required')">
+                        Exp Date Year is required
+                    </mat-error>   
+                      </div> -->
+
+                  </div>
+                  <div class="row" style="margin-top: -0.5%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Reason <span class="errorColor">*</span> </mat-label>
+                      </div>
+                    <div class="col-md-4">
+                      <select  tabindex="9" class="form-control" formControlName="reason">
+                        <option value="" selected disabled >---Select---</option>
+                        <option *ngFor="let title of returnReasonList" [value]="title.id">
+                            {{title.text}}</option>
+                    </select>
+                     
+                        <mat-error *ngIf="submitted && docForm.get('reason').hasError('required')">
+                          Reason is required
+                      </mat-error>
+                      </div>
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Lot No <span class="errorColor">*</span> </mat-label>
+                      </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" formControlName="lotNo" (keypress)="keyPressLotNo($event)" maxlength="20">
+                        <mat-error *ngIf="submitted && docForm.get('lotNo').hasError('required')">
+                          lot No is required
+                      </mat-error> 
+                      </div>
+
+                  </div>
+                  <div class="row" style="margin-top: 1%;">
+                    <div  class="col-md-2">
+                      <mat-label class="lable">Entry No <span class="errorColor">*</span> </mat-label>
+                      </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" formControlName="entryNo" readonly >
+                    </div>
+                  
+                    <div class="col-md-3">
+                      <p><input type="checkbox" style="pointer-events: none !important;accent-color: #e74c3c  !important;" formControlName="returnable">&nbsp; <b>Returnable</b></p>
+                    </div>
+                  </div>         
+                  <div class="row" style="margin-top: 2%;" >
+                    <div class="col-md-4">
+                     
+                      <mat-radio-group formControlName="fullParticalProduct" style="margin-left: 4%;margin-top: 4%;">
+                        <mat-radio-button  value="true">Full Quantity</mat-radio-button>
+                        <mat-radio-button  value="false">Number of {{this.docForm.value.dosageDescription}} </mat-radio-button>
+                      </mat-radio-group>
+                      <mat-error style="margin-left: 4%;margin-top: 4%;" *ngIf="submitted && docForm.get('fullParticalProduct').hasError('required')">
+                        Full or Partical Quantity is required
+                    </mat-error> 
+
+                    </div>
+                    <div class="col-md-3">
+                      <p><input type="checkbox"  formControlName="repackagedProduct"  style="margin-bottom: 14%;"  (change)="repackagedProductclick()">&nbsp; <b>Repackaged Product</b></p>
+                    </div>
+                  </div>    
+
+                <div class="row"> 
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                   
+                    <button (click) = "addDruginfoMstrPopup()" color="primary" type="button" class="btn-space" mat-raised-button>Add Drug Item</button>
+                    <button (click) = "onCalculator()" color="primary" type="button" class="btn-space" mat-raised-button>Calculator</button>
+                    
+                    <button (click) = "next()" class="btn-space globalBtn" [disabled]="rowId===(totLength-1)" mat-raised-button
+                    color="accent" style="margin-left: 12%;background-color: dodgerblue;"><mat-icon>skip_previous</mat-icon>
+                    Previous</button>
+
+                   
+                    <button *ngIf="!edit" (click) = "checkDrugIsReturnable('onSubmit')" class="btn-space" mat-raised-button
+                    color="accent" style="background-color: #34d034;">Save</button>
+                    <button *ngIf="edit" (click) = "checkDrugIsReturnable('update')" class="btn-space" mat-raised-button
+                    color="accent" style="background-color: #34d034;">Update</button>
+                    <button *ngIf="edit" color="warn" type="button" class="btn-space"  (click)="deleteItem()" mat-raised-button> Delete</button>
+                    <button color="primary" type="button" class="btn-space" (click)="newItem()" mat-raised-button>New</button>
+                    <button color="warn" type="button" class="btn-space"  (click)="onCancel()" mat-raised-button>Close</button>
+                 
+                    
+                    <button (click) = "previous()" class="btn-space globalBtn" [disabled]="rowId===0" mat-raised-button
+                    color="accent" style="background-color: dodgerblue;"><mat-icon>skip_next</mat-icon>Next</button>
+
+                    
+
+                    <!-- <div class="row" style="margin-top: 1%;">
+                      <div
+                                      *ngFor="let item of POSTS | paginate : {
+                                                itemsPerPage: tableSize,
+                                                currentPage: page,
+                                                totalItems: count
+                                              }; let i = index">
+                                             
+                                              <div class="d-flex justify-content-center">
+                                                <pagination-controls
+                                                  previousLabel="Prev"
+                                                  nextLabel="Next"
+                                                  (pageChange)="onTableDataChange($event,item.returnMemoItemsCode)"
+                                                >
+                                                </pagination-controls>
+                                              </div>    
+                                    </div>
+                    </div>  -->
+                    
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

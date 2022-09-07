@@ -1,0 +1,121 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Add Manufacturer'" [items]="['Manufacturer']" [active_item]="'Add Manufacturer'">
+        </app-breadcrumb>
+      </div>
+      <div class="row clearfix ">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="box-shadow">
+          <div class="card">
+            <div class="body">
+              <form class="m-4" [formGroup]="docForm">
+                <!-- <fieldset class="border p-2" style="border: solid 0.5px !important;">
+                  <legend  class="float-none w-auto p-2">Return Policy</legend> -->
+                <div class="row" style="padding-bottom: 1%;margin-top:-21px;">
+                  <div class="col-md-9"></div>
+                  <div class="col-md-3">
+                    <button class="lable" color="primary" style="background-color: #3c2f9f;" type="button" (click) = "manufacturer()" mat-raised-button> Manufacturer Info</button>&nbsp;
+                   &nbsp;
+                    <button class="lable" color="primary" style="background-color: #70288c;" type="button" mat-raised-button>Return Policy</button>&nbsp;			
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 14%;margin-top:-20px;">
+                  <div class="col-md-2">
+                    <mat-label class="lable">Number of months before expiration<span class="errorColor">*</span> </mat-label>
+                    </div>
+                    <div class="col-md-2">
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">                      -->
+                      <input type="text" class="form-control" formControlName="noMonthsBeforeExpiration"   maxlength="15" (keypress)="keyPressNumberInt($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('noMonthsBeforeExpiration').hasError('required')">
+                        Number of months before expiration is required
+                      </mat-error>
+                    <!-- </mat-form-field> -->
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label class="lable">  Number of months after expiration<span class="errorColor">*</span> </mat-label>
+                    </div>
+                    <div class="col-md-2">
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">                     -->
+                      <input type="text" class="form-control" formControlName="noMonthsAfterExpiration" maxlength="15" (keypress)="keyPressNumberInt($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('noMonthsAfterExpiration').hasError('required')">
+                        Number of months after expiration is required
+                      </mat-error>
+                    <!-- </mat-form-field> -->
+                  </div>
+                </div>
+                <br>
+                  <div class="row" style="margin-left: 15%;">
+                    
+                  <div class="col-md-1">
+                    <mat-label class="lable" style="margin-left: 4%;white-space: nowrap;">Accept returns<span class="errorColor">*</span></mat-label><br>
+                  </div>
+                    <div class="col-md-2">
+                    <mat-radio-group formControlName="acceptReturns" style="margin-left: 19%;">
+                      <input type="radio" formControlName="acceptReturns" value="true"> &nbsp;Yes&nbsp;
+                      <input type="radio" formControlName="acceptReturns" value="false"> &nbsp;No&nbsp;
+                      <!-- <mat-radio-button value="true" >Yes</mat-radio-button>
+                      <mat-radio-button value="false">No</mat-radio-button> -->
+                    </mat-radio-group>
+                    <mat-error *ngIf="submitted && docForm.get('acceptReturns').hasError('required')">
+                      Accept returns is required
+                    </mat-error> 
+                  </div>
+                  <div class="col-md-2" *ngIf="this.docForm.value.acceptReturns=='true'">
+                    <mat-label class="lable"style="margin-left: 4%;white-space: nowrap;"> Accept partial returns </mat-label><br>
+                    </div>
+                    <div class="col-md-2" *ngIf="this.docForm.value.acceptReturns=='true'">
+                    <mat-radio-group formControlName="acceptPartialReturns" style="margin-left: 4%;">
+                      <input type="radio" formControlName="acceptPartialReturns" value="true"> &nbsp;Yes&nbsp;
+                      <input type="radio" formControlName="acceptPartialReturns" value="false"> &nbsp;No&nbsp;
+                      <!-- <mat-radio-button value="true" >Yes</mat-radio-button>
+                      <mat-radio-button value="false">No</mat-radio-button> -->
+                    </mat-radio-group>
+                    <mat-error *ngIf="submitted && docForm.get('acceptPartialReturns').hasError('required')">
+                      Accept partial returns is required
+                    </mat-error> 
+                  </div>
+             
+ 
+                <div class="col-md-2" *ngIf="this.docForm.value.acceptPartialReturns=='true' && this.docForm.value.acceptReturns=='true'">
+                  <mat-label class="lable"style="white-space: nowrap;"> Accept percentage <span class="errorColor">*</span></mat-label>
+                  </div>
+                  <div class="col-md-2" *ngIf="this.docForm.value.acceptPartialReturns=='true' && this.docForm.value.acceptReturns=='true'">
+
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">                       -->
+                      <input type="text" class="form-control" formControlName="acceptpercentage"  maxlength="15" (keypress)="keyPressNumberDouble($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('acceptpercentage').hasError('required')">
+                        Accept percentage is required
+                      </mat-error>
+                    <!-- </mat-form-field> -->
+                  </div>
+                </div>
+                
+                <!-- <div class="row" style="margin-left: 30.5%;margin-top:-27px;">
+                  <div class="col-md-5">
+                    <p><input type="checkbox"  formControlName="checkPackageOriginality"  style="margin-bottom: 14%;">&nbsp;  Check package originality </p>
+                  </div>
+                </div> -->
+                <!-- </fieldset> -->
+                <br>
+                <div class="row" style="margin-left: 10%;">
+
+                  <div class="col-md-12">
+                    <button *ngIf="!edit" (click) = "onSubmit()" class="btn-space" mat-raised-button
+                    color="accent" style="margin-left: 36%;background-color: #195f19;">Submit</button>
+                    <button *ngIf="edit" (click) = "onSubmit()" class="btn-space" mat-raised-button
+                    color="accent" style="margin-left: 36%;background-color: #195f19;">Update</button>
+                      <button color="primary" type="button" class="btn-space" (click)="reset()" mat-raised-button>Reset</button>
+                    <button color="warn" type="button" (click)="onCancel()" mat-raised-button>Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

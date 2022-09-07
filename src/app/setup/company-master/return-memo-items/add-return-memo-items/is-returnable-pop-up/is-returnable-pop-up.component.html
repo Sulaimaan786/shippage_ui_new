@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h5 class="modal-title headingValue">Alert</h5>
+
+</div>
+<!-- Modal body -->
+<div class="modal-body">
+    {{this.data}} 
+</div>
+<!-- Modal footer -->
+<div class="modal-footer">
+  <form  [formGroup]="isReturnableForm">
+    <div class="col-md-12">
+   <input type="checkbox"  formControlName="isReturnable" >&nbsp; <b>Override & Save</b>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <button class="btn btn-lg btn-primary" (click)="checkOveridePolicyAndSetValue()">Ok</button>
+</div>
+</form>
+</div>
+
+
+

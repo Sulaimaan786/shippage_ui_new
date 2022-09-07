@@ -1,0 +1,175 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Audit Log'" [items]="['Report']" [active_item]="'Audit Log List'">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="box-shadow">
+          <div class="card">
+            <div class="body">
+              <form class="m-4" [formGroup]="docForm">
+                <h3>
+                  <mat-label style="margin-left:41%; font-family:Times New Roman, Times, serif; font-style: italic;">
+                    Audit Log List</mat-label>
+                </h3><br>
+
+                <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">From Date</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput [matDatepicker]="picker" formControlName="fromDate">
+                      <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;"
+                        matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">To Date</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput [matDatepicker]="picker1" formControlName="toDate">
+                      <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;"
+                        matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">Action</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="actions">
+                        <mat-option [value]="'login'">
+                          LOGIN
+                        </mat-option>
+                        <mat-option [value]="'insert'">
+                          INSERT
+                        </mat-option>
+                        <mat-option [value]="'update'">
+                          UPDATE
+                        </mat-option>
+                        <mat-option [value]="'delete'">
+                          DELETE
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">Set Up</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="setUp">
+
+                        <mat-option [value]="'users'">
+                          User
+                        </mat-option>
+                        <mat-option [value]="'roles'">
+                          Role
+                        </mat-option>
+                        <mat-option [value]="'roleRights'">
+                          Role Right
+                        </mat-option>
+                        <mat-option [value]="'manufacturers'">
+                          Manufacturer
+                        </mat-option>
+                        <mat-option [value]="'wholesalers'">
+                          Wholesaler
+                        </mat-option>
+                        <mat-option [value]="'drugsInfo'">
+                          Drug Info
+                        </mat-option>
+                        <mat-option [value]="'companys'">
+                          Company
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">Ip Address</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput formControlName="ipAddress">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">User Name </mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput formControlName="userName" maxlength="15">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-label class="lable">Object Id </mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput formControlName="objectId">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <button (click)="searchData()" class="btn-space" mat-raised-button color="accent"
+                      style="margin-left:26%;margin-top:12%;background-color: #228f22;">Search</button>
+                    <button color="primary" type="button" class="btn-space" (click)="reset()"
+                      mat-raised-button>Reset</button>
+                  </div>
+                </div>
+
+
+                <div class="row" style="margin-top: -6% ">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <div class="container mt-5">
+                      <button color="primary" type="button" class="btn-space" (click)="exportexcel()"
+                        mat-raised-button>Export to Excel</button><br><br>
+
+                      <table id="excel-table" class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th style="background-color:#c1ddf5;"><b>Object Id</b></th>
+                            <th style="background-color:#c1ddf5;"><b> Object</b></th>
+                            <th style="background-color:#c1ddf5;"><b>User Name</b></th>
+                            <th style="background-color:#c1ddf5;"><b>Set Up</b></th>
+                            <th style="background-color:#c1ddf5;"><b>Ip Address</b></th>
+                            <th style="background-color:#c1ddf5;"><b>Date</b></th>
+                            <th style="background-color:#c1ddf5;"><b>Action</b></th>
+                            <th style="background-color:#c1ddf5;"><b>View</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>        
+                            <tr *ngFor="let data of auditLoglist | paginate: config;">
+
+                            <td>{{data.objectId}}</td>
+                            <td>{{data.object}}</td>
+                            <td>{{data.userName}}</td>
+                            <td>{{data.setUp}}</td>
+                            <td>{{data.ipAddress}}</td>
+                            <td>{{data.date}}</td>
+                            <td>{{data.actions}}</td>
+                            <td align="center">
+                              <i *ngIf="data.actions === 'INSERT' || data.actions === 'LOGIN' || data.actions === 'DELETE'"
+                                class="fas fa-eye" title="View" [routerLink]="['../view',data.auditLogId]"></i>
+                              <i *ngIf="data.actions !== 'INSERT' && data.actions !== 'LOGIN' && data.actions !== 'DELETE'"
+                                title="Compare" style="color:#74AEB5" [routerLink]="['../view',data.auditLogId]">
+                                <img src="./../../../assets/compare.png"
+                                  style="width: 20px;height: 20px;background-color: white;">
+                              </i>
+                              <!-- <a class="globalBtn acceptBtn" href="./../../../../assets/audit_log/auditlog.html?auditLogId={{list.auditLogId}}"
+                                  target="_blank">
+                                  <i class="fa fa-eye" aria-hidden="true"></i>
+                                  </a> -->
+                            </td>
+                            <!--/ng-container-->
+                        </tbody>
+                      </table>
+                      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

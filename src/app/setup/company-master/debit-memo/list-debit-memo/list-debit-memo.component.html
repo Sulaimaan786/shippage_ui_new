@@ -1,0 +1,109 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'DebitMemo'" [items]="['Set up']" [active_item]="'DebitMemo List'">
+        </app-breadcrumb>
+      </div>
+      <div class="row clearfix ">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <div class="body">
+        <form class="m-1" [formGroup]="docForm">
+          <div class="col-xl-12" >
+            <div class="card" style="width:100%; height: 10%;">
+              <div class="row" style="margin-left: 3%;margin-top: 1%;">
+            
+               <div class="col-xl-3" >
+                <mat-label class="lable">Company Name</mat-label>
+                <mat-form-field style="color: #C6C6C6;  pointer-events: none;"  class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="company" disabled  (selectionChange)="debitMemoDropdownList($event.value)">
+                        <mat-option *ngFor="let title of companyList" [value]="title.id">
+                          {{title.text}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+              </div>
+             
+              <div class="col-xl-3">
+                <mat-label class="lable">Debit Memo No</mat-label>
+   
+                <mat-form-field class="example-full-width form-control-sm" appearance="outline">                 
+                      <mat-select class="inputTxt" formControlName="returnMemoNo">
+                        <mat-option *ngFor="let title of debitMemoList" [value]="title.id">
+                          {{title.id}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+              </div>
+          
+          <div class="col-xl-3 example-full-width  form-control-sm" style="margin-top: 2%;">
+            <button (click) = "searchData()" class="btn-space" mat-raised-button
+            color="accent" style="background-color: #307530;">Search</button>
+            <button (click) = "reset()" class="btn-space" mat-raised-button
+            color="accent" style="background-color: #1602eb;">Reset</button>
+        </div>
+        
+        <div style="text-align: center;" class="col-xl-3 example-full-width  form-control-sm right">
+          <button (click) = "addreturnMemo()" class="btn-space" mat-raised-button
+          color="accent" style="background-color: #0c79f5; margin: 9% 8% 10% 10%;">Create New Return</button>
+        
+      </div>
+      
+      </div>
+        
+          </div>
+        </div>
+        </form>
+      </div>
+    
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="table-responsive-sm">
+          <table class="table table-bordered table-hover">
+              <thead class="theadRow thead-light">
+                <tr>
+                  <th style="text-align: left;">Company</th>
+                  <th style="text-align: left;">Date Entered</th>
+                  <th style="text-align: left;">Return Name</th>
+                  <th style="text-align: left;">Debit Memo No</th>
+                  <th style="text-align: left;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of POSTS | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          }; let i = index">
+                   <td> {{item.company !== null ? item.company:'-'}}</td>
+                  <td> {{item.returnMemoDate | date:'dd-MM-yyyy' }}</td>
+                  <td> {{item.returnMemoName !== null ? item.returnMemoName:'-'}}</td>
+                  <td> {{item.returnMemoNo !== null ? item.returnMemoNo:'-'}}</td>
+                  <td style="text-align: center;" >
+                    <app-feather-icons [icon]="'edit'" (click)='editCall(item)' [class]="'tbl-fav-edit'" ></app-feather-icons>&nbsp;&nbsp;
+                    <!-- <i class="fas fa-edit" title="Edit" (click)='editCall(item)' style="color:#0e92a1"></i>&nbsp;&nbsp; -->
+                    <app-feather-icons [icon]="'trash-2'" (click)='deleteItem(item)' [class]="'tbl-fav-delete'" ></app-feather-icons>&nbsp;&nbsp;
+                    <app-feather-icons [icon]="'log-in'" (click)='returnMemoItems(item)' [class]="'tbl-fav-edit'" ></app-feather-icons>
+                    <!-- <i class="fas fa-trash"  title="Delete" (click)='deleteItem(item)' style="color: red;"></i>&nbsp;&nbsp;
+                    <i class="fas fa-arrow-right" title="Return Items" style="color:#74AEB5" (click)='returnMemoItems(item)'></i> -->
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)"
+              >
+              </pagination-controls>
+            </div>
+      </div>
+  </div>
+</div> 
+
+  </div>
+  </section>

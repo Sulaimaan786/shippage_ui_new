@@ -1,0 +1,140 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Return Memo Items'" [items]="['Set up']" [active_item]="'Return Memo Items List'">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix ">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      
+        
+    <div class="body">
+      <form class="m-1" [formGroup]="docForm">
+        <div class="col-xl-12" >
+          <div class="card" style="width:100%; height: 10%;">
+            <div class="row" style="margin-left: 3%;margin-top: 1%;">
+              <div class="col-xl-5" >
+              <h6><b>&nbsp;&nbsp;&nbsp;Return Memo Name	:</b> {{this.returnItemName}} </h6>
+            </div>
+             <!-- <div class="col-xl-3" >
+              <mat-label class="lable">Ndcupc Code</mat-label>
+              <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                <input class="inputTxt" matInput formControlName="ndcupcCode" maxlength="20">
+              </mat-form-field>
+            </div>
+           
+           
+            <div class="col-xl-3">
+              <mat-label class="lable">Lot No</mat-label>
+              <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                <input class="inputTxt" matInput formControlName="lotNo" maxlength="20">
+              </mat-form-field>
+            </div> 
+        
+      
+
+        <div style="margin-top: 2%;" class="col-xl-3 example-full-width  form-control-sm">
+          <button (click) = "searchData()" class="btn-space" mat-raised-button
+          color="accent" style="background-color: #34d034;">Search</button>
+          <button (click) = "reset()" class="btn-space" mat-raised-button
+          color="accent" style="background-color: #eb0202;">Reset</button>
+      </div>-->
+
+      <div style="text-align: right;margin-bottom: 1%;" class="col-xl-6 example-full-width  form-control-sm right">
+        <button (click) = " returnMemo()" class="btn-space" mat-raised-button
+        color="accent" style="background-color: #2704a7;">Create New Return Item</button>
+      
+    </div>
+    
+    </div>
+      
+        </div>
+      </div>
+      </form>
+    </div>
+  
+
+</div>
+</div>
+<!-- <div class="row">
+<div class="col-md-12">
+    <div class="table-responsive-sm">
+        <table class="table table-bordered table-hover">
+            <thead class="theadRow thead-light">
+                <tr>
+                    <th>ndcupc Code</th>
+                    <th>lot No</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Exp Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of listReturnMemoItems">
+                <tr>
+                    <td> {{item.ndcupcCode !== null ? item.ndcupcCode:'-'}}</td>
+                    <td> {{item.lotNo !== null ? item.lotNo:'-'}}</td>
+                    <td> {{item.quantity !== null ? item.quantity:'-'}}</td>
+                    <td> {{item.price !== null ? item.price:'-'}}</td>
+                    <td> {{item.expDate | date:'dd-MM-yyyy' }}</td>
+                    <td style="text-align: center;" >
+                       
+                      <i class="fas fa-edit" title="Edit" (click)='editCall(item)' style="color:#0e92a1"></i>&nbsp;&nbsp;
+                      <i class="fas fa-trash"  title="Delete" (click)='deleteItem(item)' style="color: red;"></i>&nbsp;&nbsp;
+                     </td>
+                </tr>
+            </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div> -->
+<div class="row">
+  <div class="col-md-12">
+      <div class="table-responsive-sm">
+          <table class="table table-bordered table-hover">
+              <thead class="theadRow thead-light">
+                <tr>
+                  <th style="text-align: left;">Ndcupc Code</th>
+                  <th style="text-align: left;">Lot No</th>
+                  <th style="text-align: left;">Quantity</th>
+                  <th style="text-align: left;">Price</th>
+                  <th style="text-align: left;">Exp Date</th>
+                  <th style="text-align: left;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of POSTS | paginate : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          }; let i = index">
+                          <td> {{item.ndcupcCode !== null ? item.ndcupcCode:'-'}}</td>
+                          <td> {{item.lotNo !== null ? item.lotNo:'-'}}</td>
+                          <td> {{item.quantity !== null ? item.quantity:'-'}}</td>
+                          <td> {{item.price !== null ? item.price:'-'}}</td>
+                          <td> {{item.expDate}}</td>
+                          <td>
+                            <app-feather-icons [icon]="'edit'" (click)='editCall(item)' [class]="'tbl-fav-edit'" ></app-feather-icons>&nbsp;&nbsp;
+                            <app-feather-icons [icon]="'trash-2'" (click)='deleteItem(item)' [class]="'tbl-fav-delete'" ></app-feather-icons>&nbsp;&nbsp;
+                           </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)"
+              >
+              </pagination-controls>
+            </div>
+      </div>
+  </div>
+</div> 
+
+</div>
+</section>

@@ -1,0 +1,61 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <app-breadcrumb [title]="'Return Memo Items'" [items]="['Report']" [active_item]="'Return Memo Items List'">
+        </app-breadcrumb>
+      </div>
+      <!-- <div class="row">
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-2">
+          <b>Return To</b>
+          <br>
+          <b>Return To</b>
+        </div>
+      </div> -->
+  
+<br>
+<div id="htmlData">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+      <div class="col-md-6">
+        <div class="table-responsive-sm">              
+          <table id="excel-table" class="table table-bordered table-hover">
+            <thead class="theadRow thead-light">
+                <tr>
+                    <th style="text-align: center;"><b>Manufacturer</b></th>
+                    <th style="text-align: center;"><b>Estimated Value</b></th>
+                    <th style="text-align: center;"><b>Received Value</b></th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of POSTS">
+                    <td>{{item.manufacturerName !== null ? item.manufacturerName:'-'}}</td>
+                    <td style="text-align: right;">${{item.estimateval !== null ? item.estimateval:'-'}}</td>
+                    <td style="text-align: right;">$
+                      <input style="text-align: right;"  [(ngModel)]="item.receivedValue" (keypress)="keyPressPCB($event)">
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+<div *ngIf="POSTS.length === 0">
+  <p colspan="3" style="text-align: center;padding: 50px !important;">No Data Available</p>    
+</div>
+<div class="row"  style="margin-left: 45%;"> 
+  <div class="col-md-12">
+  <button *ngIf ="saveFlag" (click) = "saveValue()" class="btn-space" mat-raised-button
+  color="accent" style="background-color: #307530;">Save</button>
+  <button *ngIf ="!saveFlag" (click) = "updateValue()" class="btn-space" mat-raised-button
+  color="accent" style="background-color: #1602eb;">Update</button>
+  <button *ngIf ="!saveFlag" (click) = "cancel()" class="btn-space" mat-raised-button
+  color="accent" style="background-color: #eb0202;">Cancel</button>
+</div>
+</div>
+ 
+    </div>
+</section>

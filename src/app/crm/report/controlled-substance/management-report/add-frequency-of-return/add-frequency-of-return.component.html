@@ -1,0 +1,104 @@
+add frequency of return!
+
+<!-- <section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <app-breadcrumb [title]="'Frequency Of Return'" [items]="['Report']" [active_item]="'Management Report'">
+        </app-breadcrumb>
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-12">
+        <div class="box-shadow">
+          <div class="card" style="width:100%; height: 10%;">
+            <div class="body">
+              <form class="m-2" [formGroup]="docForm">
+                <div class="col-xl-12" >
+                  <div class="card" style="width:100%; height: 10%;"><br>
+                  
+                    <div class="row">
+                      <div class="col-xl-3" >
+                        <mat-label class="lable">Company Name</mat-label>
+                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                              <mat-select class="inputTxt" formControlName="company">
+                                <mat-option *ngFor="let title of companyList" [value]="title.id">
+                                  {{title.text}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                      </div>
+                       
+                       
+                      <div class="col-xl-3">
+                        <mat-label class="lable">Debit Memo No</mat-label>
+                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                              <mat-select class="inputTxt" formControlName="returnMemoNo">
+                                <mat-option *ngFor="let title of debitMemoList" [value]="title.id">
+                                  {{title.id}}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                      </div>
+                  
+                  
+                      <div class="col-md-3">
+                        <mat-label class="lable">Start Date</mat-label>
+                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                          <input class="inputTxt" matInput [matDatepicker]="picker" formControlName="startDate">
+                          <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;" matSuffix [for]="picker" ></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                  
+                    <div class="col-md-3">
+                      <mat-label class="lable">End Date</mat-label>
+                      <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                        <input class="inputTxt" matInput [matDatepicker]="picker1" formControlName="endDate">
+                        <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;" matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    </div> 
+                    </div>
+                  
+              <div class="row" style="margin-left: 10%;">
+                <div class="col-xl-1" style="margin-top: 1%;">
+                    <mat-checkbox  ngInit="checked=true">Only Items Over</mat-checkbox> 
+                </div>  
+                <div class="col-xl-2" style="margin-left: 3%;">
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput formControlName="onlyItem" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-1" style="margin-top: 1%;">
+                    <mat-label class="inputTxt">Dollars</mat-label>
+                </div>
+             
+                <div class="col-xl-2" style="margin-left: 5%; margin-top: 1%; ">
+                    <mat-checkbox  ngInit="checked=true">Only Items Returned at least</mat-checkbox> 
+                </div>
+                <div class="col-xl-2" style="margin-left: 2%;">
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <input class="inputTxt" matInput formControlName="itemsReturned" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-1" style="margin-top: 1%;">
+                    <mat-label class="inputTxt">Times</mat-label>
+                </div>
+               
+                <div class="col-xl-2" style="margin-left: 84%;">
+                    <button  class="btn-space" mat-raised-button
+                    color="accent" style="margin-left: 36%;background-color: #34d034;" (click) = "searchData()">Search</button>
+                </div>
+                </div>
+                <br>
+              </div>
+              </div>
+              </form>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  
+   -->

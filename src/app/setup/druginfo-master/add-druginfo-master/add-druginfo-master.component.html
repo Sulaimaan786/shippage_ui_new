@@ -1,0 +1,338 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header" style="padding: 0.5% !important;">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Add DrugInfo'" [items]="['DrugInfo']" [active_item]="'Add DrugInfo'">
+      </app-breadcrumb>
+    </div>
+
+    <div class="row clearfix ">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="box-shadow">
+          <div class="card" style="padding: 3%;">
+            <div class="card">
+              <div class="body">
+                <form class="m-4" [formGroup]="docForm">
+                  <!-- <fieldset class="border p-2" style="border: solid 0.5px !important;"> -->
+                  <!-- <legend class="float-none w-auto p-2"style="margin-top: -3%;">Drug Info</legend><hr> -->
+
+                  <div *ngIf="edit" class="row" style="padding-bottom: 1%;margin-top:-21px;">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                      <button class="lable" color="primary" style="background-color: #70288c;" type="button"
+                        mat-raised-button>Drug Info</button>&nbsp;
+                      <button class="lable" color="primary" style="background-color: #3c2f9f;" type="button"
+                        (click)="returnPolicy()" mat-raised-button>Return Policy</button>&nbsp;
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div *ngIf="!edit" class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable" style="white-space: nowrap ;">NDC/UPC <span class="errorColor">*</span>
+                      </mat-label>
+                    </div>
+                    <div *ngIf="!edit" class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="ndcupc" maxlength="13"
+                        (keypress)="keyPressNdcupcCode($event)" required
+                        (blur)="ndcupcCodeValidation($event.target.value)">
+                      <mat-error *ngIf="submitted && docForm.get('ndcupc').hasError('required')">
+                        <!-- <mat-error *ngIf="docForm.get('ndcupc').hasError('required')"> -->
+                        NDC/UPC is required
+                      </mat-error>
+                      <mat-error *ngIf="docForm.controls['ndcupc'].hasError('ndcupcValid') ">
+                        NDC/UPC code is already exists
+                      </mat-error>
+
+                      <!-- </mat-form-field> -->
+                    </div>
+
+                    <div *ngIf="edit" class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label style="white-space: nowrap ;" class="lable">NDC/UPC<span class="errorColor">*</span>
+                      </mat-label>
+                    </div>
+                    <div *ngIf="edit" class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field style="color: #C6C6C6;  pointer-events: none;" class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" style="color: #C6C6C6;  pointer-events: none;" class="form-control"
+                        formControlName="ndcupc" readonly maxlength="15" (keypress)="keyPressNdcupcCode($event)">
+
+                      <!-- </mat-form-field> -->
+                    </div>
+
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label style="white-space: nowrap ;" class="lable"> Manufacturer<span
+                          class="errorColor">*</span> </mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <!-- <input  formControlName="manufacturerBy" maxlength="15" (keypress)="keyPressName($event)" required> -->
+                      <mat-select type="text" class="form-control" formControlName="manufacturerBy" required>
+                        <!-- <mat-option value="" selected disabled >---Select---</mat-option> -->
+                        <mat-option *ngFor="let title of manufacturerList" [value]="title.id">
+                          {{title.text}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="submitted && docForm.get('manufacturerBy').hasError('required')">
+                        Manufacturer is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable" style="white-space: nowrap ;">Description<span
+                          class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="description" maxlength="40"
+                        (keypress)="keyPressName($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('description').hasError('required')">
+                        Description is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable"> Strength<span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="strength" maxlength="20"
+                        (keypress)="keyPressName($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('strength').hasError('required')">
+                        Strength is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top:2%">
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable">Package Size<span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="packageSize" maxlength="10"
+                        (keypress)="keyPressNumberInt($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('packageSize').hasError('required')">
+                        Package Size is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable"> Unit per Package <span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="unitPerPackage" maxlength="10"
+                        (keypress)="keyPressNumberInt($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('unitPerPackage').hasError('required')">
+                        Unit per Package is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-label>Unit Dose</mat-label>
+                      <input  formControlName="unitDose" maxlength="15" (keypress)="keyPressName($event)" required>
+                      <mat-error *ngIf="docForm.get('unitDose').hasError('required')">
+                        Unit Dose is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div> -->
+
+
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable">Dosage<span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <!-- <input  type="text" class="form-control"  formControlName="dosage" maxlength="25"
+                        (keypress)="keyPressName($event)" required> -->
+                      <mat-select type="text" class="form-control" formControlName="dosage" required>
+                        <mat-option *ngFor="let title of dosageList" [value]="title.id">
+                          {{title.text}}
+                        </mat-option>
+                      </mat-select>
+
+                      <mat-error *ngIf="submitted && docForm.get('dosage').hasError('required')">
+                        Dosage is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ">
+                      <!-- <mat-checkbox  formControlName="unitDose" ngInit="checked=true" style="margin-left: 4%;margin-top: 2%;">Unit Dose</mat-checkbox> -->
+                      <section class="example-section">
+                        <p>
+                          <mat-checkbox formControlName="unitDose" style="margin-left: 5%;margin-top: -2%;">
+                            <mat-label class="lable"> Unit Dose </mat-label>
+                          </mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox formControlName="hazardous" style="margin-left:110%;margin-top: 2%;">
+                            <mat-label class="lable">Hazardous </mat-label>
+                          </mat-checkbox>
+                        </p>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable" style="margin-left: -3%;">Control<span class="errorColor">*</span>
+                      </mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <mat-radio-group formControlName="control" style="margin-left: 4%;">
+                        <!-- <mat-radio-button value="0">0</mat-radio-button>
+                      <mat-radio-button value="2">2</mat-radio-button>
+                      <mat-radio-button value="3">3</mat-radio-button>
+                      <mat-radio-button value="4">4</mat-radio-button>
+                      <mat-radio-button value="5">5</mat-radio-button> -->
+                        <input type="radio" formControlName="control" value="0"> &nbsp;0&nbsp;
+
+                        <input type="radio" formControlName="control" value="2">&nbsp;2&nbsp;
+
+                        <input type="radio" formControlName="control" value="3">&nbsp;3&nbsp;
+
+                        <input type="radio" formControlName="control" value="4">&nbsp;4&nbsp;
+
+                        <input type="radio" formControlName="control" value="5">&nbsp;5&nbsp;
+
+                      </mat-radio-group>
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <mat-label class="lable" style="white-space: nowrap ;"> Unit of Measure <span
+                          class="errorColor">*</span>&nbsp;</mat-label>
+                    </div>
+                    <!-- <input  formControlName="unitOfMeasure" maxlength="15" (keypress)="keyPressName($event)" required> -->
+                    <!-- <mat-select formControlName="unitOfMeasure" maxlength="15" (keypress)="keyPressName($event)" required>
+                       
+                        <mat-option [value]="'GM'">
+                          gm
+                        </mat-option>
+                        <mat-option [value]="'EA'">
+                          ea
+                        </mat-option>
+                        <mat-option [value]="'ML'">
+                          ml
+                        </mat-option>
+                        
+                      </mat-select> -->
+                    <div class="col-xl-2 col-lg-3 col-md-12 col-sm-12">
+                      <mat-radio-group formControlName="unitOfMeasure" style="margin-left: 4%;">
+                        <!-- <mat-radio-button value="GM">GM</mat-radio-button>
+                      <mat-radio-button value="EA">EA</mat-radio-button>
+                      <mat-radio-button value="ML">ML</mat-radio-button> -->
+                        &nbsp;&nbsp; <input type="radio" formControlName="unitOfMeasure" value="GM">&nbsp;GM&nbsp;
+                        <input type="radio" formControlName="unitOfMeasure" value="EA">&nbsp;EA&nbsp;
+                        <input type="radio" formControlName="unitOfMeasure" value="ML">&nbsp;ML&nbsp;
+                      </mat-radio-group>
+                      <!-- <mat-error *ngIf="docForm.get('unitOfMeasure').hasError('required')">
+                        Unit of Measure is required
+                      </mat-error> -->
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-label> Hazardous </mat-label>
+                      <input  formControlName="hazardous" maxlength="15" (keypress)="keyPressName($event)" required>
+                      <mat-error *ngIf="docForm.get('hazardous').hasError('required')">
+                        Hazardous is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div> -->
+
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable" style="margin-left: 4%;margin-top: 2%;">Rx/OTC<span
+                          class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <radio-group formControlName="rxOtc" style="margin-left: 4%;margin-top: 2%;">
+                        <input type="radio" formControlName="rxOtc" value="OTC">&nbsp;OTC&nbsp;
+                        <input type="radio" formControlName="rxOtc" value="RX">&nbsp;RX&nbsp;
+                        <!-- <mat-radio-button checked=true value="OTC">OTC</mat-radio-button>
+                      <mat-radio-button value="RX">Rx</mat-radio-button> -->
+                      </radio-group>
+                    </div>
+                    <!-- <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
+                    <section class="example-section">
+                      <p>
+                        <mat-checkbox formControlName="hazardous">
+                          <mat-label class="lable">Hazardous </mat-label>
+                        </mat-checkbox>
+                      </p>
+                    </section>
+                  </div> -->
+                  </div>
+                  <!-- </fieldset>
+                <br>
+                <fieldset class="border p-2" style="border: solid 0.5px !important;"> -->
+                  <!-- <legend  class="float-none w-auto p-2" style="margin-top: -1%">Pricing</legend> -->
+
+                  <!-- <div class="row" style="margin-top: 17px;">
+                  <div class="col-md-12" style="color:rgb(6, 6, 59)">
+                    <h5 class="headingValue"> Pricing </h5>
+                  </div>
+                  <hr>
+                </div> -->
+
+                  <div class="row" style="margin-top:2%">
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable"> AWP <span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="awp" maxlength="12"
+                        (keypress)="keyPressNumberDouble($event)" required>
+                      <mat-error *ngIf="submitted && docForm.get('awp').hasError('required')">
+                        AWP is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                
+                  <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                    <mat-label class="lable"> WAC </mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="wap" maxlength="12"
+                        (keypress)="keyPressNumberDouble($event)" required>
+                     
+                      <mat-error *ngIf="submitted && docForm.get('wap').hasError('required')">
+                        WAC is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
+                      <mat-label class="lable"> My Price <span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                      <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"> -->
+                      <input type="text" class="form-control" formControlName="myPrice" maxlength="12"
+                        (keypress)="keyPressNumberDouble($event)" required>
+                      <mat-error *ngIf=" submitted && docForm.get('myPrice').hasError('required')">
+                        My Price is required
+                      </mat-error>
+                      <!-- </mat-form-field> -->
+                    </div>
+                  </div>
+                  <!-- </fieldset>-->
+                  <br>
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                      <button *ngIf="!edit" (click)="onSubmit()" class="btn-space" mat-raised-button color="accent"
+                        style="margin-left: 39%;background-color: #47a347;">Submit</button>
+                      <button *ngIf="edit" (click)="update()" class="btn-space" mat-raised-button color="accent"
+                        style="margin-left: 39%;background-color: #47a347;">Update</button>
+                      <button color="primary" type="button" class="btn-space" (click)="reset()"
+                        mat-raised-button>Reset</button>
+                      <button color="warn" type="button" class="btn-space" (click)="onCancel()"
+                        mat-raised-button>Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

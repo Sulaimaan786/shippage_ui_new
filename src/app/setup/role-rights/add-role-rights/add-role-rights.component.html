@@ -1,0 +1,80 @@
+
+<section class="content">
+    <div class="content-block">
+      <div class="block-header" style="padding: 0.5% !important;">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Create Role Rights'" [items]="['Setup']" [active_item]="'Create Role Rights'">
+        </app-breadcrumb>
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card ">
+            <div class="body">
+              <form class="m-4" [formGroup]="docForm" (ngSubmit)="onSubmit()">
+                <!-- <fieldset class="border p-2" style="border: solid 0.5px !important;"> -->
+                  <!-- <legend  class="float-none w-auto p-2">Role Rights</legend> -->
+                <div class="row" style="margin-left: 193px;">
+                  <div class="col-xl-1 col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <mat-label class="lable">Roles<span class="errorColor">*</span></mat-label>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3">
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">                       -->
+                        <mat-select  type="text" class="form-control" formControlName="roleId" (selectionChange)="roleBasedFormList($event.value)">
+                          <mat-option *ngFor="let title of roleList" [value]="title.id">
+                            {{title.text}}
+                          </mat-option>
+                        </mat-select>
+                      <!-- </mat-form-field> -->
+                  </div>
+                  <div class="col-xl-1 col-lg-6 col-md-6 col-sm-12 mb-3" >   
+                    <mat-label class="lable">Forms</mat-label>  
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-3" >                     
+                        <ng-multiselect-dropdown  class="inputTxt" formControlName="formList" 
+                                  [placeholder]="'Forms'"
+                                  [settings]="dropdownSettings"
+                                  [data]="dropdownList"
+                                  [(ngModel)]="selectedItems"
+                                  (onSelect)="onItemSelect($event)"
+                                  (onSelectAll)="onSelectAll($event)">
+                         </ng-multiselect-dropdown>
+                      
+                    </div>
+                </div>
+                <!-- <div class="row" style="margin-left: 193px;">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-3" >   
+                      <mat-label class="lable">Forms</mat-label>                    
+                          <ng-multiselect-dropdown  class="inputTxt" formControlName="formList" 
+                                    [placeholder]="'Forms'"
+                                    [settings]="dropdownSettings"
+                                    [data]="dropdownList"
+                                    [(ngModel)]="selectedItems"
+                                    (onSelect)="onItemSelect($event)"
+                                    (onSelectAll)="onSelectAll($event)">
+                           </ng-multiselect-dropdown>
+                        
+                      </div>
+                </div> -->
+                <!-- </fieldset> -->
+               
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  
+                    <button (click) = "onrolesInPopup()" style="margin-left: 38%; color: aliceblue; background-color: rgb(41, 0, 128);" color="primary" type="button" class="btn-space" mat-raised-button>Add New Role</button>
+
+                    <button (click) = "onSubmit()" class="btn-space" mat-raised-button
+                      style="background-color: green;">Submit</button>
+
+                      <!-- <button *ngIf ="edit" (click) = "update()" class="btn-space" mat-raised-button 
+                      style="margin-left: 38%; color: aliceblue; background-color: green;">Update</button> -->
+
+                    <button color="warn" (click) = "onCancel()" class="btn-space" type="button" mat-raised-button >Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

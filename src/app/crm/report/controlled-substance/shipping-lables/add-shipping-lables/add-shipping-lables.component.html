@@ -1,0 +1,163 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Shipping Lables'" [items]="['Report']" [active_item]="'Shipping Lables'">
+      </app-breadcrumb>
+    </div>
+        <div class="card" style="width:100; height: 100%;">
+          <div class="body">
+            <form class="m-1" [formGroup]="docForm">
+              <div class="col-xl-12" >
+                <div class="card" style="width:100%; height: 10%;"><br>
+                  <div class="row">
+                        
+                    <div class="col-xl-3" *ngIf="!selectedFlag">
+                      <mat-label class="lable">Company Name</mat-label>
+                      <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                            <mat-select class="inputTxt" formControlName="company"  (selectionChange)="debitMemoDropdownList($event.value)">
+                              <mat-option *ngFor="let title of companyList" [value]="title.id">
+                                {{title.text}}
+                              </mat-option>
+                            </mat-select>
+                      </mat-form-field>
+                    </div>
+                   
+                    
+                  <div class="col-xl-3" *ngIf="selectedFlag">
+                    <mat-label class="lable">Company Name</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="company"  (selectionChange)="debitMemoDropdownList($event.value)" disabled>
+                        <mat-option *ngFor="let title of companyList" [value]="title.id" >
+                          {{title.text}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                  </div>
+             
+              <div class="col-xl-3">
+                <mat-label class="lable">Debit Memo No</mat-label>
+                <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="returnMemoNo">
+                        <mat-option *ngFor="let title of debitMemoList" [value]="title.id">
+                          {{title.id}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+              </div>
+              </div>
+
+              <div class="row"  style="margin-left: 1%;">    
+                <div class="col-md-2">
+                    <mat-label class="lable">Lable Category to Print :</mat-label>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <div class="card col-md-4">
+            <br>
+                <div class="col-md-12">
+                    <mat-radio-button>Manufacturer Packing Slip 
+                    </mat-radio-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <mat-radio-button >Schedule II
+                    </mat-radio-button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+          </div>
+           <br>
+            <div class="row"  style="margin-left: 35%;"> 
+              <div class="col-md-12">
+                <button  class="btn-space" mat-raised-button
+                color="accent" style="background-color: #34d034;" (click) = "searchData()" (click) = "hide()">Search</button>
+                <button (click) = "reset()" class="btn-space" mat-raised-button
+                color="accent" style="background-color: #eb0202;">Reset</button>
+                <button (click) = "openPDF()" class="btn-space" mat-raised-button
+                color="accent" style="background-color: #6755f0;">Print Address</button>
+                <!-- <button class="btn-space" mat-raised-button
+                color="accent" style="background-color: #515bdd;" (click)="openPDF()" >Export Report</button>
+                <button class="btn-space" (click)="generateExcel()" mat-raised-button
+                color="accent" style="background-color: #515bdd;">Generate Excel</button> -->
+              </div>
+              </div>
+              <br>
+            </div>
+            </div>
+            </form>
+          </div>
+            <div id="pdfTable">
+            <div class="row" style="overflow-x:auto;">
+              <div class="col-md-12">
+                  <div class="table-responsive-sm">
+                    
+                          <table class="table table-bordered table-hover">
+                          <thead class="theadRow thead-light" *ngIf="showHead">
+                            <tr>
+                                <th style="text-align: center;"><b>Select</b></th>
+                                <th style="text-align: center;"><b>Manufacturer Name</b></th>
+                                <th style="text-align: center;"><b>Street</b></th>
+                            </tr>
+                        </thead>
+                                        
+                        <tbody *ngFor="let item of searchList;">
+                          <tr>
+                        </tr>
+                                      <tr>
+                                       
+                                        <td style="text-align: center;">  <p><mat-checkbox (click)="radioShip(item.manufacturer_name)"></mat-checkbox></p></td>
+                                        <td style="text-align: center;">{{item.manufacturer_name  !== null ? item.manufacturer_name:'-'}}</td>
+                                        <td style="text-align: center;">{{item.street  !== null ? item.street:'-'}}</td>
+                                        </tr>
+                                      
+                                        <!-- <tr>
+                                          <td style="text-align: center;"></td>
+                                          <td style="text-align: center;"></td>
+                                          <td style="text-align: center;"></td>
+                                          <td style="text-align: center;"></td>
+                                          <th style="text-align: center;"></th>
+                                          <th style="text-align: center;"></th>
+                                          <th style="text-align: center;"></th>
+                                          <th style="text-align: center;"></th>
+                                          <th style="text-align: center;">Total:</th>
+                                          <th style="text-align: center;"></th>
+                                        </tr> -->
+                                        </tbody> 
+                                       
+                                        <!-- <tbody >
+                                          <tr>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;">Total Returnable Inventory:</th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;"></th>
+                                          </tr>
+                                          <tr>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <td style="text-align: center;"></td>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;">Total Non-Returnable Inventory:</th>
+                                            <th style="text-align: center;"></th>
+                                            <th style="text-align: center;">Total Inventory:</th>
+                                            <th style="text-align: center;"></th>
+                                          </tr>
+                                          </tbody>     -->
+                                          
+                                       
+                                                          
+                                    </table>
+                                       
+                                      </div>
+                                      </div>
+                                      </div>
+                        </div>
+        </div>
+        <div *ngIf="searchList.length === 0">
+          <p colspan="4" style="text-align: center;padding: 50px !important;">No Data Available</p>    
+      </div> 
+  </div>
+</section>
+

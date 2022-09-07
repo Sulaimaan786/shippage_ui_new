@@ -1,0 +1,283 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <app-breadcrumb [title]="'Packing Slips'" [items]="['Report']" [active_item]="'Shipping Lables'">
+      </app-breadcrumb>
+    </div>
+    <div class="row clearfix ">
+    <div class="col-md-12">
+      <div class="body">
+            <form class="m-2" [formGroup]="docForm">
+              <div class="col-md-12">
+                <div class="card" style="width:100%; height: 10%;"><br>
+                  <div class="row">
+                  
+                    <div class="col-xl-3" *ngIf="!selectedFlag">
+                      <mat-label class="lable">Company Name</mat-label>
+                      <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                            <mat-select class="inputTxt" formControlName="company"  (selectionChange)="debitMemoDropdownList($event.value)">
+                              <mat-option *ngFor="let title of companyList" [value]="title.id">
+                                {{title.text}}
+                              </mat-option>
+                            </mat-select>
+                      </mat-form-field>
+                    </div>
+                   
+                    
+                  <div class="col-xl-3" *ngIf="selectedFlag">
+                    <mat-label class="lable">Company Name</mat-label>
+                    <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-select class="inputTxt" formControlName="company"  (selectionChange)="debitMemoDropdownList($event.value)" disabled>
+                        <mat-option *ngFor="let title of companyList" [value]="title.id" >
+                          {{title.text}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field>
+                  </div>
+            <div class="col-xl-3">
+              <mat-label class="lable">Debit Memo No</mat-label>
+              <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                    <mat-select class="inputTxt" formControlName="returnMemoNo">
+                      <mat-option *ngFor="let title of debitMemoList" [value]="title.id">
+                        {{title.id}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field>
+            </div>
+              <div class="col-md-3">
+                  <mat-label class="lable">Start Date</mat-label>
+                  <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                    <input class="inputTxt" matInput [matDatepicker]="picker" formControlName="startDate">
+                    <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;" matSuffix [for]="picker" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-label class="lable">End Date</mat-label>
+                <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                  <input class="inputTxt" matInput [matDatepicker]="picker1" formControlName="endDate">
+                  <mat-datepicker-toggle style="margin-top: -50px; position: absolute; margin-left: -29px;" matSuffix [for]="picker1" ></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+              </div> 
+              </div>     
+           <div class="row"  style="margin-left: 35%;">  
+              <div class="col-md-12">
+                  <button class="btn-space" mat-raised-button
+                  color="accent" style="background-color: #34d034;" (click) = "searchData()" (click) = "hide()">Search</button>
+                  <button (click) = "reset()" class="btn-space" mat-raised-button
+                  color="accent" style="background-color: #eb0202;">Reset</button>
+                  <button class="btn-space" (click)="printComponent()" mat-raised-button
+                  color="accent" style="background-color: #515bdd;">Print <i class="fa fa-print "></i></button>
+                  <button class="btn-space" (click)="generateExcel()" mat-raised-button
+                  color="accent" style="background-color: #515bdd;">Generate Excel</button>
+                  
+              </div>
+              </div>
+              <br>
+            </div>
+            </div>
+            </form>
+          </div>
+        </div>
+       
+  </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                              <div *ngFor="let item of packingSlipList | paginate : { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index">
+                              <div id="reportPackingSlip">
+                                <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="col-md-1 reportTitle" > <span *ngIf="showHideFlagForReturnMemoNo"> &nbsp; Return Name: <br>&nbsp; Created: </span> <span *ngIf="showHideFlagForStartDate"> <br>&nbsp; Start Date:</span></td>
+                                        <td class="col-md-2 left"><span *ngIf="showHideFlagForReturnMemoNo"> {{item.returnmemoname}} <br>{{item.returnmemodate}} </span> <span *ngIf="showHideFlagForStartDate"> <br>{{this.docForm.value.startDateVal}}</span> </td>
+                                        <td class="col-md-6 reportHeading">Manufacturer Packing Slip</td>
+                                        <td class="col-md-1 reportTitle"><span *ngIf="showHideFlagForReturnMemoNo"> &nbsp; &nbsp; Debit Memo: </span><span *ngIf="showHideFlagForEndDate"> <br>&nbsp; &nbsp; End Date: </span></td>
+                                        <td class="col-md-2 left"><span *ngIf="showHideFlagForReturnMemoNo"> {{item.returnmemono}} </span><span *ngIf="showHideFlagForEndDate">  <br> {{this.docForm.value.endDateVal}} </span></td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="col-md-3 left"></td>
+                                        <td class="col-md-6 subreportHeading">Return To: {{item.manufacturername}}</td>
+                                        <td class="col-md-3 left"></td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <br>
+                                  <div class="row" style="width:100%">
+                                    <div class="col-md-4" style="width:33.3333333333%!important">
+                                      <span class="reportTitle">Account</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>{{item.companyname}}</span>
+                                      <br>
+                                      <span>{{item.companystreet}}</span>
+                                      <br>
+                                      <span>{{item.companycity}}</span>
+                                      <br>
+                                      <span>{{item.companystate}}</span>
+                                      <br>
+                                      <span>{{item.companyzipcode}}</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>
+                                        <span class="reportTitle">Phone: &nbsp;&nbsp;</span>{{item.companyphoneno}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">Fax: &nbsp;&nbsp;</span>{{item.companyfaxno}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">Contact: &nbsp;&nbsp;</span>{{item.companycontactpersosn}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">DEA # &nbsp;&nbsp;</span>{{item.companydeano}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">Exp. Date: &nbsp;&nbsp;</span>{{item.companydeaexpdate | date:'MM-dd-yyyy'}}
+                                      </span>
+                                      <!--<br>
+                                       <span>
+                                        <span class="reportTitle">Authorized Classes: &nbsp;&nbsp;</span>{{item.companyauthorisedclasses}}
+                                      </span> -->
+                                      
+                                    </div>
+                                    <div class="col-md-4" style="width:33.3333333333%!important">
+                                      <span class="reportTitle">Issue Credit To</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>{{item.issuescreditname}}</span>
+                                      <br>
+                                      <span>{{item.issuescreditstreet}}</span>
+                                      <br>
+                                      <span>{{item.issuescreditcity}}</span>
+                                      <br>
+                                      <span>{{item.issuescreditstate}}</span>
+                                      <br>
+                                      <span>{{item.issuescreditzipcode}}</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>
+                                        <span class="reportTitle">Phone: &nbsp;&nbsp;</span>{{item.issuescreditsphone}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">Fax: &nbsp;&nbsp;</span>{{item.issuescreditfaxno}}
+                                      </span>
+                                    </div>
+                                    <div class="col-md-4" style="width:33.3333333333%!important">
+                                      <span class="reportTitle">Wholesaler</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>{{item.wholesalername}}</span>
+                                      <br>
+                                      <span>{{item.wholesalerstreet}}</span>
+                                      <br>
+                                      <span>{{item.wholesalercity}}</span>
+                                      <br>
+                                      <span>{{item.wholesalerstate}}</span>
+                                      <br>
+                                      <span>{{item.wholesalerzipcode}}</span>
+                                      <div style="border-top:2px solid #000"></div>
+                                      <span>
+                                        <span class="reportTitle">Phone: &nbsp;&nbsp;</span>{{item.wholesalerphoneno}}
+                                      </span>
+                                      <br>
+                                      <span>
+                                        <span class="reportTitle">Account # &nbsp;&nbsp;</span>{{item.wholesalerpolicycode}}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="row" style="border-top:2px solid #000;margin-top:1%;padding-bottom:1%"></div>
+                                  <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="reportTitle col-md-1 left">NDC/UPC</td>
+                                        <td class="reportTitle col-md-2 left">Description</td>
+                                        <td class="reportTitle col-md-1 left">Control Class</td>
+                                        <td class="reportTitle col-md-1 left">Strength</td>
+                                        <td class="reportTitle col-md-1 left">Lot No</td>
+                                        <td class="reportTitle col-md-1 left">Exp Date</td>
+                                        <td class="reportTitle col-md-1 left">Pkg Size</td>
+                                        <td class="reportTitle col-md-1 left">Full Qty</td>
+                                        <td class="reportTitle col-md-1 left">Partial Qty</td>
+                                        <td class="reportTitle col-md-1 left">Price</td>
+                                        <td class="reportTitle col-md-1 left">Est Value</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div class="row" style="border-top:2px solid #000;margin-bottom:2%;padding-bottom:1%"></div>
+                                  <div class="row subreportHeading">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="col-md-3 left">{{item.manufacturername}}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12" *ngFor="let packingSlipDetails of item.packingSlipDetailsList;">
+                                        <td class="col-md-1 left">{{packingSlipDetails.ndcupccode}}</td>
+                                        <td class="col-md-2 left">{{packingSlipDetails.description}}<br>(Return Reason: {{packingSlipDetails.returnreason}})</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.controlclass}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.strength}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.lotno}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.expdate}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.pakagesize}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.fullquantity}}</td>
+                                        <td class="col-md-1 left">{{packingSlipDetails.partialquantity != 0 ? packingSlipDetails.partialquantity:'-'}}</td>
+                                        <td class="col-md-1 left">{{'$'+packingSlipDetails.price}}</td>
+                                        <td class="col-md-1 left">{{'$'+packingSlipDetails.estvalue}}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                
+                                  <div class="row">
+                                    <div class="d-flex justify-content-between">
+                                      <div style="visibility: hidden;">
+                                        
+                                     </div> 
+                                     <div style="padding-right: 5.2%;">
+                                       {{item.manufacturername}} to issue a check for : <span style="border-top:2px solid #000" >{{'$'+item.totalEstVal}}</span>
+                                     </div>
+                                    </div>
+                                  </div>
+                                  <div class="row" style="border-top:2px solid #000;margin-bottom:2%"></div>
+                                  <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="col-md-3 left"></td>
+                                        <td class="col-md-6 instructionTitle">Return Instruction</td>
+                                        <td class="col-md-3 left"></td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div class="row">
+                                    <table border="0" style="width:100%">
+                                      <tr class="col-md-12">
+                                        <td class="col-md-12 instructionContent">1. You are required to fax your Schedule 2 Return Request invoice to (877)546-9068. Stericycle will then send you a 222 Form, which is required when returning Schedule 2 Products. If you have any questions you can reach Customer Service at (800)777-6565. <br>2. When you receive the 222 Form, you are required to enter the NDC #, Packages Shipped and Date Shipped for each line item. Retain the brown copy for your records and send the green copy to your local DEA office. <br>3. Properly package and insure all goods. <br>4. Return the products prepaid to: Stericycle Inc 2084-900 M Lake Industrial Court Conyers, GA 30013. </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+
+                                  
+                                  <br>
+                                </div>
+                                  <div class="d-flex justify-content-center">
+                                    <pagination-controls
+                                      previousLabel="Prev"
+                                      nextLabel="Next"
+                                      (pageChange)="onTableDataChange($event)"
+                                    >
+                                    </pagination-controls>
+                                  </div>
+                                </div>
+                          </div>
+                        </div> 
+                        <div *ngIf="packingSlipList.length === 0">
+                          <p colspan="4" style="text-align: center;padding: 50px !important;">No Data Available</p>    
+                      </div> 
+
+                      </div> 
+                      </section>

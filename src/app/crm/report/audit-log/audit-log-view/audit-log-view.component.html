@@ -1,0 +1,84 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+        <app-breadcrumb [title]="'Audit Log'" [items]="['Report']" [active_item]="'Audit Log View'">
+        </app-breadcrumb>
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="box-shadow">
+            <div class="card">
+              <div class="body">
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="headingValue">
+                    Audit Log View </h5>    </div>
+            <div class="col-md-2 text-right">
+                <button type="button" class="btn-space" mat-raised-button color="accent"
+                style="margin-left:42%;background-color: rgb(50, 124, 173);" (click)="back()">Back</button>
+            </div>
+        </div>
+        <hr>
+    <div class="row">
+        <div *ngIf="actionName !== 'DELETE'" class="col-md-6">
+            <h4 class="headingValue">New Data</h4>
+            <ngx-json-viewer [json]="data"></ngx-json-viewer>
+        </div>
+        <div *ngIf="actionName !== 'INSERT' && actionName !== 'LOGIN'" class="col-md-6">
+            <h4 class="headingValue">Old Data</h4>
+                <ngx-json-viewer [json]="oldData"></ngx-json-viewer>
+        </div>
+    </div>
+    <hr>
+    <div *ngIf="actionName === 'UPDATE'" class="row" style="padding-top: 10px;padding-bottom: 50px; overflow-x:auto;">
+        <div class="col-md-12">
+            <h5 class="headingValue">
+                Changed Data </h5>
+            <div class="table-responsive-sm">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <th style="width: 50%;">New Data </th>
+                        <th style="width: 50%;">Old Data </th>
+                    </thead>
+                    <tbody>
+                        <td>
+                            <ngx-json-viewer [json]="dataNew"></ngx-json-viewer>
+                        </td>
+                        <td>
+                            <ngx-json-viewer [json]="oldDataNew"></ngx-json-viewer>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+    </div>
+   <!-- <div class="row">
+        <div class="col-md-12">
+            <td-ngx-text-diff
+                [left]="this.moduleViewList.data"
+                [right]="this.moduleViewList.oldData"
+                (compareResults)="onCompareResults($event)">
+            </td-ngx-text-diff> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div *ngFor="let item of data | keyvalue">
+                {{item.key}} <span>:</span> {{item.value}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div *ngFor="let item of oldData | keyvalue">
+                {{item.key}} <span>:</span> {{item.value}}
+            </div>
+        </div>
+    </div> -->
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>

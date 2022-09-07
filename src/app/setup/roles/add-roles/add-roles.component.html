@@ -1,0 +1,54 @@
+
+<section class="content">
+    <div class="content-block">
+      <div class="block-header" style="padding: 0.5% !important;">
+        <!-- breadcrumb -->
+        <!-- <app-breadcrumb [title]="'Create Role'" [items]="['Setup']" [active_item]="'Create Role'">
+        </app-breadcrumb> -->
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card ">
+            <div class="body">
+              <form class="m-4" [formGroup]="docForm" (ngSubmit)="onSubmit()">
+                <!-- <fieldset class="border p-2" style="border: solid 0.5px !important;">
+                  <legend  class="float-none w-auto p-2">Role</legend> -->
+                <div class="row" style="margin-left: 23%;">
+                  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 ">
+                    <mat-label class="lable">Role Name</mat-label>
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">                     -->
+                      <input  type="text" class="form-control" formControlName="roleName" required maxlength="45">
+                      <mat-error *ngIf="submitted && docForm.get('roleName').hasError('required')">
+                        Role Name is required
+                      </mat-error>
+                    <!-- </mat-form-field> -->
+                  </div>
+                <!-- </div> -->
+                <!-- <div class="row" style="margin-left: 193px;"> -->
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 ">
+                      <mat-label class="lable">Remarks</mat-label>
+                        <!-- <mat-form-field  class="example-full-width form-control-sm" appearance="" >                          -->
+                          <textarea  type="text" class="form-control" formControlName="remarks" maxlength="256"></textarea>
+                        <!-- </mat-form-field> -->
+                      </div>
+                </div>
+                <!-- </fieldset> -->
+                <br>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <button *ngIf ="!edit" (click) = "onSubmit()" class="btn-space" mat-raised-button
+                      style="margin-left: 42%; color: aliceblue; background-color: green;">Submit</button>
+
+                      <button *ngIf ="edit" (click) = "update()" class="btn-space" mat-raised-button 
+                      style="margin-left: 42%; color: aliceblue; background-color: green;">Update</button>
+
+                    <button color="warn"  class="btn-space" (click) = "onCancel()" type="button" mat-raised-button >Cancel</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
