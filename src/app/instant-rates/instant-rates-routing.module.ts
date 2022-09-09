@@ -28,6 +28,8 @@ import { SharedModule } from "src/app/shared/shared.module";
 import { ShipmentModeComponent } from './shipment-mode/shipment-mode.component';
 import { RouteDetailsComponent } from './route-details/route-details.component';
 import { AirRouteDetailsComponent } from './air-route-details/air-route-details.component';
+import { OriginDestinationComponent } from './origin-destination/origin-destination.component';
+import { IncotermsComponent } from './incoterms/incoterms.component';
  
 const routes: Routes = [
   {
@@ -45,6 +47,14 @@ const routes: Routes = [
   {
     path: "air-route",
     component: AirRouteDetailsComponent,
+  },
+  {
+    path: "originDestination",
+    component: OriginDestinationComponent,
+  },
+  {
+    path: "incoterms",
+    component: IncotermsComponent,
   },
 ];
 

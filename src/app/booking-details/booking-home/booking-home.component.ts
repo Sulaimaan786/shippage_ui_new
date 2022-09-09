@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 @Component({
-  selector: 'app-route-details',
-  templateUrl: './route-details.component.html',
-  styleUrls: ['./route-details.component.sass']
+  selector: 'app-booking-home',
+  templateUrl: './booking-home.component.html',
+  styleUrls: ['./booking-home.component.sass']
 })
-export class RouteDetailsComponent implements OnInit {
+export class BookingHomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,) {}
@@ -17,15 +17,11 @@ export class RouteDetailsComponent implements OnInit {
   }
 
   back(){
-    this.router.navigate(["instantRates/shipment-mode"]);
+    this.router.navigate(["instantRates/welcome-page"]);
   }
 
   air(){
     this.router.navigate(["/authentication/signup"]);
    }
-
-   originDestination(){
-    this.router.navigate(["instantRates/originDestination"]);
-  }
     
 }

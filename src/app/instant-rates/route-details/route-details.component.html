@@ -54,12 +54,26 @@
                     </mat-form-field>
                  
               </div>
-            </div>   
-            <div style="padding-left: 2%;padding-bottom: 1%;">
+            </div>  
+            <div class="row"> 
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                <button   class="btn-space" (click)="originDestination()" mat-raised-button
+                color="primary" style="float: right;">Next</button>
+                
+                 </div>
+            </div>
+            <div class="row">
+             
+            <div class="col-md-1" style="padding-left: 2%;padding-bottom: 1%;">
               <button mat-mini-fab color="primary" (click)="back()">
                 <mat-icon class="col-white">arrow_back_ios</mat-icon>
               </button>
-            </div>   
+            </div> 
+            <div class="col-md-1" >
+              <button mat-mini-fab color="primary" (click)="originDestination()">
+                <mat-icon class="col-white">arrow_forward_ios</mat-icon>
+              </button>
+            </div> </div>  
           </div>
   
         </div>

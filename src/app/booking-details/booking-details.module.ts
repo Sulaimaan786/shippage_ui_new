@@ -26,27 +26,18 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
-import { InstantRatesRoutingModule } from './instant-rates-routing.module';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { ShipmentModeComponent } from './shipment-mode/shipment-mode.component';
-import { RouteDetailsComponent } from './route-details/route-details.component';
-import { AirRouteDetailsComponent } from './air-route-details/air-route-details.component';
-import { OriginDestinationComponent } from './origin-destination/origin-destination.component';
-import { IncotermsComponent } from './incoterms/incoterms.component';
+import { BookingDetailsRoutingModule } from './booking-details-routing.module';
+import { BookingHomeComponent } from './booking-home/booking-home.component';
+
 
 @NgModule({
   declarations: [
-    WelcomePageComponent,
-    ShipmentModeComponent,
-    RouteDetailsComponent,
-    AirRouteDetailsComponent,
-    OriginDestinationComponent,
-    IncotermsComponent
+    BookingHomeComponent
   ],
   imports: [
     CommonModule,
-    InstantRatesRoutingModule,
-      chartjsModule,
+    BookingDetailsRoutingModule,
+    chartjsModule,
     FormsModule,
     ReactiveFormsModule,
     NgxEchartsModule.forRoot({
@@ -75,4 +66,4 @@ import { IncotermsComponent } from './incoterms/incoterms.component';
     MatProgressSpinnerModule,
   ]
 })
-export class InstantRatesModule { }
+export class BookingDetailsModule { }

@@ -31,6 +31,15 @@ const routes: Routes = [
           import("./instant-rates/instant-rates.module").then((m) => m.InstantRatesModule),
       },
       {
+        path: "bookingDetails",
+        canActivate: [AuthGuard],
+        data: {
+          role: Role.Admin,
+        },
+        loadChildren: () =>
+          import("./booking-details/booking-details.module").then((m) => m.BookingDetailsModule),
+      },
+      {
         path: "employee",
         canActivate: [AuthGuard],
         data: {
