@@ -7,128 +7,91 @@
       </div>
       <div class="row ">
         <div class="col-xl-12 ">
-          <div class="card" style="background: #ebebeb55;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+          <div class="card " style="background: #ebebeb55;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
               
              
               <div class="container-fluid" >
                 
                 <div class="row">
-                  <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 " style="margin-top: 30px">
+                  <div class="col-sm-3 " style="margin-top: 30px">
                     
-                      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 mb-5" style="margin-top: 150px;margin-left: 80px;">
+                      <div class="col-xl-3 " style="margin-top: 150px ;margin-left: 30px;">
                         <button class="button" (click)="incotermsSelect()"><i class="fa fa-home"></i> Incoterms</button>
                         </div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 mb-5" style="margin-top: 20px;margin-left: 80px;">
+                        <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
                           <button class="button" (click)="commoditySelect()"><i class="fa fa-home"></i> Commodity</button>
                           </div>
-                          <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 mb-5" style="margin-top: 20px;margin-left: 80px;">
-                            <button class="button"><i class="fa fa-home"></i> Cargo Readiness</button>
+                          <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+                            <button class="button" (click)="cargoReadinessSelect()"><i class="fa fa-home"></i> Cargo Readiness</button>
                             </div>
-                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 mb-5" style="margin-top: 20px;margin-left: 80px;">
-                              <button class="button"><i class="fa fa-home"></i> Load Type</button>
+                            <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+                              <button class="button" (click)="loadTypeSelect()"><i class="fa fa-home"></i> Load Type</button>
                               </div>
+                              <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+                                <button class="button" (click)="cargoDetailsSelect()"><i class="fa fa-home"></i> Cargo Details</button>
+                                </div>
                   </div>
                   
                   <!-- <div class="form-group" *ngIf="incotermsChange"> -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 45px 50px 15px 20px;" *ngIf="incotermsChange">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="incotermsChange">
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px">Incoterms</h1> 
-                      <div class="card" style="border-radius: 25px;width: 100%;height: 100%;" > 
-                        <div class="row" style="margin-top:30px;margin-left: 55px;">
+                      <div class="card align-items-center" style="border-radius: 25px;width: 100%;padding-top: 20px;
+                      padding-left: 80px;padding-right: 120px;padding-bottom: 20px;" > 
+                      <div class="row">
+                        
+                         <div class="row" style="margin-left: 55px;margin-top:20px">
                               <div class="col-md-6"  >
-                                <mat-radio-group  >
-                                    <mat-radio-button    id="EXW" value="EXW"> <p style="margin-top: 15px;">EXW (Ex-Work)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                              
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button  id="FOB" value="FOB"> <p style="margin-top: 15px;">FOB (Free On Board)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button  id="FCA" value="FCA"> <p style="margin-top: 15px;">FCA (Free Carrier)</p></mat-radio-button>
-                                </mat-radio-group>
+                                <mat-radio-group formControlName="control">
+                                  <mat-radio-button   value="CIF" style="margin-left:14px"> <p style="margin-top: 15px;"> <span style="font-size: 20px;"> EXW</span>  (Ex-Work)</p></mat-radio-button><br>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> FOB </span> (Free On Board)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> FCA </span> (Free Carrier)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> CIF</span>  (Cost, Insurance and Freight)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> CFR  </span> (Cost and Freight)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DAP </span> (Delivered at Place) </p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DAT </span> (Delivered Duty Terminal)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DDP  </span> (Delivered Duty Paid)</p></mat-radio-button>
+                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px">DDU  </span> (Delivered Duty Unpaid)</p></mat-radio-button>
+  
+                                  </mat-radio-group>
                               </div>
                             </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="CIF"> <p style="margin-top: 15px;">CIF (Cost, Insurance and Freight)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="CFR"> <p style="margin-top: 15px;">CFR (Cost and Freight)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="DAP"> <p style="margin-top: 15px;">DAP (Delivered at Place)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="DAT"> <p style="margin-top: 15px;">DAT (Delivered Duty Terminal)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="DDP"> <p style="margin-top: 15px;">DDP (Delivered Duty Paid)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" style="margin-left: 55px;">
-                              <div class="col-md-6" style="margin-bottom: 20px;" >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="DDU"> <p style="margin-top: 15px; ">DDU (Delivered Duty Unpaid)</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
+                            
+                            
                          </div>
+                        </div>
                     </div>
                   <!-- </div> -->
 
                     <!-- commodity -->
                     <!-- <div class="form-group" > -->
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 45px 50px 15px 20px;" *ngIf="commodityChange">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="commodityChange">
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px">Commodity</h1> 
-                      <div class="card" style="border-radius: 25px;width: 100%;height: 100%;" > 
-                        <div class="row" style="margin-top:30px;margin-left: 55px;">
+                      <div class="card align-items-center" style="border-radius: 25px;width: 100%;height: 100%;padding-top: 80px;
+                      padding-left: 80px;" > 
+                        <div class = "row">
+                        <div class="row" >
                               <div class="col-md-6"  >
                                 <mat-radio-group  >
                                     <mat-radio-button   value="1"> <p style="margin-top: 15px;">FAK</p></mat-radio-button>
                                 </mat-radio-group>
                               </div>
                              </div>
-                            <div class="row" style="margin-left: 55px;">
+                            <div class="row" >
                               <div class="col-md-6"  >
                                 <mat-radio-group >
                                     <mat-radio-button   value="1"> <p style="margin-top: 15px;">Reefer / Temperature</p></mat-radio-button>
                                 </mat-radio-group>
                               </div>
                             </div>
-                            <div class="row" style="margin-left: 55px;">
+                            <div class="row" >
                               <div class="col-md-6"  >
                                 <mat-radio-group >
                                     <mat-radio-button   value="1"> <p style="margin-top: 15px;">Hazardous / DG</p></mat-radio-button>
                                 </mat-radio-group>
                               </div>
                             </div>
-                            <div class="row" style="margin-left: 55px;">
+                            <div class="row" >
                               <div class="col-md-6"  >
                                 <mat-radio-group >
                                     <mat-radio-button   value="1"> <p style="margin-top: 15px;">Others</p></mat-radio-button>
@@ -136,10 +99,151 @@
                               </div>
                             </div>
                             
-                           
+                          </div>
                          </div>
                     </div>
                   <!-- </div> -->
+
+
+                  <!-- Cargo Readiness -->
+                    <!-- <div class="form-group" > -->
+                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoReadinessChange">
+                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px">Cargo Readiness</h1> 
+                        <div class="card" style="border-radius: 25px;width: 100%;padding-top:40px;padding-right: 20px;padding-bottom: 40px;"> 
+                         
+                          <div class="row" style="margin-left: 55px;">
+                            <div class="col-md-6"  >
+                              <mat-radio-group  >
+                                <mat-radio-button   value="1"> <p style="margin-top: 15px;">Ready to move</p></mat-radio-button>
+                            </mat-radio-group>
+                            </div> 
+                           <div class="vl"></div> 
+                            <!-- <mat-divider [vertical]="true"></mat-divider> -->
+                            <div class="col-md-6" style="margin-top: 15px;" >
+                              <mat-radio-group  >
+                                <mat-radio-button  value="Yes" checked (change)="radioClick('Yes')">Calendar</mat-radio-button>
+                            </mat-radio-group>
+                            <mat-card class="demo-inline-calendar-card" *ngIf="calendar">
+                              <mat-calendar [(selected)]="selected"></mat-calendar>
+                            </mat-card>
+                            <!-- <p>Selected date: {{selected}}</p> -->
+                            </div> 
+                             
+                              </div>
+
+
+
+                              <div class="row" style="margin-left: 55px;">
+                              <table style="width:100%">
+                                <tr>
+                                  <th>Firstname</th>
+                                  <th>Lastname</th> 
+                                  <th>Age</th>
+                                </tr>
+                              </table>
+                              </div>
+
+                             
+                           </div>
+                      </div>
+
+                      <!-- Load type -->
+                    <!-- <div class="form-group" > -->
+                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="loadTypeChange">
+                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px">Load Type</h1> 
+                        <div class="card " style="border-radius: 25px;width: 100%;height: 100%;padding-top: 40px;
+                      padding-left: 40px;padding-right: 40px;padding-bottom: 40px;" >
+                          <div class="row" >
+                            <!-- <div class="col-md-4" style="margin-top: 15px;" > -->
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Equipment Type</h5>
+                              
+                                <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                                  <mat-select >
+                                    <mat-option [value]="'1'">General</mat-option>
+                                     <mat-option [value]="'2'"> Rate Contract</mat-option>
+                                     <mat-option [value]="'3'"> Consignment</mat-option>
+                                   </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                                  <mat-select >
+                                    <mat-option [value]="'1'">General</mat-option>
+                                     <mat-option [value]="'2'"> Rate Contract</mat-option>
+                                     <mat-option [value]="'3'"> Consignment</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                            <!-- </div>  -->
+                            
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Quantity</h5> 
+                              <div class="row" style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div><br>
+                              <div class="row"  style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div>
+                              
+                            </div> 
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Cargo Weight</h5> 
+                              <div class="row" style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div><br>
+                              <div class="row"  style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div>
+                            </div> 
+                            </div>
+                            <div class="row" >
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 style="text-align:center;margin-top:28px;margin-bottom:20px">*Per container by kgs</h5>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                  
+                                <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <button mat-raised-button color="primary" class="buttonCSS" style="text-align:center;margin-top:20px;margin-bottom:20px;margin-left: 80px;">Done</button>
+                                
+                              </div>
+                            </div>
+                             
+                           </div>
+                      </div>
+                      <!-- Cargo Details-->
+                    <!-- <div class="form-group" > -->
+                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoDetailsChange">
+                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px">Cargo Details</h1> 
+                        <div class="card " style="border-radius: 25px;width: 100%;height: 100%;padding-top: 40px;
+                      padding-left: 40px;padding-right: 40px;padding-bottom: 40px;" >
+                          <div class="row" >
+                            <!-- <div class="col-md-4" style="margin-top: 15px;" > -->
+                              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Package Type</h5>
+                              
+                                <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                                  <input matInput >
+                                  </mat-form-field></div>
+                              
+                            <!-- </div>  -->
+                            
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Quantity</h5> 
+                              <div class="row" style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div><br>
+                            </div> 
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Cargo Weight</h5> 
+                              <div class="row" style="padding-left:90px;padding-right:50px;"><input type="number" class="size-12" value="2" min="0" max="10" step="1"></div><br>
+                            </div> 
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                              <h5 style="text-align:center;margin-top:20px;margin-bottom:20px">Equipment Type</h5>
+                              
+                                <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                                  <mat-select >
+                                    <mat-option [value]="'1'">General</mat-option>
+                                     <mat-option [value]="'2'"> Rate Contract</mat-option>
+                                     <mat-option [value]="'3'"> Consignment</mat-option>
+                                   </mat-select>
+                                </mat-form-field>
+                                
+                              </div>
+                            </div>
+                             
+                           </div>
+                      </div>
                     
                   
                   
@@ -150,18 +254,18 @@
             
               <div class="row">
              
-                <div class="col-md-1" style="padding-left: 2%;padding-bottom: 1%;margin-top: 35px;">
+                
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
                   <button mat-mini-fab color="primary" >
                     <mat-icon class="col-white">arrow_back_ios</mat-icon>
                   </button>
                 </div> 
-                <div class="row" > 
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
                     <button   class="btn-space" mat-raised-button
-                    color="primary" style="float: right;" >Next</button>
+                    color="primary" class="buttonCSS" style="float: right;" >Next</button>
                     
                      </div>
-                </div>
+                
                 </div>  
           </div>
           
