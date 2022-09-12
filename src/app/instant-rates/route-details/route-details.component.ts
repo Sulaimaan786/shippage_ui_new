@@ -24,8 +24,8 @@ export class RouteDetailsComponent implements OnInit {
     this.router.navigate(["/authentication/signup"]);
    }
 
-   originDestination(){
-    this.router.navigate(["instantRates/originDestination"]);
+  proceed(){
+    this.router.navigate(["instantRates/incoterms"]);
   }
     
 }

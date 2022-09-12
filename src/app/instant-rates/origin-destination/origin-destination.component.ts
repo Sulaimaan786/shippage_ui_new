@@ -17,13 +17,17 @@ export class OriginDestinationComponent implements OnInit {
   }
 
   back(){
-    this.router.navigate(["instantRates/welcome-page"]);
+    this.router.navigate(["instantRates/route-details"]);
   }
 
   air(){
     this.router.navigate(["/authentication/signup"]);
    }
   incoterms(){
+    this.router.navigate(["/instantRates/incoterms"]);
+  }
+
+  next(){
     this.router.navigate(["/instantRates/incoterms"]);
   }
     

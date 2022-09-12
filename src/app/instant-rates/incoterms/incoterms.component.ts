@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-incoterms',
   templateUrl: './incoterms.component.html',
@@ -14,10 +14,28 @@ export class IncotermsComponent implements OnInit {
   calendar:boolean=true;
   loadTypeChange:boolean=false;
   cargoDetailsChange=false;
-  
+  loadTypeDetailBean:[];
+
+
   constructor(private fb:FormBuilder) { 
     this.docForm = this.fb.group({
-      control:[""]
+      control:[""],
+
+      loadTypeDetailBean:this.fb.array([
+        this.fb.group({
+          equipmentType:[""],
+          quantity:[""],
+          cargoWeight:[""]
+        })
+      ]),
+
+      cargoDetailBean:this.fb.array([
+        this.fb.group({
+          equipmentType:[""],
+          quantity:[""],
+          cargoWeight:[""]
+        })
+      ])
     })
    }
 
@@ -82,24 +100,44 @@ export class IncotermsComponent implements OnInit {
   onItemChange(value){
     console.log(" Value is : ", value );
  }
+
  numberInput(evt, val) {
   console.log(evt, val);
 }
 
+addRow(){
+  let loadTypeDetailBeanArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+  let arraylen = loadTypeDetailBeanArray.length;
+  let newUsergroup: FormGroup = this.fb.group({
+    equipmentType:[""],
+    quantity:[""],
+    cargoWeight:[""]
+  })
+  loadTypeDetailBeanArray.insert(arraylen,newUsergroup);
+}
 
+removeRow(index){
+  let loadTypeDetailBeanArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+  loadTypeDetailBeanArray.removeAt(index);
 
- 
+}
 
-// /** @title Datepicker inline calendar example */
-// @Component({
-//   selector: 'datepicker-inline-calendar-example',
-//   templateUrl: 'datepicker-inline-calendar-example.html',
-//   styleUrls: ['datepicker-inline-calendar-example.css'],
-// })
-// export class DatepickerInlineCalendarExample {
-//   selected: Date | null;
-// }
+addRow1(){
+  let cargoDetailBeanArray = this.docForm.controls.cargoDetailBean as FormArray;
+  let arraylen = cargoDetailBeanArray.length;
+  let newUsergroup: FormGroup = this.fb.group({
+    equipmentType:[""],
+    quantity:[""],
+    cargoWeight:[""]
+  })
+  cargoDetailBeanArray.insert(arraylen,newUsergroup);
+}
 
+removeRow1(index){
+  let cargoDetailBeanArray = this.docForm.controls.cargoDetailBean as FormArray;
+  cargoDetailBeanArray.removeAt(index);
+
+}
  
 
 }
