@@ -35,6 +35,10 @@ import { BookingShipmentComponent } from './booking-shipment/booking-shipment.co
 import { RateSummaryComponent } from './rate-summary/rate-summary.component';
 import { BookingComponent } from './booking/booking.component';
 
+import { CommodityComponent } from './commodity/commodity.component';
+import { CargoReadinessComponent } from './cargo-readiness/cargo-readiness.component';
+import { LoadTypeComponent } from './load-type/load-type.component';
+import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
  
 const routes: Routes = [
   {
@@ -77,7 +81,22 @@ const routes: Routes = [
   {
     path: "booking",
     component:BookingComponent
-  }
+  },
+    {path: "commodity",
+    component: CommodityComponent,
+  },
+  {
+    path: "cargoReadiness",
+    component: CargoReadinessComponent,
+  },
+  {
+    path: "loadType",
+    component: LoadTypeComponent,
+  },
+  {
+    path: "cargoDetails",
+    component: CargoDetailsComponent,
+  },
 ];
 
 @NgModule({

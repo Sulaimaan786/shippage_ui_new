@@ -36,6 +36,10 @@ import { IncotermsComponent } from './incoterms/incoterms.component';
 import { RatesComponent } from './rates/rates.component';
 import { BookingShipmentComponent } from './booking-shipment/booking-shipment.component';
 import { RateSummaryComponent } from './rate-summary/rate-summary.component';
+import { CommodityComponent } from './commodity/commodity.component';
+import { CargoReadinessComponent } from './cargo-readiness/cargo-readiness.component';
+import { LoadTypeComponent } from './load-type/load-type.component';
+import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
 
 import { BookingComponent } from './booking/booking.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
@@ -50,7 +54,11 @@ import { BookingComponent } from './booking/booking.component';
     RatesComponent,
     BookingShipmentComponent,
     RateSummaryComponent,
-    BookingComponent
+    BookingComponent,
+    CommodityComponent,
+    CargoReadinessComponent,
+    LoadTypeComponent,
+    CargoDetailsComponent
   ],
   imports: [
     CommonModule,

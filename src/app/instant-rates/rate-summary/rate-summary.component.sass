@@ -9,7 +9,13 @@ h2
 
 h6
  color:#225f75
- font-weight:700
+
+h5
+ color:#225f75
+ margin-top:20px
+
+
+ 
 
 .buttonCSS
   padding: 2px 22px
@@ -83,3 +89,67 @@ textarea
     -webkit-border-radius: 15px
     -moz-border-radius: 15px
     border-radius: 15px
+    width: 60%
+    margin-left: 25px
+
+
+
+.button_plus 
+  position: absolute
+  width: 65px
+  height: 65px
+  background: #fff
+  cursor: pointer
+ 
+
+  top: 50%
+  left: 50%
+
+
+.button_plus:after 
+  content: ''
+  position: absolute
+  transform: translate(-50%, -50%)
+  height: 4px
+  width: 50%
+  background: #095776
+  top: 50%
+  left: 50%
+
+
+.button_plus:before 
+  content: ''
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  background: #095776
+  height: 50%
+  width: 4px
+
+
+.button_plus:hover:before,
+.button_plus:hover:after 
+  background: #fff
+  transition: 0.2s
+
+
+.button_plus:hover 
+  background-color: #095776
+  transition: 0.2s
+
+
+.w3-grey, .w3-hover-grey:hover, .w3-gray, .w3-hover-gray:hover 
+    color: #000!important
+    background-color: #9e9e9e!important
+
+
+.w3-xlarge 
+    font-size: 24px!important
+
+.w3-circle 
+    border-radius: 50%
+
+.w3-ripple 
+    transition: opacity 0s
+

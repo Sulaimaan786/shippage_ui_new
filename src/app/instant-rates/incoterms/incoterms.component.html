@@ -238,16 +238,15 @@
                       <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoDetailsChange">
                         <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Cargo Details</h1> 
                         <div class="card " style="border-radius: 25px;width: 100%;height: 80%;padding-top: 40px;
-                      padding-left: 20px;padding-right: 20px;padding-bottom: 20px;" >
-                          <div class="row" >
-                            <!-- <div class="col-md-4" style="margin-top: 15px;" > -->
-                               <!-- detailed row -->
+                      padding-left: 60px;padding-right: 20px;padding-bottom: 20px;" >
+                          <div class="row" style="overflow-x:auto;">
+                            
                               
-              <div class="row" style="overflow-x:auto;">
+              <div class="col-xl-10" >
                 <!-- <table style="border: 1px solid #225F75"> -->
                  
-
-                    <table style="width: 100%">
+                  <div class="wrapper">
+                    <table style="width: 100%;padding-left:10px;padding-right:10px">
                       
 
 
@@ -258,7 +257,7 @@
               <th >Quantity</th>
                 <th  >Cargo Weight</th>
                 <th  >Dimension details</th>
-                <th  ></th>
+                
               
               </tr>
               
@@ -306,18 +305,24 @@
                     </mat-form-field> 
                   </td>
                  
-                    <td style="padding-bottom: 25px;
+                    <!-- <td style="padding-bottom: 25px;
                     padding-left: 15px;">         
                       
                       <button mat-mini-fab color="primary" (click)="addRow1()">
                         <mat-icon class="col-white">add</mat-icon>
                       </button>
-                    </td>
+                    </td> -->
                   
                   </tr>
               </tbody>
               </ng-container>
-              </table>
+              </table></div>
+              </div>
+
+              <div class="col-xl-2" style="margin-top: 42px;">
+                <button mat-mini-fab color="primary" (click)="addRow1()">
+                  <mat-icon class="col-white">add</mat-icon>
+                </button>
               </div>
 
             <!-- detailed row -->
