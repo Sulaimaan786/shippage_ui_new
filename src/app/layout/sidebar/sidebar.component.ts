@@ -12,6 +12,8 @@ import {
 import { ROUTES } from "./sidebar-items";
 import { AuthService } from "src/app/core/service/auth.service";
 import { Role } from "src/app/core/models/role";
+import { Breakpoints } from "@angular/cdk/layout";
+import { BreakpointObserver } from "@angular/cdk/layout";
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
@@ -27,6 +29,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   listMaxHeight: string;
   listMaxWidth: string;
   userFullName: string;
+  bottomMenu:any;
+  leftSideMenu:any;
   userImg: string;
   userType: string;
   headerHeight = 60;
@@ -37,7 +41,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     public elementRef: ElementRef,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private responsive: BreakpointObserver
   ) {
     const body = this.elementRef.nativeElement.closest("body");
     this.routerObj = this.router.events.subscribe((event) => {
@@ -124,6 +129,46 @@ export class SidebarComponent implements OnInit, OnDestroy {
     // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
+    console.log('Web ' + Breakpoints.Web);
+    console.log('WebLandscape ' + Breakpoints.WebLandscape);
+    console.log('WebPortrait ' + Breakpoints.WebPortrait);
+    
+    console.log('Tablet ' + Breakpoints.Tablet);
+    console.log('TabletPortrait ' + Breakpoints.TabletPortrait);
+    console.log('TabletLandscape ' + Breakpoints.TabletLandscape);
+    
+    console.log('Handset ' + Breakpoints.Handset);
+    console.log('HandsetLandscape ' + Breakpoints.HandsetLandscape);
+    console.log('HandsetPortrait ' + Breakpoints.HandsetPortrait);
+    
+    console.log('XSmall ' + Breakpoints.XSmall);
+    console.log('Small ' + Breakpoints.Small);
+    console.log('Medium ' + Breakpoints.Medium);
+    console.log('Large ' + Breakpoints.Large);
+    console.log('XLarge ' + Breakpoints.XLarge);
+
+    this.responsive.observe(Breakpoints.Handset)
+      .subscribe(result => {
+        this.bottomMenu = false;
+        this.leftSideMenu = false;
+        if (result.matches) { 
+          this.bottomMenu = true;
+          this.leftSideMenu = true;
+        }
+      });
+
+    //   this.responsive.observe([
+    //     Breakpoints.TabletPortrait
+    //     ])
+    //     .subscribe(result => {
+    //       this.leftSideMenu = true;  
+  
+    //       if (result.matches) {
+    //         this.leftSideMenu = false;
+    //         this.bottomMenu = false;
+    //       }
+  
+    // });
   }
   ngOnDestroy() {
     this.routerObj.unsubscribe();
@@ -144,7 +189,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     return this.bodyTag.classList.contains("overlay-open");
   }
   checkStatuForResize(firstTime) {
-    if (window.innerWidth < 1170) {
+    if (window.innerWidth < 770) {
       this.renderer.addClass(this.document.body, "ls-closed");
     } else {
       this.renderer.removeClass(this.document.body, "ls-closed");
@@ -175,7 +220,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   instantRates() {  
         this.router.navigate(["/instantRates/shipment-mode"]);
   }
-
+ 
   
 
 //   origin&destination() {  

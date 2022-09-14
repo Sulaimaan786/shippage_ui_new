@@ -1,7 +1,7 @@
 .userProfile{
     position: absolute;
     top: 70%;
-    left: -18px;
+    left: 10px;
 }
  
 .navbar1 {
@@ -18,7 +18,7 @@
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 30px;
+    padding: 14px 14px;
     text-decoration: none;
     font-size: 17px;
   }
@@ -33,72 +33,88 @@
     color: white;
   }
 
-
+  :host ::ng-deep ul {
+    margin-top: 0;
+    margin-bottom: 0rem;
+    padding-left: 0rem;
+}
 
 // bottom bar
 
 
 
-@media (max-width: 1169px) {
-    .navbar1{
-        display: none !important;
-    }
-}
+// @media (max-width: 1169px) {
+//     .navbar1{
+//         display: none !important;
+//     }
+//     .sidebar{
+//         display: block !important;
+//     }
+// }
 
-@media (max-width: 800px) {
+// @media (max-width: 800px) {
 
-    .navbar1{
-        display: none !important;
-    }
-}
+//     .navbar1{
+//         display: none !important;
+//     }
+//     .sidebar{
+//         display: block !important;
+//     }
+// }
 
-@media (max-width: 799px) {
-    .navbar1{
-        display: none !important;
-    }
-}
+// @media (max-width: 799px) {
+//     .navbar1{
+//         display: none !important;
+//     }
+//     .sidebar{
+//         display: block !important;
+//     }
+// }
 
-@media (min-width: 768px) {
-    .navbar1{
-        display: none !important;
-    }
-}
+// @media (min-width: 768px) {
+//     .navbar1{
+//         display: none !important;
+//     }
+//     .sidebar{
+//         display: block !important;
+//     }
+// }
 
-@media (max-width: 767px) {
-    .navbar1{
-        display: block !important;
-    }
-}
+// @media (max-width: 767px) {
+//     .navbar1{
+//         display: block !important;
+//     }
+// }
 
-@media (max-width: 600px) {
-    .navbar1{
-        display: block !important;
-    }
-}
+// @media (max-width: 600px) {
+//     .navbar1{
+//         display: block !important;
+//     }
+// }
 
-@media (max-width: 500px) {
-    .navbar1{
-        display: block !important;
-    }
+// @media (max-width: 500px) {
+//     .navbar1{
+//         display: block !important;
+//     }
 
-}
+// }
 
-@media (max-width: 420px) {
-    .navbar1{
-        display: block !important;
-    }
+// @media (max-width: 420px) {
+//     .navbar1{
+//         display: block !important;
+//     }
 
-}
+// }
 
-@media (max-width: 400px) {
-    .navbar1{
-        display: block !important;
-    }
+// @media (max-width: 400px) {
+//     .navbar1{
+//         display: block !important;
+//     }
 
-}
-@media (max-width: 350px) {
-    .navbar1{
-        display: block !important;
-    }
+// }
+// @media (max-width: 350px) {
+//     .navbar1{
+//         display: block !important;
+//     }
 
-}
+// }

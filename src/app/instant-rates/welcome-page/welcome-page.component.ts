@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer2,Inject } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Breakpoints } from "@angular/cdk/layout";
+import { element } from 'protractor';
+import { DOCUMENT } from "@angular/common";
 
 @Component({
   selector: 'app-welcome-page',
@@ -8,42 +12,22 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class WelcomePageComponent implements OnInit {
 
-  public cardChart1: any;
-  public cardChart1Data: any;
-  public cardChart1Label: any;
-
-  public cardChart2: any;
-  public cardChart2Data: any;
-  public cardChart2Label: any;
-
-  public cardChart3: any;
-  public cardChart3Data: any;
-  public cardChart3Label: any;
-
-  public cardChart4: any;
-  public cardChart4Data: any;
-  public cardChart4Label: any;
- 
-
-  // Doughnut chart start
-  public doughnutChartLabels: string[] = ["India", "USA", "Itely", "Shrilanka"];
-  public doughnutChartData: number[] = [22, 31, 28, 19];
-  public doughnutChartLegend = false;
-  public doughnutChartColors: any[] = [
-    {
-      backgroundColor: ["#735A84", "#E76412", "#9BC311", "#DC3545"],
-    },
-  ];
-  public doughnutChartType = "doughnut";
-  public doughnutChartOptions: any = {
-    animation: false,
-    responsive: true,
-  };
-
-  constructor(private route: ActivatedRoute,
-    private router: Router,) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private route: ActivatedRoute,
+    private router: Router,private responsive: BreakpointObserver,
+    private renderer: Renderer2,) {}
   ngOnInit() {
    
+    this.responsive.observe(Breakpoints.Handset)
+      .subscribe(result => {
+
+        if (result.matches) {  
+          this.renderer.addClass(this.document.body,"content-block")
+        }else{ 
+          this.renderer.removeClass(this.document.body,"content-block")
+        }
+      });
   }
   ocean(){
    this.router.navigate(["/instantRates/shipment-mode"]);

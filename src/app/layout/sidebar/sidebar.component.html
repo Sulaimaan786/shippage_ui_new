@@ -1,6 +1,6 @@
 <div>
   <!-- Left Sidebar   -->
-  <aside id="leftsidebar" class="sidebar" (mouseenter)="mouseHover($event)" (mouseleave)="mouseOut($event)">
+  <aside *ngIf="!leftSideMenu" id="leftsidebar" class="sidebar" (mouseenter)="mouseHover($event)" (mouseleave)="mouseOut($event)">
      <!-- Menu -->
      <div class="menu">
        <ul class="list"
@@ -103,13 +103,11 @@
 
    <!-- bottom menubar start -->
 
-   <div class="navbar1">
-    <!-- <a href="#home" class="active">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a> -->
+   <div *ngIf="bottomMenu" class="navbar1"> 
+
     <div class="menu">
       <ul class="list"
-        [ngStyle]="{'position' : 'relative','align-items': 'center','display': 'inline-flex'}"
+        [ngStyle]="{'justify-content' : 'space-evenly','align-items': 'center','display': 'flex'}"
         [perfectScrollbar]> 
         <li style="cursor:pointer">
           <a class="" (click)="instantRates()" class="menu-top">
