@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer2,Inject } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Breakpoints } from "@angular/cdk/layout";
+import { element } from 'protractor';
+import { DOCUMENT } from "@angular/common";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-incoterms',
@@ -19,7 +23,9 @@ export class IncotermsComponent implements OnInit {
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router,private responsive: BreakpointObserver,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
       control:[""],
 
@@ -43,6 +49,16 @@ export class IncotermsComponent implements OnInit {
 
   ngOnInit(): void {
     this.incotermsChange=true;
+
+    this.responsive.observe(Breakpoints.Handset)
+      .subscribe(result => {
+
+        if (result.matches) {  
+          this.renderer.addClass(this.document.body,"content-block")
+        }else{ 
+          this.renderer.removeClass(this.document.body,"content-block")
+        }
+      });
   }
 
 
