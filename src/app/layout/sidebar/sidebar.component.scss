@@ -1,0 +1,104 @@
+.userProfile{
+    position: absolute;
+    top: 70%;
+    left: -18px;
+}
+ 
+.navbar1 {
+    overflow: hidden;
+    background-color: #F8F9FA;
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .navbar1 a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar1 a:hover {
+    background: #f1f1f1;
+    color: black;
+  }
+  
+  .navbar1 a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+
+// bottom bar
+
+
+
+@media (max-width: 1169px) {
+    .navbar1{
+        display: none !important;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .navbar1{
+        display: none !important;
+    }
+}
+
+@media (max-width: 799px) {
+    .navbar1{
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar1{
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar1{
+        display: block !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar1{
+        display: block !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar1{
+        display: block !important;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .navbar1{
+        display: block !important;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .navbar1{
+        display: block !important;
+    }
+
+}
+@media (max-width: 350px) {
+    .navbar1{
+        display: block !important;
+    }
+
+}

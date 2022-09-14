@@ -5,8 +5,9 @@
  */
 .dropdown-menu {
   @include border-radius(0);
-  margin-top: -35px !important;
-  margin-left: -15px;
+  margin-top: -105px !important;
+  margin-left: 60px !important;
+  height: 350%;
   -webkit-box-shadow: 0 5px 15px 2px rgba(64, 70, 74, 0.2) !important;
   box-shadow: 0 5px 15px 2px rgba(64, 70, 74, 0.2) !important;
   border-radius: 0px;

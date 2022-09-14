@@ -15,7 +15,7 @@ import { Role } from "src/app/core/models/role";
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.sass"],
+  styleUrls: ["./sidebar.component.scss"],
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   public sidebarItems: any[];
@@ -120,7 +120,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.userType = Role.Admin;
       }
     }
-
+    //this.renderer.addClass(this.document.body, "submenu-closed");
     // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
@@ -136,7 +136,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
   setMenuHeight() {
     this.innerHeight = window.innerHeight;
-    const height = this.innerHeight - this.headerHeight;
+    const height = this.innerHeight;
     this.listMaxHeight = height + "";
     this.listMaxWidth = "500px";
   }

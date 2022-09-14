@@ -21,11 +21,12 @@ import { ChangePasswordPopUpComponent } from "src/app/setup/users/change-passwor
 import { ChangeRolePopUpComponent } from "src/app/setup/users/change-role-pop-up/change-role-pop-up.component";
 const document: any = window.document;
 import { DomSanitizer } from '@angular/platform-browser';
+import { Overlay } from "@angular/cdk/overlay";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.sass"],
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent
   extends UnsubscribeOnDestroyAdapter
@@ -156,6 +157,8 @@ export class HeaderComponent
       newPwd: [''],
       confirmNewPwd: ['']
     })
+    this.renderer.addClass(this.document.body, "side-closed");
+    this.renderer.addClass(this.document.body, "submenu-closed"); 
   }
 
   ngAfterViewInit() {

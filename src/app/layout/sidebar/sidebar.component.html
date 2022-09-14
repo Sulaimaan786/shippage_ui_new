@@ -1,6 +1,6 @@
 <div>
-  <!-- Left Sidebar  (mouseenter)="mouseHover($event)" (mouseleave)="mouseOut($event)" -->
-  <aside id="leftsidebar" class="sidebar" >
+  <!-- Left Sidebar   -->
+  <aside id="leftsidebar" class="sidebar" (mouseenter)="mouseHover($event)" (mouseleave)="mouseOut($event)">
      <!-- Menu -->
      <div class="menu">
        <ul class="list"
@@ -58,43 +58,7 @@
              <span class="hide-menu">Instant Rates
              </span>
            </a>
-         </li>
-         
-         <li class="nav-item user_profile btnUserDropdown" ngbDropdown>
-           <div class="chip dropdown-toggle" ngbDropdownToggle class="nav-notification-icons pt-0">
-             <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="32" height="32" alt="User">            
-           </div>
-           <div ngbDropdownMenu class="notification-dropdown pullDown">
-             <div class="noti-list" style="position: relative; max-width: 600px; max-height: 300px;" [perfectScrollbar]>
-               <ul class="menu">
-                 <li class="body">
-                   <ul class="user_dw_menu">
-                     <li>
-                       <a href="#" onClick="return false;">
-                         <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
-                       </a>
-                     </li>
-                     <li>
-                       <a href="#" onClick="return false;">
-                         <app-feather-icons [icon]="'mail'" [class]="'user-menu-icons'"></app-feather-icons>Inbox
-                       </a>
-                     </li>
-                     <li>
-                       <a href="#" onClick="return false;">
-                         <app-feather-icons [icon]="'settings'" [class]="'user-menu-icons'"></app-feather-icons>Settings
-                       </a>
-                     </li>
-                     <li>
-                       <a href="javascript:void(0);" (click)="logout()">
-                         <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
-                       </a>
-                     </li>
-                   </ul>
-                 </li>
-               </ul>
-             </div>
-           </div>
-         </li>
+         </li> 
           <li style="cursor:pointer">
            <a class="" (click)="logout()" class="menu-top" >
              <i-feather name="log-out" class="sidebarIcon"></i-feather>
@@ -104,7 +68,76 @@
         </li>  
        </ul>
      </div>
+     <div class="userProfile">
+        <ul>
+          <li class="nav-item user_profile btnUserDropdown" ngbDropdown>
+            <div class="chip dropdown-toggle" ngbDropdownToggle class="nav-notification-icons pt-0">
+              <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="32" height="32" alt="User">            
+            </div>
+            <div ngbDropdownMenu class="notification-dropdown pullDown list">
+              <div class="noti-list" style="position: relative; max-width: 600px; max-height: 300px;" [perfectScrollbar]>
+                <ul class="menu">
+                  <li class="body">
+                    <ul class="user_dw_menu">
+                      <li>
+                        <a href="#" onClick="return false;">
+                          <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
+                        </a>
+                      </li> 
+                      <li>
+                        <a href="javascript:void(0);" (click)="logout()">
+                          <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+     </div>
      <!-- #Menu -->
    </aside>
    <!-- #END# Left Sidebar -->
+
+   <!-- bottom menubar start -->
+
+   <div class="navbar1">
+    <!-- <a href="#home" class="active">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a> -->
+    <div class="menu">
+      <ul class="list"
+        [ngStyle]="{'position' : 'relative','align-items': 'center','display': 'inline-flex'}"
+        [perfectScrollbar]> 
+        <li style="cursor:pointer">
+          <a class="" (click)="instantRates()" class="menu-top">
+            <i-feather name="home" style="color: #225f75;" class="sidebarIcon"></i-feather> 
+          </a>
+        </li> 
+         <li style="cursor:pointer">
+          <a class="" (click)="instantRates()" class="menu-top" >
+            <i-feather name="log-out" style="color: #225f75;" class="sidebarIcon"></i-feather> 
+          </a>
+       </li>  
+       <li style="cursor:pointer">
+        <a class="" (click)="instantRates()" class="menu-top" >
+          <i-feather name="settings" style="color: #225f75;" class="sidebarIcon"></i-feather> 
+        </a>
+     </li>
+     <li style="cursor:pointer">
+      <a class="" (click)="logout()" class="menu-top" >
+        <i-feather name="settings" style="color: #225f75;" class="sidebarIcon"></i-feather> 
+      </a>
+     </li>
+     <li style="cursor:pointer"> 
+        <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="32" height="32" alt="User">          
+      </li>
+      </ul>
+    </div>
+  </div>
+
+
+   <!-- ends -->
  </div>

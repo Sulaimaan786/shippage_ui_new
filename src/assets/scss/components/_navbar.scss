@@ -532,6 +532,15 @@ nav.navbar {
     section.content {
       margin-left: 276px;
     }
+    .heading{
+      text-align: center;
+      color:#225f75;
+      position: absolute;
+      left: 21.5%;
+      margin-top: -1%;
+      white-space: nowrap;
+      top: 18x;
+  }
   }
   .collapse-menu-icon {
     margin-bottom: 0px;
@@ -539,6 +548,13 @@ nav.navbar {
     padding-left: 60px;
     padding-right: 30px;
 }
+// .heading{
+//   text-align: center;
+//   color:#225f75;
+//   position: absolute;
+//   left: 11%;
+//   top: 18x;
+// }
 }
 .sidemenu-collapse {
   height: 50px;
