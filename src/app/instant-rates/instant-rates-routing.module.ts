@@ -30,6 +30,9 @@ import { RouteDetailsComponent } from './route-details/route-details.component';
 import { AirRouteDetailsComponent } from './air-route-details/air-route-details.component';
 import { OriginDestinationComponent } from './origin-destination/origin-destination.component';
 import { IncotermsComponent } from './incoterms/incoterms.component';
+import { RatesComponent } from './rates/rates.component';
+import { BookingShipmentComponent } from './booking-shipment/booking-shipment.component';
+import { RateSummaryComponent } from './rate-summary/rate-summary.component';
  
 const routes: Routes = [
   {
@@ -55,6 +58,18 @@ const routes: Routes = [
   {
     path: "incoterms",
     component: IncotermsComponent,
+  },
+  {
+    path: "rates",
+    component: RatesComponent,
+  },
+  {
+    path: "bookingShipment",
+    component: BookingShipmentComponent,
+  },
+  {
+    path: "rateSummary",
+    component: RateSummaryComponent,
   },
 ];
 

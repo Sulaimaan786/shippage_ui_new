@@ -1,0 +1,85 @@
+.paragraph
+      color: gray
+      font-size:10px
+
+a 
+  color:#225f75
+h2
+ color:#225f75
+
+h6
+ color:#225f75
+ font-weight:700
+
+.buttonCSS
+  padding: 2px 22px
+  font-size: 18px
+  text-align: center
+  cursor: pointer
+  outline: none
+  color: white
+  background-color: #225F75
+  border-radius: 25px
+  
+
+.separator 
+  display: flex
+  align-items: center
+  text-align: center
+  width: 120px
+
+.separator::before,
+.separator::after 
+  content: ''
+  flex: 1
+  border-bottom: 1px solid #225f75
+
+
+.separator:not(:empty)::before 
+  margin-right: .25em
+
+
+.separator:not(:empty)::after 
+  margin-left: .25em
+
+
+
+.grid-container 
+  display: grid
+  gap: 10px
+  
+  padding: 10px
+
+
+.grid-item 
+  background-color: rgba(255, 255, 255, 0.8)
+  text-align: center
+  padding: 20px
+  font-size: 30px
+
+
+.item1 
+  grid-column: 1 / span 2
+  grid-row: 1
+
+
+.item2 
+  grid-column: 3
+  grid-row: 1 / span 2
+
+
+.item5 
+  grid-column: 1 / span 3
+  grid-row: 3
+
+::ng-deep.mat-form-field-infix 
+    display: block
+    position: relative
+    flex: auto
+    min-width: 0
+    width: 130px!important
+
+textarea 
+    -webkit-border-radius: 15px
+    -moz-border-radius: 15px
+    border-radius: 15px

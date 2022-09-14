@@ -129,7 +129,7 @@
                             <mat-card class="demo-inline-calendar-card" *ngIf="calendar">
                               <mat-calendar [(selected)]="selected"></mat-calendar>
                             </mat-card>
-                            <!-- <p>Selected date: {{selected}}</p> -->
+                            <p>Selected date: {{selected}}</p> 
                             </div> 
                              
                               </div>
@@ -356,7 +356,7 @@
                   </button>
                 </div> 
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
-                    <button   class="btn-space" mat-raised-button
+                    <button   class="btn-space" mat-raised-button (click)="rates()"
                     color="primary" class="buttonCSS" style="float: right;" >Next</button>
                     
                      </div>

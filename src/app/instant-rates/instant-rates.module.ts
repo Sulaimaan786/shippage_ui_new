@@ -33,6 +33,9 @@ import { RouteDetailsComponent } from './route-details/route-details.component';
 import { AirRouteDetailsComponent } from './air-route-details/air-route-details.component';
 import { OriginDestinationComponent } from './origin-destination/origin-destination.component';
 import { IncotermsComponent } from './incoterms/incoterms.component';
+import { RatesComponent } from './rates/rates.component';
+import { BookingShipmentComponent } from './booking-shipment/booking-shipment.component';
+import { RateSummaryComponent } from './rate-summary/rate-summary.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { IncotermsComponent } from './incoterms/incoterms.component';
     RouteDetailsComponent,
     AirRouteDetailsComponent,
     OriginDestinationComponent,
-    IncotermsComponent
+    IncotermsComponent,
+    RatesComponent,
+    BookingShipmentComponent,
+    RateSummaryComponent
   ],
   imports: [
     CommonModule,

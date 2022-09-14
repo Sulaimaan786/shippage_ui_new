@@ -1,0 +1,42 @@
+.paragraph
+      color: gray
+      font-size:10px
+
+a 
+  color:#225f75
+h2
+ color:#225f75
+
+.buttonCSS
+  padding: 0px 24px
+  font-size: 18px
+  text-align: center
+  cursor: pointer
+  outline: none
+  color: white
+  background-color: #225F75
+  border-radius: 25px
+  width:120px
+
+.separator 
+  display: flex
+  align-items: center
+  text-align: center
+  width: 120px
+
+.separator::before,
+.separator::after 
+  content: ''
+  flex: 1
+  border-bottom: 1px solid #225f75
+
+
+.separator:not(:empty)::before 
+  margin-right: .25em
+
+
+.separator:not(:empty)::after 
+  margin-left: .25em
+
+
+

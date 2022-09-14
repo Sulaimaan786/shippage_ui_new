@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 @Component({
   selector: 'app-incoterms',
@@ -17,7 +18,8 @@ export class IncotermsComponent implements OnInit {
   loadTypeDetailBean:[];
 
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder,private route: ActivatedRoute,
+    private router: Router) { 
     this.docForm = this.fb.group({
       control:[""],
 
@@ -137,6 +139,10 @@ removeRow1(index){
   let cargoDetailBeanArray = this.docForm.controls.cargoDetailBean as FormArray;
   cargoDetailBeanArray.removeAt(index);
 
+}
+
+rates(){
+  this.router.navigate(["instantRates/rates"]);
 }
  
 
