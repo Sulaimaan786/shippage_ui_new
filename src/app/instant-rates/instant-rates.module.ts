@@ -37,6 +37,8 @@ import { RatesComponent } from './rates/rates.component';
 import { BookingShipmentComponent } from './booking-shipment/booking-shipment.component';
 import { RateSummaryComponent } from './rate-summary/rate-summary.component';
 
+import { BookingComponent } from './booking/booking.component';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     WelcomePageComponent,
@@ -47,7 +49,8 @@ import { RateSummaryComponent } from './rate-summary/rate-summary.component';
     IncotermsComponent,
     RatesComponent,
     BookingShipmentComponent,
-    RateSummaryComponent
+    RateSummaryComponent,
+    BookingComponent
   ],
   imports: [
     CommonModule,
@@ -79,6 +82,7 @@ import { RateSummaryComponent } from './rate-summary/rate-summary.component';
     MatRadioModule,
     DragDropModule,
     MatProgressSpinnerModule,
+    // FlexLayoutModule,
   ]
 })
 export class InstantRatesModule { }

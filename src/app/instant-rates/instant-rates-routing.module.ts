@@ -33,6 +33,8 @@ import { IncotermsComponent } from './incoterms/incoterms.component';
 import { RatesComponent } from './rates/rates.component';
 import { BookingShipmentComponent } from './booking-shipment/booking-shipment.component';
 import { RateSummaryComponent } from './rate-summary/rate-summary.component';
+import { BookingComponent } from './booking/booking.component';
+
  
 const routes: Routes = [
   {
@@ -70,7 +72,12 @@ const routes: Routes = [
   {
     path: "rateSummary",
     component: RateSummaryComponent,
+   
   },
+  {
+    path: "booking",
+    component:BookingComponent
+  }
 ];
 
 @NgModule({
