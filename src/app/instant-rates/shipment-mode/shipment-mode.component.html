@@ -9,9 +9,14 @@
         <div class="col-xl-12 ">
           <div class="card" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);">
-            <div class="row">
+
+           <div *ngIf="topback" (click)="back()" style="position: absolute;top: 34px;left: 34px;"> 
+            <mat-icon class="blue">arrow_back_ios</mat-icon> 
+          </div>
+
+           <div class="row"> 
               <h2 style="text-align: center;color:#225f75;padding-top: 30px;">Mode of Shipment</h2>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 45px 75px 15px 75px;">
+              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
                 <div class="card" (click)="fcl();"> 
                   <div class="body"  style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
@@ -26,7 +31,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 45px 75px 15px 75px;">
+              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
                 <div class="card" (click)="lcl();"> 
                   <div class="body" style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
@@ -42,12 +47,11 @@
                 </div>
               </div>
             </div>
-            <div style="padding-left: 2%;padding-bottom: 1%;">
+            <div *ngIf="!topback" style="position: absolute;bottom: 25px;left: 40px;">
               <button mat-mini-fab color="primary" (click)="back()">
                 <mat-icon class="col-white">arrow_back_ios</mat-icon>
               </button>
-            </div>
-            
+            </div> 
           </div>
   
         </div>

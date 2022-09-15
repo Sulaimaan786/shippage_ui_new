@@ -11,7 +11,7 @@
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);">
             <div class="row">
               <h2 style="text-align: center;color:#225f75;padding-top: 30px;">Welcome to the World of Digital Logistics Solution</h2>
-              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" style="padding: 45px 75px 15px 75px;">
+              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
                 <div class="card" (click)="ocean();"> 
                   <div class="body"  style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
@@ -25,9 +25,9 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" style="padding: 45px 75px 15px 75px;">
+              <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
                 <div class="card" (click)="air();"> 
-                  <div class="body" style="background:#225f75;padding-bottom: 19px;border-radius: 25px;">
+                  <div class="body" style="background:#225f75;padding-bottom: 0px;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
                       <div class="row"> 
                         <div class="col-lg-12 alignimg">

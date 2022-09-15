@@ -11,6 +11,9 @@ import { DOCUMENT } from "@angular/common";
   styleUrls: ['./welcome-page.component.sass']
 })
 export class WelcomePageComponent implements OnInit {
+  padding : any;
+  webpadding: any;
+  mobilepadding: any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -19,13 +22,16 @@ export class WelcomePageComponent implements OnInit {
     private renderer: Renderer2,) {}
   ngOnInit() {
    
-    this.responsive.observe(Breakpoints.Handset)
+    this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {
-
+        this.mobilepadding = '45px 75px 15px 75px';
+        this.webpadding = '75px 75px 75px 75px';
         if (result.matches) {  
-          this.renderer.addClass(this.document.body,"content-block")
+          this.renderer.addClass(this.document.body,"content-block")  
+          this.padding = this.mobilepadding;
         }else{ 
-          this.renderer.removeClass(this.document.body,"content-block")
+          this.renderer.removeClass(this.document.body,"content-block") 
+          this.padding = this.webpadding;
         }
       });
   }

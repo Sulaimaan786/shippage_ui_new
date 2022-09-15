@@ -10,7 +10,11 @@ import { DOCUMENT } from "@angular/common";
   styleUrls: ['./shipment-mode.component.sass']
 })
 export class ShipmentModeComponent implements OnInit {
-
+  padding : any;
+  webpadding: any;
+  mobilepadding: any;
+  topback:any;
+ 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,
@@ -20,11 +24,19 @@ export class ShipmentModeComponent implements OnInit {
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
+        this.mobilepadding = '45px 75px 15px 75px';
+        this.webpadding = '75px 75px 75px 75px';
+        this.topback = false;
+ 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
-        }else{ 
+          this.padding = this.mobilepadding;
+          this.topback = true;
+         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
-        }
+          this.padding = this.webpadding;
+          this.topback = false;
+         }
       });
   }
   fcl(){

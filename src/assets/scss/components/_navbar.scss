@@ -131,10 +131,16 @@
 
 .content-block{
   .mobile-v-p{
-    padding: 25px 8px 0px 8px !important
+    padding: 25px 8px 0px 8px !important;
   }
+  .card .body {
+    padding: 0px;
+  }
+  .card-bnner {
+    padding: 19px 30px;
+  } 
 } 
-
+ 
 
 .navbar-header {
   padding: 8px;

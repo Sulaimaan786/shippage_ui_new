@@ -16,32 +16,18 @@
     -webkit-box-shadow: 0 0 10px 0 rgb(183 192 206 / 20%)
 
 
-.wavy 
-   position: relative
+    :host ::ng-deep.row 
+    --bs-gutter-x: 1.5rem
+    --bs-gutter-y: 0
+    display: flex
+    flex-wrap: wrap
+    margin-top: calc(-1 * var(--bs-gutter-y))
+    margin-right: calc(-.5 * var(--bs-gutter-x))
+    margin-left: calc(-.5 * var(--bs-gutter-x))
+    justify-content: space-evenly
 
-
-.wavy span 
-   position: relative
-   display: inline-block
-   color: rgb(98 108 231)
-   font-size: 2em
-   text-transform: uppercase
-   animation: animate 4s ease-in-out infinite
-   animation-delay: calc(0.1s * var(--i))
-
-
-@keyframes animate 
-   0% 
-       transform: translateY(0px)
-   
-
-   20% 
-       transform: translateY(-20px)
-   
-
-   40%,
-   100% 
-       transform: translateY(0px)
+.blue
+    color:#225f75 !important
    
 .example-button-row 
   text-align: center
