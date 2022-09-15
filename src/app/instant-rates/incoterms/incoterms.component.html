@@ -17,24 +17,22 @@
                   <div class="col-sm-3 " style="margin-top: 30px">
                     
                       <div class="col-xl-3 " style="margin-top: 150px ;margin-left: 30px;">
-                        <button class="button" (click)="incotermsSelect()"><i class="fa fa-home"></i> Incoterms</button>
+                        <button class="sideButton" (click)="incoterms()"style="background-color: #225F75!important;color:white"><i class="fa fa-home"></i> Incoterms</button>
                         </div>
                         <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
-                          <button class="button" (click)="commoditySelect()"><i class="fa fa-home"></i> Commodity</button>
+                          <button class="sideButton" (click)="commodity()"><i class="fa fa-home"></i> Commodity</button>
                           </div>
                           <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
-                            <button class="button" (click)="cargoReadinessSelect()"><i class="fa fa-home"></i> Cargo Readiness</button>
+                            <button class="sideButton" (click)="cargoReadiness()"><i class="fa fa-home"></i> Cargo Readiness</button>
                             </div>
                             <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
-                              <button class="button" (click)="loadTypeSelect()"><i class="fa fa-home"></i> Load Type</button>
+                              <button class="sideButton" (click)="loadType()"><i class="fa fa-home"></i> Load Type</button>
                               </div>
-                              <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
-                                <button class="button" (click)="cargoDetailsSelect()"><i class="fa fa-home"></i> Cargo Details</button>
-                                </div>
+                             
                   </div>
                   
                   <!-- <div class="form-group" *ngIf="incotermsChange"> -->
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="incotermsChange">
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" >
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Incoterms</h1> 
                       <div class="card align-items-center" style="border-radius: 25px;width: 100%;padding-top: 20px;
                       padding-left: 80px;padding-right: 120px;padding-bottom: 20px;" > 
@@ -61,181 +59,11 @@
                          </div>
                         </div>
                     </div>
-                  <!-- </div> -->
-
-                    <!-- commodity -->
-                    <!-- <div class="form-group" > -->
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="commodityChange">
-                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Commodity</h1> 
-                      <div class="card align-items-center" style="border-radius: 25px;width: 100%;padding-bottom: 80px;padding-top: 80px;
-                      padding-left: 80px;" > 
-                        <div class = "row">
-                        <div class="row" >
-                              <div class="col-md-6"  >
-                                <mat-radio-group  >
-                                    <mat-radio-button   value="1"> <p style="margin-top: 15px;">FAK</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                             </div>
-                            <div class="row" >
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="1"> <p style="margin-top: 15px;">Reefer / Temperature</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" >
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="1"> <p style="margin-top: 15px;">Hazardous / DG</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            <div class="row" >
-                              <div class="col-md-6"  >
-                                <mat-radio-group >
-                                    <mat-radio-button   value="1"> <p style="margin-top: 15px;">Others</p></mat-radio-button>
-                                </mat-radio-group>
-                              </div>
-                            </div>
-                            
-                          </div>
-                         </div>
-                    </div>
-                  <!-- </div> -->
-
-
-                  <!-- Cargo Readiness -->
-                    <!-- <div class="form-group" > -->
-                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoReadinessChange">
-                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Cargo Readiness</h1> 
-                        <div class="card" style="border-radius: 25px;width: 100%;height:80%;padding-top:40px;padding-right: 20px;padding-bottom: 40px;"> 
-                         
-                          <div class="row" style="margin-left: 55px;">
-                            <div class="col-md-5"  >
-                              <mat-radio-group  >
-                                <mat-radio-button   value="1"> <p style="margin-top: 15px;">Ready to move</p></mat-radio-button>
-                            </mat-radio-group>
-                            </div> 
-                            <div class="col-md-2" style="border-left: 1px solid #225F75" >
-                              
-                            </div> 
-                           <!-- <div class="vl"></div>  -->
-                            <!-- <mat-divider [vertical]="true"></mat-divider> -->
-                            <div class="col-md-5" style="margin-top: 15px;" >
-                              <mat-radio-group  >
-                                <mat-radio-button  value="Yes" checked (change)="radioClick('Yes')">Calendar</mat-radio-button>
-                            </mat-radio-group>
-                            <mat-card class="demo-inline-calendar-card" *ngIf="calendar">
-                              <mat-calendar [(selected)]="selected"></mat-calendar>
-                            </mat-card>
-                            <p>Selected date: {{selected}}</p> 
-                            </div> 
-                             
-                              </div>
-                             
-                           </div>
-                      </div>
-
-                      <!-- Load type -->
-                    <!-- <div class="form-group" > -->
-                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="loadTypeChange">
-                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Load Type</h1> 
-                        <div class="card " style="border-radius: 25px;width: 100%;height: 80%;padding-top: 40px;
-                      padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background-color: white;" >
-              <!-- detailed row -->
-
-              <div class="row" >
-                <div style="overflow-x:auto;">
-                  <table >
-                    <tr >
-                      <th >Equipment Type </th>
-                       <th >Quantity</th>
-                       <th >Cargo Weight</th>
-                       <th></th>
-                       <th ></th>
-               
-                       </tr>
-                   
-                      
-
-              <ng-container 
-              *ngFor="let loadTypeDetailBean of docForm.get('loadTypeDetailBean')['controls']; let i = index">
-              <tbody [formGroup]="loadTypeDetailBean" >
                 
-                <tr >
-                 
-                  <td  >
-                             
-                    <mat-form-field  appearance="outline" >
-                        <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required>
-                        <mat-option value="volvo">General</mat-option>
-                        <mat-option value="saab">Rate Contract</mat-option>
-                        <mat-option value="mercedes">Consignment</mat-option>
-                        
-                      </mat-select>
-                    </mat-form-field>
-                  </td>
-                <td >
-                    <mat-form-field  appearance="outline">
-                      <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                        <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
-                        name="quantity{{i}}" formControlName="quantity" >
-                      <!-- </div><br> -->
                       
-                    </mat-form-field>
-                  </td>
-
-                  <td >
-                    <mat-form-field  appearance="outline">
-                      <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                        <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1"
-                        name="cargoWeight{{i}}" formControlName="cargoWeight">
-                      <!-- </div><br> -->
-                    </mat-form-field> 
-                  </td>
-                  <td style="padding-bottom: 25px;
-                  padding-left: 15px;">
-                         
-                    <button mat-mini-fab color="warn" (click)="removeRow(i)" >
-                      <mat-icon class="col-white"  >remove</mat-icon>
-                    </button></td>
-                    
-                    <td style="padding-bottom: 25px;
-                    padding-left: 15px;">         
-                      
-                      <button mat-mini-fab color="primary" (click)="addRow()">
-                        <mat-icon class="col-white">add</mat-icon>
-                      </button>
-                    </td>
-                  
-                  </tr>
-              </tbody>
-              </ng-container>
-              </table>
-              </div>
-              </div>
-
-            <!-- detailed row -->
-                            <div class="row" >
-                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                <p style="text-align:center;margin-top:28px;margin-bottom:20px">*Per container by kgs</p>
-                              </div>
-                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                  
-                                <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a>
-                              </div>
-                              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                <button mat-raised-button color="primary" class="buttonCSS" style="text-align:center;margin-top:20px;margin-bottom:20px;margin-left: 40px;">Done</button>
-                                
-                              </div>
-                            </div>
-                             
-                           </div>
-                      </div>
                       <!-- Cargo Details-->
                     <!-- <div class="form-group" > -->
-                      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoDetailsChange">
+                      <!-- <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" *ngIf="cargoDetailsChange">
                         <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Cargo Details</h1> 
                         <div class="card " style="border-radius: 25px;width: 100%;height: 80%;padding-top: 40px;
                       padding-left: 60px;padding-right: 20px;padding-bottom: 20px;" >
@@ -243,9 +71,7 @@
                             
                               
               <div class="col-xl-10" >
-                <!-- <table style="border: 1px solid #225F75"> -->
-                 
-                  <div class="wrapper">
+               <div class="wrapper">
                     <table style="width: 100%;padding-left:10px;padding-right:10px">
                       
 
@@ -288,30 +114,20 @@
                   </td>
                 <td >
                     <mat-form-field  appearance="outline" >
-                      <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                        <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
+                      <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
                         name="quantity{{i}}" formControlName="quantity" >
-                      <!-- </div><br> -->
+                     
                       
                     </mat-form-field>
                   </td>
 
                   <td >
                     <mat-form-field  appearance="outline" >
-                      <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                        <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1"
+                     <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1"
                         name="cargoWeight{{i}}" formControlName="cargoWeight">
-                      <!-- </div><br> -->
-                    </mat-form-field> 
+                      </mat-form-field> 
                   </td>
                  
-                    <!-- <td style="padding-bottom: 25px;
-                    padding-left: 15px;">         
-                      
-                      <button mat-mini-fab color="primary" (click)="addRow1()">
-                        <mat-icon class="col-white">add</mat-icon>
-                      </button>
-                    </td> -->
                   
                   </tr>
               </tbody>
@@ -325,7 +141,7 @@
                 </button>
               </div>
 
-            <!-- detailed row -->
+            
                             </div>
                              
                             <div class="row" >
@@ -348,7 +164,7 @@
 
                            </div>
 
-              </div>
+              </div> -->
               </div>
             </form>
               </div>
@@ -356,12 +172,12 @@
              
                 
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
-                  <button mat-mini-fab color="primary" >
+                  <button mat-mini-fab color="primary" (click)="routeDetails()">
                     <mat-icon class="col-white" >arrow_back_ios</mat-icon>
                   </button>
                 </div> 
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
-                    <button   class="btn-space" mat-raised-button (click)="rates()"
+                    <button   class="btn-space" mat-raised-button (click)="commodity()"
                     color="primary" class="buttonCSS" style="float: right;" >Next</button>
                     
                      </div>

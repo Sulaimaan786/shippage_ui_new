@@ -62,50 +62,50 @@ export class IncotermsComponent implements OnInit {
   }
 
 
-  incotermsSelect(){
-    this.commodityChange=false;
-    this.cargoReadinessChange=false;
-    this.loadTypeChange=false;
-    this.cargoDetailsChange=false;
-    this.incotermsChange=true;
+  // incotermsSelect(){
+  //   this.commodityChange=false;
+  //   this.cargoReadinessChange=false;
+  //   this.loadTypeChange=false;
+  //   this.cargoDetailsChange=false;
+  //   this.incotermsChange=true;
     
-  }
-  commoditySelect(){
-    this.incotermsChange=false;
-    this.cargoReadinessChange=false;
-    this.loadTypeChange=false;
-    this.cargoDetailsChange=false;
-    this.commodityChange=true;
+  // }
+  // commoditySelect(){
+  //   this.incotermsChange=false;
+  //   this.cargoReadinessChange=false;
+  //   this.loadTypeChange=false;
+  //   this.cargoDetailsChange=false;
+  //   this.commodityChange=true;
    
     
-  }
+  // }
 
-  cargoReadinessSelect(){
-    this.incotermsChange=false;
-    this.commodityChange=false;
-    this.loadTypeChange=false;
-    this.cargoDetailsChange=false;
-    this.cargoReadinessChange=true;
+  // cargoReadinessSelect(){
+  //   this.incotermsChange=false;
+  //   this.commodityChange=false;
+  //   this.loadTypeChange=false;
+  //   this.cargoDetailsChange=false;
+  //   this.cargoReadinessChange=true;
 
     
-  }
-  loadTypeSelect()
-  {
-    this.incotermsChange=false;
-    this.commodityChange=false;
-    this.cargoReadinessChange=false;
-    this.cargoDetailsChange=false;
-    this.loadTypeChange=true;
-  }
+  // }
+  // loadTypeSelect()
+  // {
+  //   this.incotermsChange=false;
+  //   this.commodityChange=false;
+  //   this.cargoReadinessChange=false;
+  //   this.cargoDetailsChange=false;
+  //   this.loadTypeChange=true;
+  // }
 
-  cargoDetailsSelect()
-  {
-    this.incotermsChange=false;
-    this.commodityChange=false;
-    this.cargoReadinessChange=false;
-    this.loadTypeChange=false;
-    this.cargoDetailsChange=true;
-  }
+  // cargoDetailsSelect()
+  // {
+  //   this.incotermsChange=false;
+  //   this.commodityChange=false;
+  //   this.cargoReadinessChange=false;
+  //   this.loadTypeChange=false;
+  //   this.cargoDetailsChange=true;
+  // }
 
   radioClick(value:any){
     if(value==='Yes'){
@@ -157,8 +157,24 @@ removeRow1(index){
 
 }
 
-rates(){
-  this.router.navigate(["instantRates/rates"]);
+incoterms(){
+  this.router.navigate(["/instantRates/incoterms"]);
+}
+
+commodity(){
+  this.router.navigate(["instantRates/commodity"]);
+}
+
+
+cargoReadiness(){
+  this.router.navigate(["instantRates/cargoReadiness"]);
+}
+
+loadType(){
+  this.router.navigate(["instantRates/loadType"]);
+}
+routeDetails(){
+  this.router.navigate(["instantRates/route-details"]);
 }
  
 

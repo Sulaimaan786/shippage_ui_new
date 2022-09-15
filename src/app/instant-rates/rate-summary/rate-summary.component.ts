@@ -30,6 +30,10 @@ export class RateSummaryComponent implements OnInit {
       });
   }
 
+
+  booking(){
+    this.router.navigate(["instantRates/booking"]);
+  }
   
 
 }

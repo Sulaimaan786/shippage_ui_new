@@ -1,1 +1,151 @@
-<p>load-type works!</p>
+
+<section class="content">
+    <div class="content-block">
+      <div class="block-header" style="margin-top: 48px;">
+        <!-- breadcrumb -->
+        <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
+         <!-- <app-breadcrumb></app-breadcrumb>  -->
+      </div>
+      <div class="card " style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+          -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
+      <div class="container-fluid" >
+        <form class="m-12" >
+        <div class="row">
+      <div class="col-sm-3 " style="margin-top: 30px">
+                    
+        <div class="col-xl-3 " style="margin-top: 150px ;margin-left: 30px;">
+          <button class="sideButton " (click)="incoterms()" ><i class="fa fa-home"></i> Incoterms</button>
+          </div>
+          <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+            <button class="sideButton " (click)="commodity()" ><i class="fa fa-home"></i> Commodity</button>
+            </div>
+            <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+              <button class="sideButton " (click)="cargoReadiness()" ><i class="fa fa-home"></i> Cargo Readiness</button>
+              </div>
+              <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+                <button class="sideButton " (click)="loadType()" style="background-color: #225F75!important;color:white" ><i class="fa fa-home"></i> Load Type</button>
+                </div>
+               
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" >
+                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Load Type</h1> 
+                       <div class = "row">
+                              <!-- Cargo Readiness -->
+                    <!-- <div class="form-group" > -->
+                      <div class="card" style="border-radius: 25px;width: 100%;height:100%;padding-top:40px;padding-right: 20px;padding-bottom: 40px;"> 
+                         
+                        <div class="row" >
+                            <div style="overflow-x:auto;">
+                              <table >
+                                <tr >
+                                  <th >Equipment Type </th>
+                                   <th >Quantity</th>
+                                   <th >Cargo Weight</th>
+                                   <th></th>
+                                   <th ></th>
+                           
+                                   </tr>
+                               
+                                  
+            
+                          <ng-container 
+                          *ngFor="let loadTypeDetailBean of docForm.get('loadTypeDetailBean')['controls']; let i = index">
+                          <tbody [formGroup]="loadTypeDetailBean" >
+                            
+                            <tr >
+                             
+                              <td  >
+                                         
+                                <mat-form-field  appearance="outline" >
+                                    <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required>
+                                    <mat-option value="volvo">General</mat-option>
+                                    <mat-option value="saab">Rate Contract</mat-option>
+                                    <mat-option value="mercedes">Consignment</mat-option>
+                                    
+                                  </mat-select>
+                                </mat-form-field>
+                              </td>
+                            <td >
+                                <mat-form-field  appearance="outline">
+                                  <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
+                                    <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
+                                    name="quantity{{i}}" formControlName="quantity" >
+                                  <!-- </div><br> -->
+                                  
+                                </mat-form-field>
+                              </td>
+            
+                              <td >
+                                <mat-form-field  appearance="outline">
+                                  <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
+                                    <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1"
+                                    name="cargoWeight{{i}}" formControlName="cargoWeight">
+                                  <!-- </div><br> -->
+                                </mat-form-field> 
+                              </td>
+                              <td style="padding-bottom: 25px;
+                              padding-left: 15px;">
+                                     
+                                <button mat-mini-fab color="warn" (click)="removeRow(i)" >
+                                  <mat-icon class="col-white"  >remove</mat-icon>
+                                </button></td>
+                                
+                                <td style="padding-bottom: 25px;
+                                padding-left: 15px;">         
+                                  
+                                  <button mat-mini-fab color="primary" (click)="addRow()">
+                                    <mat-icon class="col-white">add</mat-icon>
+                                  </button>
+                                </td>
+                              
+                              </tr>
+                          </tbody>
+                          </ng-container>
+                          </table>
+                          </div>
+                          </div>
+            
+                        <!-- detailed row -->
+                                        <div class="row" >
+                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                            <p style="text-align:center;margin-top:28px;margin-bottom:20px">*Per container by kgs</p>
+                                          </div>
+                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                              
+                                            <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a>
+                                          </div>
+                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                            <button mat-raised-button color="primary" class="buttonCSS" style="text-align:center;margin-top:20px;margin-bottom:20px;margin-left: 40px;">Done</button>
+                                            
+                                          </div>
+                                        </div>
+                             
+                         
+                            
+                            
+                            
+                          </div>
+                         </div>
+                    </div>
+    </div>
+    </form>
+    </div>
+    <div class="row">
+             
+                
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 40px;">
+        <button mat-mini-fab color="primary" (click)="cargoReadiness()" >
+          <mat-icon class="col-white" >arrow_back_ios</mat-icon>
+        </button>
+      </div> 
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 40px;">
+          <button   class="btn-space" mat-raised-button (click)="rates()"
+          color="primary" class="buttonCSS" style="float: right;" >Next</button>
+          
+           </div>
+      
+      </div> 
+    </div>
+    
+      </div>
+      </section>

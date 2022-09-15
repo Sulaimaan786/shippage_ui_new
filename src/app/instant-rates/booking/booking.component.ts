@@ -19,5 +19,9 @@ export class BookingComponent implements OnInit {
     this.router.navigate(["instantRates/welcome-page"]);
   }
 
+  bookingShipment(){
+    this.router.navigate(["instantRates/bookingShipment"]);
+  }
+
 
 }
