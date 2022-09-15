@@ -5,12 +5,18 @@ import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { InstantRatesService } from '../instant-rates.service';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { InstantRatesResultBean } from '../instant-rates-result-bean';
 @Component({
   selector: 'app-incoterms',
   templateUrl: './incoterms.component.html',
   styleUrls: ['./incoterms.component.sass']
 })
 export class IncotermsComponent implements OnInit {
+  incotermList=[];
+
   
   docForm: FormGroup;
   incotermsChange:boolean=false;
@@ -23,7 +29,10 @@ export class IncotermsComponent implements OnInit {
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
-    private router: Router,private responsive: BreakpointObserver,
+    private router: Router,private httpService: HttpServiceService,
+    
+    private instantRatesService:InstantRatesService,
+    private responsive: BreakpointObserver,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
@@ -48,6 +57,16 @@ export class IncotermsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+
+    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.incoterms).subscribe(
+      (data) => {
+       
+        this.incotermList = data.ltermslist;
+      },
+     
+    );
+
     this.incotermsChange=true;
 
     this.responsive.observe(Breakpoints.Handset)

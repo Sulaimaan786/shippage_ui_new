@@ -42,6 +42,7 @@ import { LoadTypeComponent } from './load-type/load-type.component';
 import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
 
 import { BookingComponent } from './booking/booking.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
@@ -91,6 +92,8 @@ import { BookingComponent } from './booking/booking.component';
     DragDropModule,
     MatProgressSpinnerModule,
     // FlexLayoutModule,
+    NgMultiSelectDropDownModule.forRoot()
+
   ]
 })
 export class InstantRatesModule { }

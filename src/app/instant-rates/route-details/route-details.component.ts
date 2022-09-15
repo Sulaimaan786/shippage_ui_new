@@ -1,31 +1,44 @@
-import { Component, OnInit,Renderer2,Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
-import { BreakpointObserver } from "@angular/cdk/layout";
-import { Breakpoints } from "@angular/cdk/layout";
-import { element } from 'protractor';
-import { DOCUMENT } from "@angular/common";
+import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { InstantRatesResultBean } from '../instant-rates-result-bean';
+import { InstantRatesService } from '../instant-rates.service';
+
+
 @Component({
   selector: 'app-route-details',
   templateUrl: './route-details.component.html',
   styleUrls: ['./route-details.component.sass']
 })
 export class RouteDetailsComponent implements OnInit {
+  
+  dropdownList=[];
+  docForm: FormGroup;
+  
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private route: ActivatedRoute,
-    private router: Router,private responsive: BreakpointObserver,
-    private renderer: Renderer2,) {}
+  constructor(private route: ActivatedRoute,
+    private router: Router,private httpService: HttpServiceService,
+    private instantRatesService:InstantRatesService,
+    private fb: FormBuilder
+    ) {} 
   ngOnInit() {
-    this.responsive.observe(Breakpoints.Handset)
-      .subscribe(result => {
 
-        if (result.matches) {  
-          this.renderer.addClass(this.document.body,"content-block")
-        }else{ 
-          this.renderer.removeClass(this.document.body,"content-block")
-        }
-      });
+    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
+      (data) => {
+       
+        this.dropdownList = data.lInstantRatesBean;
+      },
+     
+    );
+    this.docForm = this.fb.group({
+  
+      totalSecondRow: [""],
+      grandTotal: [""],
+
+      
+    });
+   
   }
   fcl(){
    this.router.navigate(["/instantRates/route-details"]);
