@@ -174,3 +174,32 @@
 a{
     text-decoration: none;
 }
+
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    color:rgb(161 161 161);
+   background-color: #fefeff !important; 
+   height:60%;
+   border-radius: 4px!important; 
+   box-shadow: 0px 2px 13px -6px rgb(0 0 0 / 67%) !important;
+   }
+
+   .mat-form-field {
+    font-size: 12px !important;
+    // font-family: 'Times New Roman', Times, serif;
+    // font-style: italic;
+    
+    height:20%;
+    
+}
+
+.mat-form-field-appearance-outline .mat-form-field-label {
+    font-size: 12x !important;
+    top: 1.84375em  !important;
+     height: 80%;
+    
+}
+
+   .inputTxt{
+       font-size:15px !important;
+       padding-bottom: 9% !important;
+   }
