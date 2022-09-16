@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DataStorageService } from 'src/app/auth/data-storage';
-
+import * as moment from "moment";
 @Component({
   selector: 'app-cargo-readiness',
   templateUrl: './cargo-readiness.component.html',
@@ -12,21 +12,18 @@ export class CargoReadinessComponent implements OnInit {
 
   calendar:boolean=false;
   docForm: FormGroup;
-  readiness: any;
-
+  selectedDate: any;
+  readiness:any;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,
     private router: Router) {
-      this.docForm = this.fb.group({
-        readiness:[""],
-        
-     })
-  
-  
      }
 
   ngOnInit(): void {
-    
+    this.docForm = this.fb.group({
+      readiness:[""],
+      selectedDate:[""]
+   })
   }
   radioClick(value:any){
     if(value=='Yes'){
@@ -43,7 +40,8 @@ export class CargoReadinessComponent implements OnInit {
 
   onSelect(event){
     console.log(event);
-    this.readiness = event;
+    this.docForm.patchValue({selectedDate:moment(event).format('DD/MM/YYYY')});
+    console.log(this.docForm.value);
   }
 
   

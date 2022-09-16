@@ -36,7 +36,7 @@
                          
                           <div class="row" style="margin-left: 55px;">
                             <div class="col-md-5"  > 
-                              <input type="radio" id="readyToMove" name="calendar" (change)="radioClick('No')"  value="readyToMove" 
+                              <input type="radio" id="readyToMove" name="readiness" (change)="radioClick('No')"  value="1" 
                               formControlName="readiness" > <label for="readyToMove">Ready</label>
                               
                             </div> 
@@ -47,11 +47,11 @@
                             <!-- <mat-divider [vertical]="true"></mat-divider> -->
                             <div class="col-md-5"  >
                                
-                              <input type="radio" id="" name="calendar" (change)="radioClick('Yes')" value="calendar"
+                              <input type="radio" id="" name="readiness" (change)="radioClick('Yes')" value="calendar"
                               formControlName="readiness"><label for="calendar">Calendar</label>
 
                               
-                                <mat-card *ngIf="calendar" >
+                                <mat-card *ngIf="calendar" > 
                                   <mat-calendar
                                     [selected]="selectedDate"
                                     (selectedChange)="onSelect($event)"

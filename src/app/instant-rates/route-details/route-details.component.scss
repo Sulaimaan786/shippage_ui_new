@@ -1,0 +1,118 @@
+.alignimg{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.card{
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: 1px solid #f2f4f9;
+    border-radius: 25px !important;
+    box-shadow: 0 0 10px 0 rgb(183 192 206 / 20%);
+    -webkit-box-shadow: 0 0 10px 0 rgb(183 192 206 / 20%);
+}
+
+    :host ::ng-deep.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    justify-content: space-evenly;
+    }
+.blue{
+    color:#225f75 !important;
+}
+.example-button-row {
+  text-align: center;
+  width: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0
+}
+
+:host ::ng-deep.buttonCSS{
+  padding: 4px 24px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #225F75!important;
+  border-radius: 25px;
+  width:120px;
+}
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+  background-color: #225f75;
+  margin-right: 20px;
+
+}
+// sign in field legend to border gap
+:host ::ng-deep.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-outline-gap {
+  border-top-color: #225f75 !important;
+}
+
+
+// disply none for the field legend
+
+:host ::ng-deep.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill+.mat-form-field-label-wrapper .mat-form-field-label {
+  display: none !important;
+  transition: none;
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none;
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none;
+}
+
+:host ::ng-deep.mat-form-field-subscript-wrapper {
+  font-size: 75%;
+  margin-top: -2.333333em !important;
+  top: calc(100% - 1.7916666667em);
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: block !important;
+}
+
+:host ::ng-deep.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none !important;
+}
+
+
+.mb-2 {
+  margin-bottom: -1.5rem!important;
+}
+
+:host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
+  color:#225f75;
+ background-color: #fefeff !important; 
+ //height:60%;
+ border-radius: 24px !important; 
+ box-shadow: 0px 2px 13px -6px rgb(0 0 0 / 67%) !important;
+ }
+
+
+ :host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-start{
+  border-radius: 24px 0 0 24px !important;
+  min-width: 28px !important;
+}
+
+:host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius:0 24px  24px 0 !important; 
+    min-width: 28px !important; 
+}

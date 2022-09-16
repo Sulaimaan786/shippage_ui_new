@@ -14,7 +14,7 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 @Component({
   selector: 'app-route-details',
   templateUrl: './route-details.component.html',
-  styleUrls: ['./route-details.component.sass']
+  styleUrls: ['./route-details.component.scss']
 })
 export class RouteDetailsComponent implements OnInit {
   
