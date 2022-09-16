@@ -6,6 +6,8 @@ import { InstantRatesService } from '../instant-rates.service';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DataStorageService } from 'src/app/auth/data-storage';
+import { DOCUMENT } from "@angular/common";
 
 
 @Component({
@@ -16,9 +18,10 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export class CommodityComponent implements OnInit {
 
   commodityL:[];
-    dropdownList = [];
-    selectedItems = [];
-    dropdownSettings:IDropdownSettings;
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings:IDropdownSettings;
+
   docForm: FormGroup;
   incotermsChange:boolean=false;
   commodityChange:boolean=false;
@@ -27,12 +30,15 @@ export class CommodityComponent implements OnInit {
   loadTypeChange:boolean=false;
   cargoDetailsChange=false;
   loadTypeDetailBean:[];
+  commodityDetails:any;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
+    public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
     private instantRatesService:InstantRatesService
     ) {
-    control:[""]
+    control:[""];
+    commodity:[""];
    }
 
   ngOnInit(): void {
@@ -81,8 +87,13 @@ commodity(){
 }
 
 
+
+
 cargoReadiness(){
   this.router.navigate(["instantRates/cargoReadiness"]);
+  // this.commodityDetails.push(this.docForm.value)
+  this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
+  console.log("Form Value", this.docForm.value);
 }
 
 loadType(){

@@ -57,7 +57,7 @@
                             <mat-form-field class="example-full-width form-control-sm" appearance="outline"  style="width: 450px;">
                               <mat-label>Incoterms</mat-label>
                             
-                               <mat-select formControlName="purchaseMethod" class="inputTxt" required>
+                               <mat-select formControlName="incoterms" class="inputTxt" required>
                                 
                                 <mat-option *ngFor="let title of incotermList" [value]="title.termid" required>
                                   {{title.text}}

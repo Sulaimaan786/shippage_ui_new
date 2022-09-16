@@ -10,32 +10,42 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 })
 export class CargoReadinessComponent implements OnInit {
 
-  calendar:boolean=true;
-  docForm:FormGroup;
-  readyToMove:any;
-  selectedDate:Date;
+  calendar:boolean=false;
+  docForm: FormGroup;
+  readiness: any;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
-    private router: Router,public dataStorage:DataStorageService) {
-    }
+    public dataStorage :DataStorageService,
+    private router: Router) {
+      this.docForm = this.fb.group({
+        readiness:[""],
+        
+     })
+  
+  
+     }
 
   ngOnInit(): void {
-     
-    this.docForm = this.fb.group({
-      readyToMove: [""],
-      selectedDate: [""],
-    });
+    
   }
   radioClick(value:any){
-    if(value==='Yes'){
+    if(value=='Yes'){
     this.calendar=true;
+    }
+    else if(value==='No')
+    {
+      this.calendar=false; 
     }
     
   }
+
+
+
   onSelect(event){
     console.log(event);
-    this.selectedDate= event;
+    this.readiness = event;
   }
+
   
   
 incoterms(){
@@ -52,10 +62,9 @@ cargoReadiness(){
 }
 
 loadType(){
-  this.dataStorage.setReadinessDetails(JSON.stringify(this.docForm.value));
-  console.log(this.docForm.value);
   this.router.navigate(["instantRates/loadType"]);
-
+  this.dataStorage.setReadinessDetails(JSON.stringify(this.docForm.value));
+  console.log("Form Value", this.docForm.value);
 }
 
 }

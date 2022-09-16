@@ -36,33 +36,30 @@
                          
                           <div class="row" style="margin-left: 55px;">
                             <div class="col-md-5"  > 
-                              <mat-radio-group formControlName="readyToMove" >
-                                <mat-radio-button checked value="1" style="margin-top: 15px;">Ready to move</mat-radio-button>
-                              </mat-radio-group>
-                                <!-- <mat-radio-button > 
-                                  <input type="radio" formControlName="readyToMove" value="1">
-                                  <p style="margin-top: 15px;">Ready to move</p>
-                                </mat-radio-button> -->
+                              <input type="radio" id="readyToMove" name="calendar" (change)="radioClick('No')"  value="readyToMove" 
+                              formControlName="readiness" > <label for="readyToMove">Ready</label>
+                              
                             </div> 
                             <div class="col-md-2" style="border-left: 1px solid #225F75" >
                               
                             </div> 
                            <!-- <div class="vl"></div>  -->
                             <!-- <mat-divider [vertical]="true"></mat-divider> -->
-                            <div class="col-md-5" style="margin-top: 15px;" >
-                                 
-                                <mat-radio-button value='Yes'checked (change)="radioClick('Yes')"> Calendar
-                                </mat-radio-button>
+                            <div class="col-md-5"  >
+                               
+                              <input type="radio" id="" name="calendar" (change)="radioClick('Yes')" value="calendar"
+                              formControlName="readiness"><label for="calendar">Calendar</label>
 
+                              
                                 <mat-card *ngIf="calendar" >
                                   <mat-calendar
                                     [selected]="selectedDate"
                                     (selectedChange)="onSelect($event)"
                                   ></mat-calendar>
+                                  
                                 </mat-card>
-                             <!-- <mat-card class="demo-inline-calendar-card" formControlName="date" *ngIf="calendar">
-                              <mat-calendar formControlName="date" [(selected)]="selected"></mat-calendar>
-                            </mat-card> -->
+                                
+                             
                             
                             </div> 
                              

@@ -9,6 +9,7 @@ import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRatesService } from '../instant-rates.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
+import { DataStorageService } from 'src/app/auth/data-storage';
 @Component({
   selector: 'app-incoterms',
   templateUrl: './incoterms.component.html',
@@ -16,6 +17,7 @@ import { InstantRatesResultBean } from '../instant-rates-result-bean';
 })
 export class IncotermsComponent implements OnInit {
   incotermList=[];
+  incotermsDetails=[];
 
   
   docForm: FormGroup;
@@ -28,7 +30,7 @@ export class IncotermsComponent implements OnInit {
   loadTypeDetailBean:[];
 
 
-  constructor(private fb:FormBuilder,private route: ActivatedRoute,
+  constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
     
     private instantRatesService:InstantRatesService,
@@ -37,6 +39,7 @@ export class IncotermsComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
       control:[""],
+      incoterms:[""],
 
       loadTypeDetailBean:this.fb.array([
         this.fb.group({
@@ -54,6 +57,8 @@ export class IncotermsComponent implements OnInit {
         })
       ])
     })
+
+    
    }
 
   ngOnInit(): void {
@@ -182,6 +187,9 @@ incoterms(){
 
 commodity(){
   this.router.navigate(["instantRates/commodity"]);
+  this.incotermsDetails.push(this.docForm)
+    this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
+    console.log("Form Value", this.docForm.value);
 }
 
 
