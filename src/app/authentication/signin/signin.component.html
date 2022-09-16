@@ -28,7 +28,7 @@
                   <mat-label>Email / User Name</mat-label>
                   <input type="text"  class="inputTxt" matInput formControlName="username"/>
                   <mat-icon matSuffix style="margin-top: -50px; position: absolute; margin-left: -29px;">face</mat-icon>
-                  <mat-error *ngIf="authForm.get('username').hasError('required')">
+                  <mat-error style="padding-top: 35px;" *ngIf="authForm.get('username').hasError('required')">
                     Email / User Name is required
                   </mat-error>
                 </mat-form-field>
@@ -67,7 +67,7 @@
                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon style="margin-top: -50px; position: absolute;margin-left: -29px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </a>
-                  <mat-error *ngIf="authForm.get('password').hasError('required')">
+                  <mat-error style="padding-top: 35px;" *ngIf="authForm.get('password').hasError('required')">
                     Password is required
                   </mat-error>
                 </mat-form-field>

@@ -14,6 +14,7 @@ export class WelcomePageComponent implements OnInit {
   padding : any;
   webpadding: any;
   mobilepadding: any;
+  mobileHeading:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -24,14 +25,17 @@ export class WelcomePageComponent implements OnInit {
    
     this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {
-        this.mobilepadding = '45px 75px 15px 75px';
-        this.webpadding = '75px 75px 75px 75px';
+        this.mobilepadding = '35px 65px 0px';
+        this.webpadding = '78px';
+        this.mobileHeading = false;
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")  
           this.padding = this.mobilepadding;
+          this.mobileHeading = true;
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block") 
           this.padding = this.webpadding;
+          this.mobileHeading = false;
         }
       });
   }

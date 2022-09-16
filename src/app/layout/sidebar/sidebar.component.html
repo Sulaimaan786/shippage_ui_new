@@ -53,17 +53,28 @@
            </ul>
           </li> -->
          <li style="cursor:pointer">
-           <a class="" (click)="instantRates()" class="menu-top">
-             <i-feather name="home" class="sidebarIcon"></i-feather>
-             <span class="hide-menu">Instant Rates
-             </span>
+           <a class="" (click)="instantRates()" class="menu-top">  
+             <img src="assets/icons/Asset 27.png" style="float:left;" width="18" height="18">
+             <span class="hide-menu">Instant Rates</span>
            </a>
-         </li> 
+          </li> 
+           <li style="cursor:pointer">
+            <a class="" (click)="instantRates()" class="menu-top" >
+              <img src="assets/icons/Asset 35.png" style="float:left;" width="18" height="18"> 
+              <span class="hide-menu">Quote</span>
+            </a>
+         </li>  
+         <li style="cursor:pointer">
+          <a class="" (click)="instantRates()" class="menu-top" >
+            <img src="assets/icons/Asset 34.png" style="float:left;" width="18" height="18"> 
+              <span class="hide-menu">Shipment</span>
+          </a>
+       </li>
+        
           <li style="cursor:pointer">
            <a class="" (click)="logout()" class="menu-top" >
-             <i-feather name="log-out" class="sidebarIcon"></i-feather>
-             <span class="hide-menu">Logout
-             </span>
+            <img src="assets/icons/Asset 32.png" style="float:left;" width="18" height="18"> 
+            <span class="hide-menu">Settings</span>
            </a>
         </li>  
        </ul>
@@ -110,27 +121,28 @@
         [ngStyle]="{'justify-content' : 'space-evenly','align-items': 'center','display': 'flex'}"
         [perfectScrollbar]> 
         <li style="cursor:pointer">
-          <a class="" (click)="instantRates()" class="menu-top">
-            <i-feather name="home" style="color: #225f75;" class="sidebarIcon"></i-feather> 
+          <a class="" (click)="instantRates()" style="margin: 8px 0px 0px 0px !important;" class="menu-top">  
+            <img src="assets/icons/Asset 27.png" width="18" height="18">
+           </a>
+         </li> 
+          <li style="cursor:pointer">
+           <a class="" (click)="instantRates()" style="margin: 8px 0px 0px 0px !important;" class="menu-top" >
+             <img src="assets/icons/Asset 35.png" width="18" height="18"> 
+            </a>
+        </li>  
+        <li style="cursor:pointer">
+         <a class="" (click)="instantRates()" style="margin: 8px 0px 0px 0px !important;" class="menu-top" >
+           <img src="assets/icons/Asset 34.png" width="18" height="18"> 
           </a>
-        </li> 
+      </li>
+       
          <li style="cursor:pointer">
-          <a class="" (click)="instantRates()" class="menu-top" >
-            <i-feather name="log-out" style="color: #225f75;" class="sidebarIcon"></i-feather> 
-          </a>
-       </li>  
-       <li style="cursor:pointer">
-        <a class="" (click)="instantRates()" class="menu-top" >
-          <i-feather name="settings" style="color: #225f75;" class="sidebarIcon"></i-feather> 
-        </a>
-     </li>
-     <li style="cursor:pointer">
-      <a class="" (click)="logout()" class="menu-top" >
-        <i-feather name="settings" style="color: #225f75;" class="sidebarIcon"></i-feather> 
-      </a>
-     </li>
+          <a class="" (click)="logout()" style="margin: 8px 0px 0px 0px !important;" class="menu-top" >
+           <img src="assets/icons/Asset 32.png" width="18" height="18"> 
+           </a>
+       </li>
      <li style="cursor:pointer"> 
-        <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="32" height="32" alt="User">          
+        <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="30" height="30" alt="User">          
       </li>
       </ul>
     </div>
