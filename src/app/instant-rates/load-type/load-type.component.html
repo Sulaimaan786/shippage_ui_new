@@ -1,7 +1,7 @@
 
 <section class="content">
     <div class="content-block">
-      <div class="block-header" style="margin-top: 48px;">
+      <div class="block-header" style="margin-top: 22px;">
         <!-- breadcrumb -->
         <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
          <!-- <app-breadcrumb></app-breadcrumb>  -->
@@ -9,7 +9,7 @@
       <div class="card " style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
       <div class="container-fluid" >
-        <form class="m-12" >
+        <form class="m-12" [formGroup] = "docForm">
         <div class="row">
       <div class="col-sm-3 " style="margin-top: 30px">
                     
@@ -58,9 +58,9 @@
                                          
                                 <mat-form-field  appearance="outline" >
                                     <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required>
-                                    <mat-option value="volvo">General</mat-option>
-                                    <mat-option value="saab">Rate Contract</mat-option>
-                                    <mat-option value="mercedes">Consignment</mat-option>
+                                    <mat-option value="General">General</mat-option>
+                                    <mat-option value="Rate Contract">Rate Contract</mat-option>
+                                    <mat-option value="Consignment">Consignment</mat-option>
                                     
                                   </mat-select>
                                 </mat-form-field>

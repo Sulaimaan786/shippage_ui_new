@@ -11,7 +11,10 @@ import { DOCUMENT } from "@angular/common";
   styleUrls: ['./rates.component.sass']
 })
 export class RatesComponent implements OnInit {
-  values :any;
+  routeDetails :any;
+  cargoReady:any;
+  loadtype:any;
+  loadDetails:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -27,8 +30,16 @@ export class RatesComponent implements OnInit {
           this.renderer.removeClass(this.document.body,"content-block")
         }
       }); 
-      this.values =JSON.parse(this.dataStorage.getrouteDetails());
-      console.log("datas" +this.values.destination);
+      this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
+      console.log("route " +this.routeDetails.destination);
+
+      this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
+      console.log("ready  " +this.cargoReady.date);
+
+      this.loadtype = this.dataStorage.getLoadDetails();
+      this.loadDetails = JSON.parse(this.loadtype)
+      console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
+
   }
 
   rateSummary(){
