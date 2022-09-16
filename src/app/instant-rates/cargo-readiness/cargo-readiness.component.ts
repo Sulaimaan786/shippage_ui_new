@@ -40,6 +40,7 @@ export class CargoReadinessComponent implements OnInit {
 
   onSelect(event){
     console.log(event);
+    this.selectedDate= event;
     this.docForm.patchValue({selectedDate:moment(event).format('DD/MM/YYYY')});
     console.log(this.docForm.value);
   }
