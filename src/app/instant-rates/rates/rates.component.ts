@@ -15,6 +15,8 @@ export class RatesComponent implements OnInit {
   cargoReady:any;
   loadtype:any;
   loadDetails:any;
+  incotermsValue:any;
+  commodityValues:any 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -32,6 +34,12 @@ export class RatesComponent implements OnInit {
       }); 
       this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
       console.log("route " +this.routeDetails.destination);
+
+      this.incotermsValue =JSON.parse(this.dataStorage.getIncotermsDetails());
+      console.log("datas" +this.incotermsValue.incoterms);
+
+      this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
+      console.log("datas" +this.commodityValues.commodity);
 
       this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
       console.log("ready  " +this.cargoReady.date);
