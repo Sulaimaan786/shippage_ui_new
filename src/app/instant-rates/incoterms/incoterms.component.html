@@ -38,23 +38,15 @@
                       padding-left: 80px;padding-right: 120px;padding-bottom: 20px;" > 
                       <div class="row">
                         
-                         <!-- <div class="row" style="margin-left: 55px;margin-top:20px">
-                              <div class="col-md-6"  >
-                                <mat-radio-group formControlName="control">
-                                  <mat-radio-button   value="CIF" style="margin-left:14px"> <p style="margin-top: 15px;"> <span style="font-size: 20px;"> EXW</span>  (Ex-Work)</p></mat-radio-button><br>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> FOB </span> (Free On Board)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> FCA </span> (Free Carrier)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> CIF</span>  (Cost, Insurance and Freight)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> CFR  </span> (Cost and Freight)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DAP </span> (Delivered at Place) </p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DAT </span> (Delivered Duty Terminal)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px"> DDP  </span> (Delivered Duty Paid)</p></mat-radio-button>
-                                  <mat-radio-button   value="CIF"> <p style="margin-top: 15px;"> <span style="font-size: 20px">DDU  </span> (Delivered Duty Unpaid)</p></mat-radio-button>
-  
+                         <div class="row" style="margin-left: 55px;margin-top:20px">
+                              <div class="col-md-5"  >
+                                <mat-radio-group formControlName="purchaseMethod">
+                                  <mat-radio-button   *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px"> <p style="margin-top: 15px;"> <span style="font-size: 15px;">  {{title.text}}</span></p></mat-radio-button><br>
+                                
                                   </mat-radio-group>
                               </div>
-                            </div> -->
-                            <mat-form-field class="example-full-width form-control-sm" appearance="outline"  style="width: 450px;">
+                            </div>
+                            <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline"  style="width: 450px;">
                               <mat-label>Incoterms</mat-label>
                             
                                <mat-select formControlName="incoterms" class="inputTxt" required>
@@ -64,7 +56,7 @@
                                 </mat-option>
         
                                </mat-select>
-                            </mat-form-field>
+                            </mat-form-field> -->
                             
                          </div>
                         </div>
