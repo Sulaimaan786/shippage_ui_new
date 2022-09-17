@@ -4,6 +4,7 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
+import { DataStorageService } from 'src/app/auth/data-storage';
 @Component({
   selector: 'app-shipment-mode',
   templateUrl: './shipment-mode.component.html',
@@ -20,7 +21,7 @@ export class ShipmentModeComponent implements OnInit {
  
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,public dataStorage: DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,) {}
   ngOnInit() {
@@ -46,16 +47,19 @@ export class ShipmentModeComponent implements OnInit {
          }
       });
   }
-  fcl(){
+  fcl(value:any){
    this.router.navigate(["/instantRates/route-details"]);
+   this.dataStorage.setShipmentDetails(JSON.stringify(value));
+   console.log(value);
   }
 
   back(){
     this.router.navigate(["instantRates/welcome-page"]);
   }
 
-  lcl(){
+  lcl(value:any){
     this.router.navigate(["/authentication/signup"]);
-   }
+    this.dataStorage.setShipmentDetails(JSON.stringify(value));
+    console.log(value);   }
     
 }

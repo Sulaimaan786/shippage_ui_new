@@ -4,6 +4,7 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
+import { DataStorageService } from 'src/app/auth/data-storage';
 
 @Component({
   selector: 'app-welcome-page',
@@ -17,7 +18,7 @@ export class WelcomePageComponent implements OnInit {
   mobileHeading:any;
   innerHeight:any;
   constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document,public dataStorage:DataStorageService,
     private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,) {}
@@ -40,12 +41,16 @@ export class WelcomePageComponent implements OnInit {
       });
   }
  
-  ocean(){
+  ocean(value:any){
    this.router.navigate(["/instantRates/shipment-mode"]);
+   this.dataStorage.setWelcomeDetails(JSON.stringify(value));
+   console.log(value);
   }
 
-  air(){
+  air(value:any){
     this.router.navigate(["/instantRates/air-route"]);
+    this.dataStorage.setWelcomeDetails(JSON.stringify(value));
+    console.log(value);
    }
     
 }

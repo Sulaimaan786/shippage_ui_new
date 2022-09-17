@@ -6,6 +6,8 @@ const COMMODITYDETAIL = 'CommodityToken';
 const CARGODETAIL = 'CargoToken';
 const LOADTYPEDETAIL = 'LoadTypeToken';
 const CARGOREADINESS = 'CargoReadinessToken';
+const WELCOMEPAGE = 'WelcomeToken';
+const SHIPMENTMODE = 'ShipmentModeToken';
 
 const USERNAME_KEY = 'AuthUsername';
 @Injectable({
@@ -83,4 +85,27 @@ public setIncotermsDetails(data: any) {
   public getLoadDetails(): any {
     return sessionStorage.getItem(LOADTYPEDETAIL);
   }
+
+  //welcomepage
+
+  public setWelcomeDetails(data: any) {
+    window.sessionStorage.removeItem(WELCOMEPAGE);
+    window.sessionStorage.setItem(WELCOMEPAGE, data);
+  }
+
+  public getWelcomeDetails(): any {
+    return sessionStorage.getItem(WELCOMEPAGE);
+  }
+
+  //modeOfShippment
+
+  public setShipmentDetails(data: any) {
+    window.sessionStorage.removeItem(WELCOMEPAGE);
+    window.sessionStorage.setItem(WELCOMEPAGE, data);
+  }
+
+  public getShipmentDetails(): any {
+    return sessionStorage.getItem(WELCOMEPAGE);
+  }
+
 }

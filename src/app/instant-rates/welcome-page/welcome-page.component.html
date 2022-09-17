@@ -13,7 +13,7 @@
               <h2 *ngIf="!mobileHeading" style="text-align: center;color:#225f75;padding-top: 30px;">Welcome to the World of Digital Logistics Solution</h2>
               <h2 *ngIf="mobileHeading" style="text-align: center;color:#225f75;padding-top: 30px;">Mode of Freight</h2>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
-                <div class="card" (click)="ocean();"> 
+                <div class="card" (click)="ocean('Sea');"> 
                   <div class="body"  style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
                       <div class="row"> 
@@ -28,7 +28,7 @@
                 </div>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
-                <div class="card" (click)="air();"> 
+                <div class="card" (click)="air('Air');"> 
                   <div class="body" style="background:#225f75;padding-bottom: 0px;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;">
                       <div class="row"> 

@@ -17,7 +17,7 @@
            <div class="row"> 
               <h2 style="text-align: center;color:#225f75;padding-top: 30px;">Mode of Shipment</h2>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
-                <div class="card" (click)="fcl();"> 
+                <div class="card" (click)="fcl('FCL');"> 
                   <div class="body"  style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" style="background:#225f75;" [ngStyle]="{'padding': cardpadding}">
                       <div class="row"> 
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
-                <div class="card" (click)="lcl();"> 
+                <div class="card" (click)="lcl('LCL');"> 
                   <div class="body" style="background:#225f75;border-radius: 25px;">
                     <div class="card-bnner" [ngStyle]="{'background' : '#225f75','padding': cardpadding}">
                     <!-- style="background:#225f75;padding: 65px 0px 33px 0px"> -->
