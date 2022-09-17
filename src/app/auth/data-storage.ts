@@ -100,12 +100,12 @@ public setIncotermsDetails(data: any) {
   //modeOfShippment
 
   public setShipmentDetails(data: any) {
-    window.sessionStorage.removeItem(WELCOMEPAGE);
-    window.sessionStorage.setItem(WELCOMEPAGE, data);
+    window.sessionStorage.removeItem(SHIPMENTMODE);
+    window.sessionStorage.setItem(SHIPMENTMODE, data);
   }
 
   public getShipmentDetails(): any {
-    return sessionStorage.getItem(WELCOMEPAGE);
+    return sessionStorage.getItem(SHIPMENTMODE);
   }
 
 }
