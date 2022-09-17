@@ -28,6 +28,13 @@ export class IncotermsComponent implements OnInit {
   loadTypeChange:boolean=false;
   cargoDetailsChange=false;
   loadTypeDetailBean:[];
+  count:any;
+  cardpadding:any;
+  padleft:any;
+  butTopmar:any;
+  butLeftmar:any;
+  height:any;
+  firstbutton:any;
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -73,14 +80,28 @@ export class IncotermsComponent implements OnInit {
     );
 
     this.incotermsChange=true;
-
+    
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
+          this.count = '1';
+          this.cardpadding ='45px 8px 15px 8px';
+          this.padleft = '55px';
+          this.butTopmar = '20px';
+          this.firstbutton = '20px'
+          this.butLeftmar = '80px';
+          this.height = '100%'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
+          this.count = '2';
+          this.cardpadding ='45px 50px 15px 20px';
+          this.padleft = '80px';
+          this.butTopmar = '20px';
+          this.firstbutton = '150px'
+          this.butLeftmar = '30px';
+          this.height = '80%'
         }
       });
     }

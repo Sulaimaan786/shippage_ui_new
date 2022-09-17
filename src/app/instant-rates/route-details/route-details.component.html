@@ -7,7 +7,11 @@
         <div class="col-xl-12 ">
           <div class="card" style="background: #ebebeb55;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);">
-            <div class="row">
+           <div *ngIf="topback" (click)="back()" style="position: absolute;top: 34px;left: 34px;"> 
+            <mat-icon class="blue">arrow_back_ios</mat-icon> 
+          </div>
+           
+           <div class="row">
               <h2 style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;">Route Details</h2>
                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
                 <img src="assets/images/products/redpin.gif" alt="" style="width: 45px;">
@@ -23,7 +27,7 @@
                     </mat-form-field>
                   
               </div>
-              <div class="col-xl-3 col-lg-3 col-md-5 col-sm-5" style="padding-left: 0%;margin-top: -11px;padding-bottom: 10%;">
+              <div *ngIf = "hideship" class="col-xl-3 col-lg-3 col-md-5 col-sm-5" style="padding-left: 0%;margin-top: -11px;padding-bottom: 10%;">
                 <img src="assets/icons/wave2.png" alt="" style="width: 150;">
             </div> 
              <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12">
@@ -41,7 +45,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+              <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
                 <button mat-mini-fab color="primary" (click)="back()">
                   <mat-icon class="col-white" >arrow_back_ios</mat-icon>
                 </button>
