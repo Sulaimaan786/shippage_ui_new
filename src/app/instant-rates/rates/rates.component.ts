@@ -81,10 +81,11 @@ export class RatesComponent implements OnInit {
       // }
       //console.log("datas" +this.commodityValues[].commodity);
 
-   //Load type
+   
       this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
       console.log("ready  " +this.cargoReady.readiness);
-
+      console.log("ready  " +this.cargoReady.selectedDate);
+//Load type
       this.loadtype = this.dataStorage.getLoadDetails();
       this.loadDetails = JSON.parse(this.loadtype)
       console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);

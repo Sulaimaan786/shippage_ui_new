@@ -121,4 +121,18 @@ loadType(){
     this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value));
     console.log(this.docForm.value);
   }
+  reset()
+  {
+    this.docForm = this.fb.group({
+      control:[""],
+
+      loadTypeDetailBean:this.fb.array([
+        this.fb.group({
+          equipmentType:[""],
+          quantity:[""],
+          cargoWeight:[""]
+        })
+      ]),
+    })
+  }
 }

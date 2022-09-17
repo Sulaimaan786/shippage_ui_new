@@ -54,8 +54,7 @@
                             
                             <tr >
                              
-                              <td  >
-                                         
+                              <td >                                         
                                 <mat-form-field  appearance="outline" >
                                     <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required>
                                     <mat-option value="20TK">20TK</mat-option>
@@ -109,15 +108,16 @@
             
                         <!-- detailed row -->
                                         <div class="row" >
-                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                                             <p style="text-align:center;margin-top:28px;margin-bottom:20px">*Per container by kgs</p>
                                           </div>
-                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                               
-                                            <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a>
+                                            <!-- <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a> -->
+                                            <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #225F75; background-color: white;">Reset</button>
                                           </div>
-                                          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                            <button mat-raised-button color="primary" class="buttonCSS" style="text-align:center;margin-top:20px;margin-bottom:20px;margin-left: 40px;">Done</button>
+                                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                            <button mat-raised-button color="primary" class="buttonCSS" style="">Done</button>
                                             
                                           </div>
                                         </div>
