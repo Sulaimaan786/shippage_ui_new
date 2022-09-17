@@ -39,7 +39,7 @@ export class IncotermsComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
       control:[""],
-      incoterms:[""],
+      incoterm:[""],
 
       loadTypeDetailBean:this.fb.array([
         this.fb.group({
@@ -83,7 +83,7 @@ export class IncotermsComponent implements OnInit {
           this.renderer.removeClass(this.document.body,"content-block")
         }
       });
-  }
+    }
 
 
   // incotermsSelect(){
