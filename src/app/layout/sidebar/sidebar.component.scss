@@ -39,82 +39,33 @@
     padding-left: 0rem;
 }
 
-// bottom bar
+:host ::ng-deep a {
+  color: #000000;
+  position: relative;
+  font-size: 14px;
+  display: block;
+  overflow: hidden;
+  line-height: 2rem;
+  padding: 9px 9px 9px 20px;
+  margin: 25px 0px 0px 0px !important;
 
+  &:hover,
+  &:active {
+    text-decoration: none !important;
+    background-color: #f0f3fb;
+  }
 
+  small {
+    position: absolute;
+    top: calc(50% - 7.5px);
+    right: 15px;
+  }
 
-// @media (max-width: 1169px) {
-//     .navbar1{
-//         display: none !important;
-//     }
-//     .sidebar{
-//         display: block !important;
-//     }
-// }
-
-// @media (max-width: 800px) {
-
-//     .navbar1{
-//         display: none !important;
-//     }
-//     .sidebar{
-//         display: block !important;
-//     }
-// }
-
-// @media (max-width: 799px) {
-//     .navbar1{
-//         display: none !important;
-//     }
-//     .sidebar{
-//         display: block !important;
-//     }
-// }
-
-// @media (min-width: 768px) {
-//     .navbar1{
-//         display: none !important;
-//     }
-//     .sidebar{
-//         display: block !important;
-//     }
-// }
-
-// @media (max-width: 767px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-// }
-
-// @media (max-width: 600px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-// }
-
-// @media (max-width: 500px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-
-// }
-
-// @media (max-width: 420px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-
-// }
-
-// @media (max-width: 400px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-
-// }
-// @media (max-width: 350px) {
-//     .navbar1{
-//         display: block !important;
-//     }
-
-// }
+  span {
+    margin: 7px 0 7px 7px;
+    color: #333;
+    // font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
+  }
+}

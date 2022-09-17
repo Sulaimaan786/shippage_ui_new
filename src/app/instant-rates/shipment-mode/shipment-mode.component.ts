@@ -14,6 +14,9 @@ export class ShipmentModeComponent implements OnInit {
   webpadding: any;
   mobilepadding: any;
   topback:any;
+  cardbnner:any;
+  cardbnner1:any;
+  cardpadding:any;
  
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -24,17 +27,21 @@ export class ShipmentModeComponent implements OnInit {
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
-        this.mobilepadding = '45px 75px 15px 75px';
+        this.mobilepadding = '45px 65px  15px 65px';
         this.webpadding = '75px 75px 75px 75px';
+        this.cardbnner = '40px 0px 33px 0px';
+        this.cardbnner1 = '80px 0px 115px 0px;';
         this.topback = false;
  
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
-          this.padding = this.mobilepadding;
+           this.padding = this.mobilepadding;
+           this.cardpadding = this.cardbnner
           this.topback = true;
          }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
-          this.padding = this.webpadding;
+           this.padding = this.webpadding;
+           this.cardpadding = this.cardbnner
           this.topback = false;
          }
       });
