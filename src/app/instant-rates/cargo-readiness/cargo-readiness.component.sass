@@ -168,9 +168,19 @@ th, td
   padding-top: 10px
  
 .vertical 
-            border-left: 1px solid #225F75
-            height: 200px
-        
+  height: 200px
+
+@media screen and (max-width: 767px) 
+  .vertical 
+    
+    border-left: none
+    height: 1px
+    transform: translateX(-50%)
+    width: 500px
+    display: none
+
+
+  
 
 
 
