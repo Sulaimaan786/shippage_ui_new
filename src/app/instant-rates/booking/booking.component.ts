@@ -16,11 +16,11 @@ export class BookingComponent implements OnInit {
 
 
   back(){
-    this.router.navigate(["instantRates/welcome-page"]);
+    this.router.navigate(["instantRates/rates"]);
   }
 
   bookingShipment(){
-    this.router.navigate(["instantRates/bookingShipment"]);
+    this.router.navigate(["instantRates/rateSummary"]);
   }
 
 

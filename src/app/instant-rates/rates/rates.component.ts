@@ -51,7 +51,7 @@ export class RatesComponent implements OnInit {
   }
 
   rateSummary(){
-    this.router.navigate(["instantRates/rateSummary"]);
+    this.router.navigate(["instantRates/booking"]);
   }
  
 

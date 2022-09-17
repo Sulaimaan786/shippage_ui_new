@@ -34,12 +34,12 @@
                   <!-- <div class="form-group" *ngIf="incotermsChange"> -->
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" >
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Incoterms</h1> 
-                      <div class="card align-items-center" style="border-radius: 25px;width: 100%;padding-top: 20px;
-                      padding-left: 80px;padding-right: 120px;padding-bottom: 20px;" > 
+                      <div class="card align-items-center" style="border-radius: 24px;width: 100%;height:100%;padding-top: 24px;
+                      padding-left: 64px;padding-right: 64px;padding-bottom: 24px;" > 
                       <div class="row">
                         
-                         <div class="row" style="margin-left: 55px;margin-top:20px">
-                              <div class="col-md-5"  >
+                         <div class="row" >
+                              <div class="col-md-6"  >
                                 <mat-radio-group formControlName="purchaseMethod">
                                   <mat-radio-button   *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px"> <p style="margin-top: 15px;"> <span style="font-size: 15px;">  {{title.text}}</span></p></mat-radio-button><br>
                                 
