@@ -15,7 +15,7 @@ export class WelcomePageComponent implements OnInit {
   webpadding: any;
   mobilepadding: any;
   mobileHeading:any;
-
+  innerHeight:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,
@@ -39,6 +39,7 @@ export class WelcomePageComponent implements OnInit {
         }
       });
   }
+ 
   ocean(){
    this.router.navigate(["/instantRates/shipment-mode"]);
   }
