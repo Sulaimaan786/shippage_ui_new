@@ -15,6 +15,18 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 export class LoadTypeComponent implements OnInit {
   docForm: FormGroup;
   loadTypeDetailBean:[];
+  cardpadding:any;
+  padleft:any;
+  butTopmar:any;
+  butLeftmar:any;
+  height:any;
+  firstbutton:any;
+  topback:any;
+  nextbutton:any;
+  nxtbuttonright:any;
+  nxtbuttonBot:any;
+  buttonwidth:any;
+  cardBottom:any
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
@@ -47,11 +59,35 @@ export class LoadTypeComponent implements OnInit {
 
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
-
+        
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
+          this.cardpadding ='2px 8px 0px 8px';
+          this.padleft = '55px';
+          this.butTopmar = '20px';
+          this.firstbutton = '20px'
+          this.butLeftmar = '80px';
+          this.height = '90%';
+          this.nextbutton = '110px';
+          this.nxtbuttonright = '28%';
+          this.nxtbuttonBot = '3%';
+          this.topback = true;
+          this.buttonwidth = '160px';
+          this.cardBottom = '65px'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
+          this.cardpadding ='0px 50px 0px 20px';
+          this.padleft = '80px';
+          this.butTopmar = '20px';
+          this.firstbutton = '150px'
+          this.butLeftmar = '30px';
+          this.height = '80%'
+          this.nextbutton = '95px';
+          this.buttonwidth = '120px';
+         this.nxtbuttonright = '2%';
+         this.nxtbuttonBot = '1%';
+          this.topback = false;
+          this.cardBottom = '0px'
         }
       });
   }

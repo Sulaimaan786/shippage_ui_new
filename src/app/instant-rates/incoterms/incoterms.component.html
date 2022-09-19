@@ -7,7 +7,7 @@
       </div>
       <div class="row ">
         <div class="col-xl-12 ">
-          <div class="card " style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+          <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
               
              
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}">
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Incoterms</h1> 
-                      <div class="card align-items-center" style="border-radius: 24px;width: 100%;padding-top: 5px;
+                      <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;padding-top: 5px;
                       padding-right: 8px;"  [ngStyle] = "{'padding-left':padleft,'height':height}"> 
                       <div class="row">
                    
@@ -169,8 +169,8 @@
                     <mat-icon class="col-white" >arrow_back_ios</mat-icon>
                   </button>
                 </div> 
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-right: 3%;padding-bottom: 1%;margin-top: 20px;">
-                    <button   class="btn-space" mat-raised-button (click)="commodity()"
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">
+                    <button  [ngStyle]="{'width':buttonwidth}" class="btn-space" mat-raised-button (click)="commodity()"
                     color="primary" class="buttonCSS" style="float: right;" >Next</button>
                     
                      </div>

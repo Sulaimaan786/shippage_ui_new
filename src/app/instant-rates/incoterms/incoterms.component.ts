@@ -36,6 +36,11 @@ export class IncotermsComponent implements OnInit {
   height:any;
   firstbutton:any;
   topback:any;
+  cardBottom:any;
+  nextbutton:any;
+  nxtbuttonright:any;
+  nxtbuttonBot:any;
+  buttonwidth:any;
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -94,7 +99,12 @@ export class IncotermsComponent implements OnInit {
           this.firstbutton = '20px'
           this.butLeftmar = '80px';
           this.height = '90%';
+          this.cardBottom = '75px';
+          this.nextbutton = '65px';
+          this.nxtbuttonright = '28%';
+          this.nxtbuttonBot = '3%';
           this.topback = true;
+          this.buttonwidth = '160px';
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.count = '2';
@@ -104,6 +114,10 @@ export class IncotermsComponent implements OnInit {
           this.firstbutton = '150px'
           this.butLeftmar = '30px';
           this.height = '80%'
+          this.cardBottom = '24px'
+          this.nextbutton = '45px';
+         this.nxtbuttonright = '2%';
+         this.nxtbuttonBot = '1%';
           this.topback = false;
         }
       });

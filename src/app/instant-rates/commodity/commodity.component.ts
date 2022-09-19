@@ -45,6 +45,7 @@ export class CommodityComponent implements OnInit {
   nxtbuttonright:any;
   nxtbuttonBot:any;
   buttonwidth:any;
+  cardBottom:any;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
@@ -105,6 +106,7 @@ export class CommodityComponent implements OnInit {
        this.nxtbuttonBot = '3%';
        this.topback = true;
        this.buttonwidth = '160px';
+       this.cardBottom = '65px'
      }else{ 
        this.renderer.removeClass(this.document.body,"content-block")
        this.cardpadding ='0px 50px 15px 20px';
@@ -117,6 +119,7 @@ export class CommodityComponent implements OnInit {
        this.nxtbuttonright = '2%';
        this.nxtbuttonBot = '1%';
        this.topback = false;
+       this.cardBottom = '24px'
      }
    });
   }
