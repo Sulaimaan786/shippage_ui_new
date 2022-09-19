@@ -82,7 +82,7 @@ export class LoadTypeComponent implements OnInit {
           this.firstbutton = '150px'
           this.butLeftmar = '30px';
           this.height = '80%'
-          this.nextbutton = '95px';
+          this.nextbutton = '70px';
           this.buttonwidth = '120px';
          this.nxtbuttonright = '2%';
          this.nxtbuttonBot = '1%';

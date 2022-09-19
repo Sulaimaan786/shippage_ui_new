@@ -115,7 +115,7 @@ export class CommodityComponent implements OnInit {
        this.firstbutton = '150px';
        this.butLeftmar = '30px';
        this.height = '80%';
-       this.nextbutton = '70px';
+       this.nextbutton = '55px';
        this.nxtbuttonright = '2%';
        this.nxtbuttonBot = '1%';
        this.topback = false;
