@@ -1,7 +1,7 @@
 
 <section class="content">
-    <div class="content-block">
-      <div class="block-header" style="margin-top: 48px;">
+    <div class="content-block mobile-v-p">
+      <div class="block-header" style="margin-top: 22px;">
         <!-- breadcrumb -->
         <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
          <!-- <app-breadcrumb></app-breadcrumb>  -->
@@ -11,23 +11,26 @@
       <div class="container-fluid" >
         <form class="m-12" [formGroup]="docForm">
         <div class="row">
-      <div class="col-sm-3 " style="margin-top: 30px">
+      <div class="col-sm-3 ">
                     
-        <div class="col-xl-3 " style="margin-top: 150px ;margin-left: 30px;">
+        <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
           <button class="sideButton " (click)="incoterms()"><i class="fa fa-home"></i> Incoterms</button>
           </div>
-          <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+          <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
             <button class="sideButton " (click)="commodity()" style="background-color: #225F75!important;color:white"><i class="fa fa-home"></i> Commodity</button>
             </div>
-            <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+            <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
               <button class="sideButton " (click)="cargoReadiness()" ><i class="fa fa-home"></i> Cargo Readiness</button>
               </div>
-              <div class="col-xl-3 " style="margin-top: 20px;margin-left: 30px;">
+              <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
                 <button class="sideButton " (click)="loadType()"><i class="fa fa-home"></i> Load Type</button>
                 </div>
                
     </div>
-    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" style="padding: 45px 50px 15px 20px;" >
+    <div *ngIf="topback" (click)="incoterms()" style="position: absolute;top: 35px;left: 15px;"> 
+      <mat-icon class="blue">arrow_back_ios</mat-icon> 
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Commodity</h1> 
                       <div class="card align-items-center" style="border-radius: 24px;width: 100%;height:100%;padding-bottom: 24px;padding-top: 24px;padding-left:64px;padding-right:64px;" > 
                         <div class = "row">
@@ -64,13 +67,13 @@
     <div class="row">
              
                 
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+      <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
         <button mat-mini-fab color="primary" (click)="incoterms()">
           <mat-icon class="col-white" >arrow_back_ios</mat-icon>
         </button>
       </div> 
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
-          <button   class="btn-space" mat-raised-button (click)="cargoReadiness()"
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-6" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">
+          <button [ngStyle]="{'width':buttonwidth}"  class="btn-space" mat-raised-button (click)="cargoReadiness()"
           color="primary" class="buttonCSS" style="float: right;" >Next</button>
           
            </div>

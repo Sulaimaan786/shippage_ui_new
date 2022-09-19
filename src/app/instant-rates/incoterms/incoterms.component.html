@@ -14,7 +14,7 @@
               <div class="container-fluid" >
                 <form class="m-12" [formGroup]="docForm">
                 <div class="row">
-                  <div class="col-sm-3 " style="margin-top: 30px">
+                  <div class="col-sm-3 " style="margin-top: 0px">
                     
                       <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
                         <button class="sideButton" (click)="incoterms()"style="background-color: #225F75!important;color:white"><i class="fa fa-home"></i> Incoterms</button>
@@ -32,16 +32,19 @@
                   </div>
                   
                   <!-- <div class="form-group" *ngIf="incotermsChange"> -->
+                    <div *ngIf="topback" (click)="routeDetails()" style="position: absolute;top: 35px;left: 15px;"> 
+                      <mat-icon class="blue">arrow_back_ios</mat-icon> 
+                    </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}">
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Incoterms</h1> 
-                      <div class="card align-items-center" style="border-radius: 24px;width: 100%;padding-top: 24px;
+                      <div class="card align-items-center" style="border-radius: 24px;width: 100%;padding-top: 5px;
                       padding-right: 8px;"  [ngStyle] = "{'padding-left':padleft,'height':height}"> 
                       <div class="row">
                    
                               <div [ngStyle] = "{'column-count': count}" >
 
                                 <mat-radio-group formControlName="incoterm">
-                                  <mat-radio-button   *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px"> <p style="margin-top: 15px;    padding-left: 20px;
+                                  <mat-radio-button   *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px;margin-bottom: -8px;"> <p style="margin-top: 15px;    padding-left: 20px;
                                     padding-right: 40px;"> <span style="font-size: 15px;">  {{title.text}}</span></p></mat-radio-button><br>
                                 
                                   </mat-radio-group>
@@ -161,12 +164,12 @@
             <div class="row">
              
                 
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+                <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 20px;">
                   <button mat-mini-fab color="primary" (click)="routeDetails()">
                     <mat-icon class="col-white" >arrow_back_ios</mat-icon>
                   </button>
                 </div> 
-                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-right: 3%;padding-bottom: 1%;margin-top: 20px;">
                     <button   class="btn-space" mat-raised-button (click)="commodity()"
                     color="primary" class="buttonCSS" style="float: right;" >Next</button>
                     

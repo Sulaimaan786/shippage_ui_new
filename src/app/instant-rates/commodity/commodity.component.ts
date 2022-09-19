@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer2,Inject } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { BreakpointObserver } from "@angular/cdk/layout";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRatesService } from '../instant-rates.service';
@@ -8,7 +9,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { DOCUMENT } from "@angular/common";
+import { Breakpoints } from "@angular/cdk/layout";
 
+ 
 
 @Component({
   selector: 'app-commodity',
@@ -31,11 +34,23 @@ export class CommodityComponent implements OnInit {
   cargoDetailsChange=false;
   loadTypeDetailBean:[];
   commodityDetails:any;
+  cardpadding:any;
+  padleft:any;
+  butTopmar:any;
+  butLeftmar:any;
+  height:any;
+  firstbutton:any;
+  topback:any;
+  nextbutton:any;
+  nxtbuttonright:any;
+  nxtbuttonBot:any;
+  buttonwidth:any;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
-    public dataStorage :DataStorageService,
+    public dataStorage :DataStorageService,private responsive: BreakpointObserver,
+    private renderer: Renderer2,
     private router: Router,private httpService: HttpServiceService,
-    private instantRatesService:InstantRatesService
+    private instantRatesService:InstantRatesService,@Inject(DOCUMENT) private document: Document,
     ) {
     control:[""];
     commodity:[""];
@@ -74,7 +89,36 @@ export class CommodityComponent implements OnInit {
      allowSearchFilter: true
    };
 
+   this.responsive.observe(Breakpoints.Handset)
+   .subscribe(result => {
 
+     if (result.matches) {  
+       this.renderer.addClass(this.document.body,"content-block")
+       this.cardpadding ='0px 20px 15px 20px';
+       this.padleft = '55px';
+       this.butTopmar = '20px';
+       this.firstbutton = '20px'
+       this.butLeftmar = '80px';
+       this.height = '90%';
+       this.nextbutton = '110px';
+       this.nxtbuttonright = '28%';
+       this.nxtbuttonBot = '3%';
+       this.topback = true;
+       this.buttonwidth = '160px';
+     }else{ 
+       this.renderer.removeClass(this.document.body,"content-block")
+       this.cardpadding ='0px 50px 15px 20px';
+       this.padleft = '80px';
+       this.butTopmar = '20px';
+       this.firstbutton = '150px';
+       this.butLeftmar = '30px';
+       this.height = '80%';
+       this.nextbutton = '80px';
+       this.nxtbuttonright = '2%';
+       this.nxtbuttonBot = '1%';
+       this.topback = false;
+     }
+   });
   }
 
   

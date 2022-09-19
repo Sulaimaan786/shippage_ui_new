@@ -35,6 +35,7 @@ export class IncotermsComponent implements OnInit {
   butLeftmar:any;
   height:any;
   firstbutton:any;
+  topback:any;
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -87,21 +88,23 @@ export class IncotermsComponent implements OnInit {
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
           this.count = '1';
-          this.cardpadding ='45px 8px 15px 8px';
+          this.cardpadding ='2px 8px 0px 8px';
           this.padleft = '55px';
           this.butTopmar = '20px';
           this.firstbutton = '20px'
           this.butLeftmar = '80px';
-          this.height = '100%'
+          this.height = '90%';
+          this.topback = true;
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.count = '2';
-          this.cardpadding ='45px 50px 15px 20px';
+          this.cardpadding ='0px 50px 0px 20px';
           this.padleft = '80px';
           this.butTopmar = '20px';
           this.firstbutton = '150px'
           this.butLeftmar = '30px';
           this.height = '80%'
+          this.topback = false;
         }
       });
     }
