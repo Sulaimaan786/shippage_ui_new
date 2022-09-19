@@ -10,7 +10,7 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 @Component({
   selector: 'app-load-type',
   templateUrl: './load-type.component.html',
-  styleUrls: ['./load-type.component.sass']
+  styleUrls: ['./load-type.component.scss']
 })
 export class LoadTypeComponent implements OnInit {
   docForm: FormGroup;

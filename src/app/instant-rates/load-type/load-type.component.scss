@@ -1,0 +1,263 @@
+.sideButton {
+  padding: 10px 16px;
+  font-size: 16px!important;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  color: black;
+  background-color: white;
+  border: 1px solid #225f75;
+  border-radius: 25px;
+  width:180px;
+}
+ 
+
+
+
+
+
+.demo-inline-calendar-card {
+  width: 300px;
+}
+.vl {
+  border-left: 1px solid #225F75;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 20px;
+  bottom: 20px;
+}
+
+.size-12 {
+  font-size: 12px;
+  width: 90px;
+  border-radius: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.buttonCSS{
+  padding: 4px 24px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #225F75;
+  border-radius: 25px;
+  width:120px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: auto;
+}
+  
+  
+
+th, td {
+  text-align: center;
+  padding: 3px;
+  border-radius: 10px;
+}
+  
+  
+#rcorners2 {
+  border-radius: 25px;
+  border: 1px solid #225F75;
+}
+  
+::ng-deep.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 110px!important;
+}
+
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top: 0.75em;
+}
+.button {
+  padding: 10px 16px;
+  font-size: 16px!important;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  color: black;
+  background-color: white;
+  border: 1px solid #225f75;
+  border-radius: 25px;
+  width:180px;
+}
+
+
+.button:hover {
+    background-color: #225F75;
+    color: white;
+}
+.button:focus {
+  background-color: #225F75;
+  transform: translateY(4px);
+  color: white;
+}
+
+.demo-inline-calendar-card {
+  width: 300px;
+}
+
+.vl {
+  border-left: 1px solid #225F75;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 20px;
+  bottom: 20px;
+}
+
+.size-12 {
+  font-size: 12px;
+  width: 120px;
+  padding-left: 10px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.buttonCSS{
+  padding: 4px 24px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  background-color: #225F75;
+  border-radius: 25px;
+  width:120px;
+}
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: auto;
+}
+  
+  
+
+th, td {
+  text-align: center;
+  padding: 3px;
+  border-radius: 10px;
+}
+  
+  
+#rcorners2 {
+  border-radius: 25px;
+  border: 1px solid #225F75;
+}
+  
+::ng-deep.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 110px!important;
+}
+
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top: 0.75em;
+}
+
+
+.wrapper {
+  overflow: auto;
+  border-radius: 15px;
+  border: 1px solid #225F75;
+  padding-top: 10px;
+ 
+}
+::ng-deep.mat-form-field{
+    width: 60%!important;
+}
+
+// sign in field legend to border gap
+:host ::ng-deep.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-outline-gap {
+  border-top-color: #225f75 !important;
+}
+
+
+// disply none for the field legend
+
+:host ::ng-deep.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill+.mat-form-field-label-wrapper .mat-form-field-label {
+  display: none !important;
+  transition: none;
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none;
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none;
+}
+
+:host ::ng-deep.mat-form-field-subscript-wrapper {
+  font-size: 75%;
+  margin-top: -2.333333em !important;
+  top: calc(100% - 1.7916666667em);
+}
+
+:host ::ng-deep.mat-form-field-empty.mat-form-field-label, .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: block !important;
+}
+
+:host ::ng-deep.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  display: none !important;
+}
+
+
+.mb-2 {
+  margin-bottom: -1.5rem!important;
+}
+
+:host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
+  color:#225f75;
+ background-color: #fefeff !important; 
+ //height:60%;
+ border-radius: 24px !important; 
+ box-shadow: 0px 2px 13px -6px rgb(0 0 0 / 67%) !important;
+ }
+
+
+ :host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-start{
+  border-radius: 24px 0 0 24px !important;
+  min-width: 28px !important;
+}
+
+:host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius:0 24px  24px 0 !important; 
+    min-width: 28px !important; 
+}
+    
+    
+    
+
+
+
+
+
+
