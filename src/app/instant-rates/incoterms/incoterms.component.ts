@@ -114,7 +114,7 @@ export class IncotermsComponent implements OnInit {
           this.firstbutton = '150px'
           this.butLeftmar = '30px';
           this.height = '80%'
-          this.cardBottom = '24px'
+          this.cardBottom = '15px'
           this.nextbutton = '45px';
          this.nxtbuttonright = '2%';
          this.nxtbuttonBot = '1%';

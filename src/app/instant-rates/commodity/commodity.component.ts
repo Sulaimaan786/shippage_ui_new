@@ -115,11 +115,11 @@ export class CommodityComponent implements OnInit {
        this.firstbutton = '150px';
        this.butLeftmar = '30px';
        this.height = '80%';
-       this.nextbutton = '80px';
+       this.nextbutton = '70px';
        this.nxtbuttonright = '2%';
        this.nxtbuttonBot = '1%';
        this.topback = false;
-       this.cardBottom = '24px'
+       this.cardBottom = '0px'
      }
    });
   }
