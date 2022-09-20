@@ -26,7 +26,8 @@ export class RouteDetailsComponent implements OnInit {
   mobilepadding: any;
   hideship:any;
   topback:any;
-
+   center:any;
+ 
   constructor(private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
@@ -60,12 +61,14 @@ export class RouteDetailsComponent implements OnInit {
           this.renderer.addClass(this.document.body,"content-block")  
           this.padding = this.mobilepadding;
           this.hideship = false;
-          this.topback = true;
+          this.topback = true; 
+          this.center = true;
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block") 
           this.padding = this.webpadding;
           this.hideship = true;
-          this.topback = false;
+          this.topback = false; 
+          this.center = false;
         }
       });
    

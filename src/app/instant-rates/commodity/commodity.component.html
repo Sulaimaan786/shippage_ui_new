@@ -10,7 +10,10 @@
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
       <div class="container-fluid" >
         <form class="m-12" [formGroup]="docForm">
-        <div class="row">
+          <div *ngIf="topback" (click)="incoterms()" style="position: absolute;top: 35px;left: 15px;"> 
+            <mat-icon class="blue">arrow_back_ios</mat-icon> 
+          </div>
+        <div class="row"> 
       <div class="col-sm-3 ">
                     
         <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
@@ -31,11 +34,8 @@
                 </div>
                
     </div>
-    <div *ngIf="topback" (click)="incoterms()" style="position: absolute;top: 35px;left: 15px;"> 
-      <mat-icon class="blue">arrow_back_ios</mat-icon> 
-    </div>
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
-                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Commodity</h1> 
+                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold;">Commodity</h1> 
                       <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;height: 85%;padding-bottom: 24px;padding-top: 24px;padding-left:64px;padding-right:64px;" > 
                         <div class = "row">
                             <!-- <mat-radio-group formControlName="control">
