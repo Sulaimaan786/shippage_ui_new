@@ -3,7 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 <section class="content">
     <div class="content-block mobile-v-p">
-        <div class="block-header" style="margin-top: 22px;">
+        <div class="block-header" style="margin-top: 50px;">
             <!-- breadcrumb -->
             <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
             <!-- <app-breadcrumb></app-breadcrumb>  -->
@@ -22,20 +22,27 @@
 
 
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Origin</p><br>
+                            <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;
+                                <p>Origin</p> </mat-label><br><br>
                             <H6 style=" margin-top: -30px">{{origin}}</H6>
                         </div>
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Mode of Shipment</p><br>
+                            <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
+                                <p>Mode of Shipment</p> </mat-label><br><br>
+                            
                             <H6 style=" margin-top: -30px">{{freightMode}}-{{shipmentMode}}</H6>
                         </div>
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Cargo Readiness</p><br>
+                            <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
+                                <p>Cargo Readiness</p> </mat-label><br><br>
+                           
                             <!-- <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6> -->
                             <H6 style=" margin-top: -30px">{{cargoReady.readiness}}{{cargoReady.selectedDate}}</H6>
                         </div>
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Commodity</p><br>
+                            <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
+                                <p>Commodity</p> </mat-label><br><br>
+                            
                             <H6 style=" margin-top: -30px">{{commodityValues.commodity}}</H6>
                         </div>
 
@@ -43,16 +50,22 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Destination</p><br>
+                            <mat-label>  <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;
+                                <p>Destination</p> </mat-label><br><br>
+                            
                             <H6 style=" margin-top: -30px">{{destination}}</H6>
                         </div>
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Incoterms</p><br>
+                            <mat-label>  <img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;
+                                <p>Incoterms</p> </mat-label><br><br>
+                           
                             <H6 style=" margin-top: -30px">{{incoterm}}</H6>
                         </div>
 
                         <div class="col-sm-3 p-3">
-                            <p class="paragraph">Load Type</p><br>
+                            <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
+                                <p>Load Type</p> </mat-label><br><br>
+                            
                             <H6 style=" margin-top: -30px">{{equipmentType}}</H6>
                         </div>
 
@@ -67,9 +80,11 @@
                     <h2>Rates (Results Found)</h2>
                 </div>
                 <div class="row" style="margin-top:20px">
-
+                 
 
                     <div class="col-sm-6 p-6">
+                      
+                       
                         <div class="card"
                             style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">

@@ -4,7 +4,7 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
- import { DataStorageService } from 'src/app/auth/data-storage';
+import { DataStorageService } from 'src/app/auth/data-storage';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 @Component({

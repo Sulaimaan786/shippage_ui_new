@@ -13,38 +13,58 @@
        <div class="row">
          
         
-             <div class="col-sm-3 p-3" >
-             <p class="paragraph">Origin</p><br><H5 style=" margin-top: -30px">Jawaharlal Nehru</H5>
-         </div>
-         <div class="col-sm-3 p-3" >
-          <!-- <span><img src="" alt=""></span> -->
-          <p class="paragraph">Mode of Shipment</p><br><H5 style=" margin-top: -30px">Sea (FCL)</H5>
-         </div>
-         <div class="col-sm-3 p-3" >
-             <p class="paragraph">Cargo Readiness</p><br><H5 style=" margin-top: -30px">04 July 2022</H5>
-         </div>
-         <div class="col-sm-3 p-3" >
-             <p class="paragraph">Commodity</p><br><H5 style=" margin-top: -30px">FAK</H5>
-         </div>
+        <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;
+              <p>Origin</p> </mat-label><br><br>
+          <H6 style=" margin-top: -30px">{{origin}}</H6>
+      </div>
+      <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
+              <p>Mode of Shipment</p> </mat-label><br><br>
+          
+          <H6 style=" margin-top: -30px">{{freightMode}}-{{shipmentMode}}</H6>
+      </div>
+      <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
+              <p>Cargo Readiness</p> </mat-label><br><br>
+         
+          <!-- <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6> -->
+          <H6 style=" margin-top: -30px">{{cargoReady.readiness}}{{cargoReady.selectedDate}}</H6>
+      </div>
+      <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
+              <p>Commodity</p> </mat-label><br><br>
+          
+          <H6 style=" margin-top: -30px">{{commodityValues.commodity}}</H6>
+      </div>
          
          
        </div>
        <div class="row">
-         <div class="col-sm-3 p-3" >
-          <p class="paragraph">Destination</p><br><H5 style=" margin-top: -30px">Port of Melbourne</H5> 
-         </div>
-        
-         <div class="col-sm-3 p-3" >
-          <p class="paragraph">Incoterms</p><br><H5 style=" margin-top: -30px">EXW</H5>
-     </div>
-     <div class="col-sm-3 p-3" >
-         <p class="paragraph">Load Type</p><br><H5 style=" margin-top: -30px">20 GP</H5>
-     </div>
-     
-     <div class="col-sm-3 p-3" >
-         <a href="" >Edit</a>
+        <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;
+              <p>Destination</p> </mat-label><br><br>
+          
+          <H6 style=" margin-top: -30px">{{destination}}</H6>
+      </div>
+      <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;
+              <p>Incoterms</p> </mat-label><br><br>
+         
+          <H6 style=" margin-top: -30px">{{incoterm}}</H6>
+      </div>
 
-     </div>
+      <div class="col-sm-3 p-3">
+          <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
+              <p>Load Type</p> </mat-label><br><br>
+          
+          <H6 style=" margin-top: -30px">{{equipmentType}}</H6>
+      </div>
+
+      <div class="col-sm-3 p-3">
+          <a href="">Edit</a>
+
+      </div>
      
    </div>
 </div>
