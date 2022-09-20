@@ -19,7 +19,7 @@ export class IncotermsComponent implements OnInit {
   incotermList=[];
   incotermsDetails=[];
 
-  
+  submitted:boolean=false;
   docForm: FormGroup;
   incotermsChange:boolean=false;
   commodityChange:boolean=false;
@@ -52,7 +52,7 @@ export class IncotermsComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
       control:[""],
-      incoterm:[""],
+      incoterm: ["", [Validators.required]],
 
       loadTypeDetailBean:this.fb.array([
         this.fb.group({
@@ -224,10 +224,14 @@ incoterms(){
 }
 
 commodity(){
-  this.router.navigate(["instantRates/commodity"]);
-  this.incotermsDetails.push(this.docForm)
-    this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
-    console.log("Form Value", this.docForm.value);
+  this.submitted=true;
+  if (this.docForm.valid) {
+    this.router.navigate(["instantRates/commodity"]);
+    this.incotermsDetails.push(this.docForm)
+      this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
+      console.log("Form Value", this.docForm.value);
+  }
+ 
 }
 
 

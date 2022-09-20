@@ -48,10 +48,13 @@
                               <div [ngStyle] = "{'column-count': count}" >
 
                                 <mat-radio-group formControlName="incoterm">
-                                  <mat-radio-button   *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px;margin-bottom: -8px;"> <p style="margin-top: 15px;    padding-left: 20px;
+                                  <mat-radio-button required *ngFor="let title of incotermList" [value]="title.termid"  style="margin-left:14px;margin-bottom: -8px;"> <p style="margin-top: 15px;    padding-left: 20px;
                                     padding-right: 40px;"> <span style="font-size: 15px;">  {{title.text}}</span></p></mat-radio-button><br>
                                 
                                   </mat-radio-group>
+                                  <mat-error *ngIf=" submitted && docForm.get('incoterm').hasError('required')">
+                                    My Price is required
+                                  </mat-error>
                               </div>  
                          </div>
                         </div>
