@@ -7,6 +7,7 @@ import {MatDividerHarness} from '@angular/material/divider/testing';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import * as moment from "moment";
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-cargo-readiness',
   templateUrl: './cargo-readiness.component.html',
@@ -17,7 +18,7 @@ export class CargoReadinessComponent implements OnInit {
   calendar:boolean=false;
   docForm: FormGroup;
   selectedDate: any;
-  readiness:any;
+  
   cardpadding:any;
   padleft:any;
   butTopmar:any;
@@ -30,18 +31,20 @@ export class CargoReadinessComponent implements OnInit {
   nxtbuttonBot:any;
   buttonwidth:any;
   cardBottom:any;
+  submitted:boolean=false;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
+    private snackBar: MatSnackBar,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,) {
      }
 
   ngOnInit(): void {
     this.docForm = this.fb.group({
-      readiness:[""],
-      selectedDate:[""]
+     
+      selectedDate:["", [Validators.required]]
    })
 
    this.responsive.observe(Breakpoints.Handset)
@@ -94,7 +97,9 @@ export class CargoReadinessComponent implements OnInit {
   onSelect(event){
     console.log(event);
     this.selectedDate= event;
-    this.docForm.patchValue({selectedDate:moment(event).format('DD/MM/YYYY')});
+    this.selectedDate.toString()
+    // this.docForm.patchValue({selectedDate:moment(event).format('DD/MM/YYYY')});
+    this.docForm.patchValue({selectedDate:moment(event).format('DD MMM y')});
     console.log(this.docForm.value);
   }
 
@@ -113,10 +118,29 @@ cargoReadiness(){
   this.router.navigate(["instantRates/cargoReadiness"]);
 }
 
+showNotification(colorName, text, placementFrom, placementAlign) {
+  this.snackBar.open(text, "", {
+    duration: 2000,
+    verticalPosition: placementFrom,
+    horizontalPosition: placementAlign,
+    panelClass: colorName,
+  });
+}
 loadType(){
+  // this.submitted=true;
+   if (this.docForm.valid) {
   this.router.navigate(["instantRates/loadType"]);
   this.dataStorage.setReadinessDetails(JSON.stringify(this.docForm.value));
   console.log("Form Value", this.docForm.value);
+   }
+   else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
 }
 
 }

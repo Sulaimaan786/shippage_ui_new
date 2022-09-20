@@ -6,6 +6,7 @@ import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DataStorageService } from 'src/app/auth/data-storage';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-load-type',
@@ -13,6 +14,7 @@ import { DataStorageService } from 'src/app/auth/data-storage';
   styleUrls: ['./load-type.component.scss']
 })
 export class LoadTypeComponent implements OnInit {
+  
   docForm: FormGroup;
   loadTypeDetailBean:[];
   cardpadding:any;
@@ -31,16 +33,18 @@ export class LoadTypeComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,
+    private snackBar:MatSnackBar,
     private renderer: Renderer2,public dataStorage :DataStorageService,
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
       control:[""],
+      
 
       loadTypeDetailBean:this.fb.array([
         this.fb.group({
-          equipmentType:[""],
-          quantity:[""],
-          cargoWeight:[""]
+          equipmentType:["", [Validators.required]],
+          quantity:["", [Validators.required]],
+          cargoWeight:["", [Validators.required]]
         })
       ]),
 
@@ -151,11 +155,30 @@ cargoReadiness(){
 loadType(){
   this.router.navigate(["instantRates/loadType"]);
 }
+showNotification(colorName, text, placementFrom, placementAlign) {
+  this.snackBar.open(text, "", {
+    duration: 2000,
+    verticalPosition: placementFrom,
+    horizontalPosition: placementAlign,
+    panelClass: colorName,
+  });
+}
 
   rates(){
+    
+  if (this.docForm.valid) {
     this.router.navigate(["instantRates/rates"]);
     this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value));
     console.log(this.docForm.value);
+  }
+  else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
   }
   reset()
   {

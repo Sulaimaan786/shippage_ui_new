@@ -10,6 +10,7 @@ import { InstantRatesService } from '../instant-rates.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
 import { DataStorageService } from 'src/app/auth/data-storage';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-incoterms',
   templateUrl: './incoterms.component.html',
@@ -19,7 +20,7 @@ export class IncotermsComponent implements OnInit {
   incotermList=[];
   incotermsDetails=[];
 
-  submitted:boolean=false;
+ 
   docForm: FormGroup;
   incotermsChange:boolean=false;
   commodityChange:boolean=false;
@@ -48,6 +49,7 @@ export class IncotermsComponent implements OnInit {
     
     private instantRatesService:InstantRatesService,
     private responsive: BreakpointObserver,
+    private snackBar: MatSnackBar,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
@@ -223,15 +225,32 @@ incoterms(){
   this.router.navigate(["/instantRates/incoterms"]);
 }
 
+
 commodity(){
-  this.submitted=true;
+  
   if (this.docForm.valid) {
     this.router.navigate(["instantRates/commodity"]);
     this.incotermsDetails.push(this.docForm)
       this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
       console.log("Form Value", this.docForm.value);
   }
+  else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
  
+}
+showNotification(colorName, text, placementFrom, placementAlign) {
+  this.snackBar.open(text, "", {
+    duration: 2000,
+    verticalPosition: placementFrom,
+    horizontalPosition: placementAlign,
+    panelClass: colorName,
+  });
 }
 
 

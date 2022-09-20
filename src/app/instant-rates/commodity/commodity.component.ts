@@ -10,6 +10,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { DOCUMENT } from "@angular/common";
 import { Breakpoints } from "@angular/cdk/layout";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
  
 
@@ -24,6 +25,7 @@ export class CommodityComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings:IDropdownSettings;
+  
 
   docForm: FormGroup;
   incotermsChange:boolean=false;
@@ -50,11 +52,12 @@ export class CommodityComponent implements OnInit {
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
     private renderer: Renderer2,
+    private snackBar: MatSnackBar,
     private router: Router,private httpService: HttpServiceService,
     private instantRatesService:InstantRatesService,@Inject(DOCUMENT) private document: Document,
     ) {
     control:[""];
-    commodity:[""];
+    commodity:["",[Validators.required]];
    }
 
   ngOnInit(): void {
@@ -133,14 +136,32 @@ commodity(){
   this.router.navigate(["instantRates/commodity"]);
 }
 
-
+showNotification(colorName, text, placementFrom, placementAlign) {
+  this.snackBar.open(text, "", {
+    duration: 2000,
+    verticalPosition: placementFrom,
+    horizontalPosition: placementAlign,
+    panelClass: colorName,
+  });
+}
 
 
 cargoReadiness(){
+  
+  if (this.docForm.valid) {
   this.router.navigate(["instantRates/cargoReadiness"]);
   // this.commodityDetails.push(this.docForm.value)
   this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
   console.log("Form Value", this.docForm.value);
+  }
+  else{
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
+  
 }
 
 loadType(){

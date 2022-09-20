@@ -53,7 +53,7 @@
                                       {{title.text}}
                                       </mat-option>
                                    </mat-select> -->
-                                   <ng-multiselect-dropdown class="inputTxt"  formControlName="commodity" 
+                                   <ng-multiselect-dropdown required class="inputTxt"  formControlName="commodity" 
                                    [placeholder]="'Commodity'"
                                    [settings]="dropdownSettings"
                                    [data]="dropdownList"
@@ -61,6 +61,7 @@
                                    (onSelect)="onItemSelect($event)"
                                    (onSelectAll)="onSelectAll($event)">
                           </ng-multiselect-dropdown>
+                          
                             
                           </div>
                          </div>
