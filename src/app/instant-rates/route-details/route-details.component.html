@@ -1,20 +1,21 @@
 <section class="content">
     <div class="content-block mobile-v-p">
-      <div class="block-header" style="margin-top: 22px;">
+      <div class="block-header" style="margin-top: 50px;">
       </div>
       <div class="row" >
         <form class="m-4" [formGroup]="docForm" (ngSubmit)="proceed()">
         <div class="col-xl-12 ">
           <div class="card" style="background: #ebebeb55;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
-          -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);width: 100%!important;height:100%!important;margin: bottom 200px!important;">
+          -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);width: 100%!important;height:100%!important;margin: bottom 200px!important;padding-left:24px;padding-right:24px;">
            <div *ngIf="topback" (click)="back()" style="position: absolute;top: 34px;left: 34px;"> 
             <mat-icon class="blue">arrow_back_ios</mat-icon> 
           </div>
            
-           <div class="row" style="margin-top:100px!important;margin-bottom:100px!important">
-              <h2 style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;">Route Details</h2>
+           <div class="row" style="margin-bottom:100px!important">
+            <h1 style="text-align:center;color:#225F75;font-weight:bold;padding-top: 30px;padding-bottom: 10%;">Route Details</h1> 
+                      
               
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="text-align: right;width: 40%;"> 
+              <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="text-align: right;"> 
                 <mat-form-field class="form-control-sm" appearance="outline"  >
                 <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
                   <p>Origin</p> </mat-label>
@@ -27,13 +28,24 @@
                        </mat-select>
                     </mat-form-field>
                   
+              </div> -->
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" [ngStyle]="{'margin-top':margTop}"> 
+                <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                  <mat-label required>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
+                    <p>Origin</p> </mat-label>
+                      <mat-select class="inputTxt" formControlName="origin" required>
+                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                          {{title.text}}
+                          </mat-option>
+                       </mat-select>
+                    </mat-form-field>
+                  
               </div>
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 img" style="width: 20% !important;margin-top: -10px;
-            ">
+              <div *ngIf = "hideship" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 img" style="margin-top: -13px;">
                 <img src="assets/icons/waveSea.png" alt="" style="width: 100%;" >
             </div> 
              
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="width: 40%;" > 
+              <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4"  > 
                 <mat-form-field class=" form-control-sm" appearance="outline">
                   <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
                     <p>Destination</p></mat-label>  
@@ -43,16 +55,27 @@
                         </mat-option>
                        </mat-select>
                     </mat-form-field>
+              </div> -->
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" [ngStyle]="{'margin-top':margTop}" > 
+                <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                  <mat-label > <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
+                    <p>Destination</p></mat-label> 
+                      <mat-select formControlName="destination" class="inputTxt" required> 
+                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                          {{title.text}}
+                        </mat-option>
+                       </mat-select>
+                    </mat-form-field>
               </div>
               
             </div>
             <div class="row">
-              <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+              <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 15px;">
                 <button mat-mini-fab color="primary" (click)="back()">
                   <mat-icon class="col-white" >arrow_back_ios</mat-icon>
                 </button>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;"[ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">
                 <button   class="btn-space" (click)="proceed()"  mat-raised-button
                 color="primary" class="buttonCSS" style="float: right;">Proceed</button>
               </div>
