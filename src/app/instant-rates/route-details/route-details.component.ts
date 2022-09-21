@@ -5,7 +5,7 @@ import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { FormBuilder, FormGroup } from '@angular/forms';
- import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
 import { InstantRatesService } from '../instant-rates.service';
 import { DataStorageService } from 'src/app/auth/data-storage';
@@ -36,6 +36,8 @@ export class RouteDetailsComponent implements OnInit {
   marBottom:any;
   margTop:any;
   
+   center:any;
+ 
   constructor(private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
@@ -87,6 +89,8 @@ export class RouteDetailsComponent implements OnInit {
           
          
          
+          this.topback = true; 
+          this.center = true;
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block") 
           this.padding = this.webpadding;
@@ -100,6 +104,8 @@ export class RouteDetailsComponent implements OnInit {
           
           
           
+          this.topback = false; 
+          this.center = false;
         }
       });
    

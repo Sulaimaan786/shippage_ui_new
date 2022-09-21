@@ -13,6 +13,10 @@
              
               <div class="container-fluid" >
                 <form class="m-12" [formGroup]="docForm">
+                  
+                  <div *ngIf="topback" (click)="routeDetails()" style="position: absolute;top: 35px;left: 15px;"> 
+                    <mat-icon class="blue">arrow_back_ios</mat-icon> 
+                  </div>
                 <div class="row">
                   <div class="col-sm-3 " style="margin-top: 0px">
                     
@@ -36,11 +40,9 @@
                   </div>
                   
                   <!-- <div class="form-group" *ngIf="incotermsChange"> -->
-                    <div *ngIf="topback" (click)="routeDetails()" style="position: absolute;top: 35px;left: 15px;"> 
-                      <mat-icon class="blue">arrow_back_ios</mat-icon> 
-                    </div>
+                    
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}">
-                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold">Incoterms</h1> 
+                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold;">Incoterms</h1> 
                       <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;padding-top: 15px;
                       padding-right: 8px;"  [ngStyle] = "{'padding-left':padleft,'height':height}"> 
                       <div class="row">

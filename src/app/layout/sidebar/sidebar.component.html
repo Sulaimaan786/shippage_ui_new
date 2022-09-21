@@ -86,11 +86,8 @@
               <img src="/assets/images/products/21-avatar-flat (2).gif" class="user_img" width="32" height="32" alt="User">            
             </div>
             <div ngbDropdownMenu class="notification-dropdown pullDown list">
-              <div class="noti-list" style="position: relative; max-width: 600px; max-height: 300px;" [perfectScrollbar]>
-                <ul class="menu">
-                  <li class="body">
-                    <ul class="user_dw_menu">
-                      <li>
+              <div class="" style="position: relative; max-width: 500px; max-height: 300px;" [perfectScrollbar]>
+                      <!-- <li>
                         <a href="#" onClick="return false;">
                           <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
                         </a>
@@ -99,10 +96,18 @@
                         <a href="javascript:void(0);" (click)="logout()">
                           <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
                         </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                      </li> -->
+                   <ul>
+                     <li style="padding: 9%"> 
+                      <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
+
+                     </li>
+                     <li style="padding: 9%"(click)="logout()">
+                      <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
+
+                     </li>
+                   </ul>
+               
               </div>
             </div>
           </li>

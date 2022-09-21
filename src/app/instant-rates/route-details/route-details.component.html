@@ -16,6 +16,24 @@
                       
               
               <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="text-align: right;"> 
+           <div class="row" style="margin-top:40px!important;margin-bottom:100px!important">
+              <h2  *ngIf="!topback" style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;font-size: 40px;font-weight: 700;">Route Details</h2>
+              <h2 *ngIf="topback" style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;font-size: 20px;font-weight: 600;">Route Details</h2>
+              
+              <div *ngIf = "center" class="col-xl-6 col-lg-6 col-md-6 col-sm-6"  style="display: flex;margin-top: 10%;align-items: center;flex-direction: column;"> 
+                <mat-form-field class="form-control-sm" appearance="outline"  >
+                  <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
+                    <p>Origin</p> </mat-label>
+                    
+                        <mat-select class="inputTxt"formControlName="origin" >
+                          
+                          <mat-option *ngFor="let title of dropdownList" [value]="title.id" required >
+                            {{title.text}}
+                            </mat-option>
+                         </mat-select>
+                      </mat-form-field>
+                </div>
+                <div *ngIf = "!center" class="col-xl-4 col-lg-4 col-md-4 col-sm-4"  style="text-align: right;width: 40%;"> 
                 <mat-form-field class="form-control-sm" appearance="outline"  >
                 <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
                   <p>Origin</p> </mat-label>
@@ -46,6 +64,22 @@
             </div> 
              
               <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4"  > 
+              <div *ngIf = "hideship" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 img" style="width: 20% !important;margin-top: -10px;">
+                <img src="assets/icons/waveSea.png" alt="" style="width: 100%;" >
+            </div> 
+             
+              <div *ngIf = "center" class="col-xl-6 col-lg-6 col-md-6 col-sm-6" style="display: flex;margin-top: 10%;align-items: center;flex-direction: column;" > 
+                <mat-form-field class=" form-control-sm" appearance="outline">
+                  <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
+                    <p>Destination</p></mat-label>  
+                      <mat-select formControlName="destination" class="inputTxt"> 
+                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" required>
+                          {{title.text}}
+                        </mat-option>
+                       </mat-select>
+                    </mat-form-field>  
+              </div>
+                <div *ngIf = "!center" class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="width: 40%;" > 
                 <mat-form-field class=" form-control-sm" appearance="outline">
                   <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
                     <p>Destination</p></mat-label>  
