@@ -220,7 +220,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
   instantRates() {  
         this.router.navigate(["/instantRates/shipment-mode"]);
   }
- 
+  quote() {  
+    this.router.navigate(["/quote/request-quote"]);
+}
   
 
 //   origin&destination() {  
