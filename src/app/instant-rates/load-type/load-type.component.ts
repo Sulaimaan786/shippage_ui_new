@@ -7,6 +7,9 @@ import { DOCUMENT } from "@angular/common";
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { InstantRatesService } from '../instant-rates.service';
+import { InstantRatesResultBean } from '../instant-rates-result-bean';
+import { HttpServiceService } from 'src/app/auth/http-service.service';
 
 @Component({
   selector: 'app-load-type',
@@ -29,11 +32,12 @@ export class LoadTypeComponent implements OnInit {
   nxtbuttonBot:any;
   buttonwidth:any;
   cardBottom:any
+  equipmentTypeList = [];
 
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
-    private router: Router,private responsive: BreakpointObserver,
-    private snackBar:MatSnackBar,
+    private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
+    private snackBar:MatSnackBar,private instantRatesService : InstantRatesService,
     private renderer: Renderer2,public dataStorage :DataStorageService,
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
@@ -60,6 +64,14 @@ export class LoadTypeComponent implements OnInit {
 
    ngOnInit(): void {
     
+
+    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.equipmentTypeList).subscribe(
+      (data) => {
+       
+        this.equipmentTypeList = data.lInstantRatesBean;
+      },
+
+   );
 
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {

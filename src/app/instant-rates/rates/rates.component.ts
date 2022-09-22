@@ -5,8 +5,10 @@ import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { DataStorageService } from 'src/app/auth/data-storage';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { InstantRates } from '../instant-rates.model';
 @Component({
   selector: 'app-rates',
   templateUrl: './rates.component.html',
@@ -21,15 +23,24 @@ export class RatesComponent implements OnInit {
   commodityValues:any;
   freightMode:any;
   shipmentMode:any;
+  data:any;
+  combine:String;
+  equipName:any;
+  output:any;
   
  // commodityValues:[]; 
+ docForm: FormGroup;
+ instantRate : InstantRates;
   origin:any;
   destination: any;
   equipmentType:any;
   commodityDetails:[];
+  rateDataList = [];
+  equipmentNameList = [{ title: ""}];
   incoterm: any;
+
   constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,
@@ -38,6 +49,8 @@ export class RatesComponent implements OnInit {
     
     ) {}
   ngOnInit() {
+
+     
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
@@ -90,16 +103,50 @@ export class RatesComponent implements OnInit {
       this.loadDetails = JSON.parse(this.loadtype)
       console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
       this.equipmentType = this.loadDetails.loadTypeDetailBean[0].equipmentType;
-     
-     
+
+      for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
+        
+        const eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
+        this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + eqtypeId).subscribe((res: any) => {
+          this.equipmentType = res.equipName.equipName;
+          this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+          this.data += this.combine;
+          this.equipName = this.data.substring(9);
+           console.log(this.equipName);
+         });
+        
+      }
+      
       this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
       console.log(this.freightMode);
 
       this.shipmentMode = JSON.parse(this.dataStorage.getShipmentDetails());
       console.log(this.shipmentMode);
 
+      this.docForm = this.fb.group({
+        origin : this.origin,
+        destination: this.destination,
+        equipmentType:this.equipmentType,
+        loadtype:this.loadtype.equipmentType,
+        freightMode:this.freightMode,
+        shipmentMode:this.shipmentMode,
+        incotermsValue:[""],   
+        commodityValues:[""],
+        incoterm:this.incotermsValue.incoterm,
+      })
+      this.instantRate = this.docForm.value;
+      console.log("hello---------------"+ this.instantRate);
+
+      //this.instantRatesService.addPurchaseInvoice(this.instantRate);
+      
+      this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination).subscribe((res: any) => {
+        this.rateDataList = res.lInstantRatesBean;
+        });
+      
       
   }
+
+  
 
   rateSummary(){
     this.router.navigate(["instantRates/booking"]);
