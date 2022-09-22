@@ -48,7 +48,8 @@ export class LoadTypeComponent implements OnInit {
         this.fb.group({
           equipmentType:["", [Validators.required]],
           quantity:["", [Validators.required]],
-          cargoWeight:["", [Validators.required]]
+          cargoWeight:["", [Validators.required]],
+          value:[""],
         })
       ]),
 
@@ -122,7 +123,8 @@ addRow(){
   let newUsergroup: FormGroup = this.fb.group({
     equipmentType:[""],
     quantity:[""],
-    cargoWeight:[""]
+    cargoWeight:[""],
+    value:[""]
   })
   loadTypeDetailBeanArray.insert(arraylen,newUsergroup);
 }
@@ -139,7 +141,8 @@ addRow1(){
   let newUsergroup: FormGroup = this.fb.group({
     equipmentType:[""],
     quantity:[""],
-    cargoWeight:[""]
+    cargoWeight:[""],
+    value:[""]
   })
   cargoDetailBeanArray.insert(arraylen,newUsergroup);
 }

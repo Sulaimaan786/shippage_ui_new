@@ -41,6 +41,7 @@ export class RatesComponent implements OnInit {
   eqtypeId:any;
   totalequipId:any;
   resultsFound:any;
+  testarray: any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
@@ -139,14 +140,26 @@ export class RatesComponent implements OnInit {
         incoterm:this.incotermsValue.incoterm,
       })
       this.instantRate = this.docForm.value; 
-
-      //this.instantRatesService.addPurchaseInvoice(this.instantRate);
       
-      this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination + "&loadtype=" + this.totalequipId.substring(9)).subscribe((res: any) => {
+        this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination + "&loadtype=" + this.totalequipId.substring(9)).subscribe((res: any) => {
         this.rateDataList = res.lInstantRatesBean;
         this.resultsFound =this.rateDataList.length;
+        this.testarray = this.rateDataList.length - this.loadDetails.loadTypeDetailBean.length
+
+        for(let j =0 ;j<this.testarray;j++){
+          this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
+        }
+  
+        for(let i=0;i<this.rateDataList.length;i++){
+             this.loadDetails.loadTypeDetailBean[i].value = this.rateDataList[i].unit
+             if(this.rateDataList[i].unit == this.loadDetails.loadTypeDetailBean[i].value){
+             this.rateDataList[i].totalcost = this.rateDataList[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;             
+          }
+
+        }
         });
       
+       
       
   }
 
