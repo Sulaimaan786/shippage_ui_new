@@ -40,6 +40,7 @@ export class RatesComponent implements OnInit {
   incoterm: any;
   eqtypeId:any;
   totalequipId:any;
+  resultsFound:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
@@ -143,6 +144,7 @@ export class RatesComponent implements OnInit {
       
       this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination + "&loadtype=" + this.totalequipId.substring(9)).subscribe((res: any) => {
         this.rateDataList = res.lInstantRatesBean;
+        this.resultsFound =this.rateDataList.length;
         });
       
       
