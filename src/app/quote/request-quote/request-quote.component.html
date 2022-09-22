@@ -2,6 +2,7 @@
     <div class="content-block mobile-v-p">
         <div class="block-header" style="margin-top: 50px;">
         </div>
+        <form class="m-4" [formGroup]="docForm"> 
         <div class="row" style="justify-content:space-evenly">
             <div class="col-xl-12 ">
                 <div class="card" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
@@ -13,23 +14,32 @@
                                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                     <mat-label><img src="assets/icons/Asset 42.png"
                                             style="width:20px;height:20px">&nbsp;&nbsp;Name</mat-label>
-                                    <input class="inputRadius" matInput maxlength="">
+                                    <input class="inputRadius"formControlName="name" matInput maxlength="50" required>
+                                    <mat-error *ngIf="docForm.get('name').hasError('required')">
+                                        Name is required
+                                      </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                     <mat-label><img src="assets/icons/Asset 43.png"
                                             style="width:20px;height:20px">&nbsp;&nbsp;Contact Number</mat-label>
-                                    <input class="inputRadius" matInput maxlength="">
-
+                                    <input class="inputRadius" matInput formControlName="contactNo" (keypress)="keyPressNumeric($event)" maxlength="15"required>
+                                    <mat-error *ngIf="docForm.get('contactNo').hasError('required')">
+                                        Contact Number is required
+                                      </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                     <mat-label><img src="assets/icons/Asset 44.png"
                                             style="width:20px;height:15px">&nbsp;&nbsp;Email Id</mat-label>
-                                    <input class="inputRadius" matInput maxlength="">
+                                    <input class="inputRadius" matInput formControlName="emailId" maxlength="255"required>
+                                    <mat-error *ngIf="docForm.get('emailId').hasError('required')">
+                                        Email Id is required
+                                      </mat-error>
                                 </mat-form-field>
+                               
                             </div>
                         </div>
                         <div class="row">
@@ -66,14 +76,28 @@
                                         <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                             <mat-label><img src="assets/icons/Asset 36.png"
                                                     style="width:15px;height:20px">&nbsp;&nbsp;Origin </mat-label>
-                                            <input class="inputRadius" matInput maxlength="">
+                                                    <mat-select class="inputTxt" formControlName="origin"  required>
+                                                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('origin').hasError('required')">
+                                                        Origin is required
+                                                      </mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                         <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                             <mat-label><img src="assets/icons/Asset 37.png"
                                                     style="width:15px;height:20px">&nbsp;&nbsp;Destination</mat-label>
-                                            <input class="inputRadius" matInput maxlength="">
+                                                    <mat-select class="inputTxt" formControlName="destination" required>
+                                                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('destination').hasError('required')">
+                                                        Destination is required
+                                                      </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -86,7 +110,14 @@
                                         <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                             <mat-label><img src="assets/icons/Asset 40.png"
                                                     style="width:15px;height:20px">&nbsp;&nbsp;Commodity</mat-label>
-                                            <input class="inputRadius" matInput maxlength="">
+                                                    <mat-select class="inputTxt" formControlName="commodity" required>
+                                                        <mat-option *ngFor="let title of commodity" [value]="title.commodityId" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('commodity').hasError('required')">
+                                                        Commodity is required
+                                                      </mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -94,14 +125,26 @@
                                             <mat-label><img src="assets/icons/cargoreadyblue.png"
                                                     style="width:20px;height:20px">&nbsp;&nbsp;Cargo Readiness
                                             </mat-label>
-                                            <input class="inputRadius" matInput maxlength="">
+                                            <input matInput [matDatepicker]="picker" formControlName="cargoReadiness"required>
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-error *ngIf="docForm.get('cargoReadiness').hasError('required')">
+                                                Cargo Readiness is required
+                                              </mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                         <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                             <mat-label><img src="assets/icons/Asset 40.png"
                                                     style="width:15px;height:20px">&nbsp;&nbsp;Incoterms</mat-label>
-                                            <input class="inputRadius" matInput maxlength="">
+                                                    <mat-select class="inputTxt" formControlName="incoterms" required>
+                                                        <mat-option *ngFor="let title of incotermList" [value]="title.termid" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('incoterms').hasError('required')">
+                                                        Incoterms is required
+                                                      </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -114,18 +157,18 @@
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                     <mat-label>Number Of Units</mat-label>
-                                    <input class="inputRadius" type="number" matInput maxlength="">
+                                    <input class="inputRadius" type="number" formControlName="numberOfUnits"(keypress)="keyPressNumeric($event)" matInput maxlength="">
                                 </mat-form-field>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                 <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggleButton">
-                                    <mat-button-toggle><input matInput maxlength="" placeholder="Length">
+                                    <mat-button-toggle><input matInput maxlength=""formControlName="length"(keypress)="keyPressNumeric($event)" placeholder="Length">
                                     </mat-button-toggle>
-                                    <mat-button-toggle><input matInput maxlength="" placeholder="Width">
+                                    <mat-button-toggle><input matInput maxlength=""formControlName="width" (keypress)="keyPressNumeric($event)" placeholder="Width">
                                     </mat-button-toggle>
-                                    <mat-button-toggle><input matInput maxlength="" placeholder="Height">
+                                    <mat-button-toggle><input matInput maxlength=""formControlName="height" (keypress)="keyPressNumeric($event)" placeholder="Height">
                                     </mat-button-toggle>
-                                    <mat-button-toggle style="background-color:#225f75"><input matInput maxlength=""
+                                    <mat-button-toggle style="background-color:#225f75"><input formControlName="unit" matInput maxlength=""
                                             placeholder="Unit"></mat-button-toggle>
                                 </mat-button-toggle-group>
                             </div>
@@ -135,7 +178,7 @@
                                     <input class="inputRadius" matInput maxlength="">
                                 </mat-form-field> -->
                                 <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggleButton">
-                                    <mat-button-toggle><input matInput maxlength="" placeholder="Weight">
+                                    <mat-button-toggle><input matInput maxlength=""formControlName="weight" (keypress)="keyPressNumeric($event)"placeholder="Weight">
                                     </mat-button-toggle>
                                     <mat-button-toggle style="background-color:#225f75"><input matInput maxlength=""
                                             placeholder="Kgs"></mat-button-toggle>
@@ -154,7 +197,7 @@
                             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                     <mat-label>Add Comments</mat-label>
-                                    <input class="inputRadius" matInput maxlength="">
+                                    <input class="inputRadius" formControlName="comments"matInput maxlength="">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -163,7 +206,7 @@
 
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                                <button class="btn-space" mat-raised-button color="primary" class="buttonCSS"
+                                <button class="btn-space" mat-raised-button color="primary"(click) = "onSubmit()" class="buttonCSS"
                                     style="float: right;">Submit</button>
 
                             </div>
@@ -172,5 +215,6 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section>
