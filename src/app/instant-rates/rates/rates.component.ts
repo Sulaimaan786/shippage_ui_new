@@ -38,6 +38,8 @@ export class RatesComponent implements OnInit {
   rateDataList = [];
   equipmentNameList = [{ title: ""}];
   incoterm: any;
+  eqtypeId:any;
+  totalequipId:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
@@ -106,8 +108,10 @@ export class RatesComponent implements OnInit {
 
       for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
         
-        const eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
-        this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + eqtypeId).subscribe((res: any) => {
+        this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
+        this.totalequipId += this.eqtypeId+',';
+        console.log(this.totalequipId);
+        this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
           this.equipmentType = res.equipName.equipName;
           this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
           this.data += this.combine;
@@ -115,8 +119,7 @@ export class RatesComponent implements OnInit {
            console.log(this.equipName);
          });
         
-      }
-      
+      } 
       this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
       console.log(this.freightMode);
 
@@ -134,12 +137,11 @@ export class RatesComponent implements OnInit {
         commodityValues:[""],
         incoterm:this.incotermsValue.incoterm,
       })
-      this.instantRate = this.docForm.value;
-      console.log("hello---------------"+ this.instantRate);
+      this.instantRate = this.docForm.value; 
 
       //this.instantRatesService.addPurchaseInvoice(this.instantRate);
       
-      this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination).subscribe((res: any) => {
+      this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination + "&loadtype=" + this.totalequipId.substring(9)).subscribe((res: any) => {
         this.rateDataList = res.lInstantRatesBean;
         });
       
