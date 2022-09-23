@@ -13,7 +13,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSortModule } from "@angular/material/sort";
-import { MatTabsModule } from "@angular/material/tabs";
+
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatTableModule } from "@angular/material/table";
@@ -25,7 +25,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-
+import { MatTabsModule } from "@angular/material/tabs";
 import { InstantRatesRoutingModule } from './instant-rates-routing.module';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ShipmentModeComponent } from './shipment-mode/shipment-mode.component';
@@ -43,6 +43,8 @@ import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
 
 import { BookingComponent } from './booking/booking.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { RateEditComponent } from './rate-edit/rate-edit.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     CommodityComponent,
     CargoReadinessComponent,
     LoadTypeComponent,
-    CargoDetailsComponent
+    CargoDetailsComponent,
+    RateEditComponent
   ],
   imports: [
     CommonModule,
@@ -91,6 +94,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatRadioModule,
     DragDropModule,
     MatProgressSpinnerModule,
+    MatButtonToggleModule,
+   
+    
+    
     // FlexLayoutModule,
     NgMultiSelectDropDownModule.forRoot()
 

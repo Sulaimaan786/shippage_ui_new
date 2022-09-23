@@ -9,6 +9,9 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRates } from '../instant-rates.model';
+import { MatDialog } from '@angular/material/dialog';
+import { LoadTypeComponent } from '../load-type/load-type.component';
+import { RateEditComponent } from '../rate-edit/rate-edit.component';
 @Component({
   selector: 'app-rates',
   templateUrl: './rates.component.html',
@@ -42,6 +45,7 @@ export class RatesComponent implements OnInit {
   totalequipId:any;
   resultsFound:any;
   testarray: any;
+  commodity: any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
@@ -49,7 +53,8 @@ export class RatesComponent implements OnInit {
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,
     private instantRatesService: InstantRatesService,
-    private httpService: HttpServiceService
+    private httpService: HttpServiceService,
+    public dialog: MatDialog,
     
     ) {}
   ngOnInit() {
@@ -90,7 +95,11 @@ export class RatesComponent implements OnInit {
     //commodity
     this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
     console.log("datas" +this.commodityValues.commodity);
-
+    this.commodity =this.commodityValues.commodity;
+    this.httpService.get(this.instantRatesService.commodity + "?commodity=" + this.commodity).subscribe((res: any) => {
+    this.commodity = res.commodityName.text;
+    },
+  );
       // this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
       
       // for(let i =0; i < this.commodityValues.length;i++){
@@ -170,7 +179,29 @@ export class RatesComponent implements OnInit {
     this.router.navigate(['instantRates/booking/'+ detailid]);
   }
  
+  getInvoiceDetails(){
 
+    // this.index = i;
+    // this.id = row.itemId;
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(RateEditComponent, {
+      height: "250px",
+      width: "960px",
+      // data: row,
+      direction: tempDirection,
+    });
+    // this.subs.sink = dialogRef.afterClosed().subscribe((data) => {
+
+    //   this.loadData();
+
+    // });
+
+  }
 
 }
 

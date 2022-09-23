@@ -39,6 +39,7 @@ import { CommodityComponent } from './commodity/commodity.component';
 import { CargoReadinessComponent } from './cargo-readiness/cargo-readiness.component';
 import { LoadTypeComponent } from './load-type/load-type.component';
 import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
+import { RateEditComponent } from './rate-edit/rate-edit.component';
  
 const routes: Routes = [
   {
@@ -97,6 +98,10 @@ const routes: Routes = [
     path: "cargoDetails",
     component: CargoDetailsComponent,
   },
+  {
+    path: "rate-edit",
+    component: RateEditComponent,
+  },
 ];
 
 @NgModule({
@@ -123,6 +128,7 @@ const routes: Routes = [
    MatTooltipModule,
    MatProgressSpinnerModule,
    ComponentsModule,
+   MatButtonModule,
    SharedModule,],
   exports: [RouterModule]
 })

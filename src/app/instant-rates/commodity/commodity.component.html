@@ -47,20 +47,22 @@
                              -->
 
                              <mat-label style="color: white;">Commodity</mat-label> 
-                                  <!-- <mat-select class="inputTxt" required>
+                             <mat-form-field  appearance="outline" >
+                                   <mat-select class="inputTxt"formControlName="commodity" required>
                                   
                                     <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required>
                                       {{title.text}}
                                       </mat-option>
-                                   </mat-select> -->
-                                   <ng-multiselect-dropdown required class="inputTxt"  formControlName="commodity" 
+                                   </mat-select>
+                                   </mat-form-field>
+                                   <!-- <ng-multiselect-dropdown required class="inputTxt"  formControlName="commodity" 
                                    [placeholder]="'Commodity'"
                                    [settings]="dropdownSettings"
                                    [data]="dropdownList"
                                    [(ngModel)]="selectedItems"
                                    (onSelect)="onItemSelect($event)"
                                    (onSelectAll)="onSelectAll($event)">
-                          </ng-multiselect-dropdown>
+                          </ng-multiselect-dropdown> -->
                           
                             
                           </div>

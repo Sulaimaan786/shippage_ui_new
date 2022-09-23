@@ -24,7 +24,7 @@ export class CommodityComponent implements OnInit {
   commodityL:[];
   dropdownList = [];
   selectedItems = [];
-  dropdownSettings:IDropdownSettings;
+  // dropdownSettings:IDropdownSettings;
   
 
   docForm: FormGroup;
@@ -83,15 +83,15 @@ export class CommodityComponent implements OnInit {
   
 
     this.incotermsChange=true;
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'commodityId', 
-      textField: 'text',
-     selectAllText: 'Select All',
-     unSelectAllText: 'UnSelect All',
-     itemsShowLimit: 3,      
-     allowSearchFilter: true
-   };
+  //   this.dropdownSettings = {
+  //     singleSelection: false,
+  //     idField: 'commodityId', 
+  //     textField: 'text',
+  //    selectAllText: 'Select All',
+  //    unSelectAllText: 'UnSelect All',
+  //    itemsShowLimit: 3,      
+  //    allowSearchFilter: true
+  //  };
 
    this.responsive.observe(Breakpoints.Handset)
    .subscribe(result => {
@@ -168,10 +168,10 @@ loadType(){
   this.router.navigate(["instantRates/loadType"]);
 }
 
-onItemSelect(roles: any) {
-  console.log(roles);
-}
-onSelectAll(roles: any) {
-  console.log(roles);
-}
+// onItemSelect(roles: any) {
+//   console.log(roles);
+// }
+// onSelectAll(roles: any) {
+//   console.log(roles);
+// }
 }

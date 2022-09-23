@@ -36,8 +36,8 @@ export class InstantRatesService {
   public equipmentTypeList  = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getequipmentType`;
 
   public getratesUniquelist = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getUniqueRateslist`;
-
   
+  public commodity = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getCommodityName`;
   // This is for save
   // addPurchaseInvoice(instantRates: InstantRates): void {
   //   this.dialogData = instantRates;
