@@ -53,7 +53,7 @@ export class RouteDetailsComponent implements OnInit {
     } 
  
   ngOnInit() { 
-
+    // refresh
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
       location.reload() 
@@ -61,6 +61,7 @@ export class RouteDetailsComponent implements OnInit {
       localStorage.removeItem('foo') 
     }
 
+    // orginList
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
       (data) => {
        

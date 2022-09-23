@@ -32,7 +32,7 @@ const routes: Routes = [
       },
       {
         path: "quote",
-        canActivate: [AuthGuard],
+         canActivate: [AuthGuard],
         data: {
           role: Role.Admin,
         },
@@ -40,6 +40,15 @@ const routes: Routes = [
           import("./quote/quote.module").then((m) => m.QuoteModule),
       },
       
+      {
+      path: "shipping",
+        canActivate: [AuthGuard],
+        data: {
+          role: Role.Admin,
+        },
+        loadChildren: () =>
+          import("./shipping/shipping.module").then((m) => m.ShippingModule),
+      },
       {
         path: "bookingDetails",
         canActivate: [AuthGuard],

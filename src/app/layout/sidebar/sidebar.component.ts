@@ -223,6 +223,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
   quote() {  
     this.router.navigate(["/quote/request-quote"]);
 }
+
+  shipping()
+  {
+    this.router.navigate(["/shipping/shipping"]);
+  }
+ 
   
 
 //   origin&destination() {  

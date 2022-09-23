@@ -1,0 +1,138 @@
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+<section class="content">
+    <div class="content-block mobile-v-p">
+        <div class="block-header" style="margin-top: 50px;">
+            <!-- breadcrumb -->
+            <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
+            <!-- <app-breadcrumb></app-breadcrumb>  -->
+        </div>
+        <div class="row ">
+            <div class="col-xl-12 ">
+
+                <div class="card"
+                    style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">
+
+                    
+                    <div class="row">
+                        
+  
+                        <div class="col-md-4" [formGroup]="docForm">
+                            <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                                <mat-label >  Reference No.
+                                   </mat-label>
+                                    <mat-select class="inputTxt" formControlName="refId">
+                                      <mat-option *ngFor="let title of refIdDropdownList" [value]="title.id" >
+                                        {{title.text}}
+                                        </mat-option> 
+                                     </mat-select>
+                                  </mat-form-field>
+                        </div>
+                        <div class="col-md-4" style=" margin-left: -35px;">
+                            <!-- <mat-form-field class="example-full-width" appearance="fill">
+                                
+                                <textarea matInput placeholder="Ex.Enter the reference # here"></textarea>
+                              </mat-form-field> -->
+                              <mat-form-field  appearance="fill" style="margin-left:40px;width:80%;margin-top:17px" >
+                                <input matInput placeholder="Ex.Enter the reference # here">
+                                </mat-form-field>
+                        </div>
+                        <div class="col-md-4" style="    margin-left: -35px;">
+                            <button class="btn-space" mat-raised-button color="primary"
+                            class="buttonCSS" >Track</button>
+                            
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+                
+
+                <div class="card"
+                    style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">
+
+                    
+                    <div class="row">
+                        
+  
+                        <div class="col-md-4" >
+                            <p class="paragraph">Job Number</p>&nbsp;&nbsp;
+                                                <H6 >GIV13243234
+                                                </H6>
+                        </div>
+                        <div class="col-md-6">
+                            
+                            
+                        </div>
+                      
+                        <div class="col-md-2" style="padding-top: 20px">
+                            <a href="" >Edit</a>
+                            
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+               <div class="card"
+                    style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;height:auto;padding-top:24px;padding-bottom:24px;padding-left: 16px;padding-right:16px">
+
+<table >
+    <thead >
+        <tr>
+          <th >Date</th>
+          <th >Event</th>
+          <th  >Code</th>
+          <th >Remark</th>
+          
+          <!-- <th>Host Name</th>
+          <th>Purpose</th>
+          <th>Visit Place</th> -->
+        </tr>
+    </thead>
+    <tbody>
+      <!--ng-container *ngIf="visitorReportList" -->
+          <!-- <tr *ngFor="let visitReport of salesCallReportList;"> -->
+            <tr >
+            <!-- <td>{{visitReport.customer}}</td>
+            <td>{{visitReport.customerType}}</td>
+            <td>{{visitReport.assignTo}}</td>
+            <td>{{visitReport.personMet}}</td> -->
+            <td >19th July 2022</td>
+            <td >LR status</td>
+            <td >Copy</td>
+            <td >Copy Uploaded</td>
+           
+          </tr>
+          <tr >
+            <td >19th July 2022</td>
+            <td >LR status</td>
+            <td >Copy</td>
+            <td >Copy Uploaded</td>
+           
+          </tr>
+          <tr >
+            <td >19th July 2022</td>
+            <td >LR status</td>
+            <td >Copy</td>
+            <td >Copy Uploaded</td>
+           
+          </tr>
+      <!--/ng-container-->        
+    </tbody>
+  </table>
+  <button class="btn-space" mat-raised-button color="primary"
+                            class="buttonCSS" style="float:right" >View History</button>
+                   
+                </div>
+
+                 <div class="card">
+                    <app-timeline  [value]="events"></app-timeline>
+                 </div>
+                </div>
+                </div>
+                </div>
+                </section>
