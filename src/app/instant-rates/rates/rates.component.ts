@@ -102,7 +102,8 @@ export class RatesComponent implements OnInit {
       this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
       console.log("ready  " +this.cargoReady.readiness);
       console.log("ready  " +this.cargoReady.selectedDate);
-//Load type
+      
+      //Load type
       this.loadtype = this.dataStorage.getLoadDetails();
       this.loadDetails = JSON.parse(this.loadtype)
       console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
@@ -135,7 +136,7 @@ export class RatesComponent implements OnInit {
         loadtype:this.loadtype.equipmentType,
         freightMode:this.freightMode,
         shipmentMode:this.shipmentMode,
-        incotermsValue:[""],   
+        incotermsValue:[""],
         commodityValues:[""],
         incoterm:this.incotermsValue.incoterm,
       })
@@ -165,8 +166,8 @@ export class RatesComponent implements OnInit {
 
   
 
-  rateSummary(){
-    this.router.navigate(["instantRates/booking"]);
+  rateSummary(detailid:any){
+    this.router.navigate(['instantRates/booking/'+ detailid]);
   }
  
 

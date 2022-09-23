@@ -6,7 +6,7 @@ import { DOCUMENT } from "@angular/common";
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
-
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-booking',
@@ -28,6 +28,15 @@ export class BookingComponent implements OnInit {
   equipmentType:any;
   commodityDetails:[];
   incoterm: any;
+  
+  detailid:number;
+  rateDataList:[];
+
+  eqtypeId:any;
+  totalequipId:any;
+  combine:String;
+  data:any;
+  equipName:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -37,6 +46,18 @@ export class BookingComponent implements OnInit {
     private instantRatesService: InstantRatesService,
     private httpService: HttpServiceService) {}
   ngOnInit() {
+
+  //view   
+  this.route.params.subscribe(params => {
+    if(params.id!=undefined && params.id!=0){
+     this.detailid = params.id;
+     //For User login Editable mode
+     this.getRatesData(this.detailid) ;
+    }
+    else{
+      
+    }
+   });
    
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
@@ -90,6 +111,21 @@ console.log("datas" +this.commodityValues.commodity);
   this.loadDetails = JSON.parse(this.loadtype)
   console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
   this.equipmentType = this.loadDetails.loadTypeDetailBean[0].equipmentType;
+
+  for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
+        
+    this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
+    this.totalequipId += this.eqtypeId+',';
+    console.log(this.totalequipId);
+    this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
+      this.equipmentType = res.equipName.equipName;
+      this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+      this.data += this.combine;
+      this.equipName = this.data.substring(9);
+       console.log(this.equipName);
+     });
+    
+  } 
  
  
   this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
@@ -97,6 +133,12 @@ console.log("datas" +this.commodityValues.commodity);
 
   this.shipmentMode = JSON.parse(this.dataStorage.getShipmentDetails());
   console.log(this.shipmentMode);
+  }
+
+  getRatesData(detailid:any):void{
+    this.httpService.get(this.instantRatesService.getratesUniquelist+"?rateList="+detailid).subscribe((res: any) => {
+      this.rateDataList = res.rateDataList;
+      });
   }
 
 
