@@ -77,7 +77,7 @@ export class RequestQuoteComponent implements OnInit {
         "bottom",
         "center"
       );
-     // this.router.navigate(['/crm/salesCallEntry/listSalesCallEntry']);
+      this.router.navigate(['/instantRates/welcome-page']);
     }
   }
   showNotification(colorName, text, placementFrom, placementAlign) {
