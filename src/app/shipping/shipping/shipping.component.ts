@@ -1,4 +1,4 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -19,10 +19,15 @@ export class ShippingComponent implements OnInit {
   docForm: FormGroup;
   
   events:any[];
+  mobilepadding: any;
+  webpadding: any;
+  padding: any;
+  margLeft:any;
 
   constructor(private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
+    
     private snackBar: MatSnackBar,
    // private shippingResultBean: ShippingResultBean,
     private shippingService:ShippingService,
@@ -34,10 +39,13 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit(): void {
     this.events = [
-      {content:'Ordered',  status:'R'},
-      {content:'Processing', status:'R'},
-      {content:'Shipped'},
-      {content:'Delivered'}
+      {content:'Pick up',  status:'R'},
+      {content:'Custom Cleared', status:'R'},
+      {content:'ETD'},
+      {content:'ETA'},
+      {content:'Do Released'},
+      {content:'Custom Cleared'},
+      {content:'Door Delivered'}
     ]
      // refIdList
      this.docForm = this.fb.group({
@@ -52,6 +60,24 @@ export class ShippingComponent implements OnInit {
       },
 
    );
+
+   this.responsive.observe([Breakpoints.Handset])
+      .subscribe(result => {
+        this.mobilepadding = '45px 75px 15px 75px';
+        this.webpadding = '75px 75px 75px 75px';
+        
+        if (result.matches) {  
+          this.renderer.addClass(this.document.body,"content-block")  
+          this.padding = this.mobilepadding;
+          this.margLeft = '25%';
+          
+        }else{ 
+          this.renderer.removeClass(this.document.body,"content-block") 
+          this.padding = this.webpadding;
+          this.margLeft = '80%';
+         
+        }
+      });
 
    
   }

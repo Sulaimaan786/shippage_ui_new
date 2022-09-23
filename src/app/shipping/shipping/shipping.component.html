@@ -10,7 +10,7 @@
         </div>
         <div class="row ">
             <div class="col-xl-12 ">
-
+            <div class="row">
                 <div class="card"
                     style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
              -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">
@@ -48,11 +48,13 @@
                     </div>
                    
                 </div>
-                
+              </div>
 
+
+              <div class="row" style="margin-top:20px">
                 <div class="card"
                     style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
-             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">
+             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px;padding-top:12px;padding-bottom:20px">
 
                     
                     <div class="row">
@@ -76,6 +78,12 @@
                     </div>
                    
                 </div>
+              </div>
+              <div class=" row" style="margin-top:20px">
+                
+                   <app-timeline  [value]="events"></app-timeline>
+                 </div>
+              <div class=" row" style="margin-top:40px">
                <div class="card"
                     style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
              -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;height:auto;padding-top:24px;padding-bottom:24px;padding-left: 16px;padding-right:16px">
@@ -124,14 +132,12 @@
       <!--/ng-container-->        
     </tbody>
   </table>
-  <button class="btn-space" mat-raised-button color="primary"
+  <button class="btn-space" mat-raised-button color="primary" [ngStyle]="{'margin-left':margLeft}"
                             class="buttonCSS" style="float:right" >View History</button>
                    
                 </div>
-
-                 <div class="card">
-                    <app-timeline  [value]="events"></app-timeline>
-                 </div>
+              </div>
+              
                 </div>
                 </div>
                 </div>
