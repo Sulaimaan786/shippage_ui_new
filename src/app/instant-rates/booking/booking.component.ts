@@ -51,6 +51,7 @@ export class BookingComponent implements OnInit {
   Count=0;
   rateValue: any;
   rateValueFinal: number;
+  equipmentTypeName:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -139,6 +140,7 @@ console.log("datas" +this.commodityValues.commodity);
       this.equipmentType = res.equipName.equipName;
       if(this.selectedEquip==res.equipName.equipName){
         this.equipmentId=res.equipName.equipType;
+        this.equipmentTypeName=res.equipName.equipName;
       }
       if(this.loadDetails.loadTypeDetailBean[i].equipmentType==this.equipmentId && this.Count==0){
           this.quantityValue=this.loadDetails.loadTypeDetailBean[i].quantity;
