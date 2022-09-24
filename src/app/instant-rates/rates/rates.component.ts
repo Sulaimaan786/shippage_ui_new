@@ -13,7 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoadTypeComponent } from '../load-type/load-type.component';
 import { RateEditComponent } from '../rate-edit/rate-edit.component';
 import { serverLocations } from 'src/app/auth/serverLocations';
-import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
+import { EncrDecrService } from 'src/app/core/service/encrDecr.service';
+
 @Component({
   selector: 'app-rates',
   templateUrl: './rates.component.html',
@@ -197,8 +198,8 @@ export class RatesComponent implements OnInit {
       tempDirection = "ltr";  
     }
     const dialogRef = this.dialog.open(RateEditComponent, {
-      height: "250px",
-      width: "960px",
+      height: "100%",
+      width: "100%",
       // data: row,
       direction: tempDirection,
     });
