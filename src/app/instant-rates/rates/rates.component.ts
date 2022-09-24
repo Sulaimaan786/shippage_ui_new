@@ -32,7 +32,7 @@ export class RatesComponent implements OnInit {
   combine:String;
   equipName:any;
   output:any;
-  
+  cardBottom:any;
  // commodityValues:[]; 
  docForm: FormGroup;
  instantRate : InstantRates;
@@ -69,8 +69,10 @@ export class RatesComponent implements OnInit {
 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
+          this.cardBottom = '75px'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
+          this.cardBottom = '53px'
         }
       }); 
     //Route Details  
