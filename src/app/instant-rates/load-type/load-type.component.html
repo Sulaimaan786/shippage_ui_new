@@ -42,7 +42,7 @@
                       <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 25px;width: 100%;height:85%;padding-top:40px;padding-right: 20px;padding-bottom: 40px;"> 
                          
                         <div class="row" >
-                            <div style="overflow-x:auto;">
+                            <div style="overflow-y: hidden;">
                               <table >
                                 <tr >
                                   <th >Equipment Type </th>
@@ -102,15 +102,13 @@
 
                               
                                
-                              <td style="padding-bottom: 25px;
-                              padding-left: 15px;">
+                              <td style=" padding-left: 15px;">
                                      
                                 <button mat-mini-fab color="warn" (click)="removeRow(i)" >
                                   <mat-icon class="col-white"  >remove</mat-icon>
                                 </button></td>
                                 
-                                <td style="padding-bottom: 25px;
-                                padding-left: 15px;">         
+                                <td style="  padding-left: 15px;">         
                                   
                                   <button mat-mini-fab color="primary" (click)="addRow()">
                                     <mat-icon class="col-white">add</mat-icon>
