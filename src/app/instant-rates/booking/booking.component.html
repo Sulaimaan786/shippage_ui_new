@@ -58,7 +58,7 @@
           <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
               <p>Load Type</p> </mat-label><br><br>
           
-          <H6 style=" margin-top: -30px">{{equipmentType}}</H6>
+          <H6 style=" margin-top: -30px">{{equipName}}</H6>
       </div>
 
       <div class="col-sm-3 p-3">
@@ -200,13 +200,13 @@
               
 
               <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Total Shipment Cost</h5>
-              <p>  20 Gp x 1    - USD 1,000  </p>
+              <p>  {{title.equipName}} x {{quantityValue}}    - USD {{rateValueFinal}}  </p>
 
               <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Other Charges</h5>
               <p>  20 Gp x 1    - USD 1,000  </p>
 
               <mat-label> Total Cost</mat-label>
-              <h3 style="text-align: center;"> USD {{title.rate | number: '2.'}} </h3>
+              <h3 style="text-align: center;"> USD {{rateValueFinal}} </h3>
               <br>
             </div>
             <div class="row">

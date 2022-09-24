@@ -45,6 +45,10 @@ import { BookingComponent } from './booking/booking.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { RateEditComponent } from './rate-edit/rate-edit.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
+import { EncryptionService } from 'src/app/core/service/encrypt.service';
+
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     LoadTypeComponent,
     CargoDetailsComponent,
     RateEditComponent
+  ],
+  providers: [
+    EncrDecrService,
+    EncryptionService
   ],
   imports: [
     CommonModule,

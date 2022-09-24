@@ -7,6 +7,9 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { HttpErrorResponse } from "@angular/common/http";
+import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
+import { serverLocations } from 'src/app/auth/serverLocations';
+import { EncryptionService } from 'src/app/core/service/encrypt.service';
 
 @Component({
   selector: 'app-booking',
@@ -28,6 +31,7 @@ export class BookingComponent implements OnInit {
   equipmentType:any;
   commodityDetails:[];
   incoterm: any;
+  equipmentNo:any;
   
   detailid:number;
   rateDataList:[];
@@ -37,6 +41,16 @@ export class BookingComponent implements OnInit {
   combine:String;
   data:any;
   equipName:any;
+  testName:any;
+
+  requestId: any;
+  decryptRequestId: any;
+  selectedEquip: any;
+  quantityValue: any;
+  equipmentId: any;
+  Count=0;
+  rateValue: any;
+  rateValueFinal: number;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -44,15 +58,19 @@ export class BookingComponent implements OnInit {
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,
     private instantRatesService: InstantRatesService,
-    private httpService: HttpServiceService) {}
+    private httpService: HttpServiceService,
+    public EncrDecr: EncrDecrService,
+    private serverUrl:serverLocations,	
+    private encryptionService:EncryptionService	
+    ) {}
+
   ngOnInit() {
 
   //view   
-  this.route.params.subscribe(params => {
-    if(params.id!=undefined && params.id!=0){
-     this.detailid = params.id;
+  this.route.params.subscribe(params => {if(params.id!=undefined && params.id!=0){ this.decryptRequestId = params.id;
+      this.requestId = this.EncrDecr.get(this.serverUrl.secretKey, this.decryptRequestId)
      //For User login Editable mode
-     this.getRatesData(this.detailid) ;
+     this.getRatesData(this.requestId) ;
     }
     else{
       
@@ -119,7 +137,19 @@ console.log("datas" +this.commodityValues.commodity);
     console.log(this.totalequipId);
     this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
       this.equipmentType = res.equipName.equipName;
+      if(this.selectedEquip==res.equipName.equipName){
+        this.equipmentId=res.equipName.equipType;
+      }
+      if(this.loadDetails.loadTypeDetailBean[i].equipmentType==this.equipmentId && this.Count==0){
+          this.quantityValue=this.loadDetails.loadTypeDetailBean[i].quantity;
+          this.rateValueFinal=this.rateValue*this.quantityValue;
+          this.Count++;
+      }
       this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+      this.testName = this.combine.split(" ",3)
+      console.log(this.testName);
+
+      this.equipmentNo = this.loadDetails.loadTypeDetailBean[i].quantity;
       this.data += this.combine;
       this.equipName = this.data.substring(9);
        console.log(this.equipName);
@@ -136,8 +166,13 @@ console.log("datas" +this.commodityValues.commodity);
   }
 
   getRatesData(detailid:any):void{
-    this.httpService.get(this.instantRatesService.getratesUniquelist+"?rateList="+detailid).subscribe((res: any) => {
+    this.httpService.get(this.instantRatesService.getratesUniquelist+"?rateList="+encodeURIComponent(this.encryptionService.encryptAesToString(detailid, this.serverUrl.secretKey).toString())).subscribe((res: any) => {
       this.rateDataList = res.rateDataList;
+      this.rateValue=res.rateDataList[0].rate;
+      this.selectedEquip= res.rateDataList[0].equipName;
+      this.loadtype = this.dataStorage.getLoadDetails();
+      this.loadDetails = JSON.parse(this.loadtype);
+    //  this.equipmentNo = res.rateDataList[0].equipName + " x " + this.loadDetails.loadTypeDetailBean.quantity;
       });
   }
 

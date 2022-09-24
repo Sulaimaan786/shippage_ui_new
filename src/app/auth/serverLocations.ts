@@ -4,7 +4,10 @@ import { Injectable } from '@angular/core';
 })
 export class serverLocations {
   apiServerAddress: any;
+  secretKey: any;
   constructor() {
+    this.secretKey = 7061737323313233;
+    
     if (window.location.hostname === 'localhost') {
       //Local
   this.apiServerAddress = 'http://localhost:8098/';

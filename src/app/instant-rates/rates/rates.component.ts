@@ -12,6 +12,8 @@ import { InstantRates } from '../instant-rates.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LoadTypeComponent } from '../load-type/load-type.component';
 import { RateEditComponent } from '../rate-edit/rate-edit.component';
+import { serverLocations } from 'src/app/auth/serverLocations';
+import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
 @Component({
   selector: 'app-rates',
   templateUrl: './rates.component.html',
@@ -55,6 +57,8 @@ export class RatesComponent implements OnInit {
     private instantRatesService: InstantRatesService,
     private httpService: HttpServiceService,
     public dialog: MatDialog,
+    private serverUrl:serverLocations,
+    private EncrDecr:EncrDecrService
     
     ) {}
   ngOnInit() {
@@ -176,7 +180,8 @@ export class RatesComponent implements OnInit {
   
 
   rateSummary(detailid:any){
-    this.router.navigate(['instantRates/booking/'+ detailid]);
+    var encrypted = this.EncrDecr.set(this.serverUrl.secretKey, detailid);
+    this.router.navigate(['instantRates/booking/'+ encrypted]);
   }
  
   getInvoiceDetails(){

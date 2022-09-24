@@ -46,6 +46,7 @@
     "browser-sync": "^2.27.10",
     "chart.js": "^2.9.4",
     "core-js": "^3.23.3",
+    "crypto-js": "^4.1.1",
     "echarts": "^4.9.0",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",

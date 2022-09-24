@@ -32,6 +32,7 @@ export class CargoReadinessComponent implements OnInit {
   buttonwidth:any;
   cardBottom:any;
   submitted:boolean=false;
+  currentDate:string;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,
@@ -50,20 +51,20 @@ export class CargoReadinessComponent implements OnInit {
    this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
-        if (result.matches) {  
-          this.renderer.addClass(this.document.body,"content-block")
-           this.cardpadding ='2px 8px 0px 8px';
-          this.padleft = '55px';
-          this.butTopmar = '20px';
-          this.firstbutton = '20px'
-          this.butLeftmar = '85px';
-          this.height = '90%';
-          this.nextbutton = '110px';
-          this.nxtbuttonright = '28%';
-          this.nxtbuttonBot = '3%';
-          this.topback = true;
-          this.buttonwidth = '160px';
-          this.cardBottom = '68px'
+      if (result.matches) {  
+        this.renderer.addClass(this.document.body,"content-block")
+          this.cardpadding ='2px 8px 0px 8px';
+        this.padleft = '55px';
+        this.butTopmar = '20px';
+        this.firstbutton = '20px'
+        this.butLeftmar = '85px';
+        this.height = '90%';
+        this.nextbutton = '110px';
+        this.nxtbuttonright = '28%';
+        this.nxtbuttonBot = '3%';
+        this.topback = true;
+        this.buttonwidth = '160px';
+        this.cardBottom = '68px'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
            this.cardpadding ='0px 50px 0px 20px';
@@ -80,6 +81,8 @@ export class CargoReadinessComponent implements OnInit {
           
         }
       });
+
+      this.currentDate = new Date().toISOString().substr(0, 16);
   }
   radioClick(value:any){
     if(value=='Yes'){

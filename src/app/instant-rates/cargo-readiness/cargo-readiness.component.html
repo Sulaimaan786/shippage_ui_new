@@ -61,7 +61,7 @@
                                 <mat-card *ngIf="calendar" > 
                                   <mat-calendar
                                     [selected]="selectedDate"
-                                    (selectedChange)="onSelect($event)"
+                                    (selectedChange)="onSelect($event)" [min]="currentDate"
                                   ></mat-calendar>
                                   
                                 </mat-card>
