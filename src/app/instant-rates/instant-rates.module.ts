@@ -48,6 +48,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
 import { EncryptionService } from 'src/app/core/service/encrypt.service';
+//import { MatAutocomplete } from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
@@ -77,6 +79,8 @@ import { EncryptionService } from 'src/app/core/service/encrypt.service';
     InstantRatesRoutingModule,
       chartjsModule,
     FormsModule,
+   // MatAutocomplete,
+   MatAutocompleteModule,
     ReactiveFormsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import("echarts"),

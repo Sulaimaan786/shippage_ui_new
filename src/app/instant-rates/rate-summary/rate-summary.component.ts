@@ -7,6 +7,9 @@ import { DOCUMENT } from "@angular/common";
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { InstantRates } from '../instant-rates.model';
+
 
 
 @Component({
@@ -15,6 +18,8 @@ import { HttpServiceService } from 'src/app/auth/http-service.service';
   styleUrls: ['./rate-summary.component.sass']
 })
 export class RateSummaryComponent implements OnInit {
+
+  docForm: FormGroup;
   routeDetails :any;
   cargoReady:any;
   loadtype:any;
@@ -23,12 +28,37 @@ export class RateSummaryComponent implements OnInit {
   commodityValues:any;
   freightMode:any;
   shipmentMode:any;
+  commodity:any;
+  instantRate : InstantRates;
 
   origin:any;
   destination: any;
   equipmentType:any;
   commodityDetails:[];
   incoterm: any;
+  eqtypeId:any;
+  totalequipId:any;
+  selectedEquip: any;
+  equipmentId: any;
+  equipmentTypeName:any;
+  Count=0;
+  rateValue: any;
+  rateValueFinal: number;
+  combine:String;
+  data:any;
+  quantityValue: any;
+  equipName:any;
+  testName:any;
+  equipmentNo:any;
+  cardBottom:any;
+
+  // textarea flags
+
+  shipperFlag:boolean = false;
+  consigneeFlag:boolean = false;
+  notifyFlag:Boolean = false;
+  shippingIntFlag:boolean = false;
+  
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -36,15 +66,18 @@ export class RateSummaryComponent implements OnInit {
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,
     private instantRatesService: InstantRatesService,
-    private httpService: HttpServiceService) {}
-  ngOnInit() {
+    private httpService: HttpServiceService,private fb: FormBuilder) {}
+  ngOnInit() { 
+
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
+          this.cardBottom = '75px';
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
+          this.cardBottom = '53px';
         }
       });
       //Route Details  
@@ -73,7 +106,11 @@ this.destination = res.destination.text;
 //commodity
 this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
 console.log("datas" +this.commodityValues.commodity);
-
+this.commodity =this.commodityValues.commodity;
+    this.httpService.get(this.instantRatesService.commodity + "?commodity=" + this.commodity).subscribe((res: any) => {
+    this.commodity = res.commodityName.text;
+    },
+  );
   // this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
   
   // for(let i =0; i < this.commodityValues.length;i++){
@@ -90,6 +127,34 @@ console.log("datas" +this.commodityValues.commodity);
   this.loadDetails = JSON.parse(this.loadtype)
   console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
   this.equipmentType = this.loadDetails.loadTypeDetailBean[0].equipmentType;
+
+  for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
+        
+    this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
+    this.totalequipId += this.eqtypeId+',';
+    console.log(this.totalequipId);
+    this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
+      this.equipmentType = res.equipName.equipName;
+      if(this.selectedEquip==res.equipName.equipName){
+        this.equipmentId=res.equipName.equipType;
+        this.equipmentTypeName=res.equipName.equipName;
+      }
+      if(this.loadDetails.loadTypeDetailBean[i].equipmentType==this.equipmentId && this.Count==0){
+          this.quantityValue=this.loadDetails.loadTypeDetailBean[i].quantity;
+          this.rateValueFinal=this.rateValue*this.quantityValue;
+          this.Count++;
+      }
+      this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+      this.testName = this.combine.split(" ",3)
+      console.log(this.testName);
+
+      this.equipmentNo = this.loadDetails.loadTypeDetailBean[i].quantity;
+      this.data += this.combine;
+      this.equipName = this.data.substring(9);
+       console.log(this.equipName);
+     });
+    
+  }
  
  
   this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
@@ -98,10 +163,59 @@ console.log("datas" +this.commodityValues.commodity);
   this.shipmentMode = JSON.parse(this.dataStorage.getShipmentDetails());
   console.log(this.shipmentMode);
 
-  
+  this.docForm = this.fb.group({
+    origin : this.routeDetails.origin,
+    destination: this.routeDetails.destination,
+    equipmentType:this.equipmentType,
+    freightMode:this.freightMode,
+    shipmentMode:this.shipmentMode,
+    incoterm:this.incotermsValue.incoterm,
+    commodity:this.commodity,
+    shipper:  [""],
+    consignee: [""],
+    shipInstruction: [""],
+    notifyparty:  [""] 
+  })
+
+  this.instantRate = this.docForm.value;
+  console.log(this.instantRate);
 }
-booking(){
+
+ booking(){
   this.router.navigate(["instantRates/bookingShipment"]);
+}
+
+shipper(){
+  this.shipperFlag = true
+  console.log(this.docForm.value);
+}
+shipperclose(){
+  this.shipperFlag = false
+}
+
+notifyParty(){
+this.notifyFlag = true
+console.log(this.docForm.value);
+}
+notifyPartyclose(){
+  this.notifyFlag = false
+}
+
+consignee(){
+  this.consigneeFlag = true
+  console.log(this.docForm.value);
+}
+consigneeclose(){
+  this.consigneeFlag = false
+}
+
+
+shippingInt(){
+  this.shippingIntFlag = true
+  console.log(this.docForm.value);
+}
+shippingIntclose(){
+  this.shippingIntFlag = false
 }
 
   }

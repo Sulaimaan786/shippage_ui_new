@@ -1,4 +1,4 @@
-import { Component, OnInit ,Renderer2,Inject } from '@angular/core';
+import { Component, OnInit ,Renderer2,Inject,Input } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
@@ -10,7 +10,10 @@ import { InstantRatesResultBean } from '../instant-rates-result-bean';
 import { InstantRatesService } from '../instant-rates.service';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl } from '@angular/forms';
 
+// import { Observable } from 'rxjs';
+// import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-route-details',
@@ -37,6 +40,11 @@ export class RouteDetailsComponent implements OnInit {
   margTop:any;
   
    center:any;
+   @Input() name: string;
+  myControl: FormControl = new FormControl('');
+
+  // options = [];
+  // filteredOptions: Observable<string[]>;
  
   constructor(private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,public dataStorage :DataStorageService,
@@ -51,6 +59,15 @@ export class RouteDetailsComponent implements OnInit {
         destination: [""],
       });
     } 
+
+    // private _filter(value: string): string[] {
+    //   const filterValue = value.toLowerCase();
+    //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    // }
+
+    // onFilterOptionSelected(optionSelected: string) {
+    //   console.log('optionSelected : ', optionSelected);
+    // }
  
   ngOnInit() { 
     // refresh
@@ -60,6 +77,12 @@ export class RouteDetailsComponent implements OnInit {
     } else {
       localStorage.removeItem('foo') 
     }
+
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith(''),
+    //     map(value => this._filter(value))
+    //   );
 
     // orginList
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(

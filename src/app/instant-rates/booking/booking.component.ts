@@ -52,6 +52,7 @@ export class BookingComponent implements OnInit {
   rateValue: any;
   rateValueFinal: number;
   equipmentTypeName:any;
+  commodity:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -113,6 +114,11 @@ this.destination = res.destination.text;
 //commodity
 this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
 console.log("datas" +this.commodityValues.commodity);
+this.commodity =this.commodityValues.commodity;
+    this.httpService.get(this.instantRatesService.commodity + "?commodity=" + this.commodity).subscribe((res: any) => {
+    this.commodity = res.commodityName.text;
+    },
+  );
 
   // this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
   

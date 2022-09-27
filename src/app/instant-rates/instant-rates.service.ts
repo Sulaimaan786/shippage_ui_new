@@ -15,29 +15,29 @@ export class InstantRatesService {
     private serverUrl: serverLocations, private httpService: HttpServiceService
   ) { }
  
-  public originListUl = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getpolList`;
+  public originListUl = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getpolList`;
 
-  public airoriginListUl = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getairpolList`;
+  public airoriginListUl = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getairpolList`;
 
-  public commoditylist = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/commoditylist`;
+  public commoditylist = `${this.serverUrl.apiServerAddress}api/auth/instantrates/commoditylist`;
 
-  public incoterms = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getincotermsList`;
+  public incoterms = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getincotermsList`;
 
-  public origin = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/origin`;
+  public origin = `${this.serverUrl.apiServerAddress}api/auth/instantrates/origin`;
 
-  public destination = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/destination`;
+  public destination = `${this.serverUrl.apiServerAddress}api/auth/instantrates/destination`;
 
-  public incoterm = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/incoterm`;
+  public incoterm = `${this.serverUrl.apiServerAddress}api/auth/instantrates/incoterm`;
 
-  public equipName = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getequipName`;
+  public equipName = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getequipName`;
 
-  public getrateslist = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getrateslist`;
+  public getrateslist = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getrateslist`;
 
-  public equipmentTypeList  = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getequipmentType`;
+  public equipmentTypeList  = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getequipmentType`;
 
-  public getratesUniquelist = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getUniqueRateslist`;
+  public getratesUniquelist = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getUniqueRateslist`;
   
-  public commodity = `${this.serverUrl.apiServerAddress}api/auth/app/instantrates/getCommodityName`;
+  public commodity = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getCommodityName`;
   // This is for save
   // addPurchaseInvoice(instantRates: InstantRates): void {
   //   this.dialogData = instantRates;

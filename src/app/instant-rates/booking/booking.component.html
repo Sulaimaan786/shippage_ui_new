@@ -22,7 +22,7 @@
           <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
               <p>Mode of Shipment</p> </mat-label><br><br>
           
-          <H6 style=" margin-top: -30px">{{freightMode}}-{{shipmentMode}}</H6>
+          <H6 style=" margin-top: -30px">{{freightMode}} - {{shipmentMode}}</H6>
       </div>
       <div class="col-sm-3 p-3">
           <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
@@ -35,7 +35,7 @@
           <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
               <p>Commodity</p> </mat-label><br><br>
           
-          <H6 style=" margin-top: -30px">{{commodityValues.commodity}}</H6>
+          <H6 style=" margin-top: -30px">{{commodity}}</H6>
       </div>
          
          
@@ -200,13 +200,13 @@
               
 
               <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Total Shipment Cost</h5>
-              <p>  {{title.equipName}} x {{quantityValue}}    - USD {{rateValueFinal}}  </p>
+              <p>  {{title.equipName}} x {{quantityValue}}    - USD {{rateValueFinal | number: '2.'}}  </p>
 
               <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Other Charges</h5>
-              <p>  20 Gp x 1    - USD 1,000  </p>
+              <p>  {{title.equipName}} x {{quantityValue}}    - USD 1,000  </p>
 
               <mat-label> Total Cost</mat-label>
-              <h3 style="text-align: center;"> USD {{rateValueFinal}} </h3>
+              <h3 style="text-align: center;"> USD {{rateValueFinal | number: '2.'}} </h3>
               <br>
             </div>
             <div class="row">

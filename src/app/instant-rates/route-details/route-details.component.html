@@ -48,7 +48,7 @@
                   
               </div> -->
               <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" [ngStyle]="{'margin-top':margTop}"> 
-                <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
+                 <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
                   <mat-label required>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
                     <p>Origin</p> </mat-label>
                       <mat-select class="inputTxt" formControlName="origin" required>
@@ -56,7 +56,20 @@
                           {{title.text}}
                           </mat-option>
                        </mat-select>
-                    </mat-form-field>
+                    </mat-form-field> 
+
+                    <!-- <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                      <mat-label required>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
+                        <p>Origin</p> </mat-label>
+                      <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto4"/>
+                      <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+                  
+                      <mat-autocomplete autoActiveFirstOption #auto4="matAutocomplete" (optionSelected)="onFilterOptionSelected($event)" >
+                        <mat-option *ngFor="let option1 of options" [value]="option1.id">
+                          {{option1.text}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field> -->
                   
               </div>
               <div *ngIf = "hideship" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 img" style="margin-top: -13px;">
