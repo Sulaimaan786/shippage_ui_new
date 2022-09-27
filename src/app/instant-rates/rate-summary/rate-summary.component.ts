@@ -174,15 +174,29 @@ this.commodity =this.commodityValues.commodity;
     shipper:  [""],
     consignee: [""],
     shipInstruction: [""],
-    notifyparty:  [""] 
+    notifyparty:  [""],
+    hsCode:[""]
   })
 
-  this.instantRate = this.docForm.value;
+
   console.log(this.instantRate);
 }
 
  booking(){
-  this.router.navigate(["instantRates/bookingShipment"]);
+  if(this.docForm.valid){
+    this.instantRate = this.docForm.value;
+    console.log(this.instantRate)
+    this.instantRatesService.addBooking(this.instantRate);
+ 
+    // this.showNotification(
+    //   "snackbar-success",
+    //   "Add Record Successfully...!!!",
+    //   "bottom",
+    //   "center"
+    // );
+    this.router.navigate(["instantRates/bookingShipment"]);
+  }
+  
 }
 
 shipper(){

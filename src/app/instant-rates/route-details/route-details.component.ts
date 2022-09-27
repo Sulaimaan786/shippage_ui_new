@@ -24,7 +24,8 @@ export class RouteDetailsComponent implements OnInit {
 
 
   
-  dropdownList=[];
+  polList=[];
+  podList=[];
   docForm: FormGroup;
   routeDetails =[];
   padding : any;
@@ -88,7 +89,8 @@ export class RouteDetailsComponent implements OnInit {
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
       (data) => {
        
-        this.dropdownList = data.lInstantRatesBean;
+        this.polList = data.lInstantRatesBean;
+        this.podList = data.podlist;
       },
 
    );

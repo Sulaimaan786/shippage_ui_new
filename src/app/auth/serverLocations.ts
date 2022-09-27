@@ -10,8 +10,8 @@ export class serverLocations {
     
     if (window.location.hostname === 'localhost') {
       //Local
-  //this.apiServerAddress = 'http://localhost:8098/';
-    this.apiServerAddress = 'http://65.108.201.61:8090/shippage/';
+  this.apiServerAddress = 'http://localhost:8098/';
+   // this.apiServerAddress = 'http://65.108.201.61:8090/shippage/';
     } else if(window.location.hostname === '213.42.28.15'){
       this.apiServerAddress = 'http://65.108.201.61:8090/shippage/';
     }else if(window.location.hostname === '192.168.5.100'){

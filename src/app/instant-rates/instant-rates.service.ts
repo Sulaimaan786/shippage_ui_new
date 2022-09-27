@@ -38,14 +38,15 @@ export class InstantRatesService {
   public getratesUniquelist = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getUniqueRateslist`;
   
   public commodity = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getCommodityName`;
-  // This is for save
-  // addPurchaseInvoice(instantRates: InstantRates): void {
-  //   this.dialogData = instantRates;
-  //   this.httpService.post<InstantRates>(this.getrateslist, instantRates).subscribe(data => {
-  //     console.log(data);
-  //     },
-  //     (err: HttpErrorResponse) => {
-  //   });
-  // }
+ // This is for save
+  
+ addBooking(instantRates: InstantRates): void {
+    this.dialogData = instantRates;
+    this.httpService.post<InstantRates>(this.getrateslist, instantRates).subscribe(data => {
+      console.log(data);
+      },
+      (err: HttpErrorResponse) => {
+    });
+  }
   
 }

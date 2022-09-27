@@ -3,7 +3,7 @@ export class InstantRatesResultBean{
     commodityl:[];
     ltermslist:[];   
     rateDataList:[];
-
+    podlist:[];
     
 
 }

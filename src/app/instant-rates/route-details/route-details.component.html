@@ -52,7 +52,7 @@
                   <mat-label required>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
                     <p>Origin</p> </mat-label>
                       <mat-select class="inputTxt" formControlName="origin" required>
-                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                        <mat-option *ngFor="let title of polList" [value]="title.id" >
                           {{title.text}}
                           </mat-option>
                        </mat-select>
@@ -108,7 +108,7 @@
                   <mat-label > <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
                     <p>Destination</p></mat-label> 
                       <mat-select formControlName="destination" class="inputTxt" required> 
-                        <mat-option *ngFor="let title of dropdownList" [value]="title.id" >
+                        <mat-option *ngFor="let title of podList" [value]="title.id" >
                           {{title.text}}
                         </mat-option>
                        </mat-select>
