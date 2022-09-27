@@ -4,6 +4,9 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
+import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { InstantRatesService } from '../instant-rates.service';
+
 
 @Component({
   selector: 'app-booking-shipment',
@@ -12,11 +15,13 @@ import { DOCUMENT } from "@angular/common";
 })
 export class BookingShipmentComponent implements OnInit {
 
+  bookingNo:any;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute,private httpService: HttpServiceService,
     private router: Router,private responsive: BreakpointObserver,
-    private renderer: Renderer2,) {}
+    private renderer: Renderer2,private instantRatesService:InstantRatesService,) {}
   ngOnInit() {
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
@@ -27,6 +32,10 @@ export class BookingShipmentComponent implements OnInit {
           this.renderer.removeClass(this.document.body,"content-block")
         }
       });
+
+      this.httpService.get(this.instantRatesService.getBookingNo).subscribe((res: any) => {
+        this.bookingNo = res.bookingNo;
+        });
   }
 
 }
