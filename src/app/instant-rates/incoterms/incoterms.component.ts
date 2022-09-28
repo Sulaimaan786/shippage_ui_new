@@ -42,7 +42,7 @@ export class IncotermsComponent implements OnInit {
   nxtbuttonright:any;
   nxtbuttonBot:any;
   buttonwidth:any;
-
+  incotermsValue:any;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
@@ -123,6 +123,13 @@ export class IncotermsComponent implements OnInit {
           this.topback = false;
         }
       });
+
+      this.incotermsValue =JSON.parse(this.dataStorage.getIncotermsDetails());    
+      console.log("incoterms ==" +this.incotermsValue.incoterm);
+      this.docForm.patchValue({
+        'incoterm':  this.incotermsValue.incoterm,
+       })
+
     }
 
 

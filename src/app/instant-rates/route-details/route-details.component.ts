@@ -27,7 +27,7 @@ export class RouteDetailsComponent implements OnInit {
   polList=[];
   podList=[];
   docForm: FormGroup;
-  routeDetails =[];
+  routeDetails :any;
   padding : any;
   webpadding: any;
   mobilepadding: any;
@@ -39,6 +39,8 @@ export class RouteDetailsComponent implements OnInit {
   cardBottom:any;
   marBottom:any;
   margTop:any;
+  origin:any;
+  destination:any;
   
    center:any;
    @Input() name: string;
@@ -71,6 +73,14 @@ export class RouteDetailsComponent implements OnInit {
     // }
  
   ngOnInit() { 
+
+
+    this.docForm = this.fb.group({
+      control:[""],
+      origin:[""],
+      destination:[""], 
+
+    })
     // refresh
     if (!localStorage.getItem('foo')) { 
       localStorage.setItem('foo', 'no reload') 
@@ -78,6 +88,21 @@ export class RouteDetailsComponent implements OnInit {
     } else {
       localStorage.removeItem('foo') 
     }
+
+
+      //Route Details  
+      this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
+      console.log("route origin" +this.routeDetails.origin);
+   
+      this.docForm.patchValue({
+       'origin':  this.routeDetails.origin,
+      })
+ 
+    console.log("route destination" +this.routeDetails.destination);
+    this.destination = this.routeDetails.destination;
+    this.docForm.patchValue({
+     'destination':  this.routeDetails.destination,
+    })
 
     // this.filteredOptions = this.myControl.valueChanges
     //   .pipe(
@@ -150,9 +175,8 @@ export class RouteDetailsComponent implements OnInit {
 
   proceed(){
     if (this.docForm.valid) {
-    this.router.navigate(["instantRates/incoterms"]);
-    this.routeDetails.push(this.docForm)
-    this.dataStorage.saverouteDetails(JSON.stringify(this.docForm.value));
+    this.dataStorage.saverouteDetails(JSON.stringify(this.docForm.value)); 
+     this.router.navigate(["instantRates/incoterms"]);
     console.log("Form Value", this.docForm.value);
     }
     else

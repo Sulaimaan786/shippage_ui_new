@@ -106,15 +106,10 @@ export class RatesComponent implements OnInit {
     this.httpService.get(this.instantRatesService.commodity + "?commodity=" + this.commodity).subscribe((res: any) => {
     this.commodity = res.commodityName.text;
     },
-  );
-      // this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
-      
-      // for(let i =0; i < this.commodityValues.length;i++){
-      //     // this.commodityDetails.push(this.commodityValues[i].commodity)
-      // }
-      //console.log("datas" +this.commodityValues[].commodity);
+  ); 
 
-   
+
+  //cargo readiness 
       this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
       console.log("ready  " +this.cargoReady.readiness);
       console.log("ready  " +this.cargoReady.selectedDate);
@@ -187,7 +182,7 @@ export class RatesComponent implements OnInit {
     this.router.navigate(['instantRates/booking/'+ encrypted]);
   }
  
-  getInvoiceDetails(){
+  edit(){
 
     // this.index = i;
     // this.id = row.itemId;

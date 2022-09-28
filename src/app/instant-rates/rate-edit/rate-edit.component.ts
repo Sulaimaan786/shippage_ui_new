@@ -16,11 +16,12 @@ import { InstantRatesService } from '../instant-rates.service';
 })
 export class RateEditComponent implements OnInit {
   docForm: FormGroup;
-  equipmentTypeList:[];
-  incotermList:[];
-  dropdownList:[];
+  equipmentTypeList = [];
+  incotermList = [];
+  podList =[];
+  polList =[];
  instantRate : InstantRates; 
-  commodityDetails:[];
+  commodityDetails = [];
   rateDataList = [];
   equipmentNameList = [{ title: ""}]; 
   loadTypeDetailBean: any;
@@ -119,14 +120,39 @@ export class RateEditComponent implements OnInit {
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
       (data) => {
        
-        this.dropdownList = data.lInstantRatesBean;
+        this.polList = data.lInstantRatesBean;
+        this.podList = data.podlist;
       },
 
    );
   }
-  onClick(): void {
-    
-    this.dialogRef.close();
 
+  addRow(){
+    let loadTypeDetailBeanArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+    let arraylen = loadTypeDetailBeanArray.length;
+    let newUsergroup: FormGroup = this.fb.group({
+      equipmentType:[""],
+      quantity:[""],
+      cargoWeight:[""],
+      value:[""]
+    })
+    loadTypeDetailBeanArray.insert(arraylen,newUsergroup);
+  }
+  
+  removeRow(index){
+    let loadTypeDetailBeanArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+    loadTypeDetailBeanArray.removeAt(index);
+  
+  }
+  onClick(): void {  
+    this.dialogRef.close(); 
+    
+  }
+  
+
+  editdone(){
+    this.dataStorage.saverouteDetails(JSON.stringify(this.docForm.value));
+    this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value));
+    this.router.navigate(['instantRates/rates']);
   }
 }

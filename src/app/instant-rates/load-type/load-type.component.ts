@@ -19,7 +19,7 @@ import { HttpServiceService } from 'src/app/auth/http-service.service';
 export class LoadTypeComponent implements OnInit {
   
   docForm: FormGroup;
-  loadTypeDetailBean:[];
+  loadTypeDetailBean = [];
   cardpadding:any;
   padleft:any;
   butTopmar:any;
@@ -33,8 +33,11 @@ export class LoadTypeComponent implements OnInit {
   buttonwidth:any;
   cardBottom:any
   equipmentTypeList = [];
-
-
+  loadtype: any;
+  loadDetails: any;
+  equipmentType: any;
+  eqtypeId: any;
+ 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
     private snackBar:MatSnackBar,private instantRatesService : InstantRatesService,
@@ -53,13 +56,13 @@ export class LoadTypeComponent implements OnInit {
         })
       ]),
 
-      // cargoDetailBean:this.fb.array([
-      //   this.fb.group({
-      //     equipmentType:[""],
-      //     quantity:[""],
-      //     cargoWeight:[""]
-      //   })
-      // ])
+      cargoDetailBean:this.fb.array([
+        this.fb.group({
+          equipmentType:[""],
+          quantity:[""],
+          cargoWeight:[""]
+        })
+      ])
     })
    }
 
@@ -107,6 +110,28 @@ export class LoadTypeComponent implements OnInit {
           this.cardBottom = '0px'
         }
       });
+
+
+      //Load type
+     this.loadtype = this.dataStorage.getLoadDetails();
+     this.loadDetails = JSON.parse(this.loadtype)
+ 
+     let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+     salesOrderDtlArray.removeAt(0);
+     this.loadTypeDetailBean = this.loadDetails.loadTypeDetailBean;
+     this.loadTypeDetailBean.forEach(element => {
+       let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+       let arraylen = salesOrderDtlArray.length;
+       let newUsergroup: FormGroup = this.fb.group({
+      
+        equipmentType: [element.equipmentType],
+        quantity: [element.quantity],
+        cargoWeight: [element.cargoWeight]
+
+       })
+       salesOrderDtlArray.insert(arraylen, newUsergroup);
+
+     });
   }
 
   onItemChange(value){
@@ -134,24 +159,7 @@ removeRow(index){
   loadTypeDetailBeanArray.removeAt(index);
 
 }
-
-addRow1(){
-  let cargoDetailBeanArray = this.docForm.controls.cargoDetailBean as FormArray;
-  let arraylen = cargoDetailBeanArray.length;
-  let newUsergroup: FormGroup = this.fb.group({
-    equipmentType:[""],
-    quantity:[""],
-    cargoWeight:[""],
-    value:[""]
-  })
-  cargoDetailBeanArray.insert(arraylen,newUsergroup);
-}
-
-removeRow1(index){
-  let cargoDetailBeanArray = this.docForm.controls.cargoDetailBean as FormArray;
-  cargoDetailBeanArray.removeAt(index);
-
-}
+ 
 
   
 incoterms(){

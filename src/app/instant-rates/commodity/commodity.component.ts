@@ -48,7 +48,7 @@ export class CommodityComponent implements OnInit {
   nxtbuttonBot:any;
   buttonwidth:any;
   cardBottom:any;
-
+  commodityValues:any;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
     private renderer: Renderer2,
@@ -125,6 +125,12 @@ export class CommodityComponent implements OnInit {
        this.cardBottom = '0px'
      }
    });
+
+
+   this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
+   this.docForm.patchValue({
+    'commodity':  this.commodityValues.commodity,
+   })
   }
 
   

@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import * as moment from "moment";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AnyTxtRecord } from 'dns';
 @Component({
   selector: 'app-cargo-readiness',
   templateUrl: './cargo-readiness.component.html',
@@ -33,7 +34,8 @@ export class CargoReadinessComponent implements OnInit {
   cardBottom:any;
   submitted:boolean=false;
   currentDate:string;
-
+  cargoReady:any;
+  dateformat:any;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
@@ -83,7 +85,23 @@ export class CargoReadinessComponent implements OnInit {
       });
 
       this.currentDate = new Date().toISOString().substr(0, 16);
+
+
+      this.cargoReady = JSON.parse(this.dataStorage.getReadinessDetails());
+      this.dateformat = this.cargoReady.selectedDate;
+      this.dateformat.toString();
+      this.docForm.patchValue({
+        selectedDate:moment(this.cargoReady.selectedDate).format('YYYY-MM-DDTHH:mm:ssZ')
+       }) 
+      this.docForm.patchValue({
+        'selectedDate':  this.cargoReady.selectedDate,
+       })
+
+       if(this.cargoReady.selectedDate != 'Ready'){
+        this.calendar=true;
+       }
   }
+
   radioClick(value:any){
     if(value=='Yes'){
     this.calendar=true;
