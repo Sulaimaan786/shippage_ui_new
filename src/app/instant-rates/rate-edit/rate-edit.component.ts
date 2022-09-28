@@ -145,14 +145,13 @@ export class RateEditComponent implements OnInit {
   
   }
   onClick(): void {  
-    this.dialogRef.close(); 
-    
+    this.dialogRef.close();
+    location.reload();
   }
   
 
   editdone(){
     this.dataStorage.saverouteDetails(JSON.stringify(this.docForm.value));
-    this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value));
-    this.router.navigate(['instantRates/rates']);
+    this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value)); 
   }
 }

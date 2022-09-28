@@ -11,6 +11,7 @@ import { InstantRatesService } from '../instant-rates.service';
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
+import { listenerCount } from 'process';
 
 // import { Observable } from 'rxjs';
 // import { map, startWith } from 'rxjs/operators';
@@ -92,17 +93,20 @@ export class RouteDetailsComponent implements OnInit {
 
       //Route Details  
       this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
-      console.log("route origin" +this.routeDetails.origin);
-   
-      this.docForm.patchValue({
-       'origin':  this.routeDetails.origin,
-      })
+    
+      if(this.routeDetails == null){
+        this.listfunction();
+      }else{
+        this.docForm.patchValue({
+          'origin':  this.routeDetails.origin,
+         })
+         this.docForm.patchValue({
+          'destination':  this.routeDetails.destination,
+         })
+      }
+      
  
-    console.log("route destination" +this.routeDetails.destination);
-    this.destination = this.routeDetails.destination;
-    this.docForm.patchValue({
-     'destination':  this.routeDetails.destination,
-    })
+    
 
     // this.filteredOptions = this.myControl.valueChanges
     //   .pipe(
@@ -110,16 +114,8 @@ export class RouteDetailsComponent implements OnInit {
     //     map(value => this._filter(value))
     //   );
 
-    // orginList
-    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
-      (data) => {
-       
-        this.polList = data.lInstantRatesBean;
-        this.podList = data.podlist;
-      },
-
-   );
-
+    // orginList 
+     
 
     this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {
@@ -160,6 +156,18 @@ export class RouteDetailsComponent implements OnInit {
         }
       });
    
+  }
+
+
+  listfunction(){
+
+    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
+      (data) => {
+       
+        this.polList = data.lInstantRatesBean;
+        this.podList = data.podlist;
+      }, 
+   );
   }
   fcl(){
    this.router.navigate(["/instantRates/route-details"]);

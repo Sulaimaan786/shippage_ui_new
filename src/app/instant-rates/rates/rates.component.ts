@@ -199,7 +199,7 @@ export class RatesComponent implements OnInit {
       direction: tempDirection,
     });
     // this.subs.sink = dialogRef.afterClosed().subscribe((data) => {
-
+      
     //   this.loadData();
 
     // });

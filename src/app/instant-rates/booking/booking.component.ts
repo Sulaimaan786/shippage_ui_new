@@ -193,5 +193,20 @@ this.commodity =this.commodityValues.commodity;
     this.router.navigate(["instantRates/rateSummary"]);
   }
 
+  edit(){
+    // let tempDirection;
+    // if (localStorage.getItem("isRtl") === "true") {
+    //   tempDirection = "rtl";
+    // } else {
+    //   tempDirection = "ltr";  
+    // }
+    // const dialogRef = this.dialog.open(RateEditComponent, {
+    //   height: "100%",
+    //   width: "100%",
+    //   // data: row,
+    //   direction: tempDirection,
+    // });
+  }
+
 
 }
