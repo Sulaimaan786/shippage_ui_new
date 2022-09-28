@@ -262,11 +262,39 @@ showNotification(colorName, text, placementFrom, placementAlign) {
 
 
 cargoReadiness(){
-  this.router.navigate(["instantRates/cargoReadiness"]);
+  
+  if (this.docForm.valid) {
+    this.router.navigate(["instantRates/cargoReadiness"]);
+    this.incotermsDetails.push(this.docForm)
+      this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
+      console.log("Form Value", this.docForm.value);
+  }
+  else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
 }
 
 loadType(){
-  this.router.navigate(["instantRates/loadType"]);
+  
+  if (this.docForm.valid) {
+    this.router.navigate(["instantRates/loadType"]);
+    this.incotermsDetails.push(this.docForm)
+      this.dataStorage.setIncotermsDetails(JSON.stringify(this.docForm.value));
+      console.log("Form Value", this.docForm.value);
+  }
+  else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
 }
 routeDetails(){
   this.router.navigate(["instantRates/route-details"]);

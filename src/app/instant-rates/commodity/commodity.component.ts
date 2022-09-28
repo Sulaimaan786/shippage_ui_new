@@ -135,11 +135,38 @@ export class CommodityComponent implements OnInit {
 
   
 incoterms(){
-  this.router.navigate(["/instantRates/incoterms"]);
+  
+  if (this.docForm.valid) {
+    this.router.navigate(["/instantRates/incoterms"]);
+    // this.commodityDetails.push(this.docForm.value)
+    this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
+    console.log("Form Value", this.docForm.value);
+    }
+    else{
+      this.showNotification(
+        "snackbar-danger",
+        "Please fill all the required details!",
+        "top",
+        "right");
+    }
+  
 }
 
 commodity(){
-  this.router.navigate(["instantRates/commodity"]);
+  
+  if (this.docForm.valid) {
+    this.router.navigate(["instantRates/commodity"]);
+    // this.commodityDetails.push(this.docForm.value)
+    this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
+    console.log("Form Value", this.docForm.value);
+    }
+    else{
+      this.showNotification(
+        "snackbar-danger",
+        "Please fill all the required details!",
+        "top",
+        "right");
+    }
 }
 
 showNotification(colorName, text, placementFrom, placementAlign) {
@@ -171,7 +198,20 @@ cargoReadiness(){
 }
 
 loadType(){
-  this.router.navigate(["instantRates/loadType"]);
+  
+  if (this.docForm.valid) {
+    this.router.navigate(["instantRates/loadType"]);
+    // this.commodityDetails.push(this.docForm.value)
+    this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
+    console.log("Form Value", this.docForm.value);
+    }
+    else{
+      this.showNotification(
+        "snackbar-danger",
+        "Please fill all the required details!",
+        "top",
+        "right");
+    }
 }
 
 // onItemSelect(roles: any) {
