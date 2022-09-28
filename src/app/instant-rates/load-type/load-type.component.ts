@@ -66,16 +66,7 @@ export class LoadTypeComponent implements OnInit {
     })
    }
 
-   ngOnInit(): void {
-    
-
-    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.equipmentTypeList).subscribe(
-      (data) => {
-       
-        this.equipmentTypeList = data.lInstantRatesBean;
-      },
-
-   );
+   ngOnInit(): void { 
 
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
@@ -115,25 +106,43 @@ export class LoadTypeComponent implements OnInit {
       //Load type
      this.loadtype = this.dataStorage.getLoadDetails();
      this.loadDetails = JSON.parse(this.loadtype)
+
+
+     if(this.loadDetails == null){
+      this.listfunc();
+    }else{
+      this.listfunc();
+      let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+      salesOrderDtlArray.removeAt(0);
+      this.loadTypeDetailBean = this.loadDetails.loadTypeDetailBean;
+      this.loadTypeDetailBean.forEach(element => {
+        let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
+        let arraylen = salesOrderDtlArray.length;
+        let newUsergroup: FormGroup = this.fb.group({
+       
+         equipmentType: [element.equipmentType],
+         quantity: [element.quantity],
+         cargoWeight: [element.cargoWeight]
  
-     let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
-     salesOrderDtlArray.removeAt(0);
-     this.loadTypeDetailBean = this.loadDetails.loadTypeDetailBean;
-     this.loadTypeDetailBean.forEach(element => {
-       let salesOrderDtlArray = this.docForm.controls.loadTypeDetailBean as FormArray;
-       let arraylen = salesOrderDtlArray.length;
-       let newUsergroup: FormGroup = this.fb.group({
-      
-        equipmentType: [element.equipmentType],
-        quantity: [element.quantity],
-        cargoWeight: [element.cargoWeight]
-
-       })
-       salesOrderDtlArray.insert(arraylen, newUsergroup);
-
-     });
+        })
+        salesOrderDtlArray.insert(arraylen, newUsergroup);
+ 
+      });
+    }
+ 
+    
   }
+listfunc(){
+  this.httpService.get<InstantRatesResultBean>(this.instantRatesService.equipmentTypeList).subscribe(
+    (data) => {
+     
+      this.equipmentTypeList = data.lInstantRatesBean;
+    },
 
+ );
+}
+  
+  
   onItemChange(value){
     console.log(" Value is : ", value );
  }

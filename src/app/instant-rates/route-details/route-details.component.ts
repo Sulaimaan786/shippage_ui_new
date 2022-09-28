@@ -97,6 +97,7 @@ export class RouteDetailsComponent implements OnInit {
       if(this.routeDetails == null){
         this.listfunction();
       }else{
+        this.listfunction();
         this.docForm.patchValue({
           'origin':  this.routeDetails.origin,
          })
