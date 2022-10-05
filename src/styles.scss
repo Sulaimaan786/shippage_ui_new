@@ -340,3 +340,10 @@ transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 .content{
    font-family: Arial, Helvetica, sans-serif;
 }
+
+.mat-calendar-header {
+    padding: 8px 8px 0 8px !important;
+    background: #065c7a !important;
+    border-radius: 30px !important;
+    color: white;
+}
