@@ -14,51 +14,37 @@
          
         
         <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;
-              <p>Origin</p> </mat-label><br><br>
-          <H6 style=" margin-top: -30px">{{origin}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 30px;font-size: 12px;color: #a6a6a6;">Origin</p></mat-label><br>
+          <mat-label><img src="assets/icons/seaOrigin.png" style="width:20px;height:15px"> &nbsp;&nbsp;{{origin}}</mat-label>
       </div>
       <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
-              <p>Mode of Shipment</p> </mat-label><br><br>
-          
-          <H6 style=" margin-top: -30px">{{freightMode}} - {{shipmentMode}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Mode of Shipment</p></mat-label><br>  
+          <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;&nbsp;{{freightMode}} - {{shipmentMode}}</mat-label>
       </div>
       <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
-              <p>Cargo Readiness</p> </mat-label><br><br>
-         
-          <!-- <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6> -->
-          <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Cargo Readiness</p></mat-label><br>  
+           <mat-label><img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;&nbsp;{{cargoReady.selectedDate}}</mat-label>
       </div>
       <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
-              <p>Commodity</p> </mat-label><br><br>
-          
-          <H6 style=" margin-top: -30px">{{commodity}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Commodity</p></mat-label><br>  
+          <mat-label><img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;&nbsp;{{commodity}}</mat-label>
       </div>
          
          
        </div>
        <div class="row">
         <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;
-              <p>Destination</p> </mat-label><br><br>
-          
-          <H6 style=" margin-top: -30px">{{destination}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Destination</p></mat-label><br>  
+          <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;{{destination}}</mat-label>
       </div>
       <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;
-              <p>Incoterms</p> </mat-label><br><br>
-         
-          <H6 style=" margin-top: -30px">{{incoterm}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Incoterms</p></mat-label><br>  
+          <mat-label><img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;&nbsp;{{incoterm}}</mat-label>
       </div>
 
       <div class="col-sm-3 p-3">
-          <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
-              <p>Load Type</p> </mat-label><br><br>
-          
-          <H6 style=" margin-top: -30px">{{equipmentTypeName}} x {{quantityValue}}</H6>
+          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Load Type</p></mat-label><br>  
+          <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipmentTypeName}} x {{quantityValue}}</mat-label>
       </div>
 
       <div class="col-sm-3 p-3">
@@ -76,7 +62,7 @@
       </div>
     </div> -->
     <div *ngFor="let title of rateDataList" class="row">
-      <div  class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+      <div  class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
         <div class="row"> 
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-6">
             <p style="background-color: #065C7A;
@@ -89,30 +75,27 @@
  
              <div class="container-fluid  mt-6">
                 <div class="row">
-                    <div class="col-sm-3" style="margin-top:40px">
+                    <div class="col-sm-2" style="margin-top:35px;margin-bottom: 20px;">
                         <img src="assets/images/icons/logo-msc.svg" alt="" ><br>
                         <p>CY/CY/F13</p>
                     </div>
-                    <div class="col-sm-9">
-                        <div class="wavy col-xl-9 col-lg-9 col-md-9 col-sm-9" > 
-                            <p style="color:rgb(165, 159, 159); margin: 10% 0% -4% 35%;"> 32 Days </p>
+                    <div class="col-sm-10"> 
+                        <div class="row" style="margin-top:30px">
+                          <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5" > 
+                            <p style="color:rgb(165, 159, 159); margin: 0% 0% 0% 35%;"> 32 Days </p>
                              <pre>  {{title.origin}}  <img src="assets/images/icons/wave.png" alt="" style="width: 115px;">{{title.destination}}</pre>
                              </div>
-                        <div class="row" style="margin-top:-20px">
-                            <div class="col-sm-4 p-4" >
-                                <p class="paragraph">Sailing Date</p><br><p style=" margin-top: -30px;color:black;font-size:12px">23 July 2022</p>
+                            <div class="col-sm-3 p-2" >
+                                <p style="color:rgb(165, 159, 159);font-size: 12px;margin-bottom: 0rem;">Sailing Date</p><br><p style="color:black;font-size:20px">23 July 2022</p>
                             </div>
                            
-                            <div class="col-sm-4 p-4" >
-                            <p class="paragraph">Free Day</p><br><p style=" margin-top: -30px;color:black;font-size:12px">7 days</p>
+                            <div class="col-sm-2 p-2" >
+                            <p style="color:rgb(165, 159, 159);font-size: 12px;margin-bottom: 0rem;">Free Day</p><br><p style="color:black;font-size:20px">7 days</p>
                         </div>
-                        <div class="col-sm-4 p-4" >
-                            <p class="paragraph">Cargo</p><br><p style=" margin-top: -30px;color:black;font-size:12px">FAK</p>
+                        <div class="col-sm-2 p-2" >
+                            <p style="color:rgb(165, 159, 159);font-size: 12px;margin-bottom: 0rem;">Cargo</p><br><p style="color:black;font-size:20px">FAK</p>
                         </div>
-                       </div>
-                      
-                   
-                   
+                       </div> 
                     </div>
                     
                 </div>
@@ -121,35 +104,35 @@
              </div>
           </div>
         
-        <h3 style="text-align: left;color:#065C7A;"> Other Charges</h3>
+        <h3 style="text-align: left;color:#065C7A;font-weight: 700;font-size: 29px;"> Other Charges</h3>
         <div class="row">
           <div class="col-lg-6">
             <div class="card" style="margin-top:8px;padding-top:8px;padding-bottom:8px;padding-right:8px;padding-left:8px;">
               <div class="row">
                 <div class="col-lg-12">
-                  <h4 style="color:#065C7A;padding-top: 5px;padding-left: 8%;">Origin</h4>
+                  <h4 style="color:#065C7A;padding-top: 5px;padding-left: 20px;font-weight: 700;margin-bottom: 0px;">Origin</h4>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 8%;"> Included </mat-label>
+                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 10%;font-size: 17px;"> Included </mat-label>
                   <ul>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Packing</li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Transportation</li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Custom Clearance </li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Origin Charges </li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Fumigration </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Packing</li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Transportation</li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Custom Clearance </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Origin Charges </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Fumigration </li>
                   </ul>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 7%;">Excluded </mat-label>
+                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 10%;font-size: 17px;">Excluded </mat-label>
                   <ul>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span>&nbsp; CFS Charges </li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span>&nbsp; Telex Release</li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span> &nbsp; Insurance </li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span>&nbsp; Pelletization </li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span>&nbsp; Others </li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span>&nbsp; CFS Charges </li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span>&nbsp; Telex Release</li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span> &nbsp; Insurance </li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span>&nbsp; Pelletization </li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span>&nbsp; Others </li>
                   </ul>
                 </div>
               </div>
@@ -162,27 +145,27 @@
             <div class="card" style="margin-top:8px;padding-top:8px;padding-bottom:8px;padding-right:8px;padding-left:8px;">
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                  <h4 style="color:#065C7A;padding-top: 5px;padding-left: 7%;">Destination</h4>
+                  <h4 style="color:#065C7A;padding-top: 5px;padding-left: 20px;font-weight: 700;margin-bottom: 0px;">Destination</h4>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 7%;"> Included </mat-label>
+                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 10%;font-size: 17px;"> Included </mat-label>
                   <ul>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i> &nbsp;Custom Clearance</li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Transportation</li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Destination Charges </li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;CFS Charges </li>
-                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:10px"></i>&nbsp;Insurance </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i> &nbsp;Custom Clearance</li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Transportation</li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Destination Charges </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;CFS Charges </li>
+                    <li><i class="fa fa-check" STYLE="color:#065C7A;font-size:13px"></i>&nbsp;Insurance </li>
                   </ul>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 7%;">Excluded </mat-label>
+                  <mat-label style="color:#065C7A;padding-top: 5px;padding-left: 10%;font-size: 17px;">Excluded </mat-label>
                   <ul>
-                    <li> <span STYLE="color:#065C7A;"><b>x</b></span> &nbsp;Duty</li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span>&nbsp; Survay Charges</li>
-                    <li><span STYLE="color:#065C7A;"><b>x</b></span> &nbsp;Others </li>
+                    <li> <span STYLE="color:#065C7A;font-size:13px"><b>x</b></span> &nbsp;Duty</li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span>&nbsp; Survay Charges</li>
+                    <li><span STYLE="color:#065C7A;font-size:13px"><b>x</b></span> &nbsp;Others </li>
                   </ul>
                 </div>
               </div>
@@ -191,19 +174,26 @@
         </div>
       </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" style="position: relative;">
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" style="position: relative;">
         <div class="card" style="text-align: center;margin-top: 40px;">
           <div class="row">
-            <div class="col-lg-12 alignimg">
-              <h5 style="text-align: center;color:#888c8e;padding-top: 8%;"> Unit Cost</h5>
-              <p>  {{title.equipName}} x 1    - USD {{title.rate  | number: '2.'}}  </p>
+            <div class="col-lg-12 alignimg p-4">
+              <h5 style="text-align: left;color:#495057;padding-top: 8%;font-size: 21.1257px;;font-weight: 600;"> Unit Cost</h5>
+              <div class="row">
+                <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x 1</div>    <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;"> USD {{title.rate  | number: '2.'}}</div> 
+              </div>
+              
               
 
-              <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Total Shipment Cost</h5>
-              <p>  {{title.equipName}} x {{quantityValue}}    - USD {{rateValueFinal | number: '2.'}}  </p>
-
-              <h5 style="text-align: center;color:#888c8e;padding-top: 8px;"> Other Charges</h5>
-              <p>  {{title.equipName}} x {{quantityValue}}    - USD 1,000  </p>
+              <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Total Shipment Cost</h5>
+              <div class="row">
+              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{quantityValue}}</div>   <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;">USD {{rateValueFinal | number: '2.'}}</div>
+              </div>
+              <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Other Charges</h5>
+              <div class="row"  style="padding-bottom: 10%;"> 
+              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{quantityValue}}</div>   <div class="col-md-4">-</div>  <div class="col-md-4 font" style="text-align: left;">USD 1,000</div>
+              </div>
+              
 
               <mat-label> Total Cost</mat-label>
               <h3 style="text-align: center;"> USD {{rateValueFinal | number: '2.'}} </h3>
@@ -221,10 +211,10 @@
         </div>
       </div>
     </div>
-    <div style="padding-left: 2%;padding-bottom: 1%;">
+    <!-- <div style="padding-left: 2%;padding-bottom: 1%;">
       <button mat-mini-fab color="primary" (click)="back()">
         <mat-icon class="col-white padding-icon">arrow_back_ios</mat-icon>
       </button>
-    </div>
+    </div> -->
   </div>
 </section>

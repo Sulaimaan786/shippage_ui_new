@@ -22,62 +22,48 @@
               
             </div>
             <div class="row">
-              
-             
+         
+        
               <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;
-                    <p>Origin</p> </mat-label><br><br>
-                <H6 style=" margin-top: -30px">{{origin}}</H6>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 30px;font-size: 12px;color: #a6a6a6;">Origin</p></mat-label><br>
+                <mat-label><img src="assets/icons/seaOrigin.png" style="width:20px;height:15px"> &nbsp;&nbsp;{{origin}}</mat-label>
             </div>
             <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
-                    <p>Mode of Shipment </p></mat-label><br><br>
-                
-                <H6 style=" margin-top: -30px">{{freightMode}} - {{shipmentMode}}</H6>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Mode of Shipment</p></mat-label><br>  
+                <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;&nbsp;{{freightMode}} - {{shipmentMode}}</mat-label>
             </div>
             <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
-                    <p>Cargo Readiness</p> </mat-label><br><br>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Cargo Readiness</p></mat-label><br>  
+                 <mat-label><img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;&nbsp;{{cargoReady.selectedDate}}</mat-label>
+            </div>
+            <div class="col-sm-3 p-3">
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Commodity</p></mat-label><br>  
+                <mat-label><img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;&nbsp;{{commodity}}</mat-label>
+            </div>
                
-                <!-- <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6> -->
-                <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6>
-            </div>
-            <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
-                    <p>Commodity</p> </mat-label><br><br>
-                
-                <H6 style=" margin-top: -30px">{{commodity}}</H6>
-            </div>
-              
-              
-            </div>
-            <div class="row">
+               
+             </div>
+             <div class="row">
               <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;
-                    <p>Destination</p> </mat-label><br><br>
-                
-                <H6 style=" margin-top: -30px">{{destination}}</H6>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Destination</p></mat-label><br>  
+                <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;{{destination}}</mat-label>
             </div>
             <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;
-                    <p>Incoterms</p> </mat-label><br><br>
-               
-                <H6 style=" margin-top: -30px">{{incoterm}}</H6>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Incoterms</p></mat-label><br>  
+                <mat-label><img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;&nbsp;{{incoterm}}</mat-label>
             </div>
-
+      
             <div class="col-sm-3 p-3">
-                <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
-                    <p>Load Type</p> </mat-label><br><br>
-                
-                <H6 style=" margin-top: -30px">{{equipmentType}}</H6>
+                <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Load Type</p></mat-label><br>  
+                <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipmentType}}</mat-label>
             </div>
-
+      
             <div class="col-sm-3 p-3">
-                <a href="">Edit</a>
-
+                <a>Edit</a>
+      
             </div>
-          
-        </div>
+           
+         </div>
      </div>
     </div>
   </div>
@@ -89,10 +75,10 @@
         
          
               <div class="row">
-                  <h5 style="text-align: center;">Commodity Details</h5> 
+                  <h5 style="text-align: center;font-weight: 600;font-size: 20px;padding-left: 0px;">Commodity Details</h5> 
                </div>
                <div class="row">
-                  <p style="color: #495057;">Equipment Type <p>
+                  <p style="color: #495057;padding-left: 28px;">Equipment Type <p>
                  
                            
                       <!-- <mat-form-field  appearance="outline" style="margin-bottom:-40px; margin-left: 15px;
@@ -111,12 +97,12 @@
                    
                </div>
                <div class="row">
-                  <p style="color: #495057;">Commodity</p> 
+                  <p style="color: #495057;padding-left: 28px;">Commodity</p> 
                   <textarea id="w3review" name="w3review" rows="4" cols="50">{{commodity}}</textarea>
                </div>
 
                <div class="row">
-                  <p style="margin-top:8px;color: #495057;">HS Code</p> 
+                  <p style="margin-top:8px;color: #495057;padding-left: 28px;">HS Code</p> 
                   <mat-form-field  appearance="outline" style="margin-left: 15px;margin-top:-10px;
                   width: 65%!important">
                       <input matInput formControlName="hsCode" >
@@ -138,7 +124,7 @@
             <div class="row" (click)="shipperclose();" >
               
                 
-                  <h5 style="text-align: center;padding-bottom:20px">Shipper</h5><br>
+                  <h5 style="text-align: center;padding-bottom:20px;font-size: 20px;">Shipper</h5><br>
                 </div>
 
                   
@@ -155,7 +141,7 @@
             <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;height:100%;">
             <div class="row" (click)="notifyPartyclose();">
-                <h5 style="text-align: center;padding-bottom:20px">Notify Party</h5></div>
+                <h5 style="text-align: center;padding-bottom:20px;font-size: 20px;">Notify Party</h5></div>
                 <div class="row" (click)="notifyParty();">
 
                   <i *ngIf = "!notifyFlag" class="fa fa-plus" style="font-size:40px;text-align: center;padding-top:20px;color:#065C7A"></i>
@@ -168,7 +154,7 @@
             <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;height:100%;">
             <div class="row" (click)="consigneeclose();">
-                <h5 style="text-align: center;padding-bottom:20px">Consignee</h5></div>
+                <h5 style="text-align: center;padding-bottom:20px;font-size: 20px;">Consignee</h5></div>
 
                 <div class="row" (click)="consignee();">
                   <i *ngIf = "!consigneeFlag" class="fa fa-plus" style="font-size:40px;text-align: center;padding-top:20px;color:#065C7A"></i>
@@ -180,7 +166,7 @@
             <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;height:100%;">
             <div class="row" (click)="shippingIntclose();">
-                <h5 style="text-align: center;padding-bottom:20px">Shipping Instructions</h5></div>
+                <h5 style="text-align: center;padding-bottom:20px;font-size: 20px;">Shipping Instructions</h5></div>
                 <div class="row" (click)="shippingInt();"> 
                   <i *ngIf = "!shippingIntFlag" class="fa fa-plus" style="font-size:40px;text-align: center;padding-top:20px;color:#065C7A"></i>
                   <textarea class="Area"  *ngIf = "shippingIntFlag" rows="4" cols="50" formControlName="shipInstruction" ></textarea>               
@@ -197,7 +183,7 @@
 
        <div class="container-fluid">
           <div class="row">
-              <h5 style="text-align: center;font-size: 20px;font-weight: 700;">RATE SUMMARY</h5>
+              <h5 style="text-align: center;font-size: 24px;font-weight: 700;">Rate Summary</h5>
             </div>
             <div class="row"  style="margin-top: 8px;">
               <div class="col-sm-12">
@@ -206,10 +192,10 @@
               
             </div>
             <div class="row">
-              <div class="col-sm-3" >
+              <div class="col-sm-4" >
                   
               </div>
-              <div class="col-sm-9">
+              <div class="col-sm-8">
                   <H6  style="font-size: 20px;" >USD 3,000</H6> 
                </div>
               
@@ -220,10 +206,10 @@
               </div> 
             </div>
             <div class="row">
-              <div class="col-sm-3" >
+              <div class="col-sm-4" >
                   
               </div>
-              <div class="col-sm-9"> 
+              <div class="col-sm-8"> 
                   <H6 style="font-size: 20px;">USD 3,000</H6><br>
                </div>
               
@@ -234,10 +220,10 @@
               </div> 
             </div>
             <div class="row">
-              <div class="col-sm-3" >
+              <div class="col-sm-4" >
                   
               </div>
-              <div class="col-sm-9" >
+              <div class="col-sm-8" >
                  <H6 style="font-size:20px;margin-top:-10px;font-weight:bold">USD 6,000</H6>
               </div>
               

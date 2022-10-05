@@ -19,64 +19,48 @@
 
                     </div>
                     <div class="row">
-
-
+         
+        
                         <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;
-                                <p>Origin</p> </mat-label><br><br>
-                            <H6 style=" margin-top: -30px">{{origin}}</H6>
-                        </div>
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 30px;font-size: 12px;color: #a6a6a6;">Origin</p></mat-label><br>
+                          <mat-label><img src="assets/icons/seaOrigin.png" style="width:20px;height:15px"> &nbsp;&nbsp;{{origin}}</mat-label>
+                      </div>
+                      <div class="col-sm-3 p-3">
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Mode of Shipment</p></mat-label><br>  
+                          <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;&nbsp;{{freightMode}} - {{shipmentMode}}</mat-label>
+                      </div>
+                      <div class="col-sm-3 p-3">
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Cargo Readiness</p></mat-label><br>  
+                           <mat-label><img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;&nbsp;{{cargoReady.selectedDate}}</mat-label>
+                      </div>
+                      <div class="col-sm-3 p-3">
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Commodity</p></mat-label><br>  
+                          <mat-label><img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;&nbsp;{{commodity}}</mat-label>
+                      </div>
+                         
+                         
+                       </div>
+                       <div class="row">
                         <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/ship.png" style="width:20px;height:15px">&nbsp;
-                                <p>Mode of Shipment</p> </mat-label><br><br>
-                            
-                            <H6 style=" margin-top: -30px">{{freightMode}} - {{shipmentMode}}</H6>
-                        </div>
-                        <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/cargo.png" style="width:20px;height:15px">&nbsp;
-                                <p>Cargo Readiness</p> </mat-label><br><br>
-                           
-                            <!-- <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6> -->
-                            <H6 style=" margin-top: -30px">{{cargoReady.selectedDate}}</H6>
-                        </div>
-                        <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/commodity.png" style="width:20px;height:15px">&nbsp;
-                                <p>Commodity</p> </mat-label><br><br>
-                            
-                            <H6 style=" margin-top: -30px">{{commodity}}</H6>
-                        </div>
-
-
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;
-                                <p>Destination</p> </mat-label><br><br>
-                            
-                            <H6 style=" margin-top: -30px">{{destination}}</H6>
-                        </div>
-                        <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;
-                                <p>Incoterms</p> </mat-label><br><br>
-                           
-                            <H6 style=" margin-top: -30px">{{incoterm}}</H6>
-                        </div>
-
-                        <div class="col-sm-3 p-3">
-                            <mat-label>  <img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;
-                                <p>Load Type</p> </mat-label><br><br>
-                            
-                            <H6 style=" margin-top: -30px">{{equipName}}</H6>
-                        </div>
-
-                        <div class="col-sm-3 p-3">
-                            <a (click)="edit()">Edit</a>
-
-                  
-
-                        </div>
-
-                    </div>
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Destination</p></mat-label><br>  
+                          <mat-label><img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;{{destination}}</mat-label>
+                      </div>
+                      <div class="col-sm-3 p-3">
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Incoterms</p></mat-label><br>  
+                          <mat-label><img src="assets/icons/incoterms.png" style="width:20px;height:15px">&nbsp;&nbsp;{{incoterm}}</mat-label>
+                      </div>
+                
+                      <div class="col-sm-3 p-3">
+                          <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Load Type</p></mat-label><br>  
+                          <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipName}}</mat-label>
+                      </div>
+                
+                      <div class="col-sm-3 p-3">
+                          <a (click)="edit()">Edit</a>
+                
+                      </div>
+                     
+                   </div>
                 </div>
                 <div class="row">
                     <h2 style="margin-bottom: 2%;font-size: 24px;font-weight: 700;">Rates ( {{resultsFound}} Results Found)</h2>
