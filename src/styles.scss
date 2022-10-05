@@ -19,7 +19,7 @@
    }
    
    .mat-form-field {
-       font-size: 10px !important;
+      font-size: 0.890rem !important;
        // font-family: 'Times New Roman', Times, serif;
        // font-style: italic;
        
@@ -49,14 +49,19 @@
      //  margin-top: 2%;
    }
    .mat-mini-fab .mat-button-wrapper {
-       padding: 4px 4px !important;
+       padding: 3px 3px !important;
        line-height: 1px;
    }
    .mat-mini-fab {
       // border-radius: 0% !important; 
        width: 30px !important;
        height: 30px !important;
-       background-color: #225F75!important;
+       background-color: #065C7A!important;
+   }
+
+   .padding-icon{
+        padding: 2px 5px;
+        font-size: 19px;
    }
    .materialTableHeader .header-buttons-left{
       padding-left: 0px;

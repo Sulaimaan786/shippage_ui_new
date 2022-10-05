@@ -42,14 +42,19 @@ export class RatesComponent implements OnInit {
   equipmentType:any;
   commodityDetails:[];
   rateDataList = [];
+  totalrateData = [];
+  array = [];
   equipmentNameList = [{ title: ""}];
   incoterm: any;
   eqtypeId:any;
   totalequipId:any;
   resultsFound:any;
   testarray: any;
+  testarray1: any;
   commodity: any;
-
+  multival:any;
+  multival2:any
+  totalval:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -155,20 +160,49 @@ export class RatesComponent implements OnInit {
       
         this.httpService.get(this.instantRatesService.getrateslist + "?origin=" + this.routeDetails.origin +  "&destination=" + this.routeDetails.destination + "&loadtype=" + this.totalequipId.substring(9)).subscribe((res: any) => {
         this.rateDataList = res.lInstantRatesBean;
+        this.totalrateData = res.totalrateList;
+
         this.resultsFound =this.rateDataList.length;
         this.testarray = this.rateDataList.length - this.loadDetails.loadTypeDetailBean.length
+
+        // this.testarray1 = this.totalrateData.length - this.loadDetails.loadTypeDetailBean.length
+
+        // for(let j =0 ;j<this.testarray1;j++){
+        //   this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
+        // }
+
+    //     for(let i=0;i<this.totalrateData.length;i++){
+    //       this.loadDetails.loadTypeDetailBean[i].value = this.totalrateData[i].unit
+    //       this.loadDetails.loadTypeDetailBean[i].tariffid = this.totalrateData[i].tariffid
+    //       if(this.totalrateData[i].unit == this.loadDetails.loadTypeDetailBean[i].value && this.totalrateData[i].tariffid == this.loadDetails.loadTypeDetailBean[i].tariffid){
+    //         this.multival = this.totalrateData[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity; 
+    //         this.data = this.loadDetails.loadTypeDetailBean[i].tariffid
+    //         i++ 
+    //        this.loadDetails.loadTypeDetailBean[i].value = this.totalrateData[i].unit
+    //        this.loadDetails.loadTypeDetailBean[i].tariffid = this.totalrateData[i].tariffid
+    //         if(this.totalrateData[i].unit == this.loadDetails.loadTypeDetailBean[i].value && this.totalrateData[i].tariffid == this.data){
+    //           this.multival2 = this.totalrateData[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;
+    //         }else{
+    //           this.multival2  = 0;
+    //         }
+    //         this.totalval = (this.multival + this.multival2) 
+    //         //i--
+    //         this.array.push(this.totalval);
+    //          console.log("total value ----- "+ this.totalval)
+    //          console.log("total value ----- "+ this.array)
+    //     } 
+    //  }
 
         for(let j =0 ;j<this.testarray;j++){
           this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
         }
-  
-        for(let i=0;i<this.rateDataList.length;i++){
-             this.loadDetails.loadTypeDetailBean[i].value = this.rateDataList[i].unit
-             if(this.rateDataList[i].unit == this.loadDetails.loadTypeDetailBean[i].value){
-             this.rateDataList[i].totalcost = this.rateDataList[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;             
-          }
-
-        }
+ 
+     for(let i=0;i<this.rateDataList.length;i++){
+      this.loadDetails.loadTypeDetailBean[i].value = this.rateDataList[i].unit
+      if(this.rateDataList[i].unit == this.loadDetails.loadTypeDetailBean[i].value){
+      this.rateDataList[i].totalcost = this.rateDataList[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;             
+   } 
+ }
         });
       
        

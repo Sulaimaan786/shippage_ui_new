@@ -53,6 +53,7 @@ export class LoadTypeComponent implements OnInit {
           quantity:["", [Validators.required]],
           cargoWeight:["", [Validators.required]],
           value:[""],
+          tariffid:[""]
         })
       ]),
 
@@ -158,7 +159,8 @@ addRow(){
     equipmentType:[""],
     quantity:[""],
     cargoWeight:[""],
-    value:[""]
+    value:[""],
+    tariffid:[""]
   })
   loadTypeDetailBeanArray.insert(arraylen,newUsergroup);
 }

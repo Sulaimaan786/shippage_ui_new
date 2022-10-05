@@ -67,21 +67,7 @@ export class CommodityComponent implements OnInit {
       commodity:[""]
          
     })
-    //multi select list
-    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.commoditylist).subscribe(
-      
-      
-      (data) => {
-    //    this.roleList = data.roleList;
-        this.dropdownList =data.commodityl;
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error.name + " " + error.message);
-      }
-    );
-
-  
-
+     
     this.incotermsChange=true;
   //   this.dropdownSettings = {
   //     singleSelection: false,
@@ -128,10 +114,34 @@ export class CommodityComponent implements OnInit {
 
 
    this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
-   this.docForm.patchValue({
-    'commodity':  this.commodityValues.commodity,
-   })
+   
+
+   if(this.commodityValues == null){
+    this.commodityList();
+  }else{
+    this.commodityList();
+    this.docForm.patchValue({
+      'commodity':  this.commodityValues.commodity,
+     })
   }
+
+
+
+  }
+
+
+  //multi select list
+  commodityList(){
+    this.httpService.get<InstantRatesResultBean>(this.instantRatesService.commoditylist).subscribe( 
+      (data) => { 
+        this.dropdownList =data.commodityl;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.name + " " + error.message);
+      }
+    );
+  }
+  
 
   
 incoterms(){

@@ -11,31 +11,31 @@
       <div class="container-fluid" >
         <form class="m-12" [formGroup]="docForm">
           <div *ngIf="topback" (click)="incoterms()" style="position: absolute;top: 35px;left: 15px;"> 
-            <mat-icon class="blue">arrow_back_ios</mat-icon> 
+            <mat-icon class="blue ">arrow_back_ios</mat-icon> 
           </div>
         <div class="row"> 
       <div class="col-sm-3 ">
                     
         <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
-          <button class="sideButton " (click)="incoterms()">
-            <img src="assets/icons/incoterms.png" alt="icoterms" width="20" height="20"> Incoterms</button>
+          <button class="sideButton " (click)="incoterms()">&nbsp;
+            <img src="assets/icons/incoterms.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Incoterms</button>
           </div>
           <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-            <button class="sideButton " (click)="commodity()" style="background-color: #225F75!important;color:white;text-align: center;">
-              <img src="assets/icons/commoditywhite.png" alt="icoterms" width="20" height="20"> Commodity</button>
+            <button class="sideButton " (click)="commodity()" style="background-color: #065C7A!important;color:white;text-align: center;">
+              <img src="assets/icons/commoditywhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Commodity</button>
             </div>
             <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-              <button class="sideButton " (click)="cargoReadiness()" >
-                <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20"> Cargo Readiness</button>
+              <button class="sideButton " (click)="cargoReadiness()" >&nbsp;
+                <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Readiness</button>
               </div>
               <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-                <button class="sideButton " (click)="loadType()">
-                  <img src="assets/icons/loadtype.png" alt="icoterms" width="20" height="20"> Load Type</button>
+                <button class="sideButton " (click)="loadType()">&nbsp;
+                  <img src="assets/icons/loadtype.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Load Type</button>
                 </div>
                
     </div>
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
-                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold;">Commodity</h1> 
+                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#065C7A;font-weight:bold;">Commodity</h1> 
                       <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;height: 85%;padding-bottom: 24px;padding-top: 24px;padding-left:64px;padding-right:64px;" > 
                         <div class = "row">
                             <!-- <mat-radio-group formControlName="control">
@@ -76,7 +76,7 @@
                 
       <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 55px;">
         <button mat-mini-fab color="primary" (click)="incoterms()">
-          <mat-icon class="col-white" >arrow_back_ios</mat-icon>
+          <mat-icon class="col-white padding-icon" >arrow_back_ios</mat-icon>
         </button>
       </div> 
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-6" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">

@@ -31,7 +31,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    // background-color:#225f75;
+    // background-color:#065C7A;
   }
   .validate-input {
     position: relative;
@@ -92,7 +92,7 @@
 ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
     box-shadow: -5px -5px 20px #fff, 0px 5px 11px #c3c6d1;
     border-radius: 8px;
-    color: #225f75 !important;
+    color: #065C7A !important;
 }
 
 .mat-form-field-wrapper {
@@ -117,7 +117,7 @@
 
 // sign in field legend to border gap
 :host ::ng-deep.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-outline-gap {
-    border-top-color: #225f75 !important;
+    border-top-color: #065C7A !important;
  }
 
 // disply none for the field legend

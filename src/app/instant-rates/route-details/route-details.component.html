@@ -12,13 +12,13 @@
           </div>
            
            <div class="row" style="margin-bottom:100px!important">
-            <h1 style="text-align:center;color:#225F75;font-weight:bold;padding-top: 30px;padding-bottom: 10%;">Route Details</h1> 
+            <h1 style="text-align:center;color:#065C7A;font-weight:bold;padding-top: 30px;padding-bottom: 10%;">Route Details</h1> 
                       
               
               <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="text-align: right;"> 
            <div class="row" style="margin-top:40px!important;margin-bottom:100px!important">
-              <h2  *ngIf="!topback" style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;font-size: 40px;font-weight: 700;">Route Details</h2>
-              <h2 *ngIf="topback" style="text-align: center;color:#225f75;padding-top: 30px;padding-bottom: 5%;font-size: 20px;font-weight: 600;">Route Details</h2>
+              <h2  *ngIf="!topback" style="text-align: center;color:#065C7A;padding-top: 30px;padding-bottom: 5%;font-size: 40px;font-weight: 700;">Route Details</h2>
+              <h2 *ngIf="topback" style="text-align: center;color:#065C7A;padding-top: 30px;padding-bottom: 5%;font-size: 20px;font-weight: 600;">Route Details</h2>
               
               <div *ngIf = "center" class="col-xl-6 col-lg-6 col-md-6 col-sm-6"  style="display: flex;margin-top: 10%;align-items: center;flex-direction: column;"> 
                 <mat-form-field class="form-control-sm" appearance="outline"  >
@@ -49,8 +49,8 @@
               </div> -->
               <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" [ngStyle]="{'margin-top':margTop}"> 
                  <mat-form-field class="example-full-width form-control-sm" appearance="outline" >
-                  <mat-label required>  <img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;
-                    <p>Origin</p> </mat-label>
+                  <mat-label required> &nbsp;&nbsp;<img src="assets/icons/seaOrigin.png" style="width:20px;height:15px">&nbsp;&nbsp;&nbsp;
+                    <p style="font-weight:500">Origin</p> </mat-label>
                       <mat-select class="inputTxt" formControlName="origin" required>
                         <mat-option *ngFor="let title of polList" [value]="title.id" >
                           {{title.text}}
@@ -105,8 +105,8 @@
               </div> -->
               <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" [ngStyle]="{'margin-top':margTop}" > 
                 <mat-form-field class="example-full-width form-control-sm" appearance="outline">
-                  <mat-label > <img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;
-                    <p>Destination</p></mat-label> 
+                  <mat-label >&nbsp;&nbsp;<img src="assets/icons/seaDestination.png" style="width:20px;height:15px">&nbsp;&nbsp;&nbsp;
+                    <p style="font-weight:500">Destination</p></mat-label> 
                       <mat-select formControlName="destination" class="inputTxt" required> 
                         <mat-option *ngFor="let title of podList" [value]="title.id" >
                           {{title.text}}
@@ -119,7 +119,7 @@
             <div class="row">
               <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 15px;">
                 <button mat-mini-fab color="primary" (click)="back()">
-                  <mat-icon class="col-white" >arrow_back_ios</mat-icon>
+                  <mat-icon class="col-white padding-icon" >arrow_back_ios</mat-icon>
                 </button>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 80px;"[ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">

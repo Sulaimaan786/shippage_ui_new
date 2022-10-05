@@ -17,25 +17,25 @@
       <div class="col-sm-3 ">
                     
         <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
-          <button class="sideButton " (click)="incoterms()" >
-            <img src="assets/icons/incoterms.png" alt="icoterms" width="20" height="20"> Incoterms</button>
+          <button class="sideButton " (click)="incoterms()" >&nbsp;
+            <img src="assets/icons/incoterms.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Incoterms</button>
           </div>
           <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-            <button class="sideButton " (click)="commodity()" >
-              <img src="assets/icons/commodity.png" alt="icoterms" width="20" height="20"> Commodity</button>
+            <button class="sideButton " (click)="commodity()" >&nbsp;
+              <img src="assets/icons/commodity.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Commodity</button>
             </div>
             <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-              <button class="sideButton " (click)="cargoReadiness()" >
-                <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20"> Cargo Readiness</button>
+              <button class="sideButton " (click)="cargoReadiness()" >&nbsp;
+                <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Readiness</button>
               </div>
               <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-                <button class="sideButton " (click)="loadType()" style="background-color: #225F75!important;color:white;text-align: center;" >
-                  <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20"> Load Type</button>
+                <button class="sideButton " (click)="loadType()" style="background-color: #065C7A!important;color:white;text-align: center;" >
+                 <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Load Type</button>
                 </div>
                
     </div> 
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
-                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#225F75;font-weight:bold;">Load Type</h1> 
+                      <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#065C7A;font-weight:bold;">Load Type</h1> 
                        
                               <!-- Cargo Readiness -->
                     <!-- <div class="form-group" > -->
@@ -102,13 +102,13 @@
 
                               
                                
-                              <td style=" padding-left: 15px;">
+                              <td style=" padding-left: 0px;">
                                      
                                 <button mat-mini-fab color="warn" (click)="removeRow(i)" >
                                   <mat-icon class="col-white"  >remove</mat-icon>
                                 </button></td>
                                 
-                                <td style="  padding-left: 15px;">         
+                                <td style="  padding-left: 0px;">         
                                   
                                   <button mat-mini-fab color="primary" (click)="addRow()">
                                     <mat-icon class="col-white">add</mat-icon>
@@ -123,14 +123,14 @@
                           
             
                         <!-- detailed row -->
-                                        <div class="row" >
+                                        <div class="row" style="position:absolute;bottom: 0px;" >
                                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                            <p style="text-align:center;margin-top:28px;margin-bottom:20px">*Per container by kgs</p>
+                                            <p style="text-align:center;margin-top:15px;margin-bottom:20px">*Per container by kgs</p>
                                           </div>
                                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                               
                                             <!-- <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a> -->
-                                            <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #225F75; background-color: white;">Reset</button>
+                                            <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;margin-left: 50%;">Reset</button>
                                           </div>
                                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                             <!-- <button mat-raised-button color="primary" class="buttonCSS">Done</button>
@@ -153,7 +153,7 @@
                 
       <div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 70px;">
         <button mat-mini-fab color="primary" (click)="cargoReadiness()" >
-          <mat-icon class="col-white" >arrow_back_ios</mat-icon>
+          <mat-icon class="col-white padding-icon" >arrow_back_ios</mat-icon>
         </button>
       </div> 
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">

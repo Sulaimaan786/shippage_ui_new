@@ -28,9 +28,9 @@ export class ShipmentModeComponent implements OnInit {
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
 
-        this.mobilepadding = '45px 65px  15px 65px';
-        this.webpadding = '75px 75px 75px 75px';
-        this.cardbnner = '40px 0px 33px 0px';
+        this.mobilepadding = '45px 75px 15px';
+        this.webpadding = '75px 84px';
+        this.cardbnner = '42px 0px 35px 0px';
         this.cardbnner1 = '80px 0px 115px 0px;';
         this.topback = false;
  
