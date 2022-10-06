@@ -14,6 +14,7 @@ import { LoadTypeComponent } from '../load-type/load-type.component';
 import { RateEditComponent } from '../rate-edit/rate-edit.component';
 import { serverLocations } from 'src/app/auth/serverLocations';
 import { EncrDecrService } from 'src/app/core/service/encrDecr.service';
+import { AnyTxtRecord } from 'dns';
 
 @Component({
   selector: 'app-rates',
@@ -34,8 +35,7 @@ export class RatesComponent implements OnInit {
   equipName:any;
   output:any;
   cardBottom:any;
- // commodityValues:[]; 
- docForm: FormGroup;
+  docForm: FormGroup;
  instantRate : InstantRates;
   origin:any;
   destination: any;
@@ -55,6 +55,15 @@ export class RatesComponent implements OnInit {
   multival:any;
   multival2:any
   totalval:any;
+
+  grid:any;
+  justifyCenter:any;
+  padding:any;
+  center:any;
+  verticalLine:any;
+  border:any;
+  buttonRight:any;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -71,14 +80,27 @@ export class RatesComponent implements OnInit {
 
      
     this.responsive.observe(Breakpoints.Handset)
-      .subscribe(result => {
-
+      .subscribe(result => { 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
           this.cardBottom = '75px'
+          this.grid = 'grid'
+          this.justifyCenter = 'center'
+          this.padding = '0px 0px 5px 0px'
+          this.center = 'left'
+          this.verticalLine = false
+          this.border = '0px solid #065C7A'
+          this.buttonRight= '10px'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.cardBottom = '53px'
+          this.grid = 'block'
+          this.justifyCenter = 'center'
+          this.padding = '54px 0 5px 30px'
+          this.center = 'center'
+          this.verticalLine = true
+          this.border = '1px solid #065C7A'
+          this.buttonRight = '0px'
         }
       }); 
     //Route Details  

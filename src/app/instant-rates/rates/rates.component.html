@@ -75,40 +75,44 @@
                         Spot Rate</p>
                         <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}"
                             style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
-            -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 40px">
+            -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;width: 100%;padding-left: 10px">
 
                             <div  class="container-fluid  mt-6">
                                 <div class="row">
-                                    <div class="col-sm-3" style="margin-top:40px">
+                                    <div class="col-sm-2" style="margin-top:40px" [ngStyle] = "{'display':grid,'justify-content':justifyCenter}">
                                         <img src="assets/images/icons/logo-msc.svg" alt=""><br>
                                         <p>CY/CY/F13</p>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <div class="wavy col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                                            <p style="color:rgb(165, 159, 159); margin: 10% 0% -4% 35%;"> 32 Days </p>
-                                            <pre>  {{title.origin}}  <img src="assets/images/icons/wave.png" alt="" style="width: 115px;">{{title.destination}}</pre>
+                                    <div class="col-sm-7">
+                                        <div class="row"> 
+                                            <div class="col-md-11">
+                                                <label style="color:rgb(165, 159, 159); margin: 10% 0% -4% 35%;"> 32 Days </label>
+                                                <pre style="overflow-x: auto;">  {{title.origin}}  <img src="assets/images/icons/wave.png" alt="" style="width: 115px;">{{title.destination}}</pre>
+                                            </div>
+                                            <div *ngIf = "verticalLine" class="col-md-1"  style="border-right: 1px solid #065C7A;margin-top: 50px;" > 
+                                                <div  class="vertical" > </div> 
+                                              </div>
                                         </div>
                                         <div class="row" style="margin-top:-20px">
-                                            <div class="col-sm-4 p-4">
-                                                <p class="paragraph">Sailing Date</p><br>
-                                                <p style=" margin-top: -30px;color:black;font-size:12px">23 July 2022
-                                                </p>
+                                            <div class="col-sm-4 p-1" [ngStyle] = "{'text-align':center}">
+                                                <label class="paragraph">Sailing Date</label><br>
+                                                <label style=" margin-top: -30px;color:black;font-size:15px;white-space: nowrap;">23 July 2022
+                                                </label>
                                             </div>
 
-                                            <div class="col-sm-4 p-4">
-                                                <p class="paragraph">Free Day</p><br>
-                                                <p style=" margin-top: -30px;color:black;font-size:12px">7 days</p>
+                                            <div class="col-sm-4 p-1" [ngStyle] = "{'text-align':center}">
+                                                <label class="paragraph">Free Day</label><br>
+                                                <label style=" margin-top: -30px;color:black;font-size:13px">7 days</label>
                                             </div>
-                                            <div class="col-sm-4 p-4">
-                                                <p class="paragraph">Cargo</p><br>
-                                                <p style=" margin-top: -30px;color:black;font-size:12px">FAK</p>
+                                            <div class="col-sm-4 p-1" [ngStyle] = "{'text-align':center,'border-right':border}">
+                                                <label class="paragraph">Cargo</label><br>
+                                                <label style=" margin-top: -30px;color:black;font-size:13px">FAK</label>
                                             </div>
                                         </div>
-                                        <div class="row" style="margin-top:-20px">
+                                        <!-- <div class="row" style="margin-top:-20px">
                                             <div class="col-sm-4 p-4">
 
-                                            </div>
-
+                                            </div> 
                                             <div class="col-sm-4 p-4 " style="margin-top: -35px;">
                                                 <p class="paragraph">Cost per Unit</p><br>
                                                 <p
@@ -121,8 +125,8 @@
                                                     style=" margin-top: -30px;color:black;font-size:12px;font-weight: bold;">
                                                     USD {{title.totalcost | number: '2.'}}</p>
                                             </div>
-                                        </div>
-                                        <div class="row" style="margin-top:-20px">
+                                        </div> -->
+                                        <!-- <div class="row" style="margin-top:-20px">
                                             <div class="col-sm-4 p-4">
 
                                             </div>
@@ -135,10 +139,29 @@
                                                     color="primary" class="buttonCSS"
                                                     style="float: right;">Select</button>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </div>
-
+                                    <div class="col-md-3" [ngStyle] = "{'padding':padding}" >  
+                                        <div class="col-md-4" style="white-space:nowrap;">  
+                                                <label class="paragraph1">Cost per Unit</label><br>
+                                                <label
+                                                    style=" margin-top: -30px;color:black;font-size:16px;font-weight: 700;">
+                                                    USD {{title.rate | number: '2.'}}</label> 
+                                        </div>
+    
+                                        <div class="col-sm-4" style="white-space:nowrap;">
+                                            <label class="paragraph1">Total cost</label><br>
+                                            <label
+                                                style=" margin-top: -30px;color:black;font-size:16px;font-weight: 700;">
+                                                USD {{title.totalcost | number: '2.'}}</label>
+                                        </div>
+                                        <div class="col-sm-10" [ngStyle] = "{'margin-right':buttonRight}" style="margin-top: 25px;">
+                                            <button class="btn-space" mat-raised-button (click)="rateSummary(title.detailid)"
+                                                color="primary" class="buttonCSS"
+                                                style="float: right;">Select</button>
+                                        </div>
+                                    </div> 
                                 </div>
 
                             </div>

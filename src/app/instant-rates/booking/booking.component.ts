@@ -54,6 +54,8 @@ export class BookingComponent implements OnInit {
   equipmentTypeName:any;
   commodity:any;
 
+  grid:any;
+  justifyCenter:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -84,8 +86,12 @@ export class BookingComponent implements OnInit {
 
         if (result.matches) {  
           this.renderer.addClass(this.document.body,"content-block")
+          this.grid = 'grid'
+          this.justifyCenter = 'center'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
+          this.grid = 'grid'
+          this.justifyCenter = 'block'
         }
       });
       //Route Details  
