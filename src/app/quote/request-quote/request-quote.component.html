@@ -2,10 +2,10 @@
     <div class="content-block mobile-v-p">
         <div class="block-header" style="margin-top: 50px;">
         </div>
-        <form class="m-4" [formGroup]="docForm"> 
+        <form  [formGroup]="docForm"> 
         <div class="row" style="justify-content:space-evenly">
             <div class="col-xl-12 ">
-                <div class="card" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+                <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
           -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="padding: 3%;">
                         <div class="row">
@@ -208,7 +208,7 @@
                             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
 
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">
                                 <button class="btn-space" mat-raised-button color="primary"(click) = "onSubmit()" class="buttonCSS"
                                     style="float: right;">Submit</button>
 
