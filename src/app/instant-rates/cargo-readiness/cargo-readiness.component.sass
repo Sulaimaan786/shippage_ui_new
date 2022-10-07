@@ -181,20 +181,64 @@ th, td
 
 ::ng-deep.mat-calendar-arrow
   fill: rgb(255 255 255) !important
+  
 
 ::ng-deep.mat-calendar-header
-    padding: 6px 8px 0 8px !important
+    padding: 6px 8px 0px 0px !important
     background: #065c7a !important
     border-radius: 30px !important
     color: white
 
+:ng-deep.mat-calendar-controls
+  margin: 0% calc(4.7142857143% - 16px)!important
+
+    
+
 ::ng-deep.mat-calendar-body-selected
     background-color: #065c7a
     color: #fff
+    
 
 ::ng-deep.mat-datepicker-toggle
  color: rgb(10 5 0 / 100%) !important
+  
+
+label > input[type="radio"] 
+  display: none
+
  
+label > input[type="radio"] + *::before 
+  content: ""
+  display: inline-block
+  vertical-align: bottom
+  width: 1rem
+  height: 1rem
+  margin-right: 0.3rem
+  border-radius: 50%
+  border-style: solid
+  border-width: 0.1rem
+  border-color: black
+  checked-color:#065c7a
+  margin-right: 9px
+  margin-bottom: 3.5px
+
+label > input[type="radio"]:checked + * 
+  color: black
+
+label > input[type="radio"]:checked + *::before 
+  background: radial-gradient(teal 0%, teal 40%, transparent 50%, transparent)
+  border-color: black
+
+
+/* basic layout */
+fieldset 
+  margin: 20px
+  max-width: 400px
+
+label > input[type="radio"] + * 
+  display: inline-block
+  padding: 0.5rem 1rem
+
 
 
 
