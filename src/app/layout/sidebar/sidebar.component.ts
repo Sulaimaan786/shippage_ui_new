@@ -36,6 +36,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
   headerHeight = 60;
   currentRoute: string;
   routerObj = null;
+
+  instanticon = 'assets/icons/Asset 38.png';
+  quoteicon = 'assets/icons/Asset 40.png'
+  shipmenticon= 'assets/icons/Asset 41.png'
+  settingicon = 'assets/icons/Asset 39.png'
+  instanthr:any;
+  quotehr:any;
+  shipmenthr:any;
+  settinghr:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
@@ -210,6 +219,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
   }
   logout() {
+    this.settingicon = 'assets/icons/Asset 32.png'
     this.authService.logout().subscribe((res) => {
       if (!res.success) {
         this.router.navigate(["/authentication/signin"]);
@@ -218,14 +228,38 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   instantRates() {  
-        this.router.navigate(["/instantRates/shipment-mode"]);
+    this.instanticon = 'assets/icons/Asset 27.png'
+    this.quoteicon = 'assets/icons/Asset 40.png'
+    this.shipmenticon= 'assets/icons/Asset 41.png'
+    this.settingicon = 'assets/icons/Asset 39.png'
+    this.instanthr = '2px solid'
+    this.quotehr = '0px solid'
+    this.shipmenthr = '0px solid'
+    this.settinghr = '0px solid'
+    this.router.navigate(["/instantRates/shipment-mode"]); 
   }
-  quote() {  
-    this.router.navigate(["/quote/request-quote"]);
-}
 
-  shipping()
-  {
+  quote() {  
+    this.instanticon = 'assets/icons/Asset 38.png'
+    this.quoteicon = 'assets/icons/Asset 35.png'
+    this.shipmenticon= 'assets/icons/Asset 41.png'
+    this.settingicon = 'assets/icons/Asset 39.png'
+    this.instanthr = '0px solid'
+    this.quotehr = '2px solid'
+    this.shipmenthr = '0px solid'
+    this.settinghr = '0px solid'
+    this.router.navigate(["/quote/request-quote"]);
+  }
+
+  shipping(){
+    this.instanticon = 'assets/icons/Asset 38.png'
+    this.quoteicon = 'assets/icons/Asset 40.png'
+    this.shipmenticon = 'assets/icons/Asset 34.png'
+    this.settingicon = 'assets/icons/Asset 39.png'
+    this.instanthr = '0px solid'
+    this.quotehr = '0px solid'
+    this.shipmenthr = '2px solid'
+    this.settinghr = '0px solid'
     this.router.navigate(["/shipping/shipping"]);
   }
  
