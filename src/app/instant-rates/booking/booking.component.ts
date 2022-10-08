@@ -53,7 +53,7 @@ export class BookingComponent implements OnInit {
   rateValueFinal: number;
   equipmentTypeName:any;
   commodity:any;
-
+  cardBottom:any;
   grid:any;
   justifyCenter:any;
   constructor(
@@ -88,10 +88,12 @@ export class BookingComponent implements OnInit {
           this.renderer.addClass(this.document.body,"content-block")
           this.grid = 'grid'
           this.justifyCenter = 'center'
+          this.cardBottom = '68px'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.grid = 'grid'
           this.justifyCenter = 'block'
+          this.cardBottom = '24px'
         }
       });
       //Route Details  

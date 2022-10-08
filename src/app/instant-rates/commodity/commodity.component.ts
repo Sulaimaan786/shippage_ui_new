@@ -90,7 +90,7 @@ export class CommodityComponent implements OnInit {
        this.firstbutton = '20px'
        this.butLeftmar = '80px';
        this.height = '90%';
-       this.nextbutton = '110px';
+       this.nextbutton = '80px';
        this.nxtbuttonright = '28%';
        this.nxtbuttonBot = '3%';
        this.topback = true;
@@ -116,14 +116,14 @@ export class CommodityComponent implements OnInit {
    this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
    
 
-   if(this.commodityValues == null){
-    this.commodityList();
-  }else{
-    this.commodityList();
-    this.docForm.patchValue({
-      'commodity':  this.commodityValues.commodity,
-     })
-  }
+      if(this.commodityValues == null){
+        this.commodityList();
+      }else{
+        this.commodityList();
+        this.docForm.patchValue({
+          'commodity':  this.commodityValues.commodity,
+        })
+      }
 
 
 
@@ -166,7 +166,7 @@ commodity(){
   
   if (this.docForm.valid) {
     this.router.navigate(["instantRates/commodity"]);
-    // this.commodityDetails.push(this.docForm.value)
+    this.commodityDetails.push(this.docForm.value)
     this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
     console.log("Form Value", this.docForm.value);
     }
