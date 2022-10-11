@@ -50,6 +50,7 @@ import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
 import { EncryptionService } from 'src/app/core/service/encrypt.service';
 //import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SignupComponent } from './signup/signup.component';
 
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
@@ -68,7 +69,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     CargoReadinessComponent,
     LoadTypeComponent,
     CargoDetailsComponent,
-    RateEditComponent
+    RateEditComponent,
+    SignupComponent
   ],
   providers: [
     EncrDecrService,

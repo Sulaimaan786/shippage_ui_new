@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject,Observable } from 'rxjs';
 import { User } from "src/app/core/models/user";
 import { JwtResponse } from './jwt-response';
@@ -9,6 +9,7 @@ import {serverLocations} from './serverLocations'
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import {NavItem} from 'src/app/layout/matdynamicmenu/nav-items';
 import { map } from "rxjs/operators";
+import { UsersMaster } from '../setup/users/users-model';
 
 
 const httpOptions = {
@@ -19,6 +20,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  dialogData: any;
 private currentUserSubject: BehaviorSubject<User>;
 public currentUser: Observable<User>;
   constructor(private http: HttpClient,public serverURL: serverLocations,public httpService: HttpServiceService,) {
@@ -38,6 +40,7 @@ public currentUser: Observable<User>;
   validateOtpUrl =  `${this.serverURL.apiServerAddress}api/auth/validateOtp`;
   resendOtpUrl =  `${this.serverURL.apiServerAddress}api/auth/resendOtpvalidate`;
   forgotPasswordUrl =  `${this.serverURL.apiServerAddress}api/auth/forgotPassword`;
+  public saveUrl = `${this.serverURL.apiServerAddress}api/auth/app/userMaster/save`;
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     return  this.http
@@ -100,6 +103,16 @@ public currentUser: Observable<User>;
 
   forgotPasswordService(otpInfo: AuthLoginInfo): Observable<any> {
     return  this.http.post<any>(this.forgotPasswordUrl, otpInfo);
+  }
+  addCustomerMaster(customerMaster: UsersMaster): void {
+    this.dialogData = customerMaster;
+    this.httpService.post<UsersMaster>(this.saveUrl, customerMaster).subscribe(data => {
+      console.log(data);
+      //this.dialogData = employees;
+      },
+      (err: HttpErrorResponse) => {
+        
+    });
   }
 
 }

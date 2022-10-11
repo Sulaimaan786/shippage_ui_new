@@ -1,0 +1,38 @@
+<body>
+<section class="content">
+    
+    <div class="content-block mobile-v-p">
+        
+      <div class="block-header" style="margin-top: 50px;">
+        
+    <p style="background-image: url('https://www.cafworldwide.com/hubfs/Blog/CAF-Blog-The-Importance-of-International-Freight-Forwarders.jpg');"></p>
+      </div>
+      
+      <div class="row" >
+        <div class="offset-md-3 col-md-8">
+        <div class="mat-card"  [formGroup]="docForm" style="padding:16px" [ngStyle] = "{'width':cardWidth,'margin-left':marLeft}">
+            <div class="row">
+                
+            <div class="col-lg-12" style="padding-top:24px;padding-right:50px;padding-left:50px;">
+                <h1>Sign up</h1>
+                
+                <input type="text" formControlName="firstName" name="username" placeholder="Username" />
+                <input type="text" formControlName="emailId"name="email" placeholder="E-mail" />
+                <input type="text" formControlName="mobileNo"name="password" placeholder="Phone Number" />
+                <input type="password" formControlName="password" name="password2" placeholder="Password" />
+                
+                <input type="submit" name="signup_submit"  (click) = "onSubmit()" value="Sign me up" />
+                 <div class="form-group">
+                                  <h6 class="text-right" style="margin-top:20px;text-align: center;">Already Have An Account? <a href="#">Login</a></h6>
+                                </div>
+              </div>
+              
+              
+              
+            </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </section>
+</body>

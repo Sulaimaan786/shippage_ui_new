@@ -40,6 +40,7 @@ import { CargoReadinessComponent } from './cargo-readiness/cargo-readiness.compo
 import { LoadTypeComponent } from './load-type/load-type.component';
 import { CargoDetailsComponent } from './cargo-details/cargo-details.component';
 import { RateEditComponent } from './rate-edit/rate-edit.component';
+import { SignupComponent } from './signup/signup.component';
  
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: "rate-edit",
     component: RateEditComponent,
+  },
+  {
+    path: "signup",
+    component: SignupComponent,
   },
 ];
 

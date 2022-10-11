@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { HttpServiceService } from "src/app/auth/http-service.service";
+import { UsersResultBean } from "src/app/setup/users/users-result-bean";
+import { AuthService } from "src/app/auth/auth.service";
+import { HttpErrorResponse } from "@angular/common/http";
+
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
@@ -12,10 +17,11 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   hide = true;
   chide = true;
+  docForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private httpService: HttpServiceService,public router: Router,private authService: AuthService
   ) {}
   ngOnInit() {
     this.authForm = this.formBuilder.group({
@@ -26,6 +32,7 @@ export class SignupComponent implements OnInit {
       ],
       password: ["", Validators.required],
       cpassword: ["", Validators.required],
+      phoneNumber:[""]
     });
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
@@ -34,12 +41,24 @@ export class SignupComponent implements OnInit {
     return this.authForm.controls;
   }
   onSubmit() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.authForm.invalid) {
-      return;
-    } else {
-      this.router.navigate(["/instantRates/shipment-mode"]);
+    this.submitted=true;
+    console.log("Form Value", this.docForm.value);
+    if(this.docForm.valid){
+      this.httpService.post<UsersResultBean>(this.authService.saveUrl, this.docForm.value).subscribe(data => {
+        console.log(data);
+          if(data.success){
+            this.router.navigate(['instantRates/shipment-mode']);
+          }else{
+            
+          }
+        },
+        (err: HttpErrorResponse) => {
+          
+      }
+      );
+    }else{
     }
+    
+
   }
 }

@@ -33,7 +33,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
   ],
 })
 export class AuthenticationModule {}
