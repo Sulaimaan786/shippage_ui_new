@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject,Renderer2 } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { Router } from '@angular/router';
-import { HttpServiceService } from 'src/app/auth/http-service.service';
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Breakpoints } from "@angular/cdk/layout";
+import { DOCUMENT } from "@angular/common";
+ import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRatesResultBean } from 'src/app/instant-rates/instant-rates-result-bean';
 import { InstantRatesService } from 'src/app/instant-rates/instant-rates.service';
 import { Quote } from '../request-quote-model';
@@ -14,13 +16,21 @@ import { RequestQuoteService } from '../request-quote.service';
   templateUrl: './request-quote.component.html',
   styleUrls: ['./request-quote.component.sass']
 })
+
 export class RequestQuoteComponent implements OnInit {
   docForm: FormGroup;
   dropdownList:[];
   incotermList:[];
   commodity:[];
   quote:Quote;
-  constructor(private snackBar:MatSnackBar,public router: Router,private instantRatesService:InstantRatesService,private requestQuoteService:RequestQuoteService,private httpService: HttpServiceService,private fb: FormBuilder,) { }
+  cardBottom:any;
+  nextbutton:any;
+  nxtbuttonright:any;
+  nxtbuttonBot:any;
+  constructor(private snackBar:MatSnackBar,public router: Router,private instantRatesService:InstantRatesService,private requestQuoteService:RequestQuoteService,
+    private httpService: HttpServiceService,private fb: FormBuilder,
+    private responsive: BreakpointObserver,private route: ActivatedRoute,
+    private renderer: Renderer2, @Inject(DOCUMENT) private document: Document,) { }
  
   ngOnInit(): void {
     this.docForm = this.fb.group({
@@ -42,6 +52,27 @@ export class RequestQuoteComponent implements OnInit {
       weight: [""],
       comments: [""], 
     });
+
+    this.responsive.observe(Breakpoints.Handset)
+      .subscribe(result => {
+
+        if (result.matches) {  
+          this.renderer.addClass(this.document.body,"content-block") 
+          this.cardBottom = '75px'
+          this.nextbutton = '15px';
+          this.nxtbuttonright = '33%';
+          this.nxtbuttonBot = '3%';
+        }else{ 
+          this.renderer.removeClass(this.document.body,"content-block") 
+          this.cardBottom = '24px'
+          this.nextbutton = '18px';
+          this.nxtbuttonright = '0%';
+          this.nxtbuttonBot = '0%';
+        }
+      });
+
+
+
 //origin 
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
       (data) => {

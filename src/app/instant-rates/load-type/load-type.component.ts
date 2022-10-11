@@ -37,6 +37,7 @@ export class LoadTypeComponent implements OnInit {
   loadDetails: any;
   equipmentType: any;
   eqtypeId: any;
+  commodityDetails:any;
  
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
@@ -177,7 +178,7 @@ incoterms(){
   
   if (this.docForm.valid) {
     this.router.navigate(["/instantRates/incoterms"]);
-    // this.commodityDetails.push(this.docForm.value)
+    this.commodityDetails.push(this.docForm.value)
     this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
     console.log("Form Value", this.docForm.value);
     }
@@ -194,7 +195,7 @@ commodity(){
   
   if (this.docForm.valid) {
     this.router.navigate(["instantRates/commodity"]);
-    // this.commodityDetails.push(this.docForm.value)
+    this.commodityDetails.push(this.docForm.value)
     this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
     console.log("Form Value", this.docForm.value);
     }
@@ -212,7 +213,7 @@ cargoReadiness(){
   
   if (this.docForm.valid) {
     this.router.navigate(["instantRates/cargoReadiness"]);
-    // this.commodityDetails.push(this.docForm.value)
+    this.commodityDetails.push(this.docForm.value)
     this.dataStorage.setCommodityDetails(JSON.stringify(this.docForm.value));
     console.log("Form Value", this.docForm.value);
     }

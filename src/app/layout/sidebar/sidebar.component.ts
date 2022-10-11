@@ -165,19 +165,20 @@ export class SidebarComponent implements OnInit, OnDestroy {
           this.leftSideMenu = true;
         }
       });
-
-    //   this.responsive.observe([
-    //     Breakpoints.TabletPortrait
-    //     ])
-    //     .subscribe(result => {
-    //       this.leftSideMenu = true;  
-  
-    //       if (result.matches) {
-    //         this.leftSideMenu = false;
-    //         this.bottomMenu = false;
-    //       }
-  
-    // });
+ 
+    if(this.router.url.match("instantRates")){
+      this.instanticon = 'assets/icons/Asset 27.png'
+      this.instanthr = '1px solid'
+    }
+    if(this.router.url.match("quote")){
+      this.quoteicon = 'assets/icons/Asset 35.png'
+      this.quotehr = '1px solid'
+    }
+    if(this.router.url.match("shipping")){
+      this.shipmenticon = 'assets/icons/Asset 34.png'
+      this.shipmenthr = '1px solid'
+    }
+ 
   }
   ngOnDestroy() {
     this.routerObj.unsubscribe();
@@ -218,8 +219,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       this.renderer.addClass(this.document.body, "submenu-closed");
     }
   }
-  logout() {
-    this.settingicon = 'assets/icons/Asset 32.png'
+  logout() { 
     this.authService.logout().subscribe((res) => {
       if (!res.success) {
         this.router.navigate(["/authentication/signin"]);
@@ -232,7 +232,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.quoteicon = 'assets/icons/Asset 40.png'
     this.shipmenticon= 'assets/icons/Asset 41.png'
     this.settingicon = 'assets/icons/Asset 39.png'
-    this.instanthr = '2px solid'
+    this.instanthr = '1px solid'
     this.quotehr = '0px solid'
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
@@ -245,7 +245,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.shipmenticon= 'assets/icons/Asset 41.png'
     this.settingicon = 'assets/icons/Asset 39.png'
     this.instanthr = '0px solid'
-    this.quotehr = '2px solid'
+    this.quotehr = '1px solid'
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
     this.router.navigate(["/quote/request-quote"]);
@@ -258,11 +258,23 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.settingicon = 'assets/icons/Asset 39.png'
     this.instanthr = '0px solid'
     this.quotehr = '0px solid'
-    this.shipmenthr = '2px solid'
+    this.shipmenthr = '1px solid'
     this.settinghr = '0px solid'
     this.router.navigate(["/shipping/shipping"]);
   }
  
+
+  setting(){
+    this.instanticon = 'assets/icons/Asset 38.png'
+    this.quoteicon = 'assets/icons/Asset 40.png'
+    this.shipmenticon= 'assets/icons/Asset 41.png'
+    this.settingicon = 'assets/icons/Asset 32.png'
+    this.instanthr = '0px solid'
+    this.quotehr = '0px solid'
+    this.shipmenthr = '0px solid'
+    this.settinghr = '1px solid' 
+    this.router.navigate(["/shipping/shipping"]);
+  }
   
 
 //   origin&destination() {  
