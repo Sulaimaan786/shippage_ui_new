@@ -17,23 +17,22 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   hide = true;
   chide = true;
-  docForm: FormGroup;
+  // docForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private httpService: HttpServiceService,public router: Router,private authService: AuthService
-  ) {}
-  ngOnInit() {
+  ) {
     this.authForm = this.formBuilder.group({
-      username: ["", Validators.required],
-      email: [
-        "",
-        [Validators.required, Validators.email, Validators.minLength(5)],
-      ],
-      password: ["", Validators.required],
-      cpassword: ["", Validators.required],
-      phoneNumber:[""]
+      firstName: [""],
+      emailId: [""],
+      mobileNo: [""],
+      password: [""]
+      
     });
+  }
+  ngOnInit() {
+    
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
   }
@@ -42,9 +41,9 @@ export class SignupComponent implements OnInit {
   }
   onSubmit() {
     this.submitted=true;
-    console.log("Form Value", this.docForm.value);
-    if(this.docForm.valid){
-      this.httpService.post<UsersResultBean>(this.authService.saveUrl, this.docForm.value).subscribe(data => {
+    // console.log("Form Value", this.authForm.value);
+    if(this.authForm.valid){
+      this.httpService.post<UsersResultBean>(this.authService.saveUrl, this.authForm.value).subscribe(data => {
         console.log(data);
           if(data.success){
             this.router.navigate(['instantRates/shipment-mode']);
