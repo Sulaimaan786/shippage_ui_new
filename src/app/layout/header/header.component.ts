@@ -75,13 +75,24 @@ export class HeaderComponent
              this.messageReceived = message;
 
              if(this.messageReceived.text == 'Instant Rates'){
+              this.ngOnInit();
               this.headerName = 'Instant Rates'
              }
              if(this.messageReceived.text == 'Request Quote'){
+              this.ngOnInit();
               this.headerName = 'Request Quote'
              }
              if(this.messageReceived.text == 'Track And Trace'){
+              this.ngOnInit();
               this.headerName = 'Track And Trace'
+             }
+             if(this.messageReceived.text == 'Booking Details'){
+              this.ngOnInit(); 
+              this.headerName = 'Booking Details'
+             }
+             if(this.messageReceived.text == 'Booking Shipment'){
+              this.ngOnInit(); 
+              this.headerName = 'Booking Shipment'
              }
               });
   }
@@ -188,6 +199,22 @@ export class HeaderComponent
     })
     this.renderer.addClass(this.document.body, "side-closed");
     this.renderer.addClass(this.document.body, "submenu-closed");  
+
+    if(this.router.url.match("instantRates")){
+      this.headerName = 'Instant Rates'
+    }
+    if(this.router.url.match("quote")){
+      this.headerName = 'Request Quote'
+    }
+    if(this.router.url.match("shipping")){
+      this.headerName = 'Track And Trace'
+    }
+    if(this.router.url.match("instantRates/booking")){
+      this.headerName = 'Booking Details'
+    }
+    if(this.router.url.match("instantRates/rateSummary")){
+      this.headerName = 'Booking Shipment'
+    }
   }
 
   ngAfterViewInit() {

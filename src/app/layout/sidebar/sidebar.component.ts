@@ -240,8 +240,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.quotehr = '0px solid'
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
-    this.router.navigate(["/instantRates/shipment-mode"]); 
     this.Service.sendUpdate('Instant Rates');
+    this.router.navigate(["/instantRates/welcome-page"]); 
+    
   }
 
   quote() {  
@@ -253,8 +254,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.quotehr = '1px solid'
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
-    this.router.navigate(["/quote/request-quote"]);
     this.Service.sendUpdate('Request Quote');
+    this.router.navigate(["/quote/request-quote"]);
+   
   }
 
   shipping(){
@@ -266,8 +268,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.quotehr = '0px solid'
     this.shipmenthr = '1px solid'
     this.settinghr = '0px solid'
-    this.router.navigate(["/shipping/shipping"]);
     this.Service.sendUpdate('Track And Trace');
+    this.router.navigate(["/shipping/shipping"]);
+    
   }
  
 
@@ -280,8 +283,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.quotehr = '0px solid'
     this.shipmenthr = '0px solid'
     this.settinghr = '1px solid' 
-    this.router.navigate(["/shipping/shipping"]);
     this.Service.sendUpdate('Track And Trace');
+    this.router.navigate(["/shipping/shipping"]);
+    
   }
   
 

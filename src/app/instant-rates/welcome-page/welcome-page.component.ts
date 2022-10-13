@@ -5,6 +5,8 @@ import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { DataStorageService } from 'src/app/auth/data-storage';
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-welcome-page',
@@ -17,12 +19,22 @@ export class WelcomePageComponent implements OnInit {
   mobilepadding: any;
   mobileHeading:any;
   innerHeight:any;
+
+  private unsubscriber : Subject<void> = new Subject<void>();
   constructor(
     @Inject(DOCUMENT) private document: Document,public dataStorage:DataStorageService,
     private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,) {}
   ngOnInit() {
+
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+    ).subscribe((_) => {
+      history.pushState(null, '');
+      });
    
     this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {

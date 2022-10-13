@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject,Renderer2 } from '@angular/core';
+import { Component, OnInit,Inject,Renderer2,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { Breakpoints } from "@angular/cdk/layout";
@@ -10,13 +10,16 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { EncrDecrService } from 'src/app/core/service/encrDecr.Service';
 import { serverLocations } from 'src/app/auth/serverLocations';
 import { EncryptionService } from 'src/app/core/service/encrypt.service';
+import { Subscription } from 'rxjs';
+import { UnsubscribeOnDestroyAdapter } from "src/app/shared/UnsubscribeOnDestroyAdapter";
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.sass']
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnInit,OnDestroy {
   routeDetails :any;
   cargoReady:any;
   loadtype:any;
@@ -78,12 +81,14 @@ export class BookingComponent implements OnInit {
     private httpService: HttpServiceService,
     public EncrDecr: EncrDecrService,
     private serverUrl:serverLocations,	
-    private encryptionService:EncryptionService	
-    ) {}
+    private encryptionService:EncryptionService,
+    private Service: AppService
 
-  ngOnInit() {
-    // this.loadtypeArray.push(this.loadTypeName);
-    // this.loadtypeArray.push(this.loadTypeRate);
+    ) {
+      super()
+    }
+
+  ngOnInit() { 
 
   //view   
   this.route.params.subscribe(params => {if(params.id!=undefined && params.id!=0){ this.decryptRequestId = params.id;
@@ -236,6 +241,7 @@ this.commodity =this.commodityValues.commodity;
 
   bookingShipment(){
     this.router.navigate(["instantRates/rateSummary"]);
+    this.Service.sendUpdate('Booking Details');
   }
 
   edit(){

@@ -9,6 +9,9 @@ import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { InstantRates } from '../instant-rates.model';
+import { AppService } from 'src/app/app.service';
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 
 
@@ -58,16 +61,25 @@ export class RateSummaryComponent implements OnInit {
   consigneeFlag:boolean = false;
   notifyFlag:Boolean = false;
   shippingIntFlag:boolean = false;
-  
+  private unsubscriber : Subject<void> = new Subject<void>();
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,
-    private instantRatesService: InstantRatesService,
+    private instantRatesService: InstantRatesService,private Service: AppService,
     private httpService: HttpServiceService,private fb: FormBuilder) {}
   ngOnInit() { 
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+    ).subscribe((_) => {
+      history.pushState(null, '');
+     });
+
 
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
@@ -184,6 +196,11 @@ this.commodity =this.commodityValues.commodity;
   console.log(this.instantRate);
 }
 
+ngOnDestroy(): void {
+  this.unsubscriber.next();
+  this.unsubscriber.complete();
+}
+
  booking(){
   if(this.docForm.valid){
     this.instantRate = this.docForm.value;
@@ -196,6 +213,7 @@ this.commodity =this.commodityValues.commodity;
     //   "bottom",
     //   "center"
     // );
+    this.Service.sendUpdate('Booking Shipment');
     this.router.navigate(["instantRates/bookingShipment"]);
   }
   
