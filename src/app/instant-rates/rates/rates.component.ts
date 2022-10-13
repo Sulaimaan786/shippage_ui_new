@@ -152,7 +152,7 @@ export class RatesComponent implements OnInit {
         this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
         this.totalequipId += this.eqtypeId+',';
         console.log(this.totalequipId);
-        this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
+        this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
           this.equipmentType = res.equipName.equipName;
           this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
           this.data += this.combine;
@@ -184,14 +184,14 @@ export class RatesComponent implements OnInit {
         this.rateDataList = res.lInstantRatesBean;
         this.totalrateData = res.totalrateList;
 
-        this.resultsFound =this.rateDataList.length;
-        this.testarray = this.rateDataList.length - this.loadDetails.loadTypeDetailBean.length
+        this.resultsFound =this.totalrateData.length;
+        this.testarray = this.totalrateData.length - this.loadDetails.loadTypeDetailBean.length
 
-        // this.testarray1 = this.totalrateData.length - this.loadDetails.loadTypeDetailBean.length
+    //     this.testarray1 = this.totalrateData.length - this.loadDetails.loadTypeDetailBean.length
 
-        // for(let j =0 ;j<this.testarray1;j++){
-        //   this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
-        // }
+    //     for(let j =0 ;j<this.testarray1;j++){
+    //       this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
+    //     }
 
     //     for(let i=0;i<this.totalrateData.length;i++){
     //       this.loadDetails.loadTypeDetailBean[i].value = this.totalrateData[i].unit
@@ -199,16 +199,17 @@ export class RatesComponent implements OnInit {
     //       if(this.totalrateData[i].unit == this.loadDetails.loadTypeDetailBean[i].value && this.totalrateData[i].tariffid == this.loadDetails.loadTypeDetailBean[i].tariffid){
     //         this.multival = this.totalrateData[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity; 
     //         this.data = this.loadDetails.loadTypeDetailBean[i].tariffid
-    //         i++ 
+    //          i++ 
     //        this.loadDetails.loadTypeDetailBean[i].value = this.totalrateData[i].unit
     //        this.loadDetails.loadTypeDetailBean[i].tariffid = this.totalrateData[i].tariffid
     //         if(this.totalrateData[i].unit == this.loadDetails.loadTypeDetailBean[i].value && this.totalrateData[i].tariffid == this.data){
     //           this.multival2 = this.totalrateData[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;
     //         }else{
+    //           i--
     //           this.multival2  = 0;
     //         }
     //         this.totalval = (this.multival + this.multival2) 
-    //         //i--
+            
     //         this.array.push(this.totalval);
     //          console.log("total value ----- "+ this.totalval)
     //          console.log("total value ----- "+ this.array)
@@ -217,12 +218,13 @@ export class RatesComponent implements OnInit {
 
         for(let j =0 ;j<this.testarray;j++){
           this.loadDetails.loadTypeDetailBean.push(this.loadDetails.loadTypeDetailBean[j])
-        }
+      }
  
-     for(let i=0;i<this.rateDataList.length;i++){
-      this.loadDetails.loadTypeDetailBean[i].value = this.rateDataList[i].unit
-      if(this.rateDataList[i].unit == this.loadDetails.loadTypeDetailBean[i].value){
-      this.rateDataList[i].totalcost = this.rateDataList[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;             
+     for(let i=0;i<this.totalrateData.length;i++){
+      this.loadDetails.loadTypeDetailBean[i].value = this.totalrateData[i].unit
+      if(this.totalrateData[i].unit == this.loadDetails.loadTypeDetailBean[i].value){
+        //this.rateDataList[i].totalcost = this.array[i];  
+        this.totalrateData[i].totalcost = this.totalrateData[i].rate * this.loadDetails.loadTypeDetailBean[i].quantity;             
    } 
  }
         });

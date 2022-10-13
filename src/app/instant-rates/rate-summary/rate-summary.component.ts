@@ -133,7 +133,7 @@ this.commodity =this.commodityValues.commodity;
     this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
     this.totalequipId += this.eqtypeId+',';
     console.log(this.totalequipId);
-    this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
+    this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
       this.equipmentType = res.equipName.equipName;
       if(this.selectedEquip==res.equipName.equipName){
         this.equipmentId=res.equipName.equipType;

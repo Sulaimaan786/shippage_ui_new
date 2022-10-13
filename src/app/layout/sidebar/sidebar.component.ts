@@ -1,5 +1,8 @@
 import { Router, NavigationEnd } from "@angular/router";
 import { DOCUMENT } from "@angular/common";
+import { DataStorageService } from 'src/app/auth/data-storage';
+import { AppService } from "src/app/app.service";
+ 
 import {
   Component,
   Inject,
@@ -45,13 +48,14 @@ export class SidebarComponent implements OnInit, OnDestroy {
   quotehr:any;
   shipmenthr:any;
   settinghr:any;
+  header:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     public elementRef: ElementRef,
     private authService: AuthService,
-    private router: Router,
-    private responsive: BreakpointObserver
+    private router: Router,public dataStorage :DataStorageService,
+    private responsive: BreakpointObserver,private Service: AppService
   ) {
     const body = this.elementRef.nativeElement.closest("body");
     this.routerObj = this.router.events.subscribe((event) => {
@@ -237,6 +241,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
     this.router.navigate(["/instantRates/shipment-mode"]); 
+    this.Service.sendUpdate('Instant Rates');
   }
 
   quote() {  
@@ -249,6 +254,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.shipmenthr = '0px solid'
     this.settinghr = '0px solid'
     this.router.navigate(["/quote/request-quote"]);
+    this.Service.sendUpdate('Request Quote');
   }
 
   shipping(){
@@ -261,6 +267,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.shipmenthr = '1px solid'
     this.settinghr = '0px solid'
     this.router.navigate(["/shipping/shipping"]);
+    this.Service.sendUpdate('Track And Trace');
   }
  
 
@@ -274,6 +281,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.shipmenthr = '0px solid'
     this.settinghr = '1px solid' 
     this.router.navigate(["/shipping/shipping"]);
+    this.Service.sendUpdate('Track And Trace');
   }
   
 

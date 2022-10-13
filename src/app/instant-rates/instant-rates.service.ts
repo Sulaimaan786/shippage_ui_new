@@ -31,6 +31,8 @@ export class InstantRatesService {
 
   public equipName = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getequipName`;
 
+  public RateEquipName = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getRateEquipName`; 
+
   public getrateslist = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getrateslist`;
 
   public equipmentTypeList  = `${this.serverUrl.apiServerAddress}api/auth/instantrates/getequipmentType`;

@@ -10,6 +10,8 @@ import { InstantRatesResultBean } from 'src/app/instant-rates/instant-rates-resu
 import { InstantRatesService } from 'src/app/instant-rates/instant-rates.service';
 import { Quote } from '../request-quote-model';
 import { RequestQuoteService } from '../request-quote.service';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-request-quote',
@@ -27,6 +29,9 @@ export class RequestQuoteComponent implements OnInit {
   nextbutton:any;
   nxtbuttonright:any;
   nxtbuttonBot:any;
+  source: MatSlideToggle
+  checked: boolean
+  sea: boolean;
   constructor(private snackBar:MatSnackBar,public router: Router,private instantRatesService:InstantRatesService,private requestQuoteService:RequestQuoteService,
     private httpService: HttpServiceService,private fb: FormBuilder,
     private responsive: BreakpointObserver,private route: ActivatedRoute,
@@ -126,4 +131,12 @@ export class RequestQuoteComponent implements OnInit {
       event.preventDefault();
     }
   }
+
+  onChange($event: MatSlideToggleChange) {
+    if($event.checked == true){
+      this.sea = true
+    }else{
+      this.sea = false
+    } 
+}
 }

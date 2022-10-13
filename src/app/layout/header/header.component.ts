@@ -7,6 +7,7 @@ import {
   Renderer2,
   AfterViewInit,
   ViewChild,
+  OnDestroy 
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config/config.service";
@@ -22,6 +23,9 @@ import { ChangeRolePopUpComponent } from "src/app/setup/users/change-role-pop-up
 const document: any = window.document;
 import { DomSanitizer } from '@angular/platform-browser';
 import { Overlay } from "@angular/cdk/overlay";
+import { DataStorageService } from 'src/app/auth/data-storage';
+import { Subscription } from 'rxjs';
+ 
 
 @Component({
   selector: "app-header",
@@ -30,7 +34,7 @@ import { Overlay } from "@angular/cdk/overlay";
 })
 export class HeaderComponent
   extends UnsubscribeOnDestroyAdapter
-  implements OnInit, AfterViewInit
+  implements OnInit, AfterViewInit,OnDestroy 
 {
   @ViewChild('openModal') openBtn: ElementRef<HTMLElement>;
 
@@ -47,6 +51,9 @@ export class HeaderComponent
   roleName:string;
   firstNameLastName:string;
   changePasswordForm: FormGroup;
+  headerName = 'Instant Rates'
+  messageReceived: any;
+  private subscriptionName: Subscription;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
@@ -58,11 +65,33 @@ export class HeaderComponent
     private app:AppService,
     private token: TokenStorageService,
     public fb: FormBuilder,
-    public dialog: MatDialog,
-    private sanitizer: DomSanitizer
+    public dialog: MatDialog,public dataStorage :DataStorageService,
+    private sanitizer: DomSanitizer,
+    private Service: AppService
   ) {
     super();
+    this.subscriptionName= this.Service.getUpdate().subscribe
+             (message => { //message contains the data sent from service
+             this.messageReceived = message;
+
+             if(this.messageReceived.text == 'Instant Rates'){
+              this.headerName = 'Instant Rates'
+             }
+             if(this.messageReceived.text == 'Request Quote'){
+              this.headerName = 'Request Quote'
+             }
+             if(this.messageReceived.text == 'Track And Trace'){
+              this.headerName = 'Track And Trace'
+             }
+              });
   }
+
+ 
+  ngOnDestroy() { // It's a good practice to unsubscribe to ensure no memory leaks
+    this.subscriptionName.unsubscribe();
+ }
+
+
   listLang = [
     { text: "English", flag: "assets/images/flags/us.jpg", lang: "en" },
     { text: "Spanish", flag: "assets/images/flags/spain.jpg", lang: "es" },
@@ -120,7 +149,7 @@ export class HeaderComponent
     },
   ];
   ngOnInit() {
-    this.config = this.configService.configData;
+     this.config = this.configService.configData;
     const userRole = this.authService.currentUserValue.role;
 
     this.roleName = this.token.getDefaultRole();
@@ -158,7 +187,7 @@ export class HeaderComponent
       confirmNewPwd: ['']
     })
     this.renderer.addClass(this.document.body, "side-closed");
-    this.renderer.addClass(this.document.body, "submenu-closed"); 
+    this.renderer.addClass(this.document.body, "submenu-closed");  
   }
 
   ngAfterViewInit() {

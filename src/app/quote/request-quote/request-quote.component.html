@@ -49,11 +49,11 @@
                                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
                                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                                         <mat-label class="label"><b>Sea</b></mat-label>
-                                        <mat-slide-toggle></mat-slide-toggle>
+                                        <mat-slide-toggle (change)="onChange($event)"></mat-slide-toggle>
                                         <mat-label class="label"><b>Air</b></mat-label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div *ngIf = "!sea" class="row">
                                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
                                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                                         <h5 class="label"><img src="assets/icons/fclBlue.png"
@@ -61,7 +61,7 @@
                                         </h5>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div *ngIf = "!sea" class="row">
                                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
                                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
                                         <mat-label>FCL</mat-label>&nbsp; <mat-slide-toggle></mat-slide-toggle>&nbsp;
@@ -101,11 +101,60 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div *ngIf = "!sea" class="row">
                                     <!-- <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                                         <mat-label>FCL</mat-label>&nbsp; <mat-slide-toggle></mat-slide-toggle>&nbsp;<mat-label>
                                             LCL</mat-label>
                                     </div>  -->
+                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                                            <mat-label><img src="assets/icons/Asset 40.png"
+                                                    style="width:15px;height:20px">&nbsp;&nbsp;Commodity</mat-label>
+                                                    <mat-select class="inputTxt" formControlName="commodity" required>
+                                                        <mat-option *ngFor="let title of commodity" [value]="title.commodityId" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('commodity').hasError('required')">
+                                                        Commodity is required
+                                                      </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                                            <mat-label>&nbsp;&nbsp;Cargo Readiness
+                                            </mat-label>
+                                            <input matInput [matDatepicker]="picker" formControlName="cargoReadiness"required>
+                                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                                <mat-icon matDatepickerToggleIcon>
+                                                    <img src="assets/icons/cargoreadyblue.png" width="20px" height="20px">
+                                                </mat-icon>
+                                            </mat-datepicker-toggle>
+                                             <mat-datepicker #picker></mat-datepicker> 
+                                            <mat-error *ngIf="docForm.get('cargoReadiness').hasError('required')">
+                                                Cargo Readiness is required
+                                              </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                                        <mat-form-field class="example-full-width form-control-sm" appearance="outline">
+                                            <mat-label><img src="assets/icons/Asset 40.png"
+                                                    style="width:15px;height:20px">&nbsp;&nbsp;Incoterms</mat-label>
+                                                    <mat-select class="inputTxt" formControlName="incoterms" required>
+                                                        <mat-option *ngFor="let title of incotermList" [value]="title.termid" >
+                                                          {{title.text}}
+                                                          </mat-option>
+                                                       </mat-select>
+                                                       <mat-error *ngIf="docForm.get('incoterms').hasError('required')">
+                                                        Incoterms is required
+                                                      </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf = "sea" class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                                <div class="row"> 
                                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                                         <mat-form-field class="example-full-width form-control-sm" appearance="outline">
                                             <mat-label><img src="assets/icons/Asset 40.png"
