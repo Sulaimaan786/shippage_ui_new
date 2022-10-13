@@ -41,6 +41,8 @@ public currentUser: Observable<User>;
   resendOtpUrl =  `${this.serverURL.apiServerAddress}api/auth/resendOtpvalidate`;
   forgotPasswordUrl =  `${this.serverURL.apiServerAddress}api/auth/forgotPassword`;
   public saveUrl = `${this.serverURL.apiServerAddress}api/auth/app/userMaster/save`;
+  public validateUserNameUrl = `${this.serverURL.apiServerAddress}api/auth/app/userMaster/validateUnique`;
+  public validateEmailUrl = `${this.serverURL.apiServerAddress}api/auth/app/userMaster/validateUniqueEmail`;
 
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     return  this.http

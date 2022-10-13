@@ -17,6 +17,13 @@ export class SignupComponent implements OnInit {
   returnUrl: string;
   hide = true;
   chide = true;
+  error = "";
+  errorMessage = '';
+  isSignUpFailed = false;
+  oldPwd:boolean=false;
+
+
+
   // docForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +46,26 @@ export class SignupComponent implements OnInit {
   get f() {
     return this.authForm.controls;
   }
+
+  validateUserName(event){
+    this.httpService.get<any>(this.authService.validateUserNameUrl+ "?tableName=" +"user_details"+"&columnName="+"first_name"+"&columnValue="+event).subscribe((res: any) => {
+      if(res){
+        this.authForm.controls['firstName'].setErrors({ oldPwd: true });
+      }else{
+        this.authForm.controls['firstName'].setErrors(null);
+      }
+    });
+  }
+
+  validateEmail(event){
+    this.httpService.get<any>(this.authService.validateEmailUrl+ "?tableName=" +"user_details"+"&columnName="+"email_id"+"&columnValue="+event).subscribe((res: any) => {
+      if(res){
+        this.authForm.controls['emailId'].setErrors({ emailPwd: true });
+      }else{
+        this.authForm.controls['emailId'].setErrors(null);
+      }
+    });
+  }
   onSubmit() {
     this.submitted=true;
     // console.log("Form Value", this.authForm.value);
@@ -48,14 +75,16 @@ export class SignupComponent implements OnInit {
           if(data.success){
             this.router.navigate(['instantRates/shipment-mode']);
           }else{
-            
+            this.isSignUpFailed = true;
           }
         },
         (err: HttpErrorResponse) => {
-          
+          this.isSignUpFailed = true;
       }
       );
     }else{
+
+      this.error = "Invalid OTP";
     }
     
 

@@ -14,10 +14,13 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
                 <mat-form-field class="example-full-width" appearance="outline" style="color:#065C7A">
                   <mat-label>Username</mat-label>
-                  <input matInput formControlName="firstName" required>
+                  <input matInput formControlName="firstName" (blur)="validateUserName($event.target.value)" required>
                   <mat-icon matSuffix>face</mat-icon>
                   <mat-error *ngIf="authForm.get('firstName').hasError('required')">
                     Username is required
+                  </mat-error>
+                  <mat-error *ngIf="authForm.controls['firstName'].hasError('oldPwd') ">
+                    User Name already exists.You need to change the name
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -26,10 +29,13 @@
               <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
                 <mat-form-field class="example-full-width" appearance="outline">
                   <mat-label>Email</mat-label>
-                  <input matInput formControlName="emailId" required>
+                  <input matInput formControlName="emailId" (blur)="validateEmail($event.target.value)" required>
                   <mat-icon matSuffix>mail</mat-icon>
-                  <mat-error *ngIf="authForm.get('emailId').hasError('required') || authForm.get('emailId').touched">
+                  <mat-error *ngIf="authForm.get('emailId').hasError('required')">
                     Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="authForm.controls['emailId'].hasError('emailPwd') ">
+                    Email Id already exists.You need to change the email id
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -87,6 +93,9 @@
                 Register
               </button> -->
             </div>
+            <!-- <div *ngIf="isSignUpFailed" class="alert alert-danger">
+              Sign Up failed
+          </div> -->
           </form>
           <!-- <h6 class="social-login-title">OR</h6>
           <ul class="list-unstyled social-icon mb-0 mt-3">
