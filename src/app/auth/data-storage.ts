@@ -108,4 +108,18 @@ public setIncotermsDetails(data: any) {
     return sessionStorage.getItem(SHIPMENTMODE);
   }
 
+  //clear date storage
+  
+  
+  public clearData() {
+    window.sessionStorage.removeItem(ROUTEDETAIL);
+    window.sessionStorage.removeItem(INCOTERMSDETAIL);
+    window.sessionStorage.removeItem(COMMODITYDETAIL);
+    window.sessionStorage.removeItem(CARGODETAIL);
+    window.sessionStorage.removeItem(LOADTYPEDETAIL);
+    window.sessionStorage.removeItem(CARGOREADINESS);
+    window.sessionStorage.removeItem(WELCOMEPAGE);
+    window.sessionStorage.removeItem(SHIPMENTMODE);
+   }
+
 }

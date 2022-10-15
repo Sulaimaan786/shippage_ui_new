@@ -62,13 +62,8 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
   cardBottom:any;
   grid:any;
   justifyCenter:any;
-  loadtypeArray = [
-    {
-      type:'',
-      rate:'',
-    }
-  ];
-  loadtypeArray1 = [];
+  loadtypeArray = [];
+  loadtypeArray1 = []; 
   seatariffid = [];
   seatariffvls = [];
 
@@ -88,7 +83,9 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
       super()
     }
 
-  ngOnInit() { 
+  ngOnInit() {
+    // this.loadtypeArray.push(this.loadTypeName);
+    // this.loadtypeArray.push(this.loadTypeRate);
 
   //view   
   this.route.params.subscribe(params => {if(params.id!=undefined && params.id!=0){ this.decryptRequestId = params.id;
@@ -165,57 +162,60 @@ this.commodity =this.commodityValues.commodity;
   console.log("load  " +this.loadDetails.loadTypeDetailBean[0].equipmentType);
   this.equipmentType = this.loadDetails.loadTypeDetailBean[0].equipmentType;
 
-  for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
-        
-    this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
-    this.totalequipId += this.eqtypeId+',';
-    console.log(this.totalequipId);
-    this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
-      this.equipmentType = res.equipName.equipName;
-      if(this.selectedEquip==res.equipName.equipName){
-        this.equipmentId=res.equipName.equipType;
-        this.equipmentTypeName=res.equipName.equipName;
-      }
-      if(this.loadDetails.loadTypeDetailBean[i].equipmentType==this.equipmentId && this.Count==0){
-          this.quantityValue=this.loadDetails.loadTypeDetailBean[i].quantity;
-          this.rateValueFinal=this.rateValue*this.quantityValue;
-          this.Count++;
-      }
-      this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
-      this.testName = this.combine.split(" ",3)
-      console.log(this.testName);
-
-      this.equipmentNo = this.loadDetails.loadTypeDetailBean[i].quantity;
-      this.data += this.combine;
-      this.equipName = this.data.substring(9);
-       console.log(this.equipName);
-     });
-    
-  }
-  // this.seatariffid.push(this.requestId.split(",")); 
-  // console.log(this.seatariffid);
   // for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
-  //   this.seatariffvls =this.seatariffid[0]
+        
   //   this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
   //   this.totalequipId += this.eqtypeId+',';
-  //   console.log(this.totalequipId);  
-  //    // this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId + "&seatariffid=" + this.seatariffvls[i]).subscribe((res: any) => {
-  //     //   this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId ).subscribe((res: any) => {
-  //     //   this.equipmentType = res.equipName.equipName;
-  //     //   this.equiprate = res.equipName.rate;
-  //     //   this.loadtypeArray1 = this.equipmentType;
-  //     //   // if(this.seatariffvls.length != this.loadtypeArray.length){
-  //     //   //   this.loadtypeArray.push(this.loadtypeArray[i]);
-  //     //   // } 
-  //     //   //this.loadtypeArray[i].type = this.equipmentType;  
-  //     //   // this.loadtypeArray[i].rate = this.equiprate;
-  //     //   this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
-  //     //   this.data += this.combine;
-  //     //   this.equipName = this.data.substring(9);
-  //     //   console.log(this.equipName);
-  //     // }); 
-  // } 
- 
+  //   console.log(this.totalequipId);
+  //   this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId).subscribe((res: any) => {
+  //     this.equipmentType = res.equipName.equipName;
+  //     if(this.selectedEquip==res.equipName.equipName){
+  //       this.equipmentId=res.equipName.equipType;
+  //       this.equipmentTypeName=res.equipName.equipName;
+  //     }
+  //     if(this.loadDetails.loadTypeDetailBean[i].equipmentType==this.equipmentId && this.Count==0){
+  //         this.quantityValue=this.loadDetails.loadTypeDetailBean[i].quantity;
+  //         this.rateValueFinal=this.rateValue*this.quantityValue;
+  //         this.Count++;
+  //     }
+  //     this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+  //     this.testName = this.combine.split(" ",3)
+  //     console.log(this.testName);
+
+  //     this.equipmentNo = this.loadDetails.loadTypeDetailBean[i].quantity;
+  //     this.data += this.combine;
+  //     this.equipName = this.data.substring(9);
+  //      console.log(this.equipName);
+  //    });
+    
+  // }
+
+  this.seatariffid.push(this.requestId.split(",")); 
+  console.log(this.seatariffid);
+  const nArray = [];
+   for(let i=0;i<this.loadDetails.loadTypeDetailBean.length;i++){
+    this.seatariffvls =this.seatariffid[0]
+    this.eqtypeId = this.loadDetails.loadTypeDetailBean[i].equipmentType;
+    this.loadtypeArray1.push(this.loadDetails.loadTypeDetailBean[i].quantity);
+     this.totalequipId += this.eqtypeId+',';
+    console.log(this.totalequipId);  
+     //this.httpService.get(this.instantRatesService.equipName + "?equipmentId=" + this.eqtypeId + "&seatariffid=" + this.seatariffvls[i]).subscribe((res: any) => {
+        this.httpService.get(this.instantRatesService.RateEquipName + "?equipmentId=" + this.eqtypeId ).subscribe((res: any) => {
+        this.equipmentType = res.equipName.equipName;
+       
+        this.combine = this.equipmentType + " x " + this.loadDetails.loadTypeDetailBean[i].quantity  +" | ";
+        this.data += this.combine;
+        this.equipName = this.data.substring(9);
+        console.log(this.equipName);
+       }); 
+  } 
+  this.httpService.get(this.instantRatesService.equipNameList + "?seatariffid=" + this.requestId).subscribe((res: any) => {
+    this.loadtypeArray = res.equipNameList
+    for(let i = 0;i<this.loadtypeArray1.length;i++){
+     this.loadtypeArray[i].stockQty = this.loadtypeArray1[i]
+     this.loadtypeArray[i].totalcost = this.loadtypeArray[i].rate * this.loadtypeArray1[i]
+    }
+  });
   this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
   console.log(this.freightMode);
 

@@ -44,7 +44,7 @@
 
       <div class="col-sm-3 p-3">
           <mat-label><p style="margin-bottom: 0px;padding-left: 27px;font-size: 12px;color: #a6a6a6;">Load Type</p></mat-label><br>  
-          <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipmentTypeName}} x {{quantityValue}}</mat-label>
+          <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipName}}</mat-label>
       </div>
 
       <div class="col-sm-3 p-3">
@@ -80,7 +80,7 @@
                         <p>CY/CY/F13</p>
                     </div>
                     <div class="col-sm-10"> 
-                        <div class="row" style="margin-top:30px">
+                        <div class="row" style="margin-top:50px">
                           <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5" > 
                             <p style="color:rgb(165, 159, 159); margin: 0% 0% 0% 35%;"> 32 Days </p>
                              <pre>  {{title.origin}}  <img src="assets/images/icons/wave.png" alt="" style="width: 115px;">{{title.destination}}</pre>
@@ -179,14 +179,14 @@
           <div class="row">
             <div class="col-lg-12 alignimg p-4">
               <h5 style="text-align: left;color:#495057;padding-top: 8%;font-size: 21.1257px;;font-weight: 600;"> Unit Cost</h5>
-              <div class="row">
+              <div *ngFor="let title of loadtypeArray" class="row">
                 <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x 1</div>    <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;"> USD {{title.rate  | number: '2.'}}</div>
               </div>
               
 
               <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Total Shipment Cost</h5>
-              <div class="row">
-              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{quantityValue}}</div>   <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;">USD {{rateValueFinal | number: '2.'}}</div>
+              <div *ngFor="let title of loadtypeArray" class="row">
+              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{title.stockQty}}</div>   <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;">USD {{title.totalcost  | number: '2.'}}</div>
               </div>
               <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Other Charges</h5>
               <div class="row"  style="padding-bottom: 10%;"> 

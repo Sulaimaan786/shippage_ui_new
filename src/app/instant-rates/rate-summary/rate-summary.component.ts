@@ -206,14 +206,8 @@ ngOnDestroy(): void {
     this.instantRate = this.docForm.value;
     console.log(this.instantRate)
     this.instantRatesService.addBooking(this.instantRate);
- 
-    // this.showNotification(
-    //   "snackbar-success",
-    //   "Add Record Successfully...!!!",
-    //   "bottom",
-    //   "center"
-    // );
     this.Service.sendUpdate('Booking Shipment');
+    this.dataStorage.clearData();
     this.router.navigate(["instantRates/bookingShipment"]);
   }
   
