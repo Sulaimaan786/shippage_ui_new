@@ -10,6 +10,8 @@ import { Role } from "src/app/core/models/role";
 import { UnsubscribeOnDestroyAdapter } from "src/app/shared/UnsubscribeOnDestroyAdapter";
 import { User } from "src/app/core/models/user";
 import { BehaviorSubject,Observable } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 declare var grecaptcha: any;
 
 
@@ -42,6 +44,8 @@ export class SigninComponent
   // Google Captcha Site key
   siteKey: string='6LeiApIfAAAAAOBsKqX0U-EQNu3lk3O9LVByiRAA';
   title = 'captcha';
+  
+  private unsubscriber : Subject<void> = new Subject<void>();
 
   private currentUserSubject: BehaviorSubject<User>;
   private loginInfo: AuthLoginInfo;
@@ -58,6 +62,17 @@ export class SigninComponent
   }
 
   ngOnInit() {
+
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+    ).subscribe((_) => {
+      history.pushState(null, '');
+      //this.router.navigate(["instantRates/rates"]);
+     });
+
+
     this.authForm = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required],
@@ -113,6 +128,7 @@ export class SigninComponent
                 this.tokenStorage.savePharmaciesType(data.pharmaciesType);
 
                 this.loading = false; 
+                this.app.setUserLoggedIn(true)
                 this.router.navigate(["/instantRates/welcome-page"]); 
                 // this.login=true; 
                 // this.startTimer();      

@@ -10,7 +10,12 @@ export class AppService {
   private name = new BehaviorSubject<string>('');
   private subjectName = new Subject<any>();
   public userRefId:string;
-  constructor(private httpClient: HttpClient) { }
+  private userLoggedIn = new Subject<boolean>();
+
+  constructor(private httpClient: HttpClient) { 
+    this.userLoggedIn.next(false);
+  }
+  
   
   sendUpdate(message: string) { //the component that wants to update something, calls this fn
     this.subjectName.next({ text: message }); //next() will feed the value in Subject
@@ -26,5 +31,13 @@ export class AppService {
 
   SetUserRefId(userRefId: string){
     this.userRefId = userRefId;
+  }
+
+  setUserLoggedIn(userLoggedIn: boolean) {
+    this.userLoggedIn.next(userLoggedIn);
+  }
+
+  getUserLoggedIn(): Observable<boolean> {
+    return this.userLoggedIn.asObservable();
   }
 }

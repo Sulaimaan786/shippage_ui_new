@@ -27,7 +27,9 @@ import { MatdynamicsubmenuComponent } from "./layout/matdynamicmenu/matdynamicsu
 import { MatnestedmenuComponent } from "./layout/matnestedmenu/matnestedmenu.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { NgxCaptchaModule } from 'ngx-captcha';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';  
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; 
+import { MomentModule } from 'angular2-moment'; 
 
 import {
   PerfectScrollbarModule,
@@ -95,6 +97,8 @@ export function createTranslateLoader(http: HttpClient): any {
         MatMenuModule,
         NgxCaptchaModule,
         NgxPaginationModule,
+        NgIdleKeepaliveModule.forRoot(),
+        MomentModule
     ],
     providers: [
         // { provide: LocationStrategy, useClass: HashLocationStrategy },
