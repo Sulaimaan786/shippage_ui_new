@@ -66,6 +66,8 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
   loadtypeArray1 = []; 
   seatariffid = [];
   seatariffvls = [];
+  totalrate:any;
+  totaltab = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -106,11 +108,13 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
           this.grid = 'grid'
           this.justifyCenter = 'center'
           this.cardBottom = '68px'
+          this.totaltab = true
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.grid = 'grid'
           this.justifyCenter = 'block'
           this.cardBottom = '24px'
+          this.totaltab = false
         }
       });
       //Route Details  
@@ -211,9 +215,12 @@ this.commodity =this.commodityValues.commodity;
   } 
   this.httpService.get(this.instantRatesService.equipNameList + "?seatariffid=" + this.requestId).subscribe((res: any) => {
     this.loadtypeArray = res.equipNameList
+    var total = 0;
     for(let i = 0;i<this.loadtypeArray1.length;i++){
      this.loadtypeArray[i].stockQty = this.loadtypeArray1[i]
      this.loadtypeArray[i].totalcost = this.loadtypeArray[i].rate * this.loadtypeArray1[i]
+     total += this.loadtypeArray[i].totalcost;
+     this.totalrate = total;
     }
   });
   this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());

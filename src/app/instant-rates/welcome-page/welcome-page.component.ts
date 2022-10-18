@@ -38,7 +38,7 @@ export class WelcomePageComponent implements OnInit {
    
     this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {
-        this.mobilepadding = '35px 65px 0px';
+        this.mobilepadding = '35px 75px 0px';
         this.webpadding = '78px';
         this.mobileHeading = false;
         if (result.matches) {  

@@ -4,7 +4,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { PlatformLocation } from "@angular/common";
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import { Keepalive } from '@ng-idle/keepalive';
-
+import { DataStorageService } from "./auth/data-storage";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -21,7 +21,8 @@ export class AppComponent {
     public _router: Router,
     location: PlatformLocation,
     private spinner: NgxSpinnerService,
-    private idle: Idle, private keepalive: Keepalive
+    private idle: Idle, private keepalive: Keepalive,
+    private service : DataStorageService
   ) {
     this._router.events.subscribe((routerEvent: Event) => {
       if (routerEvent instanceof NavigationStart) {
@@ -57,6 +58,7 @@ export class AppComponent {
        this.idleState = 'Timed out!';
        this.timedOut = true;
        console.log(this.idleState);
+       this.service.clearData();
        this._router.navigate(['/']);
      });
      

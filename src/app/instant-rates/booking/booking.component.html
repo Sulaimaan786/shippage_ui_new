@@ -180,22 +180,31 @@
             <div class="col-lg-12 alignimg p-4">
               <h5 style="text-align: left;color:#495057;padding-top: 8%;font-size: 21.1257px;;font-weight: 600;"> Unit Cost</h5>
               <div *ngFor="let title of loadtypeArray" class="row">
-                <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x 1</div>    <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;"> USD {{title.rate  | number: '2.'}}</div>
+               <!-- web view -->
+                <div *ngIf = "!totaltab" class="col-md-4 font" style="text-align: right;">{{title.equipName}} x 1</div>    <div *ngIf = "!totaltab" class="col-md-4">-</div> <div *ngIf = "!totaltab" class="col-md-4 font" style="text-align: left;"> USD {{title.rate  | number: '2.'}}</div>
+                <!-- mobile view -->
+                <div *ngIf = "totaltab" class="col-md-4 font" style="text-align: center;"><p style="float:left;">{{title.equipName}} x {{title.stockQty}}</p> - <p style="float:right;">USD {{title.totalcost  | number: '2.'}}</p></div>
               </div>
               
 
               <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Total Shipment Cost</h5>
               <div *ngFor="let title of loadtypeArray" class="row">
-              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{title.stockQty}}</div>   <div class="col-md-4">-</div> <div class="col-md-4 font" style="text-align: left;">USD {{title.totalcost  | number: '2.'}}</div>
-              </div>
+             <!-- web view -->
+                <div *ngIf = "!totaltab" class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{title.stockQty}}</div>   <div *ngIf = "!totaltab" class="col-md-4">-</div> <div  *ngIf = "!totaltab" class="col-md-4 font" style="text-align: left;">USD {{title.totalcost  | number: '2.'}}</div>
+             <!-- mobile view -->
+                <div *ngIf = "totaltab" class="col-md-4 font" style="text-align: center;"><p style="float:left;">{{title.equipName}} x {{title.stockQty}}</p> - <p style="float:right;">USD {{title.totalcost  | number: '2.'}}</p></div>
+            </div>
               <h5 style="text-align: left;color:#495057;padding-top: 8px;font-size: 21.1257px;;font-weight: 600;margin-top: 30%;"> Other Charges</h5>
               <div class="row"  style="padding-bottom: 10%;"> 
-              <div class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{quantityValue}}</div>   <div class="col-md-4">-</div>  <div class="col-md-4 font" style="text-align: left;">USD 1,000</div>
+              <!-- web view -->
+              <!-- <div *ngIf = "!totaltab" class="col-md-4 font" style="text-align: right;">{{title.equipName}} x {{quantityValue}}</div>   <div *ngIf = "!totaltab" class="col-md-4">-</div>  <div *ngIf = "!totaltab" class="col-md-4 font" style="text-align: left;">USD 1,000</div> -->
+              <!-- mobile view -->
+              <!-- <div *ngIf = "totaltab" class="col-md-4 font" style="text-align: center;"><p style="float:left;">{{title.equipName}} x {{quantityValue}}</p> - <p style="float:right;">USD 1,000</p></div> -->
               </div>
               
 
               <mat-label> Total Cost</mat-label>
-              <h3 style="text-align: center;"> USD {{rateValueFinal | number: '2.'}} </h3>
+              <h3 style="text-align: center;"> USD {{totalrate | number: '2.'}} </h3>
               <br>
             </div>
             <div class="row">
