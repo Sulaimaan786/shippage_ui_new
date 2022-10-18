@@ -63,19 +63,13 @@
                              
                               <td >                                         
                                 <mat-form-field  appearance="outline" >
-                                  <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required>
+                                  <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required
+                                  style=" margin-top: -11px;position: absolute; ">
                                     <mat-option *ngFor="let title of equipmentTypeList" [value]="title.id" >
                                       {{title.text}}
                                       </mat-option>
                                    </mat-select>
-                                    <!-- <mat-select  required>
-                                    <mat-option value="20TK">20TK</mat-option>
-                                    <mat-option value="D20">D20</mat-option>                                  
-                                    <mat-option value="20OT">20OT</mat-option>
-                                    <mat-option value="R40H">R40H</mat-option>
-                                    <mat-option value="D40H">D40H</mat-option>
-                                    <mat-option value="40FR">40FR</mat-option>                                    
-                                  </mat-select> -->
+                                  
                                 </mat-form-field>
                                
                                
@@ -83,7 +77,7 @@
                             <td >
                                 <mat-form-field  appearance="outline">
                                   <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                                    <input matInput type="number" class="size-12"  min="0"  step="1" 
+                                    <input matInput type="number" class="size-12"  min="0"  step="1" style=" margin-top: -11px;position: absolute; "
                                     name="quantity{{i}}" formControlName="quantity" required>
                                   <!-- </div><br> -->
                                  
@@ -93,7 +87,7 @@
                               <td >
                                 <mat-form-field  appearance="outline">
                                   <!-- <div class="row" style="padding-left:90px;padding-right:50px;"> -->
-                                    <input matInput type="number" class="size-12"  min="0"  step="1"
+                                    <input matInput type="number" class="size-12"  min="0"  step="1" style=" margin-top: -11px;position: absolute; "
                                     name="cargoWeight{{i}}" formControlName="cargoWeight" required>
                                   <!-- </div><br> -->
                                   
@@ -104,13 +98,13 @@
                                
                               <td style=" padding-left: 0px;">
                                      
-                                <button mat-mini-fab color="warn" (click)="removeRow(i)" >
+                                <button mat-mini-fab color="warn" (click)="removeRow(i)" style="margin-bottom: 18px;">
                                   <mat-icon class="col-white"  >remove</mat-icon>
                                 </button></td>
                                 
                                 <td style="  padding-left: 0px;">         
                                   
-                                  <button mat-mini-fab color="primary" (click)="addRow()">
+                                  <button mat-mini-fab color="primary" (click)="addRow()" style="margin-bottom: 18px;">
                                     <mat-icon class="col-white">add</mat-icon>
                                   </button>
                                 </td>
@@ -130,11 +124,12 @@
                                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                               
                                             <!-- <a mat-button href="https://www.google.com/" target="_blank" style="margin-top:20px;margin-bottom:20px;margin-left: 80px;">Reset</a> -->
-                                            <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;margin-left: 50%;">Reset</button>
-                                          </div>
+                                           </div>
                                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                             <!-- <button mat-raised-button color="primary" class="buttonCSS">Done</button>
                                              -->
+                                             <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;">Reset</button>
+                                          
                                           </div>
                                         </div>
                              

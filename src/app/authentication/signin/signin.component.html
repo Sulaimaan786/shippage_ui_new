@@ -66,7 +66,7 @@
                   <input   class="inputTxt" matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
                   <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon style="margin-top: -50px; position: absolute;margin-left: -29px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-icon style="margin-top: -52px; position: absolute;margin-left: -29px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </a>
                   <mat-error style="padding-top: 35px;" *ngIf="authForm.get('password').hasError('required')">
                     Password is required
@@ -104,13 +104,13 @@
             </div>
             <div class="">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="display: flex;justify-content: space-evenly;">
-                <div class="col-md-5" style="text-align:center">
+                <div class="col-md-5" style="text-align:center;padding: 2%;">
                   <a class="txt1" routerLink="/authentication/signup">Sign Up</a>
                 </div>
                 <div class="col-md-2" style="text-align:center">
                   <h3 style="color: #065C7A">|</h3>
                 </div>
-                <div class="col-md-5" style="text-align:center">
+                <div class="col-md-5" style="text-align:center;padding: 2%;">
                   <a class="txt1" routerLink="/authentication/forgot-password">Forgot Password?</a>
                 </div>
               </div>

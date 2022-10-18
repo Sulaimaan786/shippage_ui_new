@@ -49,6 +49,7 @@ export class CommodityComponent implements OnInit {
   buttonwidth:any;
   cardBottom:any;
   commodityValues:any;
+  Others:boolean=false;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
     private renderer: Renderer2,
@@ -143,6 +144,7 @@ export class CommodityComponent implements OnInit {
   }
   
 
+
   
 incoterms(){
   
@@ -222,6 +224,17 @@ loadType(){
         "top",
         "right");
     }
+}
+
+radioClick(value:any){
+  if(value=='Yes'){
+  this.Others=true;
+  }
+  else if(value==='No')
+  {
+    this.Others=false; 
+  }
+  
 }
 
 // onItemSelect(roles: any) {

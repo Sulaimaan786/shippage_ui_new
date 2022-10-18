@@ -1,1 +1,209 @@
-<p>cargo-details works!</p>
+ 
+<section class="content">
+    <div class="content-block mobile-v-p">
+      <div class="block-header" style="margin-top: 50px;">
+        <!-- breadcrumb -->
+        <!-- <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb> -->
+         <!-- <app-breadcrumb></app-breadcrumb>  -->
+      </div>
+      <div class="card" [ngStyle] = "{'margin-bottom':cardBottom}" style="background: #F8F9FA;box-shadow: -3px 5px 6px 3px rgba(148,148,148,0.5);
+          -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px;">
+      <div class="container-fluid" >
+        <form class="m-12" [formGroup] = "docForm"> 
+          <div *ngIf="topback" (click)="cargoReadiness()" style="position: absolute;top: 35px;left: 15px;"> 
+            <mat-icon class="blue">arrow_back_ios</mat-icon> 
+          </div>
+        <div class="row">
+      <div class="col-sm-3 ">
+                    
+        <div class="col-xl-3 " [ngStyle] = "{'margin-top':firstbutton,'margin-left':butLeftmar}">
+          <button class="sideButton " (click)="incoterms()" >&nbsp;
+            <img src="assets/icons/incoterms.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Incoterms</button>
+          </div>
+          <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+            <button class="sideButton " (click)="commodity()" >&nbsp;
+              <img src="assets/icons/commodity.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Commodity</button>
+            </div>
+            <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+              <button class="sideButton " (click)="cargoReadiness()" >&nbsp;
+                <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Readiness</button>
+              </div>
+              <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                <button class="sideButton " (click)="loadType()" style="background-color: #065C7A!important;color:white;text-align: center;" >
+                 <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Type</button>
+                </div>
+               
+    </div> 
+    
+                     
+ 
+ <!-- Cargo Details-->
+                   <!-- <div class="form-group" >  -->
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
+                        <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#065C7A;font-weight:bold;">Cargo Type</h1>  
+                        <div class="card " style="border-radius: 25px;width: 100%;height: 80%;padding-top: 40px;
+                      padding-left: 16px;padding-right: 8px;padding-bottom: 20px;" >
+                          <div class="row" style="overflow-x:auto;">
+                            
+                              
+              <div class="col-xl-11" >
+               <div class="wrapper">
+                    <table style="width: 100%;padding-left:10px;padding-right:10px">
+                      
+
+
+
+              <tr>
+             
+              <th >Package Type </th>
+              <th >Quantity</th>
+                <th  >Cargo Weight</th>
+                <th style="margin-right:30px!important" >Dimension details</th>
+                
+              
+              </tr>
+              
+
+              <ng-container 
+              *ngFor="let cargoDetailBean of docForm.get('cargoDetailBean')['controls']; let i = index">
+              <tbody [formGroup]="cargoDetailBean" >
+                <tr style="width:100%">
+                 
+
+                  <td >                                         
+                    <mat-form-field  appearance="outline" style="padding-left: 12px;">
+                      <mat-select name="equipmentType{{i}}" formControlName="equipmentType" matNativeControl required
+                      style=" margin-top: -11px;position: absolute; ">
+                        <mat-option *ngFor="let title of equipmentTypeList" [value]="title.id" >
+                          {{title.text}}
+                          </mat-option>
+                       </mat-select>
+                      
+                    </mat-form-field>
+                   
+                   
+                  </td>
+
+
+                  <td >
+                             
+                    <mat-form-field  appearance="outline" >
+                      <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
+                        name="quantity{{i}}" formControlName="quantity" style="margin-top: -11px;position: absolute;">
+                     
+                      
+                    </mat-form-field>
+                  </td>
+                <td >
+                    <mat-form-field  appearance="outline" >
+                      <input matInput type="number" class="size-12" value="2" min="0" max="10" step="1" 
+                        name="cargoWeight{{i}}" formControlName="cargoWeight" style="margin-top: -11px;position: absolute;">
+                     
+                      
+                    </mat-form-field>
+                  </td>
+
+                  <td >
+                   
+                      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="toggleButton" [ngStyle]="{'margin-right':toggleMargin}" >
+                          <mat-button-toggle >
+                            <input matInput name="length{{i}}" maxlength=""formControlName="length"(keypress)="keyPressNumeric($event)" placeholder="L"
+                            >
+                          </mat-button-toggle>
+                          <mat-button-toggle><input matInput name="width{{i}}" maxlength=""formControlName="width" (keypress)="keyPressNumeric($event)" placeholder="W">
+                          </mat-button-toggle>
+                          <mat-button-toggle><input matInput  name="height{{i}}" maxlength=""formControlName="height" (keypress)="keyPressNumeric($event)" placeholder="H">
+                          </mat-button-toggle>
+                          <mat-button-toggle style="background-color:#065C7A">
+                            <input formControlName="unit"  matInput maxlength=""
+                                  placeholder="Unit"></mat-button-toggle>
+                      </mat-button-toggle-group>
+                  
+                  </td>
+
+                  <td style="     padding-left: 7px;
+                  position: absolute;">
+                                     
+                                <button mat-mini-fab color="warn" (click)="removeRow(i)" style="margin-bottom: 18px;">
+                                  <mat-icon class="col-white"  >remove</mat-icon>
+                                </button></td>
+                                
+                                <!-- <td style="  padding-left: 0px;">         
+                                  
+                                  <button mat-mini-fab color="primary" (click)="addRow1()" style="margin-bottom: 18px;">
+                                    <mat-icon class="col-white">add</mat-icon>
+                                  </button>
+                                </td> -->
+                              
+                              </tr>
+                 
+                 
+              </tbody>
+              </ng-container>
+              </table></div>
+              </div>
+
+               <div class="col-xl-1" style="    margin-top: 41px;
+               overflow-y: hidden;
+               margin-left: 94%;
+               position: absolute;">
+                <button mat-mini-fab color="primary" (click)="addRow1()" >
+                  <mat-icon class="col-white" >add</mat-icon>
+                </button>
+              </div>
+              <!--<td style=" padding-left: 0px;">
+                                     
+                <button mat-mini-fab color="warn" (click)="removeRow(i)" style="margin-bottom: 18px;">
+                  <mat-icon class="col-white"  >remove</mat-icon>
+                </button></td> -->
+
+
+            
+                            </div>
+                             
+                            <div class="row" >
+                              <div >
+                                <p style="float: right;margin-top:150px;margin-bottom:10px;padding-right: 20px;">Volume</p>
+                                
+                              </div></div>
+                              <div class="row" ><div class="col-md-9" >
+                                  
+                                <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;float: right;">Reset</button>
+                              </div>
+                              <div class="col-md-3">
+                                <button mat-raised-button color="primary" class="buttonCSS" style="float: right;">Done</button>
+                                
+                              </div>
+                            </div>
+
+
+
+
+                           </div>
+
+              </div> 
+              <!-- </div> -->
+            </div>
+        
+
+</form>
+</div>
+<div class="row">
+ 
+    
+<div *ngIf="!topback" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" style="padding-left: 2%;padding-bottom: 1%;margin-top: 70px;">
+<button mat-mini-fab color="primary" (click)="cargoReadiness()" >
+<mat-icon class="col-white padding-icon" >arrow_back_ios</mat-icon>
+</button>
+</div> 
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-6" [ngStyle]="{'margin-top':nextbutton,'padding-right': nxtbuttonright,'padding-bottom': nxtbuttonBot}">
+<button  [ngStyle]="{'width':buttonwidth}" class="btn-space" mat-raised-button (click)="rates()"
+color="primary" class="buttonCSS" style="float: right;" >Next</button>
+
+</div>
+
+</div> 
+</div>
+
+</div>
+</section>

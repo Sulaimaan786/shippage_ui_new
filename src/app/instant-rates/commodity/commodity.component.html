@@ -46,23 +46,28 @@
                                </mat-radio-group>
                              -->
 
-                             <mat-label style="color: white;">Commodity</mat-label> 
-                             <mat-form-field  appearance="outline" >
-                                   <mat-select class="inputTxt"formControlName="commodity" required>
+                             
+
+                             <mat-radio-group formControlName="commodity" style="padding-top: 34px;">
+                              <mat-radio-button   value="RICE" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Rice<br>
+                              <mat-radio-button   value="CERAMIC FINISHING TILES" (change)="radioClick('No')"  style="padding-bottom:10px">Ceramic Finishing Tiles</mat-radio-button><br>
+                              <mat-radio-button   value="SODIUM SULPHATE" (change)="radioClick('No')"  style="padding-bottom:10px">Sodium Sulphate</mat-radio-button><br>
+                              <mat-radio-button   value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;"> </mat-radio-button>Peddy<br>
+                              <mat-radio-button   value="MOTOR PARTS" (change)="radioClick('No')"  style="padding-bottom:10px">Motor Parts</mat-radio-button><br>
+                              <mat-radio-button   value="FISH MEAL" (change)="radioClick('No')"  style="padding-bottom:10px">Fish Meal</mat-radio-button><br>
+                              <mat-radio-button   value="Others"required id="" name="Others" (change)="radioClick('Yes')" style="padding-bottom:10px">Others</mat-radio-button>
+                            </mat-radio-group>
+                            <mat-form-field  appearance="outline" *ngIf="Others"  >
+                              <mat-select class="inputTxt"formControlName="commodity" required>
+                             
+                               <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required>
+                                 {{title.text}}
+                                 </mat-option>
+                              </mat-select>
+                              </mat-form-field> 
+
+                              
                                   
-                                    <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required>
-                                      {{title.text}}
-                                      </mat-option>
-                                   </mat-select>
-                                   </mat-form-field>
-                                   <!-- <ng-multiselect-dropdown required class="inputTxt"  formControlName="commodity" 
-                                   [placeholder]="'Commodity'"
-                                   [settings]="dropdownSettings"
-                                   [data]="dropdownList"
-                                   [(ngModel)]="selectedItems"
-                                   (onSelect)="onItemSelect($event)"
-                                   (onSelectAll)="onSelectAll($event)">
-                          </ng-multiselect-dropdown> -->
                           
                             
                           </div>

@@ -46,10 +46,10 @@
                                 <input type="radio" name="radio-button" value="no" />
                                 <span>No icons or unnecessary DOM</span>
                               </label> -->
-                              <label>
+                              <label style="font-weight:bold">
                                 <input type="radio" name="radio-button" value="css" required  name="readiness" (change)="radioClick('No')"  value="Ready"
                                 formControlName="selectedDate" />
-                                <span>Ready</span>
+                                <span >Ready</span>
                               </label>
                             </div> 
                             
@@ -61,9 +61,9 @@
 
                              
                                
-                              <label>
+                              <label style="font-weight:bold">
                               <input type="radio"  required id="" name="readiness" (change)="radioClick('Yes')" value="calendar"
-                             ><span>Calendar</span></label>
+                             ><span >Calendar</span></label>
                               
                               
                                 <mat-card *ngIf="calendar"  > 

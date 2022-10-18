@@ -267,7 +267,15 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 23px;
   cursor: pointer;
 }
-
+.mat-form-field[_ngcontent-efw-c325] {
+  width: 90% !important;
+}
+::ng-deep.mat-select-arrow-wrapper {
+  height: 0px!important;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
 
 // input[type="number"] {
 //   //height: 32px; 
