@@ -127,8 +127,9 @@
                                            </div>
                                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
                                             <!-- <button mat-raised-button color="primary" class="buttonCSS">Done</button>
-                                             -->
-                                             <button mat-raised-button   class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;">Reset</button>
+                                             [ngStyle] = "{'margin-right':resetMargin,'float':resetFloat}"-->
+                                             <button mat-raised-button  
+                                              class="buttonCSS"(click)="reset()" style="color: #065C7A; background-color: white;">Reset</button>
                                           
                                           </div>
                                         </div>

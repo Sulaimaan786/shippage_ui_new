@@ -38,6 +38,8 @@ export class LoadTypeComponent implements OnInit {
   equipmentType: any;
   eqtypeId: any;
   commodityDetails:any;
+  resetMargin:any;
+  resetFloat:any;
  
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
@@ -86,7 +88,9 @@ export class LoadTypeComponent implements OnInit {
           this.nxtbuttonBot = '3%';
           this.topback = true;
           this.buttonwidth = '160px';
-          this.cardBottom = '65px'
+          this.cardBottom = '65px';
+          this.resetMargin='100px';
+          this.resetFloat='right';
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.cardpadding ='0px 50px 0px 20px';
