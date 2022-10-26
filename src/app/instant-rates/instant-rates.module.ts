@@ -51,6 +51,7 @@ import { EncryptionService } from 'src/app/core/service/encrypt.service';
 //import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SignupComponent } from './signup/signup.component';
+import { LandscapeLoaderComponent } from './landscape-loader/landscape-loader.component';
 
 // import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
@@ -70,7 +71,8 @@ import { SignupComponent } from './signup/signup.component';
     LoadTypeComponent,
     CargoDetailsComponent,
     RateEditComponent,
-    SignupComponent
+    SignupComponent,
+    LandscapeLoaderComponent
   ],
   providers: [
     EncrDecrService,

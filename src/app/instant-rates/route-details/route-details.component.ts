@@ -12,6 +12,8 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
 import { listenerCount } from 'process';
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 
 // import { Observable } from 'rxjs';
 // import { map, startWith } from 'rxjs/operators';
@@ -42,8 +44,9 @@ export class RouteDetailsComponent implements OnInit {
   margTop:any;
   origin:any;
   destination:any;
-  
+  display:any
    center:any;
+   justcontent:any;
    @Input() name: string;
   myControl: FormControl = new FormControl('');
 
@@ -56,7 +59,7 @@ export class RouteDetailsComponent implements OnInit {
     private snackBar: MatSnackBar,
     private instantRatesService:InstantRatesService,
     private fb: FormBuilder,private responsive: BreakpointObserver,
-    private renderer: Renderer2
+    private renderer: Renderer2,public dialog:MatDialog,
     ) {
       this.docForm = this.fb.group({
         origin: [""],
@@ -129,13 +132,13 @@ export class RouteDetailsComponent implements OnInit {
           this.padding = this.mobilepadding;
           this.hideship = false;
           this.topback = true;
-          this.nextbutton = '25%';
-          this.nxtbuttonright = '28%';
+          this.nextbutton = '0%';
+          this.nxtbuttonright = '0%';
           this.nxtbuttonBot = '3%';
-          this.cardBottom = '75px';
-          this.margTop='20%';
-          
-         
+          this.cardBottom = '50px';
+          this.margTop='10%';
+          this.display = 'flex'
+          this.justcontent = 'center'
          
           this.topback = true; 
           this.center = true;
@@ -156,7 +159,16 @@ export class RouteDetailsComponent implements OnInit {
           this.center = false;
         }
       });
-   
+
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        
+        const viewport = screen.orientation.type;
+        console.log(viewport)
+        if(viewport == "portrait-primary"){
+          this.edit()
+          }
+         
+      });
   }
 
 
@@ -205,6 +217,18 @@ export class RouteDetailsComponent implements OnInit {
       panelClass: colorName,
     });
   }
-  
+  edit(){ 
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+      height: "100%",
+      width: "100%",
+       direction: tempDirection,
+    });  
+  }
     
 }

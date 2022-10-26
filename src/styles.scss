@@ -102,13 +102,23 @@
    }
    
    .mat-dialog-container {
-      // border-radius: 30px 70px 30px 70px !important;
-      border-radius: 30px 30px 30px 30px !important;
-     //  border-radius: 30px 70px 30px 70px !important;
-      font-family: 'Helvetica', Times, serif;
-       font-style: italic;
-
-    overflow-y: auto
+       //font-family: 'Helvetica', Times, serif;
+       //font-style: italic;
+       display: block;
+      // padding: 24px;
+       border-radius: 4px;
+       box-sizing: border-box;
+       outline: 0;
+       position: fixed;
+       top: 0;
+       left: 0;
+       bottom: 0;
+       right: 0;
+       //width: 100% !important;
+      // height: 100% !important; 
+      // margin-left: -12% !important;
+     //  margin-right: -12% !important;
+       background: #000000f0 !important;
    }
    
    

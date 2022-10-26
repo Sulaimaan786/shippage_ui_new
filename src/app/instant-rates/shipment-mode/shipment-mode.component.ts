@@ -5,6 +5,8 @@ import { Breakpoints } from "@angular/cdk/layout";
 import { element } from 'protractor';
 import { DOCUMENT } from "@angular/common";
 import { DataStorageService } from 'src/app/auth/data-storage';
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-shipment-mode',
   templateUrl: './shipment-mode.component.html',
@@ -18,12 +20,14 @@ export class ShipmentModeComponent implements OnInit {
   cardbnner:any;
   cardbnner1:any;
   cardpadding:any;
- 
+ cardBottom1 : any;
+  cardBottom2:any;
+  cardBottom:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage: DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
-    private renderer: Renderer2,) {}
+    private renderer: Renderer2,public dialog :MatDialog ) {}
   ngOnInit() {
     this.responsive.observe(Breakpoints.Handset)
       .subscribe(result => {
@@ -39,12 +43,26 @@ export class ShipmentModeComponent implements OnInit {
            this.padding = this.mobilepadding;
            this.cardpadding = this.cardbnner
           this.topback = true;
+          this.cardBottom = '74px'
          }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
            this.padding = this.webpadding;
            this.cardpadding = this.cardbnner
           this.topback = false;
+          this.cardBottom = '24px'
          }
+      });
+
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) {
+        const viewport = screen.orientation.type;
+        console.log(viewport)
+        if(viewport == "portrait-primary"){
+          this.edit()
+          }else{
+            this.padding = '70px 45px'
+          }
+        }
       });
   }
   fcl(value:any){
@@ -62,4 +80,17 @@ export class ShipmentModeComponent implements OnInit {
     this.dataStorage.setShipmentDetails(JSON.stringify(value));
     console.log(value);   }
     
+    edit(){ 
+      let tempDirection;
+      if (localStorage.getItem("isRtl") === "true") {
+        tempDirection = "rtl";
+      } else {
+        tempDirection = "ltr";  
+      }
+      const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+        height: "100%",
+        width: "100%",
+         direction: tempDirection,
+      });  
+    }
 }
