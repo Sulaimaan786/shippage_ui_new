@@ -56,9 +56,8 @@ export class ShipmentModeComponent implements OnInit {
       this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
         if (result.matches) {
         const viewport = screen.orientation.type;
-        console.log(viewport)
-        if(viewport == "portrait-primary"){
-          this.edit()
+         if(viewport == "portrait-primary"){
+          this.tabview()
           }else{
             this.padding = '70px 45px'
           }
@@ -80,7 +79,7 @@ export class ShipmentModeComponent implements OnInit {
     this.dataStorage.setShipmentDetails(JSON.stringify(value));
     console.log(value);   }
     
-    edit(){ 
+    tabview(){ 
       let tempDirection;
       if (localStorage.getItem("isRtl") === "true") {
         tempDirection = "rtl";

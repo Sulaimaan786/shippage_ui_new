@@ -8,7 +8,8 @@ import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRatesService } from '../instant-rates.service';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-booking-shipment',
   templateUrl: './booking-shipment.component.html',
@@ -19,7 +20,7 @@ export class BookingShipmentComponent implements OnInit {
   bookingNo:any;
   private unsubscriber : Subject<void> = new Subject<void>();
   constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document,public dialog:MatDialog,
     private route: ActivatedRoute,private httpService: HttpServiceService,
     private router: Router,private responsive: BreakpointObserver,
     private renderer: Renderer2,private instantRatesService:InstantRatesService,) {}
@@ -43,6 +44,16 @@ export class BookingShipmentComponent implements OnInit {
         }
       });
 
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          } 
+        }
+      });
+
       this.httpService.get(this.instantRatesService.getBookingNo).subscribe((res: any) => {
         this.bookingNo = res.bookingNo;
         });
@@ -50,5 +61,19 @@ export class BookingShipmentComponent implements OnInit {
   ngOnDestroy(): void {
     this.unsubscriber.next();
     this.unsubscriber.complete();
+  }
+
+  tabview(){ 
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+      height: "100%",
+      width: "100%",
+       direction: tempDirection,
+    });  
   }
 }

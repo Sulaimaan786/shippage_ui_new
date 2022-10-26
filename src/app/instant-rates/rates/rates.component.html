@@ -109,37 +109,6 @@
                                                 <label style=" margin-top: -30px;color:black;font-size:13px">FAK</label>
                                             </div>
                                         </div>
-                                        <!-- <div class="row" style="margin-top:-20px">
-                                            <div class="col-sm-4 p-4">
-
-                                            </div> 
-                                            <div class="col-sm-4 p-4 " style="margin-top: -35px;">
-                                                <p class="paragraph">Cost per Unit</p><br>
-                                                <p
-                                                    style=" margin-top: -30px;color:black;font-size:12px;font-weight: bold;">
-                                                    USD {{title.rate | number: '2.'}}</p>
-                                            </div>
-                                            <div class="col-sm-4 p-4" style="margin-top: -35px;">
-                                                <p class="paragraph">Total cost</p><br>
-                                                <p
-                                                    style=" margin-top: -30px;color:black;font-size:12px;font-weight: bold;">
-                                                    USD {{title.totalcost | number: '2.'}}</p>
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="row" style="margin-top:-20px">
-                                            <div class="col-sm-4 p-4">
-
-                                            </div>
-
-                                            <div class="col-sm-4 p-4 " style="margin-top: -35px;">
-
-                                            </div>
-                                            <div class="col-sm-4 p-4" style="margin-top: -20px;">
-                                                <button class="btn-space" mat-raised-button (click)="rateSummary(title.detailid)"
-                                                    color="primary" class="buttonCSS"
-                                                    style="float: right;">Select</button>
-                                            </div>
-                                        </div> -->
 
                                     </div>
                                     <div class="col-md-3" [ngStyle] = "{'padding':padding}" >  
@@ -156,7 +125,7 @@
                                                 style=" margin-top: -30px;color:black;font-size:16px;font-weight: 700;">
                                                 USD {{title.totalcost | number: '2.'}}</label>
                                         </div>
-                                        <div class="col-sm-10" [ngStyle] = "{'margin-right':buttonRight}" style="margin-top: 25px;">
+                                        <div class="col-sm-10" [ngStyle] = "{'margin-right':buttonRight,'margin-left':buttonLeft}" style="margin-top: 25px;">
                                             <button class="btn-space" mat-raised-button (click)="rateSummary(title.detailid)"
                                                 color="primary" class="buttonCSS"
                                                 style="float: right;">Select</button>

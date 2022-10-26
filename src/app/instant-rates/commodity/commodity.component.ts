@@ -11,7 +11,8 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 import { DOCUMENT } from "@angular/common";
 import { Breakpoints } from "@angular/cdk/layout";
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
  
 
 @Component({
@@ -53,7 +54,7 @@ export class CommodityComponent implements OnInit {
   count:any;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
-    private renderer: Renderer2,
+    private renderer: Renderer2,public dialog:MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,private httpService: HttpServiceService,
     private instantRatesService:InstantRatesService,@Inject(DOCUMENT) private document: Document,
@@ -116,6 +117,15 @@ export class CommodityComponent implements OnInit {
      }
    });
 
+   // tablet view
+   this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+    if (result.matches) { 
+    const viewport = screen.orientation.type;
+     if(viewport == "portrait-primary"){
+      this.tabview()
+      } 
+    }
+  });
 
    this.commodityValues =JSON.parse(this.dataStorage.getCommodityDetails());
    
@@ -246,4 +256,19 @@ radioClick(value:any){
 // onSelectAll(roles: any) {
 //   console.log(roles);
 // }
+
+
+tabview(){ 
+  let tempDirection;
+  if (localStorage.getItem("isRtl") === "true") {
+    tempDirection = "rtl";
+  } else {
+    tempDirection = "ltr";  
+  }
+  const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+    height: "100%",
+    width: "100%",
+     direction: tempDirection,
+  });  
+}
 }

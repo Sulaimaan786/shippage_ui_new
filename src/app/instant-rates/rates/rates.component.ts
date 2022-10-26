@@ -9,12 +9,13 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { InstantRatesService } from '../instant-rates.service';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { InstantRates } from '../instant-rates.model';
-import { MatDialog } from '@angular/material/dialog';
-import { LoadTypeComponent } from '../load-type/load-type.component';
+ import { LoadTypeComponent } from '../load-type/load-type.component';
 import { RateEditComponent } from '../rate-edit/rate-edit.component';
 import { serverLocations } from 'src/app/auth/serverLocations';
 import { EncrDecrService } from 'src/app/core/service/encrDecr.service';
 import { AnyTxtRecord } from 'dns';
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-rates',
@@ -63,6 +64,7 @@ export class RatesComponent implements OnInit {
   verticalLine:any;
   border:any;
   buttonRight:any;
+  buttonLeft:any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
@@ -91,6 +93,7 @@ export class RatesComponent implements OnInit {
           this.verticalLine = false
           this.border = '0px solid #065C7A'
           this.buttonRight= '10px'
+          this.buttonLeft = '0'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.cardBottom = '53px'
@@ -101,8 +104,23 @@ export class RatesComponent implements OnInit {
           this.verticalLine = true
           this.border = '1px solid #065C7A'
           this.buttonRight = '0px'
+          this.buttonLeft = '0'
         }
       }); 
+
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          }else{
+             this.padding = '40px 0px 10px 15px'
+            this.buttonRight = '0'
+            this.buttonLeft = '12px'
+          }
+        }
+      });
     //Route Details  
       this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
       console.log("route origin" +this.routeDetails.origin);
@@ -267,6 +285,20 @@ export class RatesComponent implements OnInit {
 
     // });
 
+  }
+
+  tabview(){ 
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+      height: "100%",
+      width: "100%",
+       direction: tempDirection,
+    });  
   }
 
 }

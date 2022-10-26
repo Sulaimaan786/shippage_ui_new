@@ -13,7 +13,8 @@ import { EncryptionService } from 'src/app/core/service/encrypt.service';
 import { Subscription } from 'rxjs';
 import { UnsubscribeOnDestroyAdapter } from "src/app/shared/UnsubscribeOnDestroyAdapter";
 import { AppService } from 'src/app/app.service';
-
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -73,7 +74,7 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
-    private renderer: Renderer2,
+    private renderer: Renderer2,public dialog:MatDialog,
     private instantRatesService: InstantRatesService,
     private httpService: HttpServiceService,
     public EncrDecr: EncrDecrService,
@@ -115,6 +116,16 @@ export class BookingComponent extends UnsubscribeOnDestroyAdapter implements OnI
           this.justifyCenter = 'block'
           this.cardBottom = '24px'
           this.totaltab = false
+        }
+      });
+
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          } 
         }
       });
       //Route Details  
@@ -251,20 +262,21 @@ this.commodity =this.commodityValues.commodity;
     this.Service.sendUpdate('Booking Details');
   }
 
-  edit(){
-    // let tempDirection;
-    // if (localStorage.getItem("isRtl") === "true") {
-    //   tempDirection = "rtl";
-    // } else {
-    //   tempDirection = "ltr";  
-    // }
-    // const dialogRef = this.dialog.open(RateEditComponent, {
-    //   height: "100%",
-    //   width: "100%",
-    //   // data: row,
-    //   direction: tempDirection,
-    // });
+  tabview(){ 
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+      height: "100%",
+      width: "100%",
+       direction: tempDirection,
+    });  
   }
 
-
+edit(){
+  
+}
 }

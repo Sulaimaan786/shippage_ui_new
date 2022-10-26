@@ -62,7 +62,7 @@ export class WelcomePageComponent implements OnInit {
         const viewport = screen.orientation.type;
         console.log(viewport)
         if(viewport == "portrait-primary"){
-          this.edit()
+          this.tabview()
           }else{
             this.padding = '70px 45px'
           }
@@ -97,7 +97,7 @@ export class WelcomePageComponent implements OnInit {
     console.log(value);
    }
 
-   edit(){ 
+   tabview(){ 
     let tempDirection;
     if (localStorage.getItem("isRtl") === "true") {
       tempDirection = "rtl";

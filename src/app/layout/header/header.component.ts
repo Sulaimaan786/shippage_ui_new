@@ -25,7 +25,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Overlay } from "@angular/cdk/overlay";
 import { DataStorageService } from 'src/app/auth/data-storage';
 import { Subscription } from 'rxjs';
- 
+import { BreakpointObserver } from "@angular/cdk/layout";
+import { Breakpoints } from "@angular/cdk/layout";
 
 @Component({
   selector: "app-header",
@@ -53,6 +54,9 @@ export class HeaderComponent
   changePasswordForm: FormGroup;
   headerName = 'Instant Rates'
   messageReceived: any;
+  headerLeft:any;
+  headerTop:any;
+  headerFont:any;
   private subscriptionName: Subscription;
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -67,7 +71,7 @@ export class HeaderComponent
     public fb: FormBuilder,
     public dialog: MatDialog,public dataStorage :DataStorageService,
     private sanitizer: DomSanitizer,
-    private Service: AppService
+    private Service: AppService,private responsive: BreakpointObserver,
   ) {
     super();
     this.subscriptionName= this.Service.getUpdate().subscribe
@@ -160,6 +164,36 @@ export class HeaderComponent
     },
   ];
   ngOnInit() {
+
+    this.responsive.observe(Breakpoints.Handset)
+    .subscribe(result => { 
+      if (result.matches) {  
+         this.headerLeft='2%'
+         this.headerTop = '25px'
+         this.headerFont = '35px'
+      }else{ 
+         this.headerLeft='6%'
+         this.headerTop = '18px'
+         this.headerFont = '40px'
+
+      }
+    }); 
+
+    // tablet view
+    this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+      if (result.matches) { 
+      const viewport = screen.orientation.type;
+       if(viewport == "portrait-primary"){ 
+         }else{ 
+           this.headerLeft='8%'
+           this.headerTop = '18px'
+            this.headerFont = '40px'
+        }
+      }
+    });
+
+
+
      this.config = this.configService.configData;
     const userRole = this.authService.currentUserValue.role;
 

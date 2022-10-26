@@ -9,6 +9,9 @@ import { InstantRatesService } from '../instant-rates.service';
 import { DOCUMENT } from "@angular/common";
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
+
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-cargo-details',
   templateUrl: './cargo-details.component.html',
@@ -53,7 +56,7 @@ export class CargoDetailsComponent implements OnInit {
     private instantRatesService:InstantRatesService,
     private responsive: BreakpointObserver,
     private snackBar: MatSnackBar,
-    private renderer: Renderer2,
+    private renderer: Renderer2,public dialog: MatDialog,
     @Inject(DOCUMENT) private document: Document) {
     this.docForm = this.fb.group({
       // control:[""],
@@ -109,6 +112,16 @@ export class CargoDetailsComponent implements OnInit {
           this.topback = false;
           this.cardBottom = '0px'
           this.toggleMargin='11px'
+        }
+      });
+
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          } 
         }
       });
 
@@ -292,5 +305,19 @@ export class CargoDetailsComponent implements OnInit {
           })
         ]),
       })
+    }
+
+    tabview(){ 
+      let tempDirection;
+      if (localStorage.getItem("isRtl") === "true") {
+        tempDirection = "rtl";
+      } else {
+        tempDirection = "ltr";  
+      }
+      const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+        height: "100%",
+        width: "100%",
+         direction: tempDirection,
+      });  
     }
 }

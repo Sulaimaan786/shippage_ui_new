@@ -12,7 +12,8 @@ import { InstantRates } from '../instant-rates.model';
 import { AppService } from 'src/app/app.service';
 import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -68,7 +69,7 @@ export class RateSummaryComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
-    private renderer: Renderer2,
+    private renderer: Renderer2,public dialog: MatDialog,
     private instantRatesService: InstantRatesService,private Service: AppService,
     private httpService: HttpServiceService,private fb: FormBuilder) {}
   ngOnInit() { 
@@ -92,6 +93,18 @@ export class RateSummaryComponent implements OnInit {
           this.cardBottom = '53px';
         }
       });
+
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          } 
+        }
+      });
+
+
       //Route Details  
   this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
   console.log("route origin" +this.routeDetails.origin);
@@ -246,6 +259,20 @@ shippingIntclose(){
   this.shippingIntFlag = false
 }
 
+
+tabview(){ 
+  let tempDirection;
+  if (localStorage.getItem("isRtl") === "true") {
+    tempDirection = "rtl";
+  } else {
+    tempDirection = "ltr";  
+  }
+  const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+    height: "100%",
+    width: "100%",
+     direction: tempDirection,
+  });  
+}
   }
 
 
