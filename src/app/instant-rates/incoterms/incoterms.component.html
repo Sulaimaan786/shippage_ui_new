@@ -32,10 +32,23 @@
                             <button class="sideButton" (click)="cargoReadiness()">&nbsp;
                               <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Readiness</button>
                             </div>
-                            <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-                              <button class="sideButton" (click)="loadType()">&nbsp;
+                            <!-- <div class="col-xl-3 " *ngIf="loadTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                              <button class="sideButton" (click)="loadType()" (change)="loadCargoType('Sea')">&nbsp;
                                 <img src="assets/icons/loadtype.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Load Type</button>
                               </div>
+                              <div class="col-xl-3 " *ngIf="!cargoTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                                <button class="sideButton " (click)="loadType()" (change)="loadCargoType('Air')" style="background-color: #065C7A!important;color:white;text-align: center;" >
+                                 <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Type</button>
+                                </div> -->
+
+                                <div class="col-xl-3 " *ngIf="loadTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                                  <button class="sideButton" (click)="loadType()">&nbsp;
+                                    <img src="assets/icons/loadtype.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Load Type</button>
+                                  </div>
+                                  <div class="col-xl-3 " *ngIf="cargoTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                                    <button class="sideButton " (click)="cargoDetails()" >
+                                     <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Type</button>
+                                    </div>
                              
                   </div>
                   

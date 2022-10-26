@@ -43,6 +43,11 @@ export class IncotermsComponent implements OnInit {
   nxtbuttonBot:any;
   buttonwidth:any;
   incotermsValue:any;
+  loadCargo:any;
+  freightMode:any;
+  
+  loadTypeMenu:boolean=false;
+  cargoTypeMenu:boolean=false;
 
   constructor(private fb:FormBuilder,private route: ActivatedRoute,public dataStorage :DataStorageService,
     private router: Router,private httpService: HttpServiceService,
@@ -123,12 +128,22 @@ export class IncotermsComponent implements OnInit {
           this.topback = false;
         }
       });
+      
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
 
+      this.loadCargoType();
+      
+   
       this.incotermsValue =JSON.parse(this.dataStorage.getIncotermsDetails());    
       console.log("incoterms ==" +this.incotermsValue.incoterm);
       this.docForm.patchValue({
         'incoterm':  this.incotermsValue.incoterm,
        })
+
+      
+
+      
 
     }
 
@@ -296,9 +311,42 @@ loadType(){
       "right");
   }
 }
+
+cargoDetails(){
+  // this.submitted=true;
+   if (this.docForm.valid) {
+  this.router.navigate(["instantRates/cargoDetails"]);
+  this.dataStorage.setReadinessDetails(JSON.stringify(this.docForm.value));
+  console.log("Form Value", this.docForm.value);
+   }
+   else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
+}
+
+
 routeDetails(){
   this.router.navigate(["instantRates/route-details"]);
 }
- 
+
+loadCargoType(){
+  if(this.freightMode==='Sea'){
+      this.cargoTypeMenu=false;
+      this.loadTypeMenu=true; 
+  
+  }
+  else if(this.freightMode==='Air')
+  { 
+    this.loadTypeMenu=false;
+    this.cargoTypeMenu=true;
+    
+  }
+  
+}
 
 }

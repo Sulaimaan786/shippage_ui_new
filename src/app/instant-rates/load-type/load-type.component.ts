@@ -40,6 +40,10 @@ export class LoadTypeComponent implements OnInit {
   commodityDetails:any;
   resetMargin:any;
   resetFloat:any;
+  freightMode:any;
+  
+  loadTypeMenu:boolean=false;
+  cargoTypeMenu:boolean=false;
  
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
@@ -47,7 +51,7 @@ export class LoadTypeComponent implements OnInit {
     private renderer: Renderer2,public dataStorage :DataStorageService,
     @Inject(DOCUMENT) private document: Document,) { 
     this.docForm = this.fb.group({
-      control:[""],
+      // control:[""],
       
 
       loadTypeDetailBean:this.fb.array([
@@ -107,7 +111,11 @@ export class LoadTypeComponent implements OnInit {
           this.cardBottom = '0px'
         }
       });
+    
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
 
+      this.loadCargoType();
 
       //Load type
      this.loadtype = this.dataStorage.getLoadDetails();
@@ -270,6 +278,20 @@ showNotification(colorName, text, placementFrom, placementAlign) {
       "top",
       "right");
   }
+  }
+  loadCargoType(){
+    if(this.freightMode==='Sea'){
+        this.cargoTypeMenu=false;
+        this.loadTypeMenu=true; 
+    
+    }
+    else if(this.freightMode==='Air')
+    { 
+      this.loadTypeMenu=false;
+      this.cargoTypeMenu=true;
+      
+    }
+    
   }
   reset()
   {

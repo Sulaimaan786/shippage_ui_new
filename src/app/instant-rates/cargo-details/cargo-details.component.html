@@ -28,10 +28,14 @@
               <button class="sideButton " (click)="cargoReadiness()" >&nbsp;
                 <img src="assets/icons/cargoreadyblue.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Readiness</button>
               </div>
-              <div class="col-xl-3 " [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
-                <button class="sideButton " (click)="loadType()" style="background-color: #065C7A!important;color:white;text-align: center;" >
-                 <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Type</button>
+              <div class="col-xl-3 " *ngIf="loadTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                <button class="sideButton" (click)="loadType()">&nbsp;
+                  <img src="assets/icons/loadtype.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Load Type</button>
                 </div>
+                <div class="col-xl-3 " *ngIf="cargoTypeMenu" [ngStyle] = "{'margin-top':butTopmar,'margin-left':butLeftmar}">
+                  <button class="sideButton " (click)="cargoDetails()" style="background-color: #065C7A!important;color:white;text-align: center;">
+                   <img src="assets/icons/loadtypewhite.png" alt="icoterms" width="20" height="20">&nbsp;&emsp; Cargo Type</button>
+                  </div>
                
     </div> 
     
@@ -115,7 +119,7 @@
                           <mat-button-toggle><input matInput  name="height{{i}}" maxlength=""formControlName="height" (keypress)="keyPressNumeric($event)" placeholder="H">
                           </mat-button-toggle>
                           <mat-button-toggle style="background-color:#065C7A">
-                            <input formControlName="unit"  matInput maxlength=""
+                            <input   matInput maxlength=""
                                   placeholder="Unit"></mat-button-toggle>
                       </mat-button-toggle-group>
                   

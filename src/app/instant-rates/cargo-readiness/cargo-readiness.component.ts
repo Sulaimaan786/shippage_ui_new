@@ -37,6 +37,13 @@ export class CargoReadinessComponent implements OnInit {
   cargoReady:any;
   dateformat:any;
   commodityDetails:any;
+  freightMode:any;
+  shipmentMode:any;
+  data:any;
+  
+  
+  loadTypeMenu:boolean=false;
+  cargoTypeMenu:boolean=false;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,
     private router: Router,private responsive: BreakpointObserver,
@@ -84,6 +91,10 @@ export class CargoReadinessComponent implements OnInit {
           
         }
       });
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
+
+      this.loadCargoType();
 
       this.currentDate = new Date().toISOString().substr(0, 16);
 
@@ -101,7 +112,27 @@ export class CargoReadinessComponent implements OnInit {
        if(this.cargoReady.selectedDate != 'Ready'){
         this.calendar=true;
        }
+
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
+    
+
+      
   }
+
+  
+  seaOrAir(){
+
+    if(this.freightMode==='Sea')
+    {
+      this.loadType();
+    }
+    else if(this.freightMode==='Air')
+    {
+      this.cargoDetails();
+    }
+
+    }
 
   radioClick(value:any){
     if(value=='Yes'){
@@ -187,6 +218,20 @@ showNotification(colorName, text, placementFrom, placementAlign) {
     panelClass: colorName,
   });
 }
+// checkSeaOrAir()
+// {
+//   if (this.docForm.valid) {
+
+  
+
+//   }
+
+
+// }
+
+
+
+
 loadType(){
   // this.submitted=true;
    if (this.docForm.valid) {
@@ -203,5 +248,40 @@ loadType(){
       "right");
   }
 }
+
+cargoDetails(){
+  // this.submitted=true;
+   if (this.docForm.valid) {
+  this.router.navigate(["instantRates/cargoDetails"]);
+  this.dataStorage.setReadinessDetails(JSON.stringify(this.docForm.value));
+  console.log("Form Value", this.docForm.value);
+   }
+   else
+  {
+    this.showNotification(
+      "snackbar-danger",
+      "Please fill all the required details!",
+      "top",
+      "right");
+  }
+}
+
+loadCargoType(){
+  if(this.freightMode==='Sea'){
+      this.cargoTypeMenu=false;
+      this.loadTypeMenu=true; 
+  
+  }
+  else if(this.freightMode==='Air')
+  { 
+    this.loadTypeMenu=false;
+    this.cargoTypeMenu=true;
+    
+  }
+  
+}
+
+
+
 
 }

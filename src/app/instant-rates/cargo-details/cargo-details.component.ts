@@ -40,6 +40,10 @@ export class CargoDetailsComponent implements OnInit {
   length:any;
   width:any;
   toggleMargin:any;
+  freightMode:any;
+  
+  loadTypeMenu:boolean=false;
+  cargoTypeMenu:boolean=false;
   
   
 
@@ -52,8 +56,8 @@ export class CargoDetailsComponent implements OnInit {
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document) {
     this.docForm = this.fb.group({
-      control:[""],
-      incoterm: ["", [Validators.required]],
+      // control:[""],
+      // incoterm: ["", [Validators.required]],
 
       
 
@@ -62,7 +66,6 @@ export class CargoDetailsComponent implements OnInit {
           equipmentType:[""],
           quantity:[""],
           cargoWeight:[""],
-          unit: [""],
           length:[""],
           width:[""],
           height:[""]
@@ -108,6 +111,11 @@ export class CargoDetailsComponent implements OnInit {
           this.toggleMargin='11px'
         }
       });
+
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
+
+      this.loadCargoType();
 
       this.listfunc();
   }
@@ -255,6 +263,21 @@ export class CargoDetailsComponent implements OnInit {
         "top",
         "right");
     }
+    }
+
+    loadCargoType(){
+      if(this.freightMode==='Sea'){
+          this.cargoTypeMenu=false;
+          this.loadTypeMenu=true; 
+      
+      }
+      else if(this.freightMode==='Air')
+      { 
+        this.loadTypeMenu=false;
+        this.cargoTypeMenu=true;
+        
+      }
+      
     }
     reset()
     {

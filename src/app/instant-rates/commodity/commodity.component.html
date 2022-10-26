@@ -47,27 +47,28 @@
                              -->
                              
                              <div class="col" style="margin-top: 50px;
-                             margin-right: 50px;">
+                             margin-right: 50px;" [ngStyle] = "{'column-count': count}">
                               
+                              <mat-radio-group formControlName="commodity">
+                              <mat-radio-button  name="readiness" value="RICE" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Rice<br>
+                              <mat-radio-button   name="readiness"  value="CERAMIC FINISHING TILES" (change)="radioClick('No')"  style="padding-bottom:10px">Ceramic Finishing Tiles</mat-radio-button><br>
+                              <mat-radio-button    name="readiness"  value="SODIUM SULPHATE" (change)="radioClick('No')"  style="padding-bottom:10px">Sodium Sulphate</mat-radio-button><br>
+                              <mat-radio-button   name="readiness"  value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;"> </mat-radio-button>Peddy<br>
+                            
                              
-                              <mat-radio-button   value="RICE" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Rice<br>
-                              <mat-radio-button   value="CERAMIC FINISHING TILES" (change)="radioClick('No')"  style="padding-bottom:10px">Ceramic Finishing Tiles</mat-radio-button><br>
-                              <mat-radio-button   value="SODIUM SULPHATE" (change)="radioClick('No')"  style="padding-bottom:10px">Sodium Sulphate</mat-radio-button><br>
-                              <mat-radio-button   value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;"> </mat-radio-button>Peddy<br>
-                              
-                             </div>
-                             <div class="col" style="margin-top: 50px;
-                             margin-right: 50px;">
-                              <mat-radio-button   value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Peddy<br>
-                              <mat-radio-button   value="MOTOR PARTS" (change)="radioClick('No')"  style="padding-bottom:10px">Motor Parts</mat-radio-button><br>
-                              <mat-radio-button   value="FISH MEAL" (change)="radioClick('No')"  style="padding-bottom:10px">Fish Meal</mat-radio-button><br>
-                              <mat-radio-button   value="Others" (change)="radioClick('Yes')" style="padding-bottom:10px">Others</mat-radio-button>
-                           
-                             </div>
+                            
+                             
+                              <mat-radio-button  name="readiness"  value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Peddy<br>
+                              <mat-radio-button  name="readiness"  value="MOTOR PARTS" (change)="radioClick('No')"  style="padding-bottom:10px">Motor Parts</mat-radio-button><br>
+                              <mat-radio-button name="readiness"   value="FISH MEAL" (change)="radioClick('No')"  style="padding-bottom:10px">Fish Meal</mat-radio-button><br>
+                              <mat-radio-button name="readiness"   value="Others" (change)="radioClick('Yes')" style="padding-bottom:10px">Others</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+                             
                            <div class="col">
                             <mat-form-field  appearance="outline" *ngIf="Others" style="margin-top: 80px;
                             width: 180px;" >
-                              <mat-select class="inputTxt"formControlName="commodity" required>
+                              <mat-select class="inputTxt"formControlName="commodity"  required>
                              
                                <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required>
                                  {{title.text}}

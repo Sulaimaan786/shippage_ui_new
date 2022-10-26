@@ -50,6 +50,7 @@ export class CommodityComponent implements OnInit {
   cardBottom:any;
   commodityValues:any;
   Others:boolean=false;
+  count:any;
   constructor(private fb:FormBuilder,private route: ActivatedRoute,
     public dataStorage :DataStorageService,private responsive: BreakpointObserver,
     private renderer: Renderer2,
@@ -57,14 +58,14 @@ export class CommodityComponent implements OnInit {
     private router: Router,private httpService: HttpServiceService,
     private instantRatesService:InstantRatesService,@Inject(DOCUMENT) private document: Document,
     ) {
-    control:[""];
-    commodity:["",[Validators.required]];
+    // control:[""];
+    // commodity:["",[Validators.required]];
    }
 
   ngOnInit(): void {
   
     this.docForm = this.fb.group({
-      control:[""],
+      // control:[""],
       commodity:[""]
          
     })
@@ -97,6 +98,7 @@ export class CommodityComponent implements OnInit {
        this.topback = true;
        this.buttonwidth = '160px';
        this.cardBottom = '65px'
+       this.count = '1';
      }else{ 
        this.renderer.removeClass(this.document.body,"content-block")
        this.cardpadding ='0px 50px 15px 20px';
@@ -109,7 +111,8 @@ export class CommodityComponent implements OnInit {
        this.nxtbuttonright = '2%';
        this.nxtbuttonBot = '1%';
        this.topback = false;
-       this.cardBottom = '0px'
+       this.cardBottom = '0px';
+       this.count = '2';
      }
    });
 
