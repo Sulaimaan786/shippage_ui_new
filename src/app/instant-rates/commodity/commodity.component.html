@@ -36,7 +36,7 @@
     </div>
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#065C7A;font-weight:bold;">Commodity</h1> 
-                      <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;height: 85%;padding-bottom: 24px;padding-top: 24px;padding-left:64px;padding-right:64px;" > 
+                      <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;height: 85%;padding-bottom: 24px;padding-top: 24px;" > 
                         <div class = "row">
                             <!-- <mat-radio-group formControlName="control">
                                 <mat-radio-button   value="FAK" style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>FAK<br>
@@ -47,7 +47,7 @@
                              -->
                              
                              <div class="col" style="margin-top: 50px;
-                             margin-right: 50px;" [ngStyle] = "{'column-count': count}">
+                             margin-right: 50px;padding-left:30px;padding-right:30px;" [ngStyle] = "{'column-count': count}">
                               
                               <mat-radio-group formControlName="commodity">
                               <mat-radio-button  name="readiness" value="RICE" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Rice<br>
@@ -70,8 +70,9 @@
                             width: 180px;" >
                               <mat-select class="inputTxt"formControlName="commodity"  required>
                              
-                               <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required>
-                                 {{title.text}}
+                               <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required >
+                                <p style="margin-top: 15px;    padding-left: 20px;
+                                    padding-right: 40px;"> <span style="font-size: 15px;">  {{title.text}}</span></p>
                                  </mat-option>
                               </mat-select>
                               </mat-form-field> </div>
