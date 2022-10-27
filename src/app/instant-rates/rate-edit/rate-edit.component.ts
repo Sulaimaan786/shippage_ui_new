@@ -144,14 +144,16 @@ export class RateEditComponent implements OnInit {
     loadTypeDetailBeanArray.removeAt(index);
   
   }
-  onClick(): void {  
-    this.dialogRef.close();
-    location.reload();
-  }
+  // onClick(): void {  
+  //   this.dialogRef.close();
+  //   location.reload();
+  // }
   
 
   editdone(){
     this.dataStorage.saverouteDetails(JSON.stringify(this.docForm.value));
     this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value)); 
+    this.dialogRef.close();
+    location.reload();
   }
 }
