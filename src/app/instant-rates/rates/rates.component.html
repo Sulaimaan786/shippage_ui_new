@@ -55,7 +55,7 @@
                           <mat-label><img src="assets/icons/loadtype.png" style="width:20px;height:15px">&nbsp;&nbsp;{{equipName}}</mat-label>
                       </div>
                 
-                      <div class="col-sm-3 p-3">
+                      <div class="col-sm-3" [ngStyle] ="{'padding':editAlign}" >
                           <a (click)="edit()">Edit</a>
                 
                       </div>

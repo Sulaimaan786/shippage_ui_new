@@ -10,7 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { InstantRatesService } from '../instant-rates.service';
 import { InstantRatesResultBean } from '../instant-rates-result-bean';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
-
+import { LandscapeLoaderComponent } from '../landscape-loader/landscape-loader.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-load-type',
   templateUrl: './load-type.component.html',
@@ -49,7 +50,7 @@ export class LoadTypeComponent implements OnInit {
     private router: Router,private responsive: BreakpointObserver,private httpService: HttpServiceService,
     private snackBar:MatSnackBar,private instantRatesService : InstantRatesService,
     private renderer: Renderer2,public dataStorage :DataStorageService,
-    @Inject(DOCUMENT) private document: Document,) { 
+    @Inject(DOCUMENT) private document: Document,public dialog : MatDialog) { 
     this.docForm = this.fb.group({
       // control:[""],
       
@@ -111,6 +112,19 @@ export class LoadTypeComponent implements OnInit {
           this.cardBottom = '0px'
         }
       });
+
+      // tablet view
+      this.responsive.observe([Breakpoints.Tablet]).subscribe(result =>{
+        if (result.matches) { 
+        const viewport = screen.orientation.type;
+         if(viewport == "portrait-primary"){
+          this.tabview()
+          } 
+        }
+      });
+
+
+
     
       this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
       console.log(this.freightMode);
@@ -306,5 +320,21 @@ showNotification(colorName, text, placementFrom, placementAlign) {
         })
       ]),
     })
+  }
+
+
+  
+  tabview(){ 
+    let tempDirection;
+    if (localStorage.getItem("isRtl") === "true") {
+      tempDirection = "rtl";
+    } else {
+      tempDirection = "ltr";  
+    }
+    const dialogRef = this.dialog.open(LandscapeLoaderComponent, {
+      height: "100%",
+      width: "100%",
+       direction: tempDirection,
+    });  
   }
 }

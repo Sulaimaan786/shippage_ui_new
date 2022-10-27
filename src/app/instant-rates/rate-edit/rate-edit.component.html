@@ -14,7 +14,8 @@
                                             -webkit-box-shadow: 0px 1px 14px 0px rgb(148 148 148 / 50%);border-radius: 25px; padding:4%;">
 
                                     <div class="row">
-                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="text-align: -webkit-center">
+                                          <div class="col-md-6">
                                             <mat-form-field class="example-full-width form-control-sm"
                                                 appearance="outline">
                                                 <mat-label required> <img src="assets/icons/seaOrigin.png"
@@ -27,10 +28,12 @@
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
+                                          </div>
                                         </div>
 
 
-                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="text-align: -webkit-center">
+                                          <div class="col-md-6">
                                             <mat-form-field class="example-full-width form-control-sm"
                                                 appearance="outline">
                                                 <mat-label> <img src="assets/icons/seaDestination.png"
@@ -43,6 +46,7 @@
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>
+                                          </div>
                                         </div>
                                     </div>
                                 </div>
@@ -143,12 +147,12 @@
             </div>
         </mat-tab>
     </mat-tab-group>
-       <div class="col-md-12">
-        <div class="col-md-4">
-          <button mat-flat-button  color="green" (click)="editdone()" tabindex="-1"style="" >Done</button>
+       <div class="row">
+        <div class="col-md-6" style="text-align:-webkit-right;">
+          <button mat-flat-button  color="primary" (click)="editdone()" tabindex="-1"style="width: 15%;" >Done</button>
         </div>
-        <div class="col-md-4">
-          <button mat-flat-button  color="warn" (click)="onClick()" tabindex="-1"style="" >Cancel</button>
+        <div class="col-md-6" >
+          <button mat-flat-button  color="warn" (click)="onClick()" tabindex="-1"style="width: 15%;" >Cancel</button>
         </div>
     
      </div>  

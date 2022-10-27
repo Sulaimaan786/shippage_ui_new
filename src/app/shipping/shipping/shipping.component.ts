@@ -8,7 +8,8 @@ import { DataStorageService } from 'src/app/auth/data-storage';
 import { HttpServiceService } from 'src/app/auth/http-service.service';
 import { ShippingService } from '../shipping.service';
 import { ShippingResultBean } from '../shipping-result-bean';
-
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.component.html',
@@ -23,6 +24,7 @@ export class ShippingComponent implements OnInit {
   webpadding: any;
   padding: any;
   margLeft:any;
+  private unsubscriber : Subject<void> = new Subject<void>();
 
   constructor(private route: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,public dataStorage :DataStorageService,
@@ -38,6 +40,16 @@ export class ShippingComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+    ).subscribe((_) => {
+      history.pushState(null, '');
+      });
+
+
     this.events = [
       {content:'Pick up',  status:'R'},
       {content:'Custom Cleared', status:'R'},

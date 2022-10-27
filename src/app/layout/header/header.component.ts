@@ -233,8 +233,8 @@ export class HeaderComponent
     })
     this.renderer.addClass(this.document.body, "side-closed");
     this.renderer.addClass(this.document.body, "submenu-closed");  
-
-    if(this.router.url.match("instantRates")){
+    
+     if(this.router.url.match("instantRates")){
       this.headerName = 'Instant Rates'
     }
     if(this.router.url.match("quote")){

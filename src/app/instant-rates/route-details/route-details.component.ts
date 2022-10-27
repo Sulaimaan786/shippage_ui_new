@@ -147,7 +147,7 @@ export class RouteDetailsComponent implements OnInit {
           this.padding = this.webpadding;
           this.hideship = true;
           this.topback = false;
-          this.nextbutton = '15px';
+          this.nextbutton = '-30px';
           this.nxtbuttonright = '2%';
           this.nxtbuttonBot = '1%';
           this.cardBottom = '15px';

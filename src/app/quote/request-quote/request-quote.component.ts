@@ -12,7 +12,8 @@ import { Quote } from '../request-quote-model';
 import { RequestQuoteService } from '../request-quote.service';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-request-quote',
   templateUrl: './request-quote.component.html',
@@ -32,12 +33,23 @@ export class RequestQuoteComponent implements OnInit {
   source: MatSlideToggle
   checked: boolean
   sea: boolean;
+  private unsubscriber : Subject<void> = new Subject<void>();
+
   constructor(private snackBar:MatSnackBar,public router: Router,private instantRatesService:InstantRatesService,private requestQuoteService:RequestQuoteService,
     private httpService: HttpServiceService,private fb: FormBuilder,
     private responsive: BreakpointObserver,private route: ActivatedRoute,
     private renderer: Renderer2, @Inject(DOCUMENT) private document: Document,) { }
  
   ngOnInit(): void {
+
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+    ).subscribe((_) => {
+      history.pushState(null, '');
+      });
+
     this.docForm = this.fb.group({
       // first: ["", [Validators.required, Validators.pattern("[a-zA-Z]+")]],
    //   currencyCode: ["", [Validators.required]],

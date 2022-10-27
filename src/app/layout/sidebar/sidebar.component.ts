@@ -117,6 +117,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
+
+    this.renderer.removeClass(this.document.body, "side-closed-hover");
+      this.renderer.addClass(this.document.body, "submenu-closed");
+
     if (this.authService.currentUserValue) {
       const userRole = this.authService.currentUserValue.role;
       this.userFullName =
@@ -138,8 +142,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.userType = Role.Admin;
       }
     }
-    //this.renderer.addClass(this.document.body, "submenu-closed");
-    // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
     console.log('Web ' + Breakpoints.Web);

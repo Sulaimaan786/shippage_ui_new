@@ -65,7 +65,7 @@ export class RatesComponent implements OnInit {
   border:any;
   buttonRight:any;
   buttonLeft:any;
-
+  editAlign:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,private fb:FormBuilder,
     private route: ActivatedRoute,public dataStorage :DataStorageService,
@@ -94,6 +94,7 @@ export class RatesComponent implements OnInit {
           this.border = '0px solid #065C7A'
           this.buttonRight= '10px'
           this.buttonLeft = '0'
+          this.editAlign = '15px 15px 15px 75%'
         }else{ 
           this.renderer.removeClass(this.document.body,"content-block")
           this.cardBottom = '53px'
@@ -105,6 +106,7 @@ export class RatesComponent implements OnInit {
           this.border = '1px solid #065C7A'
           this.buttonRight = '0px'
           this.buttonLeft = '0'
+          this.editAlign = '40px 30px 1px 16%'
         }
       }); 
 
@@ -118,6 +120,7 @@ export class RatesComponent implements OnInit {
              this.padding = '40px 0px 10px 15px'
             this.buttonRight = '0'
             this.buttonLeft = '12px'
+            
           }
         }
       });
