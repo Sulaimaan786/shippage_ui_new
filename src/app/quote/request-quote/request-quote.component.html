@@ -49,7 +49,7 @@
                                     
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <mat-label class="label"><b>Sea</b></mat-label>
-                                        <mat-slide-toggle (change)="onChange($event)"></mat-slide-toggle>
+                                        <mat-slide-toggle formControlName = "seaAirMode" (change)="onChange($event)"></mat-slide-toggle>
                                         <mat-label class="label"><b>Air</b></mat-label>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                 <div *ngIf = "!sea" class="row">
                                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"></div>
                                     <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
-                                        <mat-label>FCL</mat-label>&nbsp; <mat-slide-toggle></mat-slide-toggle>&nbsp;
+                                        <mat-label>FCL</mat-label>&nbsp; <mat-slide-toggle formControlName = "fclLclMode" (change)="onChangeMode($event)"></mat-slide-toggle>&nbsp;
                                         <mat-label>
                                             LCL</mat-label>
                                     </div>

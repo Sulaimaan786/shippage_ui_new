@@ -33,6 +33,8 @@ export class RequestQuoteComponent implements OnInit {
   source: MatSlideToggle
   checked: boolean
   sea: boolean;
+  modeSeaAir: number = 2
+  modeFclLcl: number = 1
   private unsubscriber : Subject<void> = new Subject<void>();
 
   constructor(private snackBar:MatSnackBar,public router: Router,private instantRatesService:InstantRatesService,private requestQuoteService:RequestQuoteService,
@@ -55,6 +57,8 @@ export class RequestQuoteComponent implements OnInit {
    //   currencyCode: ["", [Validators.required]],
       name:  ["", [Validators.required]],
       contactNo: [""],
+      seaAirMode:[""],
+      fclLclMode:[""],
       emailId: ["", [Validators.required]],
       origin:  ["", [Validators.required]],
       destination: ["", [Validators.required]],
@@ -114,6 +118,18 @@ export class RequestQuoteComponent implements OnInit {
   );
   }
   onSubmit() {
+    if(this.modeSeaAir==1){
+      this.docForm.value.seaAirMode = 1
+    }
+    else{
+      this.docForm.value.seaAirMode = 2
+    }
+    if(this.docForm.value.seaAirMode == 2 && this.modeFclLcl == 1){
+      this.docForm.value.fclLclMode = 1
+    }
+    else if(this.docForm.value.seaAirMode == 2 && this.modeFclLcl == 2){
+      this.docForm.value.fclLclMode = 2
+    }
     if(this.docForm.valid){
       this.quote = this.docForm.value;
       console.log(this.quote)
@@ -147,8 +163,15 @@ export class RequestQuoteComponent implements OnInit {
   onChange($event: MatSlideToggleChange) {
     if($event.checked == true){
       this.sea = true
+      this.modeSeaAir = 1
     }else{
       this.sea = false
     } 
+}
+onChangeMode($event: MatSlideToggleChange){
+  if($event.checked == true){
+
+    this.modeFclLcl =2
+  }
 }
 }
