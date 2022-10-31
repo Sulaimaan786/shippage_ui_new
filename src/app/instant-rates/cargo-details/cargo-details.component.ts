@@ -265,7 +265,7 @@ export class CargoDetailsComponent implements OnInit {
       
     if (this.docForm.valid) {
       this.router.navigate(["instantRates/rates"]);
-      this.dataStorage.setLoadDetails(JSON.stringify(this.docForm.value));
+      this.dataStorage.setCargoDetails(JSON.stringify(this.docForm.value));
       console.log(this.docForm.value);
     }
     else

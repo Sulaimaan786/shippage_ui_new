@@ -41,8 +41,44 @@ export class AirRouteDetailsComponent implements OnInit {
     private httpService: HttpServiceService, private renderer: Renderer2,
     private instantRatesService:InstantRatesService,private responsive: BreakpointObserver,
     private fb: FormBuilder
-) {}
+) {
+   this.docForm = this.fb.group({
+    origin: [""],
+    destination: [""],
+  });
+}
   ngOnInit() {
+
+    this.docForm = this.fb.group({
+      control:[""],
+      origin:[""],
+      destination:[""], 
+
+    })
+
+    // refresh
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+
+    //Route Details  
+    this.routeDetails =JSON.parse(this.dataStorage.getrouteDetails());
+    
+    if(this.routeDetails == null){
+      this.listfunction();
+    }else{
+      this.listfunction();
+      this.docForm.patchValue({
+        'origin':  this.routeDetails.origin,
+       })
+       this.docForm.patchValue({
+        'destination':  this.routeDetails.destination,
+       })
+    }
+
 
 
     this.httpService.get<InstantRatesResultBean>(this.instantRatesService.airoriginListUl).subscribe(
@@ -52,13 +88,7 @@ export class AirRouteDetailsComponent implements OnInit {
       },
      
     );
-    this.docForm = this.fb.group({
-  
-      totalSecondRow: [""],
-      grandTotal: [""],
-
-   
-  })
+    
   this.responsive.observe([Breakpoints.Handset])
       .subscribe(result => {
         this.mobilepadding = '45px 75px 15px 75px';
@@ -97,6 +127,16 @@ export class AirRouteDetailsComponent implements OnInit {
           this.center = false;
         }
       });
+}
+listfunction(){
+
+  this.httpService.get<InstantRatesResultBean>(this.instantRatesService.originListUl).subscribe(
+    (data) => {
+     
+      this.polList = data.lInstantRatesBean;
+      this.podList = data.podlist;
+    }, 
+ );
 }
   fcl(){
    this.router.navigate(["/instantRates/route-details"]);

@@ -25,10 +25,10 @@
           <form class="validate-form" [formGroup]="authForm">
             <div class="row">
               <div *ngIf="!login && !forgot" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2" style="margin-bottom: -1.5rem!important;text-align: center;">
-                <mat-form-field class="example-full-width" style="height:20% !important;" appearance="outline">
-                  <mat-label>Email / User Name</mat-label>
-                  <input type="text"  class="inputTxt" matInput formControlName="username"/>
-                  <mat-icon matSuffix style="margin-top: -50px; position: absolute; margin-left: -29px;">face</mat-icon>
+                <mat-form-field class="example-full-width"  appearance="outline">
+                  <mat-label class="inputTxt">Email / User Name</mat-label>
+                  <input type="text"  class="inputLabel" matInput formControlName="username"/>
+                  <mat-icon matSuffix style="margin-top: -51px; position: absolute; margin-left: -29px;">face</mat-icon>
                   <mat-error style="padding-top: 35px;" *ngIf="authForm.get('username').hasError('required')">
                     Email / User Name is required
                   </mat-error>
@@ -36,9 +36,9 @@
               </div>
               <div *ngIf="login" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2" style="text-align: center;">
                 <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Enter OTP</mat-label> 
-                  <input class="inputTxt" matInput formControlName="otpValue"  />
-                  <mat-icon matSuffix  style="margin-top: -50px; position: absolute; margin-left: -29px;">face</mat-icon>
+                  <mat-label class="inputTxt">Enter OTP</mat-label> 
+                  <input class="inputLabel" matInput formControlName="otpValue"  />
+                  <mat-icon matSuffix  style="margin-top: -51px; position: absolute; margin-left: -29px;">face</mat-icon>
                   <mat-error *ngIf="authForm.get('otpValue').hasError('required')">
                     OTP is required
                   </mat-error>
@@ -46,9 +46,9 @@
               </div>
               <div *ngIf="forgot" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2" style="text-align: center;">
                 <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>User Name/Email Id</mat-label>  
-                  <input class="inputTxt" matInput formControlName="userNameEmailId"/>            
-                  <mat-icon matSuffix style="margin-top: -50px; position: absolute; margin-left: -29px;">face</mat-icon>
+                  <mat-label class="inputTxt">User Name/Email Id</mat-label>  
+                  <input class="inputLabel" matInput formControlName="userNameEmailId"/>            
+                  <mat-icon matSuffix style="margin-top: -51px; position: absolute; margin-left: -29px;">face</mat-icon>
                   <mat-error style="margin-top: 14% !important;"*ngIf="authForm.get('userNameEmailId').hasError('required')">
                     User Name/Email Id is required
                   </mat-error>
@@ -62,8 +62,8 @@
             <div class="row">
               <div *ngIf="!login && !forgot" class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2" style="text-align: center;">
                 <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Password</mat-label>
-                  <input   class="inputTxt" matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
+                  <mat-label class="inputTxt">Password</mat-label>
+                  <input   class="inputLabel" matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
                   <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon style="margin-top: -52px; position: absolute;margin-left: -29px;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

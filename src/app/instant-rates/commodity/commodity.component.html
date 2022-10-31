@@ -36,7 +36,12 @@
     </div>
     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9" [ngStyle] = "{'padding':cardpadding}" >
                       <h1 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#065C7A;font-weight:bold;">Commodity</h1> 
-                      <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" style="border-radius: 24px;width: 100%;height: 85%;padding-bottom: 24px;padding-top: 24px;" > 
+                      <div class="card align-items-center" [ngStyle] = "{'margin-bottom':cardBottom}" 
+                      style="border-radius: 24px;width: 100%;height: 85%;    padding-top: 15px;
+                      padding-right: 8px;"  [ngStyle] = "{'height':height}"> 
+                           
+                        
+                        
                         <div class = "row">
                             <!-- <mat-radio-group formControlName="control">
                                 <mat-radio-button   value="FAK" style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>FAK<br>
@@ -50,22 +55,52 @@
                              margin-right: 50px;padding-left:30px;padding-right:30px;" [ngStyle] = "{'column-count': count}">
                               
                               <mat-radio-group formControlName="commodity">
-                              <mat-radio-button  name="readiness" value="RICE" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Rice<br>
-                              <mat-radio-button   name="readiness"  value="CERAMIC FINISHING TILES" (change)="radioClick('No')"  style="padding-bottom:10px">Ceramic Finishing Tiles</mat-radio-button><br>
-                              <mat-radio-button    name="readiness"  value="SODIUM SULPHATE" (change)="radioClick('No')"  style="padding-bottom:10px">Sodium Sulphate</mat-radio-button><br>
-                              <mat-radio-button   name="readiness"  value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;"> </mat-radio-button>Peddy<br>
+                              <mat-radio-button  name="readiness" value="Electrical Items" (change)="radioClick('No')"  style="padding-bottom:10px;margin-left:14px;font-size: 16px;"> </mat-radio-button>Electrical Items<br>
+                              <mat-radio-button   name="readiness"  value="Textile and Fashion" (change)="radioClick('No')"  style="padding-bottom:10px;font-size: 16px;">Textile and Fashion</mat-radio-button><br>
+                              <mat-radio-button    name="readiness"  value="Automobiles" (change)="radioClick('No')"  style="padding-bottom:10px;font-size: 16px;">Automobiles</mat-radio-button><br>
+                              <mat-radio-button   name="readiness"  value="Air Conditioner"  (change)="radioClick('No')" style="padding-bottom:10px;;font-size: 16px;"> </mat-radio-button>Air Conditioner<br>
+                              <mat-radio-button   name="readiness"  value="Pitch Bearing"  (change)="radioClick('No')" style="padding-bottom:10px;font-size: 16px;"> </mat-radio-button>Pitch Bearing<br>
                             
                              
                             
                              
-                              <mat-radio-button  name="readiness"  value="PEDDY"  (change)="radioClick('No')" style="padding-bottom:10px;margin-left:14px"> </mat-radio-button>Peddy<br>
-                              <mat-radio-button  name="readiness"  value="MOTOR PARTS" (change)="radioClick('No')"  style="padding-bottom:10px">Motor Parts</mat-radio-button><br>
-                              <mat-radio-button name="readiness"   value="FISH MEAL" (change)="radioClick('No')"  style="padding-bottom:10px">Fish Meal</mat-radio-button><br>
-                              <mat-radio-button name="readiness"   value="Others" (change)="radioClick('Yes')" style="padding-bottom:10px">Others</mat-radio-button>
+                              <mat-radio-button  name="readiness"  value="Yaw Bearing"  (change)="radioClick('No')" style="padding-bottom:10px;margin-left:14px;font-size: 16px;"> </mat-radio-button>Yaw Bearing<br>
+                              <mat-radio-button  name="readiness"  value="Solar Photovollaic Module" (change)="radioClick('No')"  style="padding-bottom:10px;font-size: 16px;">Solar Photovollaic Module</mat-radio-button><br>
+                              <mat-radio-button name="readiness"   value="Machinery" (change)="radioClick('No')"  style="padding-bottom:10px;font-size: 16px;">Machinery</mat-radio-button><br>
+                              <mat-radio-button name="readiness"   value="Others" (change)="radioClick('Yes')" style="padding-bottom:10px;font-size: 16px;">Others</mat-radio-button>
+                              <mat-form-field class="example-full-width form-control-sm" appearance="outline" *ngIf="Others" >
+                                
+                                  <mat-label >  Commodity
+                                     </mat-label>
+                                      <mat-select class="inputTxt" formControlName="commodity">
+                                        <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId">
+                                            {{title.text}} 
+                                          
+                                          </mat-option> 
+                                       </mat-select>
+
+                                    
+                               
+                                <!-- <mat-label required> &nbsp;&nbsp;
+                                  <p style="font-weight:500">Commodity</p> </mat-label>
+                                  <mat-select class="inputTxt"formControlName="commodity"  required>
+                             
+                                    <mat-option *ngFor="let title of dropdownList" [value]="title.commodityId" required >
+                                     <p style="margin-top: 15px;    padding-left: 20px;
+                                         padding-right: 40px;"> <span style="font-size: 15px;">  {{title.text}}</span></p>
+                                      </mat-option>
+                                   </mat-select> -->
+
+                                   
+                                   
+                              
+
+
+                                  </mat-form-field> 
                             </mat-radio-group>
                           </div>
                              
-                           <div class="col">
+                           <!-- <div class="col">
                             <mat-form-field  appearance="outline" *ngIf="Others" style="margin-top: 80px;
                             width: 180px;" >
                               <mat-select class="inputTxt"formControlName="commodity"  required>
@@ -75,7 +110,7 @@
                                     padding-right: 40px;"> <span style="font-size: 15px;">  {{title.text}}</span></p>
                                  </mat-option>
                               </mat-select>
-                              </mat-form-field> </div>
+                              </mat-form-field> </div> -->
 
                               
                                   

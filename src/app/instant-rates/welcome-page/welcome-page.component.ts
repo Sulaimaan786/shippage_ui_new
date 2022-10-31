@@ -92,7 +92,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   air(value:any){
-    this.router.navigate(["/instantRates/air-route"]);
+    this.router.navigate(["/instantRates/shipment-mode"]);
     this.dataStorage.setWelcomeDetails(JSON.stringify(value));
     console.log(value);
    }

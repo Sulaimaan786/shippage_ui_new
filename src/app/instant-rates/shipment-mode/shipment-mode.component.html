@@ -18,7 +18,7 @@
               <h2  *ngIf="!topback" style="text-align: center;color:#065C7A;padding-top: 30px;font-size: 40px;font-weight: 700;">Mode of Shipment</h2>
               <h2 *ngIf="topback" style="text-align: center;color:#065C7A;padding-top: 30px;font-size: 20px;font-weight: 600;">Mode of Shipment</h2>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12" [ngStyle]="{'padding' : padding}">
-                <div class="card" (click)="fcl('FCL');"> 
+                <div class="card" (click)="seaOrAirRoute('FCL');"> 
                   <div class="body"  style="background:#065C7A;border-radius: 25px;">
                     <div class="card-bnner" style="background:#065C7A;" [ngStyle]="{'padding': cardpadding}">
                       <div class="row"> 

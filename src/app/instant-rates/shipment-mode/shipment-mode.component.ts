@@ -23,6 +23,9 @@ export class ShipmentModeComponent implements OnInit {
  cardBottom1 : any;
   cardBottom2:any;
   cardBottom:any;
+  freightMode:any;
+  shipmentMode:any;
+  data:any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,public dataStorage: DataStorageService,
@@ -63,11 +66,24 @@ export class ShipmentModeComponent implements OnInit {
           }
         }
       });
+
+      this.freightMode = JSON.parse(this.dataStorage.getWelcomeDetails());
+      console.log(this.freightMode);
+
+      
+
   }
-  fcl(value:any){
+  seaOrAirRoute(value:any){
+    if(this.freightMode==='Sea'){
    this.router.navigate(["/instantRates/route-details"]);
    this.dataStorage.setShipmentDetails(JSON.stringify(value));
    console.log(value);
+    }
+    else if(this.freightMode==='Air'){
+      this.router.navigate(["/instantRates/air-route"]);
+      this.dataStorage.setShipmentDetails(JSON.stringify(value));
+      console.log(value);
+       }
   }
 
   back(){
